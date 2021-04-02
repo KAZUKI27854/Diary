@@ -1,28 +1,21 @@
 <div class="new-doc">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-md-2 col-sm-0"></div>
+      <ul id="tab-menu">
+        <li><a href="#tab1" class="active">TAB1</a></li>
+        <li><a href="#tab2" class="">TAB2</a></li>
+        <li><a href="#tab3" class="">TAB3</a></li>
+      </ul>
 
-    <div class="col-lg-6 col-md-8 col-sm-12 doc-post-form">
-      <%= form_with model: @document, local:true do |f| %>
-        <div class="form-group mt-2">
-          <label for="inputImage">がぞう</label>
-          <%= f.attachment_field :diary_image, class: "form-control-file" %>
+      <div id="tab-contents">
+        <div id="tab1" class="tab">
+          <%= render 'documents/post_form', document: @document %>
         </div>
-        <div class="form-group">
-          <label for="inputTitle">タイトル</label>
-          <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
-        </div>
-        <div class="form-group">
-          <label for="inputBody">ぼうけんのないよう</label>
-          <%= f.text_area :body, size: "20x7", class: "form-control", placeholder: "ぼうけんのないよう" %>
-        </div>
-        <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
-      <% end %>
-    </div>
 
-    <div class="col-lg-3 col-md-2 col-sm-0"></div>
-  </div>
-</div>
+        <div id="tab2" class="tab">
+          <%= render 'documents/post_form', document: @document %>
+        </div>
 
+        <div id="tab3" class="tab">
+          <%= render 'documents/post_form', document: @document %>
+        </div>
+      </div>
 </div>
