@@ -10,38 +10,38 @@
   <div class="profile-button">
     <p>
     <%= link_to "プロフィール編集", edit_user_path, class: "btn btn-primary btn-sm mt-3 text-light" %>
-    <%= link_to "新規投稿", root_path, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
+    <%= link_to "新規投稿", new_document_path, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
     </p>
   </div>
 </div>
 
-<% if @cookings.exists? %>
+<% if @documents.exists? %>
 
-<div class="container recipe-container">
+<div class="container document-container">
   <div class="row">
     <div class="col-lg-1 col-md-0 col-sm-0">
     </div>
     <div class="col-lg-10 col-md-12 col-sm-12">
       <div class="card-deck">
         <div class="row">
-          <% @cookings.each do |cooking1,cooking2| %>
-            <%= render 'users/card', cooking: cooking1 %>
-            <% if cooking2 != nil %>
-              <%= render 'users/card', cooking: cooking2 %>
+          <% @documents.each do |document1,document2| %>
+            <%= render 'users/card', document: document1 %>
+            <% if document2 != nil %>
+              <%= render 'users/card', document: document2 %>
             <% end %>
           <% end %>
 
         </div>
       </div>
-    <%= paginate @cookings %>
+    <!-- <パーセントイコール paginate @documents > -->
     </div>
    <div class="col-lg-1 col-md-0 col-sm-0"></div>
   </div>
 </div>
 
 <% else %>
-  <div class="no-recipe-message">
-    <h2>投稿済みレシピはありません。</h2>
+  <div class="no-document-message">
+    <h2>まだきろくはありません。とうこうしてみましょう！</h2>
   </div>
 <% end %>
 
