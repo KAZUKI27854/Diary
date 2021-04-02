@@ -15,4 +15,34 @@
   </div>
 </div>
 
+<% if @cookings.exists? %>
+
+<div class="container recipe-container">
+  <div class="row">
+    <div class="col-lg-1 col-md-0 col-sm-0">
+    </div>
+    <div class="col-lg-10 col-md-12 col-sm-12">
+      <div class="card-deck">
+        <div class="row">
+          <% @cookings.each do |cooking1,cooking2| %>
+            <%= render 'users/card', cooking: cooking1 %>
+            <% if cooking2 != nil %>
+              <%= render 'users/card', cooking: cooking2 %>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+    <%= paginate @cookings %>
+    </div>
+   <div class="col-lg-1 col-md-0 col-sm-0"></div>
+  </div>
+</div>
+
+<% else %>
+  <div class="no-recipe-message">
+    <h2>投稿済みレシピはありません。</h2>
+  </div>
+<% end %>
+
 </div>
