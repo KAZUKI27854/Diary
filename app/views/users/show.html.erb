@@ -1,0 +1,18 @@
+<div class="my-page img-fluid">
+
+<div class="profile">
+  <div class="user-introduction">
+    <h2>
+      <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
+      <%= @user.name %>さんのきろく<i class="fas fa-book"></i>
+    </h2>
+  </div>
+  <div class="profile-button">
+    <p>
+    <%= link_to "プロフィール編集", edit_user_path, class: "btn btn-primary btn-sm mt-3 text-light" %>
+    <%= link_to "新規投稿", new_cooking_path, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
+    </p>
+  </div>
+</div>
+
+</div>
