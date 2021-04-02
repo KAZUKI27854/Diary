@@ -7,11 +7,24 @@
         <%= form_with model: @user, local:true do |f| %>
           <div class="form-group mt-2">
             <label for="inputName">なまえ</label>
-            <%= f.text_field :title, class: "form-control", placeholder: "名前" %>
+            <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
           </div>
           <div class="form-group">
             <label for="inputImage">プロフィールがぞう</label>
             <%= f.attachment_field :profile_image, class: "form-control-file" %>
+          </div>
+          <h3>レベルアップしたいこと</h3>
+          <div class="form-group">
+            <label for="inputSkill1">その1</label>
+            <%= f.text_field :skill1, class: "form-control", placeholder: "その1" %>
+          </div>
+          <div class="form-group">
+            <label for="inputSkill2">その2</label>
+            <%= f.text_field :skill2, class: "form-control", placeholder: "その2" %>
+          </div>
+          <div class="form-group">
+            <label for="inputSkill3">その3</label>
+            <%= f.text_field :skill3, class: "form-control", placeholder: "その3" %>
           </div>
 
           <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>

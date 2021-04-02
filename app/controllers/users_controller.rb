@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @skill1 = @user.skill1
+    @skill2 = @user.skill2
+    @skill3 = @user.skill3
     @documents = Document.where(user_id: params[:id])
   end
 
@@ -11,7 +14,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(user_params)
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
@@ -23,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :skill1, :skill2, :skill3)
   end
 end

@@ -6,11 +6,27 @@
       <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
       <%= @user.name %>さんのきろく<i class="fas fa-book"></i>
     </h2>
+    <% if @skill1.present? %>
+      <h3 class="skill1-level">
+        <%= @skill1 %> Lv.〇〇
+      </h3>
+    <% end %>
+    <% if @skill2.present? %>
+      <h3 class="skill2-level">
+        <%= @skill2 %> Lv.〇〇
+      </h3>
+    <% end %>
+    <% if @skill3.present? %>
+      <h3 class="skill3-level">
+        <%= @skill3 %> Lv.〇〇
+      </h3>
+    <% end %>
+
   </div>
   <div class="profile-button">
     <p>
-    <%= link_to "プロフィール編集", edit_user_path, class: "btn btn-primary btn-sm mt-3 text-light" %>
-    <%= link_to "新規投稿", new_document_path, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
+    <%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-primary btn-sm mt-3 text-light" %>
+    <%= link_to "新規投稿", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
     </p>
   </div>
 </div>
