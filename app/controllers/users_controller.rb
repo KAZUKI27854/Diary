@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skill1 = @user.skill1
+    @skill1_count = 
     @skill2 = @user.skill2
     @skill3 = @user.skill3
     @documents = Document.where(user_id: params[:id])
