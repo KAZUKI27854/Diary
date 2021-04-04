@@ -1,7 +1,7 @@
 <div class="col-lg-6 col-md-6 col-sm-12">
-  <div class="card doc-card">
+  <div class="card doc-card mt-3">
     <%= link_to  document_path(document.id) do %>
-      <%= attachment_image_tag document, :diary_image, size: "300x300", class: "card-img-top "; %>
+      <%= attachment_image_tag document, :diary_image, size: "300x300", fallback: "no_image.jpg", class: "card-img-top "; %>
     <% end %>
     <div class="card-body">
       <div class="row">
@@ -10,10 +10,12 @@
             <%= document.body %> </br>
             <%= user.name %>はレベルアップした！
           </p>
-          <% if current_user.id == document.user_id %>
-           <span><%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜ <%= link_to 'さくじょ', document_path(document.id), method: :delete %></span>
-          <% end %>
-          <p class="doc-date"><%= document.created_at.strftime('%Y/%m/%d') %></p>
+          <p class="doc-bottom">
+            <% if current_user.id == document.user_id %>
+              <span><%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜ <%= link_to 'さくじょ', document_path(document.id), method: :delete %></span>
+            <% end %>
+            <%= document.created_at.strftime('%Y/%m/%d') %>
+          </p>
       </div>
     </div>
   </div>

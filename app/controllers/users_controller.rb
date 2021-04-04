@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+
     @skill1 = @user.skill1
     skill1_ary = Document.where(title: "#{@skill1}").pluck(:title)
     @skill1_level = skill1_ary.count("#{@skill1}")
@@ -12,7 +13,6 @@ class UsersController < ApplicationController
     @skill3_level = skill3_ary.count("#{@skill3}")
 
     @documents = Document.where(user_id: params[:id])
-
   end
 
   def edit
