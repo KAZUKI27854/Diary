@@ -41,9 +41,9 @@
       <div class="card-deck">
         <div class="row">
           <% @documents.each do |document1,document2| %>
-            <%= render 'users/card', document: document1 %>
+            <%= render 'users/card', document: document1, user: @user %>
             <% if document2 != nil %>
-              <%= render 'users/card', document: document2 %>
+              <%= render 'users/card', document: document2, user: @user %>
             <% end %>
           <% end %>
 

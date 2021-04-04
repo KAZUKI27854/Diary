@@ -1,11 +1,23 @@
 <h1>documents#edit</h1>
 
 <%= form_with model: @document, local:true do |f| %>
-　<label for="inputImage">がぞう</label>
-  <%= f.attachment_field :diary_image, placeholder: "がぞう" %>
-  <label for="inputTitle">タイトル</label>
-  <%= f.text_field :title, placeholder: "タイトル" %>
-  <label for="inputBody">ぼうけんのないよう</label>
-  <%= f.text_field :body, placeholder: "ぼうけんのないよう" %>
-  <%= f.submit 'きろくしなおす' %>
-<% end %>
+  <div class="form-group">
+    <label for="inputSkill">レベルアップしたスキル</label>
+    <label><%= f.radio_button :title, "#{@skill1}" %><%= @skill1 %></label>
+    <% if @skill2.present? %>
+      <label><%= f.radio_button :title, "#{@skill2}" %><%= @skill2 %></label>
+    <% end %>
+    <% if @skill3.present? %>
+      <label><%= f.radio_button :title, "#{@skill3}" %><%= @skill3 %></label>
+    <% end %>
+  </div>
+  <div class="form-group mt-2">
+    <label for="inputImage">がぞう</label>
+    <%= f.attachment_field :diary_image, class: "form-control-file" %>
+  </div>
+  <div class="form-group">
+    <label for="inputBody">ぼうけんのないよう</label>
+    <%= f.text_area :body, size: "20x7", class: "form-control", placeholder: "ぼうけんのないよう" %>
+  </div>
+  <%= f.submit 'きろくしなおす', class: "btn btn-primary btn-sm" %>
+ <% end %>

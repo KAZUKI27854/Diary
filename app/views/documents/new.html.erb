@@ -3,10 +3,10 @@
   <div class="form-group">
     <label for="inputSkill">レベルアップしたスキル</label>
     <label><%= f.radio_button :title, "#{@skill1}" %><%= @skill1 %></label>
-    <% if @user.skill2.present? %>
+    <% if @skill2.present? %>
       <label><%= f.radio_button :title, "#{@skill2}" %><%= @skill2 %></label>
     <% end %>
-    <% if @user.skill3.present? %>
+    <% if @skill3.present? %>
       <label><%= f.radio_button :title, "#{@skill3}" %><%= @skill3 %></label>
     <% end %>
   </div>

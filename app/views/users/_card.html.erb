@@ -6,7 +6,10 @@
     <div class="card-body">
       <div class="row">
           <p class="doc-title"><%= document.title %>のダンジョンにいどんだ！</p>
-          <p class="doc-body"><%= document.body %></p>
+          <p class="doc-body">
+            <%= document.body %> </br>
+            <%= user.name %>はレベルアップした！
+          </p>
           <% if current_user.id == document.user_id %>
            <span><%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜ <%= link_to 'さくじょ', document_path(document.id), method: :delete %></span>
           <% end %>

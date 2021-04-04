@@ -1,10 +1,10 @@
 class DocumentsController < ApplicationController
 	def new
 		@document = Document.new
-		@user = current_user
-		@skill1 = @user.skill1
-    @skill2 = @user.skill2
-    @skill3 = @user.skill3
+		user = current_user
+		@skill1 = user.skill1
+		@skill2 = user.skill2
+		@skill3 = user.skill3
 	end
 
 	def create
@@ -20,6 +20,10 @@ class DocumentsController < ApplicationController
 
 	def edit
 		@document = Document.find(params[:id])
+		user = current_user
+		@skill1 = user.skill1
+		@skill2 = user.skill2
+		@skill3 = user.skill3
 	end
 
 	def update
