@@ -4,21 +4,21 @@
   <div class="user-introduction">
     <h2>
       <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
-      <%= @user.name %>さんのきろく<i class="fas fa-book"></i>
+      <%= @user.name %>さんのきろく
     </h2>
     <% if @skill1.present? %>
       <h3 class="skill1-level">
-        <%= @skill1 %> Lv.
+        <%= @skill1 %> Lv.<%= @skill1_level %>
       </h3>
     <% end %>
     <% if @skill2.present? %>
       <h3 class="skill2-level">
-        <%= @skill2 %> Lv.〇〇
+        <%= @skill2 %> Lv.<%= @skill2_level %>
       </h3>
     <% end %>
     <% if @skill3.present? %>
       <h3 class="skill3-level">
-        <%= @skill3 %> Lv.〇〇
+        <%= @skill3 %> Lv.<%= @skill3_level %>
       </h3>
     <% end %>
 
