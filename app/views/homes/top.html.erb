@@ -1,1 +1,23 @@
-<h1>homes#top</h1>
+<div class="top-page img-fluid">
+  <div class="title-container">
+    <h1 class="main-title">Dot Diary</h1>
+    <h3 class="sub-title">〜みっかぼうずのやぼう〜</h3>
+    <ul class="nav-list">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top-link-btn" %>
+      </li>
+      <li class="bottom-link">
+        <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top-link-btn"  %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top-link-btn" %>
+      </li>
+      <li class="bottom-link">
+        <%= link_to "つづきから", new_user_session_path, class: "top-link-btn" %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</diiv>

@@ -12,21 +12,35 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <li>
-      <%= link_to "ぼうけんのきろく", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "あたらしくはじめる", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "つづきから", new_user_session_path %>
-      </li>
-    <% end %>
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <h2 class="nav-header">Portfolio</h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "head-link-btn mr-5" %>
+              </li>
+              <li>
+                <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "head-link-btn" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "あたらしくはじめる", new_user_registration_path, class: "head-link-btn mr-5" %>
+              </li>
+              <li>
+                <%= link_to "つづきから", new_user_session_path, class: "head-link-btn" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer class="footer fixed-bottom"></footer>
   </body>
 </html>
