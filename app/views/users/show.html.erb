@@ -1,64 +1,53 @@
 <div class="my-page img-fluid">
+  <div class="container">
+    <div class="row">
 
-<div class="profile">
-  <div class="user-introduction">
-    <h2>
-      <%= attachment_image_tag @user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
-      <%= @user.name %>さんのきろく
-    </h2>
-    <% if @skill1.present? %>
-      <h3 class="skill1-level">
-        <%= @skill1 %> Lv.<%= @skill1_level %>
-      </h3>
-    <% end %>
-    <% if @skill2.present? %>
-      <h3 class="skill2-level">
-        <%= @skill2 %> Lv.<%= @skill2_level %>
-      </h3>
-    <% end %>
-    <% if @skill3.present? %>
-      <h3 class="skill3-level">
-        <%= @skill3 %> Lv.<%= @skill3_level %>
-      </h3>
-    <% end %>
-
-  </div>
-  <div class="profile-button">
-    <p>
-    <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm mt-3 text-light" %>
-    <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
-    </p>
-  </div>
-</div>
-
-<% if @documents.exists? %>
-
-<div class="container document-container">
-  <div class="row">
-    <div class="col-lg-1 col-md-0 col-sm-0">
-    </div>
-    <div class="col-lg-10 col-md-12 col-sm-12">
-      <div class="card-deck">
-        <div class="row">
-          <% @documents.each do |document1,document2| %>
-            <%= render 'users/card', document: document1, user: @user %>
-            <% if document2 != nil %>
-              <%= render 'users/card', document: document2, user: @user %>
+      <div class="col-lg-3 col-md-2 col-sm-0">
+        <div class="profile">
+          <div class="user-introduction">
+            <h2 class="user-name">
+              <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
+              <%= @user.name %>
+            </h2>
+            <h3>スキルいちらん</h3>
+            <% if @skill1.present? %>
+              <p class="skill1-level"><%= @skill1 %> Lv.<%= @skill1_level %></p>
             <% end %>
-          <% end %>
-
+            <% if @skill2.present? %>
+              <p class="skill2-level"><%= @skill2 %> Lv.<%= @skill2_level %></p>
+            <% end %>
+            <% if @skill3.present? %>
+              <p class="skill3-level"><%= @skill3 %> Lv.<%= @skill3_level %></p>
+            <% end %>
+          </div>
+          <div class="profile-button">
+            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm mt-3 text-light" %>
+            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
+          </div>
         </div>
       </div>
-    <!-- <パーセントイコール paginate @documents > -->
+      <div class="col-lg-9 col-md-10 col-sm-12">
+        <h2 class="master-message">これまでのきろくじゃ</h2>
+        <% if @documents.exists? %>
+          <div class="document-container">
+            <div class="card-deck">
+              <div class="row">
+                <% @documents.each do |document1,document2| %>
+                  <%= render 'users/card', document: document1, user: @user %>
+                  <% if document2 != nil %>
+                    <%= render 'users/card', document: document2, user: @user %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <%= paginate @documents %>
+          </div>
+        <% else %>
+          <h2 class="master-message">まだきろくはないぞ。</br>
+          とうこうしてみるのじゃ！</h2>
+        <% end %>
+      </div>
     </div>
-   <div class="col-lg-1 col-md-0 col-sm-0"></div>
   </div>
 </div>
 
-<% else %>
-  <div class="no-document-message">
-    <h2>まだきろくはありません。とうこうしてみましょう！</h2>
-  </div>
-<% end %>
-
-</div>

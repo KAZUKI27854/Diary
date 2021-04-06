@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     skill3_ary = Document.where(title: "#{@skill3}").pluck(:title)
     @skill3_level = skill3_ary.count("#{@skill3}")
 
-    @documents = Document.where(user_id: params[:id])
+    @documents = Document.where(user_id: params[:id]).page(params[:page]).reverse_order
+
   end
 
   def edit
