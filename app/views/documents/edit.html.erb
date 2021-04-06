@@ -3,9 +3,10 @@
     <div class="row">
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 user-edit-form">
+        <h2 class="master-message">かきなおすならここじゃ</h2>
         <%= form_with model: @document, local:true do |f| %>
           <div class="form-group">
-            <label for="inputSkill">レベルアップしたスキル</label>
+            <label for="inputSkill">レベルアップしたスキル</label></br>
             <label><%= f.radio_button :title, "#{@skill1}" %><%= @skill1 %></label>
             <% if @skill2.present? %>
               <label><%= f.radio_button :title, "#{@skill2}" %><%= @skill2 %></label>
