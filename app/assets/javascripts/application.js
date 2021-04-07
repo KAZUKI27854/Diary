@@ -18,10 +18,17 @@
 //= require turbolinks
 //= require_tree .
 
-/*global imageArea,images,imageNo,randomImage*/
-const imageArea = document.getElementById('imageArea');
-const images = ['1up.jpeg','cave.jpg','forest.jpg'];
 
-const imageNo = Math.floor(Math.random()*images.length);
-imageArea.src = images[imageNo];
+/*global $,onload*/
+onload = function(){
+  $('#tab-contents .tab[id != "tab1"]').hide();
+
+  $('#tab-menu a').on('click', function(event) {
+    $("#tab-contents .tab").hide();
+    $("#tab-menu .active").removeClass("active");
+    $(this).addClass("active");
+    $($(this).attr("href")).show();
+    event.preventDefault();
+  });
+};
 
