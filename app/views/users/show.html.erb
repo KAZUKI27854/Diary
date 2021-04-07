@@ -4,20 +4,20 @@
 
       <div class="col-lg-3 col-md-2 col-sm-0">
         <div class="profile">
-          <div class="user-introduction">
+          <div class="upper-contents">
             <h2 class="user-name">
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
             </h2>
             <h3>スキルいちらん</h3>
             <% if @skill1.present? %>
-              <p class="skill1-level"><%= @skill1 %> Lv.<%= @skill1_level %></p>
+              <p class="skill1"><%= @skill1 %> Lv.<%= @skill1_level %></p>
             <% end %>
             <% if @skill2.present? %>
-              <p class="skill2-level"><%= @skill2 %> Lv.<%= @skill2_level %></p>
+              <p class="skill2"><%= @skill2 %> Lv.<%= @skill2_level %></p>
             <% end %>
             <% if @skill3.present? %>
-              <p class="skill3-level"><%= @skill3 %> Lv.<%= @skill3_level %></p>
+              <p class="skill3"><%= @skill3 %> Lv.<%= @skill3_level %></p>
             <% end %>
           </div>
           <div class="profile-button">
@@ -25,9 +25,17 @@
             <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
           </div>
         </div>
+        <div class="side-menu">
+          <h3>メニュー</h3>
+          <ul>
+            <li>todoリスト</li>
+            <li>未定</li>
+            <li>未定</li>
+          </ul>
+        </div>
       </div>
       <div class="col-lg-9 col-md-10 col-sm-12">
-        <h2 class="master-message">これまでのきろくじゃ</h2>
+        <h2 class="master-message upper-contents">これまでのきろくじゃ</h2>
         <% if @documents.exists? %>
           <div class="document-container">
             <div class="card-deck">

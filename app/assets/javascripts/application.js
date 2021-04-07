@@ -17,3 +17,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/*global imageArea,images,imageNo,randomImage*/
+const imageArea = document.getElementById('imageArea');
+const images = ['1up.jpeg','cave.jpg','forest.jpg'];
+
+const imageNo = Math.floor(Math.random()*images.length);
+imageArea.src = images[imageNo];
+
