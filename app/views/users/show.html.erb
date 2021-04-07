@@ -35,8 +35,8 @@
         </div>
       </div>
       <div class="col-lg-9 col-md-10 col-sm-12">
-        <h2 class="master-message upper-contents">これまでのきろくじゃ</h2>
         <% if @documents.exists? %>
+         <h2 class="master-message upper-contents">これまでのきろくじゃ</h2>
           <div class="document-container">
             <div class="card-deck">
               <div class="row">
@@ -51,7 +51,7 @@
             <%= paginate @documents %>
           </div>
         <% else %>
-          <h2 class="master-message">まだきろくはないぞ。</br>
+          <h2 class="master-message upper-contents">まだきろくはないぞ。</br>
           とうこうしてみるのじゃ！</h2>
         <% end %>
       </div>
