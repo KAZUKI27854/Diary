@@ -1,5 +1,9 @@
 ---
 ja:
+  activemodel:
+    models:
+      goal: もくひょう
+
   views:
     pagination:
       first: "&laquo; さいしょ"
@@ -21,6 +25,8 @@ ja:
         remember_me: パスワードをきおくする
         activated: アクティブフラグ
         admin: かんりしゃフラグ
+
+
 
     errors:
       messages:
