@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal_status: MyText
+  deadline: 2021-04-07 07:36:18
+  category: MyText
+  category_level: 1
+  milestone: MyText
+  user_id: 1
+
+two:
+  goal_status: MyText
+  deadline: 2021-04-07 07:36:18
+  category: MyText
+  category_level: 1
+  milestone: MyText
+  user_id: 1
