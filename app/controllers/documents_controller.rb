@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
 
 	def edit
 		@document = Document.find(params[:id])
-		if @document.user != current_user
+		if @document.user.id != current_user.id
 			redirect_to root_path
 		end
 		user = current_user

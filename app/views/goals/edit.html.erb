@@ -17,6 +17,8 @@
                 <%= f.date_select :deadline, class: "form-control" %>
                 <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
               <% end %>
+              <%= link_to "さくじょ", goal_path(@goal.id), method: :delete,
+                  "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？", class: "btn btn-danger btn-sm"  %>
             <% else %>
               <p>もくひょうがせっていされていません。</br>
               あたらしくせっていしますか？</p>

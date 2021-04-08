@@ -2,6 +2,7 @@ class Goal < ApplicationRecord
   MAX_GOALS_COUNT = 3
 
 	belongs_to :user
+	has_many :documents, dependent: :destroy
 
 	validate :goals_count_must_be_within_limit, on: :create
 	validates :category, {presence: true, length: {maximum: 20}}
