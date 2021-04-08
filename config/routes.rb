@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :documents
-  resources :goals
+  resources :goals, only: [:new, :create, :edit, :update, :destroy]
+  get 'goals' => 'goals#new'
+
 end
