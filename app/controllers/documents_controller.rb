@@ -1,17 +1,17 @@
 class DocumentsController < ApplicationController
 	def new
 		@document = Document.new
-		user = current_user
-		@skill1 = user.skill1
-		@skill2 = user.skill2
-		@skill3 = user.skill3
+		@user = current_user
 	end
 
 	def create
 		document = Document.new(document_params)
 		document.user_id = current_user.id
-		document.save
-		redirect_to user_path(current_user.id)
+		if document.save
+		   redirect_to user_path(current_user.id)
+		else
+			render "new"
+		end
 	end
 
 	def show

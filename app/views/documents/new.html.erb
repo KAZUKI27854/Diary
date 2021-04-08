@@ -4,26 +4,30 @@
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 new-doc-form">
         <h2 class="master-message">ぼうけんをきろくできるぞ</h2>
-        <%= form_with model: @document, local:true do |f| %>
-          <div class="form-group">
-            <label for="inputSkill">レベルアップしたスキル</label></br>
-            <label><%= f.radio_button :title, "#{@skill1}" %><%= @skill1 %></label>
-            <% if @skill2.present? %>
-              <label><%= f.radio_button :title, "#{@skill2}" %><%= @skill2 %></label>
-            <% end %>
-            <% if @skill3.present? %>
-              <label><%= f.radio_button :title, "#{@skill3}" %><%= @skill3 %></label>
-            <% end %>
-          </div>
-          <div class="form-group mt-2">
-            <label for="inputImage">がぞう</label>
-            <%= f.attachment_field :diary_image, class: "form-control-file" %>
-          </div>
-          <div class="form-group">
-            <label for="inputBody">ぼうけんのないよう</label>
-            <%= f.text_area :body, size: "20x7", class: "form-control", placeholder: "ぼうけんのないよう" %>
-          </div>
-          <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
+        <% if @user.goals.present? %>
+          <%= form_with model: @document, local:true do |f| %>
+            <div class="form-group">
+              <label for="inputSkill">レベルアップしたこと</label></br>
+              <label><%= f.radio_button :title, "#{first_goal.category}" %><%= first_goal.category %></label>
+              <% if second_goal.present? %>
+                <label><%= f.radio_button :title, "#{second_goal.category}" %><%= second_goal.category %></label>
+              <% end %>
+              <% if third_goal.present? %>
+                <label><%= f.radio_button :title, "#{third_goal.category}" %><%= third_goal.category %></label>
+              <% end %>
+            </div>
+            <div class="form-group mt-2">
+              <label for="inputImage">がぞう</label>
+              <%= f.attachment_field :diary_image, class: "form-control-file" %>
+            </div>
+            <div class="form-group">
+              <label for="inputBody">ぼうけんのないよう</label>
+              <%= f.text_area :body, size: "20x7", class: "form-control", placeholder: "ぼうけんのないよう" %>
+            </div>
+            <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
+          <% end %>
+        <% else %>
+            <p>まずは<%= link_to "もくひょうをせってい", new_goal_path %>しましょう！</p>
         <% end %>
       </div>
       <div class="col-lg-3 col-md-2 col-sm-0"></div>

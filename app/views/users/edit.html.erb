@@ -14,22 +14,9 @@
             <label for="inputImage">プロフィールがぞう</label>
             <%= f.attachment_field :profile_image, class: "form-control-file" %>
           </div>
-          <h3>レベルアップしたいこと</h3>
-          <div class="form-group">
-            <label for="inputSkill1">その1</label>
-            <%= f.text_field :skill1, class: "form-control", placeholder: "その1" %>
-          </div>
-          <div class="form-group">
-            <label for="inputSkill2">その2</label>
-            <%= f.text_field :skill2, class: "form-control", placeholder: "その2" %>
-          </div>
-          <div class="form-group">
-            <label for="inputSkill3">その3</label>
-            <%= f.text_field :skill3, class: "form-control", placeholder: "その3" %>
-          </div>
-
           <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
         <% end %>
+        <%= link_to "もくひょうをせっていする", new_goal_path %>
       </div>
 
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
