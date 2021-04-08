@@ -10,8 +10,14 @@
               <%= @user.name %>
             </h2>
             <h3>スキルいちらん</h3>
-            <% if @skill1.present? %>
-              <p class="skill1"><%= @skill1 %> Lv.<%= @skill1_level %></p>
+            <% if first_goal.category.present? %>
+              <p class="skill1">
+                <%= link_to goal_path(first_goal.id) do %>
+                  <%= first_goal.category %> Lv.<%= @skill1_level %>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="skill1">なし</p>
             <% end %>
             <% if @skill2.present? %>
               <p class="skill2"><%= @skill2 %> Lv.<%= @skill2_level %></p>

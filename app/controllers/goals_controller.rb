@@ -12,9 +12,24 @@ class GoalsController < ApplicationController
 			render "new"
 		end
 	end
+	
+	def show
+		@goal = Goal.find(params[:id])
+	end
+
+	def edit
+		@goal = Goal.find(params[:id])
+	end
+
+	def update
+		user = current_user
+		first_goal_edit = user.goals.first
+		first_goal_edit.update(goal_params)
+		redirect_to user_path(current_user.id)
+	end
 
 	private
-	def goal_params
+	  def goal_params
 		params.require(:goal).permit(:category, :goal_status, :milestone, :deadline)
-	end
+	  end
 end
