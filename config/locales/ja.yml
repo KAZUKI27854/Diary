@@ -1,8 +1,5 @@
 ---
 ja:
-  activemodel:
-    models:
-      goal: もくひょう
 
   views:
     pagination:
@@ -25,6 +22,16 @@ ja:
         remember_me: パスワードをきおくする
         activated: アクティブフラグ
         admin: かんりしゃフラグ
+      document:
+        body: ぼうけんのないよう
+        milestone: つぎのもくひょう
+        add_level: レベル
+        goal: レベルアップしたこと
+      goal:
+        category: レベルアップしたいこと
+        goal_status: さいしゅうもくひょう
+        deadline: もくひょうのきげん
+
 
 
 

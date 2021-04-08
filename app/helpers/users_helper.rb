@@ -1,5 +1,5 @@
 module UsersHelper
-  def dungeon_name
-    @document.where
+  def floor
+    Goal.where(id: document.goal_id).size
   end
 end

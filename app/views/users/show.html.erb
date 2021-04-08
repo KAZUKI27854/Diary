@@ -9,6 +9,8 @@
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
             </h2>
+            <p>これまでに ◯ 回</br>
+            せかいをすくった</p>
             <h3>スキルいちらん</h3>
             <% if first_goal.category.present? %>
               <p class="skill1">

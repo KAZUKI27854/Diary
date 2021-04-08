@@ -8,7 +8,9 @@
           <p class="doc-title">〇〇のダンジョン(◯F)にいどんだ！</p>
           <p class="doc-body">
             <%= document.body %> </br>
-            <%= user.name %>はレベルアップした！
+            <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
+            つぎのもくひょう:　<%= document.milestone %> </br>
+            せかいめつぼうまで　のこり 〇 にち
           </p>
           <p class="doc-bottom">
             <% if current_user.id == document.user_id %>
