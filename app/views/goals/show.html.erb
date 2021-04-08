@@ -10,16 +10,9 @@
         	<h3><%= @goal.category %></h3>
         	<p>さいしゅうもくひょう</p>
         	<h3><%= @goal.goal_status %></h3>
-        	<p>つぎのマイルストーン</p>
-        	<h3><%= @goal.milestone %></h3>
-        	<p>マイルストーンのきげん</p>
+        	<p>いつまでに</p>
         	<h3><%= @goal.deadline.strftime('%Y/%m/%d') %></h3>
         	<p>げんざいのレベル</p>
-        	<% if @goal.category_level.present? %>
-        	  <h3>Lv.<%= @goal.category_level %></h3>
-        	<% else %>
-        	  <h3>Lv.0</h3>
-        	<% end %>
         	<%= link_to "へんこう", edit_goal_path(@goal.id) %>
         </div>
        </div>

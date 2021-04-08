@@ -5,9 +5,9 @@ class DocumentsController < ApplicationController
 	end
 
 	def create
-		document = Document.new(document_params)
-		document.user_id = current_user.id
-		if document.save
+		@document = Document.new(document_params)
+		@document.user_id = current_user.id
+		if @document.save
 		   redirect_to user_path(current_user.id)
 		else
 			render "new"
@@ -46,6 +46,6 @@ class DocumentsController < ApplicationController
 
 	private
 	def document_params
-		params.require(:document).permit(:title, :body, :diary_image)
+		params.require(:document).permit(:title, :body, :document_image, :milestone, :add_level, :goal_id)
 	end
 end
