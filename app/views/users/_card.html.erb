@@ -1,7 +1,7 @@
 <div class="col-lg-6 col-md-6 col-sm-12">
   <div class="card mt-3">
     <%= link_to  document_path(document.id) do %>
-        <%= attachment_image_tag document, :diary_image, fallback: "sky-block.jpeg", size: "200x250", class: "card-img-top", id: "imageArea" %>
+        <%= attachment_image_tag document, :document_image, fallback: "sky-block.jpeg", size: "200x250", class: "card-img-top", id: "imageArea" %>
     <% end %>
     <div class="card-body doc-card">
       <div class="row">
