@@ -20,7 +20,7 @@
           <%= form_with model: @document, local:true do |f| %>
             <div class="form-group">
               <label for="inputSkill">レベルアップしたこと</label></br>
-              <label><%= f.radio_button :goal_id, "#{current_user.goals.second.id}" %><%= current_user.goals.first.category %></label>
+              <label><%= f.radio_button :goal_id, "#{current_user.goals.first.id}" %><%= current_user.goals.first.category %></label>
               <% if current_user.goals.second.present? %>
                 <label><%= f.radio_button :goal_id, "#{current_user.goals.second.id}" %><%= current_user.goals.second.category %></label>
               <% end %>

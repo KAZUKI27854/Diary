@@ -13,7 +13,7 @@
             <% if first_goal.category.present? %>
               <p class="skill1">
                 <%= link_to goal_path(first_goal.id) do %>
-                  <%= first_goal.category %> Lv.<%= @skill1_level %>
+                  <%= first_goal.category %> Lv.<%= first_goal_level %>
                 <% end %>
               </p>
             <% else %>
@@ -22,7 +22,7 @@
             <% if second_goal.category.present? %>
               <p class="skill2">
                 <%= link_to goal_path(second_goal.id) do %>
-                  <%= second_goal.category %> Lv.<%= @skill1_level %>
+                  <%= second_goal.category %> Lv.<%= second_goal_level %>
                 <% end %>
               </p>
             <% else %>
@@ -31,7 +31,7 @@
             <% if third_goal.category.present? %>
               <p class="skill3">
                 <%= link_to goal_path(third_goal.id) do %>
-                  <%= third_goal.category %> Lv.<%= @skill1_level %>
+                  <%= third_goal.category %> Lv.<%= third_goal_level %>
                 <% end %>
               </p>
             <% else %>
