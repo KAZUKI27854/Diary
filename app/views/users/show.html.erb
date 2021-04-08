@@ -19,11 +19,23 @@
             <% else %>
               <p class="skill1">なし</p>
             <% end %>
-            <% if @skill2.present? %>
-              <p class="skill2"><%= @skill2 %> Lv.<%= @skill2_level %></p>
+            <% if second_goal.category.present? %>
+              <p class="skill2">
+                <%= link_to goal_path(second_goal.id) do %>
+                  <%= second_goal.category %> Lv.<%= @skill1_level %>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="skill2">なし</p>
             <% end %>
-            <% if @skill3.present? %>
-              <p class="skill3"><%= @skill3 %> Lv.<%= @skill3_level %></p>
+            <% if third_goal.category.present? %>
+              <p class="skill3">
+                <%= link_to goal_path(third_goal.id) do %>
+                  <%= third_goal.category %> Lv.<%= @skill1_level %>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="skill3">なし</p>
             <% end %>
           </div>
           <div class="profile-button">
