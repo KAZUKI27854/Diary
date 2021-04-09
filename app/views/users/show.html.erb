@@ -2,59 +2,41 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-lg-3 col-md-2 col-sm-0">
-        <div class="profile">
-          <div class="upper-contents">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+        <div class="profile upper-contents">
+          <div class="user-info">
             <h3 class="user-name">
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
             </h3>
-            <p>Lv.<%= @user_level %></p>
-            <p>ぼうけん: <%= @documents.count %> 回</p>
-            <p>せかいをすくった: ◯ 回</p>
-            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light" %>
-            <h3>スキルいちらん</h3>
-            <% if first_goal.category.present? %>
-              <p class="skill1">
-                <%= link_to goal_path(first_goal.id) do %>
-                  <%= first_goal.category %> Lv.<%= first_goal_level %>
+            <p class="status">Lv.<%= @user_level %></p>
+            <p class="status">ぼうけん: <%= @documents.count %> 回</p>
+            <p>せかいをすくった: <%= clear_times %> 回</p>
+            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light " %>
+            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
+          </div>
+
+            <h3>スキル</h3>
+            <div class="category-info">
+            <% user_goals.first(4).each do |goal| %>
+              <% if goal.category.present? %>
+              <p class="my-goal">
+                <%= link_to goal_path(goal.id) do %>
+                  <%= goal.category %> Lv.<%= category_level(goal.id) %>
                 <% end %>
               </p>
-            <% else %>
-              <p class="skill1">なし</p>
-            <% end %>
-            <% if second_goal.category.present? %>
-              <p class="skill2">
-                <%= link_to goal_path(second_goal.id) do %>
-                  <%= second_goal.category %> Lv.<%= second_goal_level %>
-                <% end %>
-              </p>
-            <% else %>
-              <p class="skill2">なし</p>
-            <% end %>
-            <% if third_goal.category.present? %>
-              <p class="skill3">
-                <%= link_to goal_path(third_goal.id) do %>
-                  <%= third_goal.category %> Lv.<%= third_goal_level %>
-                <% end %>
-              </p>
-            <% else %>
-              <p class="skill3">なし</p>
-            <% end %>
-            <% if @user.goals.count >= 4 %>
-              <%= link_to "その他のスキル", goals_path %>
+              <% else %>
+                <p class="my-goal">なし</p>
+              <% end %>
             <% end %>
             <form name="sort_form">
               <select name="sort" onchange="dropsort()">
-                <option value="">その他スキル</option>
+                <option value="">スキルいちらん</option>
                 <% @goals.each do |goal| %>
                 <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
                 <% end %>
               </select>
             </form>
-          </div>
-          <div class="post-link">
-            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-2 text-light" %>
           </div>
         </div>
         <div class="side-menu">
@@ -66,7 +48,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-lg-9 col-md-10 col-sm-12">
+      <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? %>
          <h2 class="master-message upper-contents">これまでのきろくじゃ</h2>
           <div class="document-container">

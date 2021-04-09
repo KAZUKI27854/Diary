@@ -1,33 +1,17 @@
 module UsersHelper
-  
-  
-  
-  def first_goal
-		user_goals.first
-  end
 
-	def second_goal
-		user_goals.second
-	end
+    def category_level(goal_id)
+      Document.where(goal_id: goal_id).sum(:add_level)
+    end
 
-	def third_goal
-		user_goals.third
-	end
+    def clear_times
+      goals = @user.goals
 
-	def first_goal_level
-		documents = Document.where(goal_id: first_goal.id)
-		documents.sum(:add_level)
-	end
-
-	def second_goal_level
-		documents = Document.where(goal_id: second_goal.id)
-		documents.sum(:add_level)
-	end
-
-	def third_goal_level
-		documents = Document.where(goal_id: third_goal.id)
-		documents.sum(:add_level)
-	end
+      goals.each do |goal|
+      	category_level(goal.id)
+      end
+      category_level(goal.id).count {|level| level >= 100}
+    end
 
 	def category_name(id)
 	  Goal.find_by(id: id).category

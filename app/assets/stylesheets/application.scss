@@ -101,9 +101,7 @@ body {
   margin-bottom: 20px;
 }
 
-.skill1:before,
-.skill2:before,
-.skill3:before,
+.my-goal:before,
 .master-message:before {
   content: '';
   display: inline-block;
@@ -114,16 +112,20 @@ body {
   vertical-align: middle;
 }
 
-.skill1:before {
+.my-goal:first-child:before {
   background-image: url(red-book.png);
 }
 
-.skill2:before {
+.my-goal:nth-child(2):before {
   background-image: url(blue-book.png);
 }
 
-.skill3:before {
+.my-goal:nth-child(3):before {
   background-image: url(green-book.png);
+}
+
+.my-goal:nth-child(4):before {
+  background-image: url(purple-book.png);
 }
 
 .master-message:before {
@@ -196,26 +198,6 @@ body {
   padding-top: 130px;
 }
 
-.table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,td {
-  padding: 1rem 2rem;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  font-weight: normal;
-  font-size: .875rem;
-  color: #666;
-  background: #eee;
-  position: sticky;
-  top: 0;
-}
-
 .footer {
   position: absolute;
   bottom: 0 !important;
@@ -224,4 +206,28 @@ th {
   color: var(--main-font);
   background-color: var(--main-back);
 }
+
+@media (max-width: 599px) {
+
+}
+
+@media (max-width: 1023px){
+  .profile {
+    display: flex;
+  }
+
+  .user-info {
+    width: 50%;
+  }
+
+  .status {
+    display: contents;
+  }
+}
+
+
+
+
+
+
 

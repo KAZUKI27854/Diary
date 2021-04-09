@@ -18,10 +18,6 @@ class GoalsController < ApplicationController
 		@goal = Goal.find(params[:id])
 	end
 
-	def index
-		@user = current_user
-	end
-
 	def edit
 		@goal = Goal.find(params[:id])
 		if @goal.user_id != current_user.id
