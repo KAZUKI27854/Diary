@@ -150,6 +150,7 @@ body {
   background-color: var(--main-back);
 }
 
+.about,
 .my-page,
 .user-edit,
 .new-doc,
@@ -160,6 +161,12 @@ body {
   background-position: 50% 50%;
   background-size: cover;
   color: var(--main-font);
+}
+
+.about {
+  padding-top: 150px;
+  text-align: center;
+  background-image: url(sample2.png);
 }
 
 .my-page {
