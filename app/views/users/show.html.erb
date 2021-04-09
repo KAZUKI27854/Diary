@@ -39,6 +39,9 @@
             <% else %>
               <p class="skill3">なし</p>
             <% end %>
+            <% if @user.goals.count >= 4 %>
+              <%= link_to "その他のスキル", "#" %>
+            <% end %>
           </div>
           <div class="profile-button">
             <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm mt-3 text-light" %>

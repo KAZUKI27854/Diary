@@ -1,14 +1,21 @@
 module ApplicationHelper
+	def user_goals
+		goals = @user.goals
+		goals.sort do |a, b|
+			b[:updated_at] <=> a[:updated_at]
+		end
+	end
+
 	def first_goal
-		@user.goals.first
+		user_goals.first
 	end
 
 	def second_goal
-		@user.goals.second
+		user_goals.second
 	end
 
 	def third_goal
-		@user.goals.third
+		user_goals.third
 	end
 
 	def first_goal_level
