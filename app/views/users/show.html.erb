@@ -5,12 +5,14 @@
       <div class="col-lg-3 col-md-2 col-sm-0">
         <div class="profile">
           <div class="upper-contents">
-            <h2 class="user-name">
+            <h3 class="user-name">
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
-            </h2>
-            <p>これまでに ◯ 回</br>
-            せかいをすくった</p>
+            </h3>
+            <p>Lv.<%= @user_level %></p>
+            <p>ぼうけん: <%= @documents.count %> 回</p>
+            <p>せかいをすくった: ◯ 回</p>
+            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light" %>
             <h3>スキルいちらん</h3>
             <% if first_goal.category.present? %>
               <p class="skill1">
@@ -40,12 +42,11 @@
               <p class="skill3">なし</p>
             <% end %>
             <% if @user.goals.count >= 4 %>
-              <%= link_to "その他のスキル", "#" %>
+              <%= link_to "その他のスキル", goals_path %>
             <% end %>
           </div>
-          <div class="profile-button">
-            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm mt-3 text-light" %>
-            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-3 mr-4 text-light" %>
+          <div class="post-link">
+            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-2 text-light" %>
           </div>
         </div>
         <div class="side-menu">
@@ -63,7 +64,7 @@
           <div class="document-container">
             <div class="card-deck">
               <div class="row">
-                <% @documents.each do |document1,document2| %>
+                <% @documents_index.each do |document1,document2| %>
                   <%= render 'users/card', document: document1, user: @user %>
                   <% if document2 != nil %>
                     <%= render 'users/card', document: document2, user: @user %>
@@ -71,7 +72,7 @@
                 <% end %>
               </div>
             </div>
-            <%= paginate @documents %>
+            <%= paginate @documents_index %>
           </div>
         <% else %>
           <h2 class="master-message upper-contents">まだきろくはないぞ。</br>

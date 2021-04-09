@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :documents, except: [:index]
-  resources :goals, except: [:index]
+  resources :goals
   get 'documents' => 'documents#new'
   get 'goals' => 'goals#new'
 

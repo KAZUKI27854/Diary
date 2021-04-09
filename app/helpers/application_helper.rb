@@ -32,4 +32,5 @@ module ApplicationHelper
 		documents = Document.where(goal_id: third_goal.id)
 		documents.sum(:add_level)
 	end
+	
 end
