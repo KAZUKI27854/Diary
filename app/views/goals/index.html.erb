@@ -1,1 +1,32 @@
-<h3>goals#index</h3>
+<div class="goal-index">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-sm-0"></div>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+
+<table class="goal-table">
+  <thead>
+    <tr class="table-header">
+      <th>スキル</th>
+      <th>レベル</th>
+      <th>さいしゅうもくひょう</th>
+      <th>きげん</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% user_goals.each do |goal| %>
+    <tr>
+      <td><%= goal.category %></td>
+      <td><%= goal_level(goal.id) %></td>
+      <td><%= goal.goal_status %></td>
+      <td><%= goal.deadline.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-0"></div>
+    </div>
+  </div>
+</div>

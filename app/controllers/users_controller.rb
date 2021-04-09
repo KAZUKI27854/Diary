@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @documents = Document.where(user_id: params[:id])
     @documents_index = @documents.page(params[:page]).reverse_order
     @user_level = @documents.sum(:add_level)
+    @goals = Goal.where(user_id: params[:id])
   end
 
   def edit

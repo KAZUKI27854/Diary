@@ -44,6 +44,14 @@
             <% if @user.goals.count >= 4 %>
               <%= link_to "その他のスキル", goals_path %>
             <% end %>
+            <form name="sort_form">
+              <select name="sort" onchange="dropsort()">
+                <option value="">その他スキル</option>
+                <% @goals.each do |goal| %>
+                <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
+                <% end %>
+              </select>
+            </form>
           </div>
           <div class="post-link">
             <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm mt-2 text-light" %>

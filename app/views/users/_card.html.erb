@@ -7,13 +7,13 @@
     <div class="card-body doc-card">
       <div class="row">
           <p class="doc-title">
-            <%= Goal.find_by(id: document.goal_id).category %>のダンジョンにいどんだ！
+            <%= category_name(document.goal_id) %>のダンジョンにいどんだ！
           </p>
           <p class="doc-body">
             <%= document.body %> </br>
             <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
             つぎのもくひょう:　<%= document.milestone %> </br>
-            せかいめつぼうまで　のこり <%= ((Goal.find_by(id: document.goal_id).deadline - document.updated_at)/86400).to_i %>  にち
+            せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
           </p>
           <p class="doc-bottom">
             <% if current_user.id == document.user_id %>
