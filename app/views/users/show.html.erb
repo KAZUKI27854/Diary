@@ -15,7 +15,7 @@
             <%= link_to "とうこう", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
             </div>
             <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
-            <p class="clear-count">せかいをすくった:  回</p>
+            <p class="clear-count">クリア:  回</p>
           </div>
           <div class="cat-info">
             <div class="cat-info-header">
@@ -33,7 +33,8 @@
                 <% if goal.category.present? %>
                   <p class="my-goal">
                   <%= link_to goal_path(goal.id) do %>
-                    <%= goal.category %> Lv.<%= category_level(goal.id) %>
+                    <%= goal.category %> </br>
+                    Lv.<%= category_level(goal.id) %>
                   <% end %>
                   </p>
                 <% else %>

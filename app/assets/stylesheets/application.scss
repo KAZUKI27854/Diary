@@ -304,6 +304,10 @@ body {
     width: calc(100% / 3);
   }
 
+  .user_level {
+    text-align: center;
+  }
+
   .my-goal {
     margin-left: 0;
   }
@@ -362,19 +366,26 @@ body {
     width: 50%;
   }
 
-  .clear-count {
-    width: 59%;
+  .clear-count,
+  .doc-count {
+    margin: 10px 0 10px 10px;
+    width: 45%;
     text-align: center;
   }
 
   .btn-area {
-    width: 59%;
+    width: 63%;
+  }
+
+  .user-level {
+    width: 30%;
   }
 
   .user-level,
-  .doc-count {
-    width: calc(100% / 3);
-    text-align: center;
+  .btn-area {
+    margin: 10px 0 0 10px;
+    display: flex;
+    justify-content: space-around;
   }
 
 }
