@@ -5,40 +5,44 @@
       <div class="col-lg-3 col-md-0 col-sm-0">
         <div class="profile upper-contents">
           <div class="user-info">
-            <h3 class="user-name">
+            <h3>
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
             </h3>
-            <p class="status">Lv.<%= @user_level %></p>
-            <p class="status">ぼうけん: <%= @documents.count %> 回</p>
-            <p>せかいをすくった: <%= clear_times %> 回</p>
+            <p class="user-level">Lv.<%= @user_level %></p>
+            <div class="btn-area">
             <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light " %>
-            <%= link_to "きろくをのこす", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
+            <%= link_to "とうこう", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
+            </div>
+            <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
+            <p class="clear-count">せかいをすくった:  回</p>
           </div>
-
-            <h3>スキル</h3>
-            <div class="category-info">
-            <% user_goals.first(4).each do |goal| %>
-              <% if goal.category.present? %>
-              <p class="my-goal">
-                <%= link_to goal_path(goal.id) do %>
-                  <%= goal.category %> Lv.<%= category_level(goal.id) %>
+          <div class="cat-info">
+            <div class="cat-info-header">
+              <h3>スキル</h3>
+              </div>
+              <form name="sort_form" class="select-box">
+                <select name="sort" onchange="dropsort()">
+                  <option value="">せんたくできます</option>
+                  <% @goals.each do |goal| %>
+                    <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
+                  <% end %>
+                </select>
+              </form>
+              <% user_goals.first(4).each do |goal| %>
+                <% if goal.category.present? %>
+                  <p class="my-goal">
+                  <%= link_to goal_path(goal.id) do %>
+                    <%= goal.category %> Lv.<%= category_level(goal.id) %>
+                  <% end %>
+                  </p>
+                <% else %>
+                  <p class="my-goal">なし</p>
                 <% end %>
-              </p>
-              <% else %>
-                <p class="my-goal">なし</p>
               <% end %>
-            <% end %>
-            <form name="sort_form">
-              <select name="sort" onchange="dropsort()">
-                <option value="">スキルいちらん</option>
-                <% @goals.each do |goal| %>
-                <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
-                <% end %>
-              </select>
-            </form>
+
+            </div>
           </div>
-        </div>
         <div class="side-menu">
           <h3>メニュー</h3>
           <ul>

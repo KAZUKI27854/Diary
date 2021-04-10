@@ -4,14 +4,6 @@ module UsersHelper
       Document.where(goal_id: goal_id).sum(:add_level)
     end
 
-    def clear_times
-      goals = @user.goals
-
-      goals.each do |goal|
-      	category_level(goal.id)
-      end
-      category_level(goal.id).count {|level| level >= 100}
-    end
 
 	def category_name(id)
 	  Goal.find_by(id: id).category
