@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :documents, dependent: :destroy
   has_many :goals, dependent: :destroy
-  
+
+  validates :name, {presence: true, length: {maximum: 10}}
 
   attachment :profile_image
 end

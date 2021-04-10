@@ -25,6 +25,8 @@
 :root {
   --main-font: #fff;
   --main-back: #000;
+  --user-info-back: #7fff94;
+  --cat-info-back: #7f95ff;
   --icon-width: 40px;
   --icon-height: 40px;
   --upper-margin: 30px;
@@ -137,6 +139,10 @@ body {
   background-image: url(master.png);
 }
 
+.my-goal {
+  margin-top: 5px;
+}
+
 .side-menu {
   margin-top: 50px;
 }
@@ -180,29 +186,56 @@ body {
   background-image: url(road.jpg);
 }
 
-.user-info>h3 {
+.status-info,
+.cat-info-header>h3,
+.select-box {
   line-height: 50px;
+  text-align: center;
 }
 
-.user-level {
-  font-size: 25px;
+.status-info {
+  width: 100%;
+  height: 50px;
+  background-color: var(--user-info-back);
 }
 
-.profile {
-  background-color: black;
-}
-
-.cat-info-header {
-  width: 50%;
+.cat-info-header,
+.select-box{
+  width: 100%;
   height: 50px;
 }
 
-.cat-info-header>h3 {
-  line-height: 50px;
+.cat-info-header {
+  background-color: var(--cat-info-back);
 }
 
 .select-box {
   margin: auto;
+}
+
+.user-level,
+.doc-count,
+.clear-count,
+.btn-area,
+.my-goal {
+  margin-left: 10px;
+}
+
+.user-level {
+  font-size: 25px;
+  margin-bottom: 0;
+}
+
+.btn-area {
+  margin-bottom: 10px;
+}
+
+.profile-btn {
+  margin-right: 30px;
+}
+
+.profile {
+  background-color: black;
 }
 
 .side-menu {
@@ -252,21 +285,42 @@ body {
     flex-wrap: wrap;
   }
 
+  .my-goal {
+    margin-top: 20px;
+  }
+
   .btn-area,
   .clear-count {
     margin-left: 20px;
   }
 
+  .btn-area,
+  .user-level {
+    margin-top: 10px;
+  }
+
   .user-level,
   .doc-count {
     width: calc(100% / 3);
-    margin-left: 10px;
+  }
+
+  .my-goal {
+    margin-left: 0;
+  }
+
+  .cat-info-header,
+  .select-box {
+    width: 50%;
+  }
+
+  .select-box {
+    background-color: var(--cat-info-back);
   }
 
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .profile {
     display: block;
   }
@@ -285,9 +339,10 @@ body {
     margin-left: 20px;
   }
 
+
   .user-level,
   .doc-count {
-    width: calc(100% / 3);
+    width: 50%;
     margin-left: 10px;
   }
 }
@@ -307,15 +362,19 @@ body {
     width: 50%;
   }
 
-  .btn-area,
   .clear-count {
-    margin-left: 20px;
+    width: 59%;
+    text-align: center;
+  }
+
+  .btn-area {
+    width: 59%;
   }
 
   .user-level,
   .doc-count {
     width: calc(100% / 3);
-    margin-left: 10px;
+    text-align: center;
   }
 
 }

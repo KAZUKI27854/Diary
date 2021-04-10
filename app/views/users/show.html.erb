@@ -5,13 +5,13 @@
       <div class="col-lg-3 col-md-0 col-sm-0">
         <div class="profile upper-contents">
           <div class="user-info">
-            <h3>
+            <div class="status-info">
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
-            </h3>
+            </div>
             <p class="user-level">Lv.<%= @user_level %></p>
             <div class="btn-area">
-            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light " %>
+            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light profile-btn" %>
             <%= link_to "とうこう", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
             </div>
             <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
