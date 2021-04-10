@@ -4,6 +4,16 @@
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 user-edit-form">
         <h2 class="master-message">かきなおすならここじゃ</h2>
+        <% if @document.errors.any? %>
+          <div class="error-explanation">
+            <h3><%= pluralize(@document.errors.count,"つの") %>エラーがあります</h3>
+              <ul class="error-message">
+                <% @document.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
         <%= form_with model: @document, local:true do |f| %>
           <div class="form-group">
             <label for="inputSkill">レベルアップしたスキル</label>

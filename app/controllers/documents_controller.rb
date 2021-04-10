@@ -23,15 +23,11 @@ class DocumentsController < ApplicationController
 		if @document.user.id != current_user.id
 			redirect_to root_path
 		end
-		user = current_user
-		@skill1 = user.skill1
-		@skill2 = user.skill2
-		@skill3 = user.skill3
 	end
 
 	def update
-		document = Document.find(params[:id])
-		if document.update(document_params)
+		@document = Document.find(params[:id])
+		if @document.update(document_params)
 		   redirect_to user_path(current_user.id)
 		else
 			 render "edit"
@@ -39,8 +35,8 @@ class DocumentsController < ApplicationController
 	end
 
 	def destroy
-		document = Document.find(params[:id])
-		document.destroy
+		@document = Document.find(params[:id])
+		@document.destroy
 		redirect_to user_path(current_user.id)
 	end
 

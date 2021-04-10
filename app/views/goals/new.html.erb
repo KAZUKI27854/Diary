@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 goal-post-form">
+        <h2 class="master-message upper-contents">もくひょうをきめるのじゃ！</h2>
         <% if @goal.errors.any? %>
-  　　　　　　<div class="error_explanation">
-    　　　　　　<h3><%= pluralize(@goal.errors.count, "つの") %>エラーがあります</h3>
-    　　　　　　<ul class="error_message">
-      　　　　　　<% @goal.errors.full_messages.each do |message| %>
-      　　　　　　　　<li><%= message %></li>
-      　　　　　　<% end %>
-    　　　　　　</ul>
-  　　　　　　</div>
-　　　　<% end %>
-        <h2 class="master-message upper-contents">もくひょうをきめるのじゃ！</br>
-        (さいだい３つまで)</h2>
+          <div class="error-explanation">
+            <h3><%= pluralize(@goal.errors.count,"つの") %>エラーがあります</h3>
+              <ul class="error-message">
+                <% @goal.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
+
         <div class="form-group">
             <%= form_with model: @goal, local:true do |f| %>
           	  <label for="inputCategory">レベルアップしたいこと</label>

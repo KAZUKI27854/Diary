@@ -23,6 +23,12 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li>
+                <%= link_to "もくひょうせってい", new_goal_path, class: "head-link-btn mr-5" %>
+              </li>
+              <li>
+                <%= link_to "しんきとうこう", new_document_path, class: "head-link-btn mr-5" %>
+              </li>
+              <li>
                 <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "head-link-btn mr-5" %>
               </li>
               <li>
