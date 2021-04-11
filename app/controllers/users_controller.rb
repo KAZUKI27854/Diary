@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:notice] = "データをへんこうしました"
       redirect_to user_path(current_user.id)
     else
-      render partial: "edit", collections: @user
+      render partial: "edit", :locals => {:user => @user}
     end
   end
 
