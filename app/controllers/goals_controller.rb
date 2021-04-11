@@ -8,6 +8,7 @@ class GoalsController < ApplicationController
 		@goal = Goal.new(goal_params)
 		@goal.user_id = current_user.id
 		if @goal.save
+		  flash[:notice] = "スキルをついかしました"
 		  redirect_to user_path(current_user.id)
 		else
 			render "new"
@@ -28,6 +29,7 @@ class GoalsController < ApplicationController
 	def update
 		@goal = Goal.find(params[:id])
 		if @goal.update(goal_params)
+		　flash[:notice] = "スキルをへんこうしました"
 		  redirect_to user_path(current_user.id)
 		else
 		  render "edit"
@@ -37,6 +39,7 @@ class GoalsController < ApplicationController
 	def destroy
 		goal = Goal.find(params[:id])
 		goal.destroy
+		flash[:notice] = "スキルをさくじょしました"
 		redirect_to user_path(current_user.id)
 	end
 

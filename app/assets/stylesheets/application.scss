@@ -25,6 +25,7 @@
 :root {
   --main-font: #fff;
   --main-back: #000;
+  --notice-back: #00ff89;
   --user-info-back: #7fff94;
   --cat-info-back: #7f95ff;
   --icon-width: 40px;
@@ -100,7 +101,8 @@ body {
   margin-top: 10px;
 }
 
-.upper-contents {
+.upper-contents,
+.master-message {
   margin-top: var(--upper-margin);
 }
 
@@ -186,6 +188,13 @@ body {
   background-image: url(road.jpg);
 }
 
+.notice-message {
+  text-align: center;
+  background-color: var(--notice-back);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
 .status-info,
 .cat-info-header>h3,
 .select-box {
@@ -244,17 +253,19 @@ body {
 
 .user-edit {
   background-image: url(forest.jpg);
-  padding-top: 50px;
 }
 
 .new-doc {
   background-image: url(cave.jpg);
-  padding-top: 80px;
 }
 
 .doc-edit {
   background-image: url(wild_land.jpg);
-  padding-top: 130px;
+}
+
+.form-btn,
+.new-goal-link {
+  text-align: center;
 }
 
 .footer {

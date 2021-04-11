@@ -8,6 +8,7 @@ class DocumentsController < ApplicationController
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
 		if @document.save
+		   flash[:notice] = "ぼうけんをきろくしました"
 		   redirect_to user_path(current_user.id)
 		else
 			render "new"
@@ -28,15 +29,17 @@ class DocumentsController < ApplicationController
 	def update
 		@document = Document.find(params[:id])
 		if @document.update(document_params)
+		   flash[:notice] = "きろくをへんこうしました"
 		   redirect_to user_path(current_user.id)
 		else
-			 render "edit"
+		   render "edit"
 		end
 	end
 
 	def destroy
 		@document = Document.find(params[:id])
 		@document.destroy
+		flash[:notice] = "きろくをさくじょしました"
 		redirect_to user_path(current_user.id)
 	end
 

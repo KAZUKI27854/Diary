@@ -39,7 +39,9 @@
               <label for="inputAddLevel">かくとくレベル</label>
               <%= f.select :add_level, options_for_select((1..50).to_a), class: "form-control" %>
             </div>
-            <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
+            <div class="form-btn">
+              <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
+            </div>
           <% end %>
         <% else %>
             <p>まずは<%= link_to "もくひょうをせってい", new_goal_path %>しましょう！</p>
