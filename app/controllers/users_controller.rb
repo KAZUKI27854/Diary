@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @documents = Document.where(user_id: params[:id])
     @documents_index = @documents.page(params[:page]).reverse_order
     @user_level = @documents.sum(:add_level)
+    @goal = Goal.new
     @goals = Goal.where(user_id: params[:id])
   end
 
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
       flash[:notice] = "データをへんこうしました"
       redirect_to user_path(current_user.id)
     else
-      render "edit"
+      render partial: "edit", collections: @user
     end
   end
 

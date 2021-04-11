@@ -6,21 +6,33 @@
         <div class="profile upper-contents">
           <div class="user-info">
             <div class="status-info">
+              <a class="js-modal-open" href="" data-target="modal-user-edit">
               <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
               <%= @user.name %>
+              </a>
+              <div id="modal-user-edit" class="modal js-modal">
+                <div class="modal-back js-modal-close"></div>
+                <div class="modal-content">
+                  <%= render 'users/edit', user: @user %>
+                  <a class="js-modal-close" href="">閉じる</a>
+                </div>
+              </div>
             </div>
-            <p class="user-level">Lv.<%= @user_level %></p>
-            <div class="btn-area">
-            <%= link_to "せってい", edit_user_path(current_user.id), class: "btn btn-primary btn-sm text-light profile-btn" %>
-            <%= link_to "とうこう", new_document_path, data: {"turbolinks" => false}, class: "btn btn-primary btn-sm text-light" %>
-            </div>
-            <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
-            <p class="clear-count">クリア:  回</p>
+              <p class="user-level">Lv.<%= @user_level %></p>
+              <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
+              <p class="clear-count">クリア:  回</p>
           </div>
           <div class="cat-info">
             <div class="cat-info-header">
-              <h3>スキル</h3>
-              </div>
+              <a class="js-modal-open" href="" data-target="modal-new-goal">もくひょう</a>
+            </div>
+            <div id="modal-new-goal" class="modal js-modal">
+              <div class="modal-back js-modal-close"></div>
+              <div class="modal-content">
+              <%= render 'goals/new', goal: @goal %>
+              <a class="js-modal-close" href="">閉じる</a>
+            </div>
+          </div>
               <form name="sort_form" class="select-box">
                 <select name="sort" onchange="dropsort()">
                   <option value="">せんたくできます</option>

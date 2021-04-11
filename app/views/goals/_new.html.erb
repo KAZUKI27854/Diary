@@ -1,9 +1,11 @@
-<div class="goal-new">
+<div class="new-goal">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-2 col-sm-0"></div>
-      <div class="col-lg-6 col-md-8 col-sm-12 goal-post-form">
-        <h2 class="master-message">もくひょうをきめるのじゃ！</h2>
+      <div class="col-lg-2 col-md-0 col-sm-0"></div>
+      <div class="col-lg-8 col-md-12 col-sm-12 goal-post-form">
+        <h2 class="master-message">
+          もくひょうをきめるのじゃ！
+        </h2>
         <% if @goal.errors.any? %>
           <div class="error-explanation">
             <h3><%= pluralize(@goal.errors.count,"つの") %>エラーがあります</h3>
@@ -32,7 +34,7 @@
               </div>
             <% end %>
       </div>
-      <div class="col-lg-3 col-md-2 col-sm-0"></div>
+      <div class="col-lg-2 col-md-0 col-sm-0"></div>
     </div>
   </div>
 </div>

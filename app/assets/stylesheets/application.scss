@@ -167,7 +167,6 @@ body {
 
 .about,
 .my-page,
-.user-edit,
 .new-doc,
 .doc-edit {
   width: 100%;
@@ -176,6 +175,22 @@ body {
   background-position: 50% 50%;
   background-size: cover;
   color: var(--main-font);
+}
+
+.user-edit,
+.new-goal {
+  background-position: 50% 50%;
+  background-size: cover;
+  color: var(--main-font);
+}
+
+.user-edit {
+  background-image: url(forest.jpg);
+}
+
+.new-goal {
+  background-image: url(forest.jpg);
+  padding-bottom: 20px;
 }
 
 .about {
@@ -188,6 +203,14 @@ body {
   background-image: url(road.jpg);
 }
 
+.new-doc {
+  background-image: url(cave.jpg);
+}
+
+.doc-edit {
+  background-image: url(wild_land.jpg);
+}
+
 .notice-message {
   text-align: center;
   background-color: var(--notice-back);
@@ -195,11 +218,47 @@ body {
   margin-top: 10px;
 }
 
+.content {
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.modal {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal-back {
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.modal-content {
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    text-align: center;
+}
+
 .status-info,
-.cat-info-header>h3,
+.cat-info-header>a,
 .select-box {
   line-height: 50px;
   text-align: center;
+}
+
+.cat-info-header>a {
+  margin: 0 auto;
+  display: block;
 }
 
 .status-info {
@@ -251,17 +310,6 @@ body {
   background-color: black;
 }
 
-.user-edit {
-  background-image: url(forest.jpg);
-}
-
-.new-doc {
-  background-image: url(cave.jpg);
-}
-
-.doc-edit {
-  background-image: url(wild_land.jpg);
-}
 
 .form-btn,
 .new-goal-link {
