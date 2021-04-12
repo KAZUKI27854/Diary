@@ -7,11 +7,14 @@ class GoalsController < ApplicationController
 	def create
 		@goal = Goal.new(goal_params)
 		@goal.user_id = current_user.id
-		if @goal.save
-		  flash[:notice] = "スキルをついかしました"
-		  redirect_to user_path(current_user.id)
-		else
-			render "new"
+
+		respond_to do |format|
+		  if @goal.save
+		    flash[:notice] = "スキルをついかしました"
+		    format.html { redirect_to user_path(current_user.id) }
+		  else
+			format.js { render "goal_errors" }
+		  end
 		end
 	end
 

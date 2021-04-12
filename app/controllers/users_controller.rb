@@ -21,12 +21,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = "データをへんこうしました"
-        format.html {redirect_to user_path(current_user.id)}
+        format.html { redirect_to user_path(current_user.id) }
       else
-        format.js { render :errors }
+        format.js { render "user_errors" }
       end
     end
   end
+
 
   def destroy
     @user = User.find(params[:id])

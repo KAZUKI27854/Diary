@@ -17,7 +17,11 @@
           </p>
           <p class="doc-bottom">
             <% if current_user.id == document.user_id %>
-              <span class="link"><%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜ <%= link_to 'さくじょ', document_path(document.id), method: :delete %></span>
+              <span class="link">
+                <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
+                <%= link_to 'さくじょ', document_path(document.id), method: :delete,
+                    "data-confirm" => "削除してよろしいですか？" %>
+              </span>
             <% end %>
             <%= document.created_at.strftime('%Y/%m/%d') %>
           </p>
