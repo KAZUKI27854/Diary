@@ -17,11 +17,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "データをへんこうしました"
-      redirect_to user_path(current_user.id)
-    else
-      render partial: "edit", :locals => {:user => @user}
+
+    respond_to do |format|
+      if @user.update(user_params)
+        flash[:notice] = "データをへんこうしました"
+        format.html {redirect_to user_path(current_user.id)}
+      else
+        format.js { render :errors }
+      end
     end
   end
 

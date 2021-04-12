@@ -1,0 +1,6 @@
+$('.js-message-errors').replaceWith(
+  "<%= j(
+    render 'layouts/validation_errors',
+    instance: @user
+  ) %>"
+);

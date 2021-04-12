@@ -6,18 +6,9 @@
         <h2 class="master-message">おぬしのことを</br>
         おしえてくれんかの？</h2>
 
-        <% if user.errors.any? %>
-          <div class="error-explanation">
-            <h3><%= pluralize(user.errors.count,"つの") %>エラーがあります</h3>
-              <ul class="error-message">
-                <% user.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-          </div>
-        <% end %>
+        <div class="js-message-errors"></div>
 
-        <%= form_with model: user, local:true do |f| %>
+        <%= form_with model: user, remote: true do |f| %>
           <div class="form-group mt-2">
             <label for="inputName">なまえ</label>
             <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
