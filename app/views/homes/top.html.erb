@@ -1,23 +1,39 @@
 <div class="top-page img-fluid">
-  <div class="title-container">
-    <h1 class="main-title">Dot Diary</h1>
-    <h3 class="sub-title">〜みっかぼうずのやぼう〜</h3>
-    <ul class="nav-list">
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top-link-btn" %>
-      </li>
-      <li class="bottom-link">
-        <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top-link-btn"  %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top-link-btn" %>
-      </li>
-      <li class="bottom-link">
-        <%= link_to "つづきから", new_user_session_path, class: "top-link-btn" %>
-      </li>
-    <% end %>
-    </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-0"></div>
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <noscript>
+          <p class="noscript-message">
+            このサイトではJavaScriptを使用しています。現在のままでは一部機能が制限されますので、
+            以下のサイトを参考に、JavaScriptの設定を有効にした上でご利用ください。
+          </p>
+          <a href="https://nettv.gov-online.go.jp/comfortably_faq_js.html">
+            設定方法はこちら</br>
+            （リンク先：政府インターネットテレビ>>JavaScriptの設定方法）
+          </a>
+        </noscript>
+        <h1 class="main-title">Dot Diary</h1>
+        <h3 class="sub-title">〜みっかぼうずのやぼう〜</h3>
+        <ul class="nav-list">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top-link-btn" %>
+            </li>
+            <li class="bottom-link">
+              <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top-link-btn"  %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top-link-btn" %>
+            </li>
+            <li class="bottom-link">
+              <%= link_to "つづきから", new_user_session_path, class: "top-link-btn" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-0"></div>
+    </div>
   </div>
 </diiv>

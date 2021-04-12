@@ -32,6 +32,7 @@ onload = function(){
   });
 };
 
+/* global location */
 function dropsort(){
   var page = document.sort_form.sort.value;
   location.href = page
