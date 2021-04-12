@@ -3,19 +3,8 @@
     <div class="row">
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 new-doc-form">
-        <h2 class="master-message">ぼうけんをきろくできるぞ</h2>
-
-      <% if @document.errors.any? %>
-          <div class="error-explanation">
-            <h3><%= pluralize(@document.errors.count,"つの") %>エラーがあります</h3>
-              <ul class="error-message">
-                <% @document.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-          </div>
-        <% end %>
-
+        <h3 class="master-message">ぼうけんをきろくできるぞ</h3>
+        <%= render "layouts/validation_errors", instance: @document %>
 
         <% if current_user.goals.present? %>
           <%= form_with model: @document, local:true do |f| %>

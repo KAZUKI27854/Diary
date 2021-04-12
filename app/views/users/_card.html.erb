@@ -12,7 +12,10 @@
           <p class="doc-body">
             <%= document.body %> </br>
             <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
-            つぎのもくひょう:　<%= document.milestone %> </br>
+          </p>
+          <p class="doc-body">
+            【つぎのもくひょう】　</br>
+            <%= document.milestone %> </br>
             せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
           </p>
           <p class="doc-bottom">
