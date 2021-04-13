@@ -38,7 +38,6 @@ function dropsort(){
   location.href = page
 }
 
-
 document.addEventListener("turbolinks:load", function(){
   $(function(){
     $('.js-modal-open').each(function(){
@@ -55,7 +54,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 });
-
 
 
 
