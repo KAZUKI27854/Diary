@@ -68,9 +68,15 @@
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? %>
          <h3 class="master-message upper-contents">これまでのきろくじゃ</h3>
+           <%= form_with model: @goal do |f| %>
+             <div class="form-group">
+               <%= f.select :category, @goals.all.map { |goal| [goal.category] }, {include_blank: 'もくひょうでわける'},
+                   {class: 'js-select-box'} %>
+             </div>
+           <% end %>
           <div class="document-container">
             <div class="card-deck">
-              <div class="row">
+              <div class="row" id="index">
                 <% @documents_index.each do |document1,document2| %>
                   <%= render "users/card", document: document1, user: @user %>
                   <% if document2 != nil %>
