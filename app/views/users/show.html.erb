@@ -46,7 +46,7 @@
                   <p class="my-goal">
                   <%= link_to goal_path(goal.id) do %>
                     <%= goal.category %> </br>
-                    Lv.<%= category_level(goal.id) %>
+                    Lv.<%= cat_level(goal.id) %>
                   <% end %>
                   </p>
                 <% else %>
@@ -74,19 +74,7 @@
                    {class: 'js-select-box'} %>
              </div>
            <% end %>
-          <div class="document-container">
-            <div class="card-deck">
-              <div class="row" id="index">
-                <% @documents_index.each do |document1,document2| %>
-                  <%= render "users/card", document: document1, user: @user %>
-                  <% if document2 != nil %>
-                    <%= render "users/card", document: document2, user: @user %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-            <%= paginate @documents_index %>
-          </div>
+          <%= render "users/card", documents: @documents_index, document: @document, user: @user %>
         <% else %>
           <h3 class="master-message upper-contents">まだきろくはないぞ。</br>
           とうこうしてみるのじゃ！</h3>

@@ -164,21 +164,48 @@ body {
   background-color: var(--main-back);
 }
 
+//追加
+.doc-img,
+.dungeon-img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.monster-img {
+ width: 100%;
+ height: 100%;
+}
+
+.doc-card {
+  height: 300px;
+  width: 100%;
+}
+//ここまで
+
 .dungeon {
   position: relative;
 }
 
-.dungeon-image,
-.monster-image{
-  width: 100%;
-  height: 100%;
-}
+//.dungeon-img,
+//.monster-img {
+//  width: 100%;
+//  height: 100%;
+//}
 
-.monster {
+.monster1,
+.monster2 {
   width: 25%;
   position: absolute;
   top: 50%;
-  left: 35%;
+}
+
+.monster1 {
+  left: 20%;
+}
+
+.monster2 {
+  left: 55%;
 }
 
 .doc-bottom {
