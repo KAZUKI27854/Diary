@@ -32,10 +32,10 @@ class GoalsController < ApplicationController
 	def update
 		@goal = Goal.find(params[:id])
 		if @goal.update(goal_params)
-		　flash[:notice] = "スキルをへんこうしました"
-		  redirect_to user_path(current_user.id)
+			flash[:notice] = "スキルを変更しました"
+		    redirect_to user_path(current_user.id)
 		else
-		  render "edit"
+		    render "edit"
 		end
 	end
 
