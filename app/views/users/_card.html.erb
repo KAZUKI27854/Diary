@@ -1,8 +1,17 @@
 <div class="col-lg-6 col-md-6 col-sm-12">
   <div class="card mt-3">
-    <%= link_to  document_path(document.id) do %>
+    <% if document.document_image_id.present? %>
+      <%= link_to  document_path(document.id) do %>
         <%= attachment_image_tag document, :document_image, fallback: "sky-block.jpeg",
             size: "200x250", class: "card-img-top", id: "imageArea" %>
+      <% end %>
+    <% else %>
+      <div class="dungeon">
+        <%= image_tag '', class: "dungeon-image" %>
+        <div class="monster">
+          <%= image_tag '', class: "monster-image" %>
+        </div>
+      </div>
     <% end %>
     <div class="card-body doc-card">
       <div class="row">

@@ -56,18 +56,11 @@ document.addEventListener("turbolinks:load", function(){
 });
 
 $(function(){
-  $('.js-select-box').change(function(){
-    var s = $('.js-select-box option:selected').val();
-    console.log(s)
-    if (s == '') {
-      $('#index').show();
-    }
-      var title = $('.doc-title').text();
-      console.log(title)
-    if (title.indexOf(s) != -1) {
-      $('.index').css("color","red");
-    }
+  $('.dungeon-image').each(function(i){
+    var array = [...Array(5)].map((_, i) => i + 1)
+    var number = array[Math.floor(Math.random() * array.length)];
+    console.log(number)
+    $(this).prop('src','/assets/dungeon' + number + '.jpg')
   });
 });
-
 

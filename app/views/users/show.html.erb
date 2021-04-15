@@ -70,7 +70,7 @@
          <h3 class="master-message upper-contents">これまでのきろくじゃ</h3>
            <%= form_with model: @goal do |f| %>
              <div class="form-group">
-               <%= f.select :category, @goals.all.map { |goal| [goal.category] }, {include_blank: 'もくひょうでわける'},
+               <%= f.select :goal_id, @goals.all.map { |goal| [goal.category, goal.id] }, {include_blank: 'もくひょうでわける'},
                    {class: 'js-select-box'} %>
              </div>
            <% end %>
