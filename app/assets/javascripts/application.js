@@ -64,3 +64,12 @@ $(function(){
   });
 });
 
+$(function(){
+  $('.monster-image').each(function(i){
+    var array = [...Array(5)].map((_, i) => i + 1)
+    var number = array[Math.floor(Math.random() * array.length)];
+    console.log(number)
+    $(this).prop('src','/assets/monster' + number + '.png')
+  });
+});
+
