@@ -1,55 +1,52 @@
 <div class="document-container">
-  <div class="card-deck">
+
     <div class="row" id="index">
       <% documents.each do |document| %>
         <div class="col-lg-6 col-md-6 col-sm-12">
           <div class="card doc-card">
             <% if document.document_image_id.present? %>
-
                 <%= attachment_image_tag document, :document_image,
                     class: "card-img-top doc-img", id: "imageArea" %>
             <% else %>
               <div class="dungeon">
                 <%= image_tag '', class: "dungeon-img" %>
-              <div class="monster1">
-                <%= image_tag '', class: "monster-img" %>
-              </div>
-              <div class="monster2">
-                <%= image_tag '', class: "monster-img" %>
+                <div class="monster1">
+                  <%= image_tag '', class: "monster-img" %>
+                </div>
+                <div class="monster2">
+                  <%= image_tag '', class: "monster-img" %>
+                </div>
               </div>
             <% end %>
-
-          <div class="card-body doc-body">
-            <div class="row">
-              <p class="doc-title">
-                <%= cat_name(document.goal_id) %>のダンジョン(  F)にいどんだ！
-              </p>
-              <p class="doc-body">
-                <%= document.body %> </br>
-                <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
-              </p>
-              <p class="doc-body">
-                【つぎのもくひょう】　</br>
-                <%= document.milestone %> </br>
-                せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
-              </p>
-              <p class="doc-bottom">
-                <% if current_user.id == document.user_id %>
-                  <span class="link">
-                    <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
-                    <%= link_to 'さくじょ', document_path(document.id), method: :delete,
-                        "data-confirm" => "削除してよろしいですか？" %>
-                  </span>
-                <% end %>
-                <%= document.created_at.strftime('%Y/%m/%d') %>
-              </p>
+            <div class="card-body doc-body">
+              <div class="row">
+                <p class="doc-title">
+                  <%= cat_name(document.goal_id) %>のダンジョン(  F)にいどんだ！
+                </p>
+                <p class="doc-body">
+                  <%= document.body %> </br>
+                  <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
+                </p>
+                <p class="doc-body">
+                  【つぎのもくひょう】　</br>
+                  <%= document.milestone %> </br>
+                  せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
+                </p>
+                <p class="doc-bottom">
+                  <% if current_user.id == document.user_id %>
+                    <span class="link">
+                      <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
+                      <%= link_to 'さくじょ', document_path(document.id), method: :delete,
+                          "data-confirm" => "削除してよろしいですか？" %>
+                    </span>
+                  <% end %>
+                  <%= document.created_at.strftime('%Y/%m/%d') %>
+                </p>
+              </div>
             </div>
           </div>
-          </div>
         </div>
-      </div>
       <% end %>
     </div>
-  </div>
-  <%= paginate documents %>
+<%= paginate documents %>
 </div>

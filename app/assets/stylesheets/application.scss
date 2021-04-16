@@ -175,6 +175,7 @@ body {
 
 .dungeon {
   position: relative;
+  width: 100%;
 }
 
 .dungeon-img,
@@ -187,7 +188,7 @@ body {
 .monster2 {
   width: 25%;
   position: absolute;
-  top: 25%;
+  top: 50%;
 }
 
 .monster1 {
