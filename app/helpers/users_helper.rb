@@ -7,9 +7,11 @@ module UsersHelper
 	def cat_name(id)
 	  Goal.find_by(id: id).category
 	end
-	
-	def doc_post_count(goal_id)
-		Document.where(goal_id: goal_id).count
+
+	def doc_count_by_cat(goal_id, document_id)
+		documents = Document.where(goal_id: goal_id)
+		id_index = documents.pluck(:id)
+		id_index.index(document_id) + 1
 	end
 
 	def timelimit(id, document)

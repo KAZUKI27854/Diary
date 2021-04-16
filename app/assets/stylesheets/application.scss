@@ -172,6 +172,11 @@ body {
   overflow: hidden;
 }
 
+.doc-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
 
 .dungeon {
   position: relative;
@@ -374,8 +379,14 @@ body {
   background-color: var(--main-back);
 }
 
+@media (min-width: 1200px) {
+  .doc-img {
+    height: 296px;
+  }
+}
 
-@media (max-width: 991px){
+
+@media (max-width: 991px) {
   .master-message {
   width: 90%;
   margin-left: 5%;
