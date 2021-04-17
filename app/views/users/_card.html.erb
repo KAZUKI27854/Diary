@@ -8,6 +8,7 @@
                 <%= attachment_image_tag document, :document_image,
                     class: "card-img-top doc-img", id: "imageArea" %>
             <% else %>
+
               <div class="dungeon">
                 <%= image_tag '', class: "dungeon-img" %>
                 <div class="monster1">
@@ -25,7 +26,7 @@
                 </p>
                 <p class="doc-body">
                   <%= document.body %> </br>
-                  <%= user.name %>は <%= document.add_level %> レベルアップした！ </br>
+                  <%= user.name %>は <%= document.add_level %> レベルアップした！
                 </p>
                 <p class="doc-body">
                   【つぎのもくひょう】　</br>

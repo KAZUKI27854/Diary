@@ -69,4 +69,16 @@ document.addEventListener("turbolinks:load", function(){
       $(this).prop('src','/assets/monster/monster' + number + '.png')
     });
   });
+
+  $(function(){
+    $('.levelup-text').each(function(){
+      var txt = $(this).html();
+      $(this).html(txt.replace("LEVELUP!","<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>"));
+    });
+  });
+
+  $(function(){
+    setTimeout("$('.levelup-back, .levelup-text').fadeOut('slow')", 1200
+    );
+  });
 });

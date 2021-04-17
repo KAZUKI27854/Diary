@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
 		if @document.save
-		   flash[:notice] = "ぼうけんをきろくしました"
+		   flash[:level_up] = "LEVELUP!"
 		   redirect_to user_path(current_user.id)
 		else
 			render "new"

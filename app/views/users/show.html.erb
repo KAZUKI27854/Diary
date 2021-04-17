@@ -1,8 +1,13 @@
 <div class="my-page img-fluid">
+  <% if flash[:level_up] %>
+    <div class="levelup-back">
+      <p class="levelup-text"><%= flash[:level_up] %></p>
+    </div>
+  <% end %>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
-        <p class="notice-message"><%= notice %></p>
+        <p class="notice-message"><%= flash[:notice] %></p>
         <div class="profile upper-contents">
           <div class="user-info">
             <div class="status-info">
@@ -20,7 +25,6 @@
             </div>
               <p class="user-level">Lv.<%= @user_level %></p>
               <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
-              <p class="clear-count">クリア:  回</p>
           </div>
           <div class="cat-info">
             <div class="cat-info-header">

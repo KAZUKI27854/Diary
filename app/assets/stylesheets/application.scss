@@ -285,13 +285,6 @@ body {
   width: 100%;
 }
 
-.modal-back {
-  background: rgba(0,0,0,0.8);
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-}
-
 .modal-content {
   background: #fff;
   left: 50%;
@@ -301,6 +294,82 @@ body {
   transform: translate(-50%,-50%);
   width: 60%;
   text-align: center;
+}
+
+.modal-back,
+.levelup-back {
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+
+.levelup-back {
+  z-index: 1;
+}
+
+.levelup-text {
+  text-align: center;
+  line-height: 100vh;
+}
+
+@keyframes textWave {
+ 0% {
+ top: 0.5em;
+ }
+ 100% {
+ top: 0em;
+ }
+}
+
+.levelup-text span {
+font-size: 130px;
+color: var(--main-font);
+display: inline-block;
+position: relative;
+}
+
+.levelup-text span {
+animation-name: textWave;
+animation-duration: 1s;
+animation-timing-function: ease;
+animation-iteration-count: infinite;
+}
+
+.levelup-text span:nth-of-type(2) {
+animation-delay: 0.1s;
+}
+
+.levelup-text span:nth-of-type(3) {
+animation-delay: 0.2s;
+}
+
+.levelup-text span:nth-of-type(4) {
+animation-delay: 0.3s;
+}
+
+.levelup-text span:nth-of-type(5) {
+animation-delay: 0.4s;
+}
+
+.levelup-text span:nth-of-type(6) {
+animation-delay: 0.5s;
+}
+
+.levelup-text span:nth-of-type(7) {
+animation-delay: 0.6s;
+}
+
+.levelup-text span:nth-of-type(8) {
+animation-delay: 0.7s;
+}
+
+.levelup-text span:nth-of-type(9) {
+animation-delay: 0.8s;
+}
+
+.levelup-text span:nth-of-type(10) {
+animation-delay: 0.9s;
 }
 
 .status-info,
@@ -450,6 +519,10 @@ body {
     background-color: var(--cat-info-back);
   }
 
+  .levelup-text span {
+    font-size: 100px;
+  }
+
 
 }
 
@@ -494,6 +567,10 @@ body {
   .doc-count {
     width: 50%;
     margin-left: 10px;
+  }
+
+  .levelup-text span {
+    font-size: 70px;
   }
 }
 
