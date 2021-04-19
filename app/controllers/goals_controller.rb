@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
 
 		respond_to do |format|
 		  if @goal.save
-		    flash[:notice] = "スキルをついかしました"
+		    flash[:notice] = "もくひょうをついかしました"
 		    format.html { redirect_to user_path(current_user.id) }
 		  else
 			format.js { render "goal_errors" }
@@ -32,7 +32,7 @@ class GoalsController < ApplicationController
 	def update
 		@goal = Goal.find(params[:id])
 		if @goal.update(goal_params)
-			flash[:notice] = "スキルを変更しました"
+			flash[:notice] = "もくひょうをへんこうしました"
 		    redirect_to user_path(current_user.id)
 		else
 		    render "edit"
@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
 	def destroy
 		goal = Goal.find(params[:id])
 		goal.destroy
-		flash[:notice] = "スキルをさくじょしました"
+		flash[:notice] = "もくひょうをさくじょしました"
 		redirect_to user_path(current_user.id)
 	end
 

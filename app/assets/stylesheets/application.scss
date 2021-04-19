@@ -166,6 +166,7 @@ body {
 .doc-body {
   color: var(--main-font);
   background-color: var(--main-back);
+  width: 100%;
 }
 
 .doc-body p {
@@ -206,6 +207,7 @@ body {
 
 .doc-bottom {
   margin-bottom: 0;
+  width: 100%;
 }
 
 .pagination {
