@@ -19,7 +19,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: かくにんようパスワード
-        remember_me: パスワードをきおくする
+        remember_me: ログインしたままにする
         activated: アクティブフラグ
         admin: かんりしゃフラグ
       document:
