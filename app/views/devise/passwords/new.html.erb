@@ -1,16 +1,26 @@
-<h2>パスワードをわすれしもの</h2>
+<div class="reset-psw">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-0"></div>
+      <div class="col-lg-10 col-md-10 col-sm-12 reset-psw-form">
+        <h3 class="master-message upper-contents">パスワードをへんこうできるぞ</h3>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+　　　　<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "パスワードへんこうメールをおくる" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+        </div>
+      <div class="col-lg-1 col-md-1 col-sm-0"></div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "パスワードリセットメールをおくる" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -22,7 +22,7 @@
             <div class="card-body doc-body">
               <div class="row">
                 <p class="doc-title">
-                  <%= cat_name(document.goal_id) %>のダンジョン( <%= doc_count_by_cat(document.goal_id, document.id) %> F )にいどんだ！
+                  <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_count_by_cat(document.goal_id, document.id) %></span> F )にいどんだ！
                 </p>
                 <p class="doc-body">
                   <%= document.body %> </br>

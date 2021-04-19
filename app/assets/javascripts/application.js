@@ -56,17 +56,17 @@ document.addEventListener("turbolinks:load", function(){
 
   $(function(){
     $('.dungeon-img').each(function(i){
-      var array = [...Array(5)].map((_, i) => i + 1)
+      var array = [...Array(5)].map((_, i) => i + 1);
       var number = array[Math.floor(Math.random() * array.length)];
-      $(this).prop('src','/assets/dungeon/dungeon' + number + '.jpg')
+      $(this).prop('src','/assets/dungeon/dungeon' + number + '.jpg');
     });
   });
 
   $(function(){
     $('.monster-img').each(function(i){
-      var array = [...Array(5)].map((_, i) => i + 1)
+      var array = [...Array(5)].map((_, i) => i + 1);
       var number = array[Math.floor(Math.random() * array.length)];
-      $(this).prop('src','/assets/monster/monster' + number + '.png')
+      $(this).prop('src','/assets/monster/monster' + number + '.png');
     });
   });
 
@@ -81,4 +81,14 @@ document.addEventListener("turbolinks:load", function(){
     setTimeout("$('.levelup-back, .levelup-text').fadeOut('slow')", 1200
     );
   });
+
+  $(function(){
+    $('.doc-title span').each(function(key, value){
+      var text = $(value).text();
+      var result = Number(text);
+      console.log(result)
+      console.log(key)
+    });
+  });
+
 });

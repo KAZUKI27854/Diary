@@ -47,10 +47,10 @@ html {
 body {
   margin-bottom: 50px;
   font-family: 'PixelMplus10-Regular';
+  color: var(--main-font);
 }
 
 .main-header {
-  color: var(--main-font);
   background-color: var(--main-back);
 }
 
@@ -104,6 +104,47 @@ body {
 
 .bottom-link {
   margin-top: 10px;
+}
+
+.log-in {
+  background-image: url(sample3.png);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.sign-up {
+  background-image: url(sample3.png);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.reset-psw {
+  background-image: url(sample3.png);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.log-in-form,
+.sign-up-form,
+.reset-psw-form {
+  text-align: center;
+  height: 100vh;
+  padding-top: 10%;
+}
+
+.log-in-form h3,
+.sign-up-form h3,
+.reset-psw-form h3 {
+  width: 60%;
+  margin-left: 20%;
+}
+
+.field,
+.actions {
+  margin-bottom: 5%;
 }
 
 .upper-contents,
@@ -463,6 +504,13 @@ animation-delay: 0.9s;
   margin-left: 5%;
 }
 
+.log-in-form h3,
+.sign-up-form h3,
+.reset-psw-form h3 {
+  width: 80%;
+  margin-left: 10%;
+}
+
   .modal-content {
   padding: 20px;
   width: 70%;
@@ -542,6 +590,13 @@ animation-delay: 0.9s;
     font-size: 17px;
 }
 
+  .log-in-form h3,
+  .sign-up-form h3,
+  .reset-psw-form h3 {
+    width: 80%;
+    margin-left: 10%;
+  }
+
   .modal-content {
     width: 80%;
   }
@@ -591,7 +646,10 @@ animation-delay: 0.9s;
     font-size: 15px;
 }
 
-  .master-message {
+  .master-message,
+  .log-in-form h3,
+  .sign-up-form h3,
+  .reset-psw-form h3 {
   width: 100%;
   margin-left: 0;
 }
