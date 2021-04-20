@@ -193,6 +193,8 @@ body {
 
 .my-goal {
   margin-top: 5px;
+  display: inline-block;
+  width: 100%;
 }
 
 .side-menu {
@@ -323,6 +325,10 @@ body {
 
 .doc-edit {
   background-image: url(wild_land.jpg);
+}
+
+.goal-show {
+  background-image: url(road.jpg);
 }
 
 .notice-message {

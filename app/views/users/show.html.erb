@@ -47,12 +47,17 @@
               </form>
               <% if @goals.exists? %>
                 <% user_goals.first(4).each do |goal| %>
-                  <p class="my-goal">
-                    <%= link_to goal_path(goal.id) do %>
+                <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
                       <%= goal.category %> </br>
                       Lv.<%= cat_level(goal.id) %>
-                    <% end %>
-                  </p>
+                </a>
+                <div id="modal-goal-show" class="modal js-modal">
+                <div class="modal-back js-modal-close"></div>
+                <div class="modal-content">
+                  <%= render "goals/show", goal: goal %>
+                  <a class="js-modal-close" href="">閉じる</a>
+                </div>
+              </div>
                 <% end %>
               <% else %>
                 <p class="my-goal">みせってい</p>

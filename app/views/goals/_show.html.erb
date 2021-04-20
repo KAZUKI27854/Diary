@@ -7,13 +7,14 @@
         たいせつじゃな</h3>
         <div>
         	<p>レベルアップしたいこと</p>
-        	<h3><%= @goal.category %></h3>
+        	<h3><%= goal.category %></h3>
         	<p>さいしゅうもくひょう</p>
-        	<h3><%= @goal.goal_status %></h3>
-        	<p>いつまでに</p>
-        	<h3><%= @goal.deadline.strftime('%Y/%m/%d') %></h3>
+        	<h3><%= goal.goal_status %></h3>
+        	<p>きげん</p>
+        	<h3><%= goal.deadline.strftime('%Y/%m/%d') %></h3>
         	<p>げんざいのレベル</p>
-        	<%= link_to "へんこう", edit_goal_path(@goal.id) %>
+        	<h3>Lv.<%= cat_level(goal.id) %></h3>
+        	<%= link_to "へんこう", edit_goal_path(goal.id) %>
         </div>
        </div>
        <div class="col-lg-3 col-md-2 col-sm-0"></div>
