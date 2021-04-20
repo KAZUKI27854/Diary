@@ -41,7 +41,10 @@
                           "data-confirm" => "削除してよろしいですか？" %>
                     </span>
                   <% end %>
-                     <%= document.created_at.strftime('%Y/%m/%d') %>
+                    <span class="doc-date">
+                      <span class="doc-month"><%= document.created_at.strftime('%m') %></span>
+                      <span class="doc-day"><%= document.created_at.strftime('%d') %></span>
+                    </span>
                 </p>
               </div>
             </div>
