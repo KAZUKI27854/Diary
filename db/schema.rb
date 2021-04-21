@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_021219) do
+ActiveRecord::Schema.define(version: 2021_04_20_075623) do
 
   create_table "documents", force: :cascade do |t|
-    t.text "title"
     t.text "body"
     t.string "document_image_id"
     t.integer "user_id"
