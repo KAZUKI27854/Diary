@@ -28,6 +28,7 @@
   --notice-back: #00ff89;
   --user-info-back: #7fff94;
   --cat-info-back: #7f95ff;
+  --devise-link: #078000;
   --icon-width: 40px;
   --icon-height: 40px;
   --upper-margin: 30px;
@@ -106,14 +107,14 @@ body {
 }
 
 .log-in {
-  background-image: url(sample3.png);
+  background-image: url(sky.jpg);
   background-position: 50% 35%;
   background-size: cover;
   height: 100vh;
 }
 
 .sign-up {
-  background-image: url(sample3.png);
+  background-image: url(sky.jpg);
   background-position: 50% 35%;
   background-size: cover;
   height: 100vh;
@@ -131,7 +132,7 @@ body {
 .reset-psw-form {
   text-align: center;
   height: 100vh;
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .log-in-form h3,
@@ -141,9 +142,17 @@ body {
   margin-left: 20%;
 }
 
+
 .field,
 .actions {
   margin-bottom: 5%;
+  color: var(--main-back);
+}
+
+.log-in-link,
+.sign-up-link,
+.reset-psw-link {
+  color: var(--devise-link);
 }
 
 .upper-contents,
@@ -160,6 +169,12 @@ body {
   font-size: 20px;
 }
 
+.top-link-btn:hover:before,
+.head-link-btn:hover:before,
+.guest-link-btn:before,
+.log-in-link:before,
+.sign-up-link:before,
+.reset-psw-link:before,
 .my-goal:before,
 .master-message:before {
   content: '';
@@ -169,6 +184,35 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   vertical-align: middle;
+}
+
+.top-link-btn:hover,
+.head-link-btn:hover {
+  text-decoration: none;
+  color: var(--main-font);
+}
+
+.top-link-btn:hover:before,
+.head-link-btn:hover:before {
+  background-image: url(cursor.png);
+  width: 20px;
+  height: 20px;
+}
+
+.guest-link-btn:before {
+  background-image: url(brave.png);
+}
+
+.log-in-link:before {
+  background-image: url(monster/monster4.png);
+}
+
+.sign-up-link:before {
+  background-image: url(monster/monster1.png);
+}
+
+.reset-psw-link:before {
+  background-image: url(monster/monster5.png);
 }
 
 .my-goal:nth-of-type(1):before {
