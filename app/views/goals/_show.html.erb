@@ -1,23 +1,31 @@
-<div class="goal-show">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-1 col-md-1 col-sm-0"></div>
-      <div class="col-lg-10 col-md-10 col-sm-12 goal-post-form">
-        <h3 class="master-message upper-contents">もくひょうのかくにんは</br>
-        たいせつじゃな</h3>
-        <div>
-        	<p>レベルアップしたいこと</p>
-        	<h3><%= goal.category %></h3>
-        	<p>さいしゅうもくひょう</p>
-        	<h3><%= goal.goal_status %></h3>
-        	<p>きげん</p>
-        	<h3><%= goal.deadline.strftime('%Y/%m/%d') %></h3>
-        	<p>げんざいのレベル</p>
-        	<h3>Lv.<%= cat_level(goal.id) %></h3>
-        	<%= link_to "へんこう", edit_goal_path(goal.id), remote: true %>
+<div id="modal-goal-show" class="modal js-modal">
+  <div class="modal-back js-modal-close"></div>
+  <div class="modal-content">
+    <div class="goal-show">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
+          <div class="col-lg-10 col-md-10 col-sm-12 goal-post-form">
+            <h3 class="master-message upper-contents">
+              もくひょうのかくにんは</br>
+              たいせつじゃな
+            </h3>
+            <div>
+        	    <p>レベルアップしたいこと</p>
+        	      <h3><%= goal.category %></h3>
+        	    <p>さいしゅうもくひょう</p>
+        	      <h3><%= goal.goal_status %></h3>
+        	    <p>きげん</p>
+        	      <h3><%= goal.deadline.strftime('%Y/%m/%d') %></h3>
+        	    <p>げんざいのレベル</p>
+        	      <h3>Lv.<%= cat_level(goal.id) %></h3>
+        	    <%= link_to "へんこう", edit_goal_path(goal.id), remote: true %>
+            </div>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
         </div>
-       </div>
-       <div class="col-lg-1 col-md-1 col-sm-0"></div>
+      </div>
     </div>
+    <a class="js-modal-close" href="">閉じる</a>
   </div>
 </div>

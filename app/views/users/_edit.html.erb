@@ -1,30 +1,34 @@
-<div class="user-edit">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-1 col-md-1 col-sm-0"></div>
-      <div class="col-lg-10 col-md-10 col-sm-12 user-edit-form">
-        <h3 class="master-message">おぬしのことを</br>
-        おしえてくれんかの？</h3>
-
-        <div class="js-message-errors"></div>
-
-        <%= form_with model: user, remote: true do |f| %>
-          <div class="form-group mt-2">
-            <label for="inputName">なまえ</label>
-            <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+<div id="modal-user-edit" class="modal js-modal">
+  <div class="modal-back js-modal-close"></div>
+  <div class="modal-content">
+    <div class="user-edit">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
+          <div class="col-lg-10 col-md-10 col-sm-12 user-edit-form">
+            <h3 class="master-message">
+              おぬしのことを</br>
+              おしえてくれんかの？
+            </h3>
+            <div class="js-message-errors"></div>
+            <%= form_with model: user, remote: true do |f| %>
+              <div class="form-group mt-2">
+                <label for="inputName">なまえ</label>
+                <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+              </div>
+              <div class="form-group">
+                <label for="inputImage">プロフィールがぞう</label>
+                <%= f.attachment_field :profile_image, class: "form-control-file" %>
+              </div>
+              <div class="form-btn">
+                <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
+              </div>
+            <% end %>
           </div>
-          <div class="form-group">
-            <label for="inputImage">プロフィールがぞう</label>
-            <%= f.attachment_field :profile_image, class: "form-control-file" %>
-          </div>
-          <div class="form-btn">
-            <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
-          </div>
-        <% end %>
+          <div class="col-lg-1 col-md-1 col-sm-0"></div>
+        </div>
       </div>
-
-      <div class="col-lg-1 col-md-1 col-sm-0"></div>
-
     </div>
+    <a class="js-modal-close" href="">閉じる</a>
   </div>
 </div>

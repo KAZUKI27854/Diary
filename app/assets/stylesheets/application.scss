@@ -162,18 +162,44 @@ body {
   color: var(--devise-link);
 }
 
-.upper-contents,
-.master-message {
-  margin-top: var(--upper-margin);
+.menu-logo {
+  background: blue;
+  border: solid 5px var(--main-font);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 200%;
+  text-align: center;
 }
 
+.menu-icon {
+  text-align: center;
+}
+
+.menu-icon img {
+  width: 100px;
+  height: 100px;
+}
+
+.menu {
+  padding-left: 5%;
+}
+
+.menu,
 .master-message {
   background: var(--main-back);
   border: solid 5px var(--main-font);
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.master-message {
   text-align: center;
   font-size: 20px;
+}
+
+.upper-contents,
+.master-message {
+  margin-top: var(--upper-margin);
 }
 
 .top-link-btn:hover:before,
@@ -182,6 +208,9 @@ body {
 .log-in-link:before,
 .sign-up-link:before,
 .reset-psw-link:before,
+.menu-logo:before,
+.menu-logo:after,
+.menu-icon p:after,
 .my-goal:before,
 .master-message:before {
   content: '';
@@ -220,6 +249,20 @@ body {
 
 .reset-psw-link:before {
   background-image: url(monster/monster5.png);
+}
+
+.menu-logo:before {
+  background-image: url(monster/monster13.png);
+}
+
+.menu-logo:after {
+  background-image: url(monster/monster14.png);
+}
+
+.menu-icon p:after {
+  background-image: url(under-cursor.png);
+  width: 10px;
+  height: 10px;
 }
 
 .my-goal:nth-of-type(1):before {
@@ -484,8 +527,6 @@ animation-delay: 0.8s;
 animation-delay: 0.9s;
 }
 
-
-
 .footer {
   position: absolute;
   bottom: 0 !important;
@@ -521,7 +562,6 @@ animation-delay: 0.9s;
   width: 70%;
 }
 
-  
   .my-goal {
     width: 50%;
     display: flex;
@@ -531,8 +571,6 @@ animation-delay: 0.9s;
   .my-goal {
     margin-top: 20px;
   }
-
-  
 
   .my-goal {
     margin-left: 0;
@@ -572,7 +610,7 @@ animation-delay: 0.9s;
     width: 80%;
   }
 
-  
+
 
   .levelup-text span {
     font-size: 70px;

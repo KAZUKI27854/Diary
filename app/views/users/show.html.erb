@@ -8,9 +8,10 @@
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
         <p class="notice-message"><%= flash[:notice] %></p>
+        <p class="menu-logo upper-contents"> M E N U </p>
         <div class="menu-icon">
             <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "brave.png" %>
-            <p>しゅじんこう</p>
+            <p>しゅじんこう </p>
         </div>
           <div class="menu">
             <p>なまえ: <%= @user.name %></p>
@@ -18,32 +19,20 @@
             <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
             <p>クリア: ○回</p>
             <a class="js-modal-open" href="" data-target="modal-user-edit">へんしゅう</a>
+            <%= render "users/edit", user: @user %>
           </div>
-          <div id="modal-user-edit" class="modal js-modal">
-                <div class="modal-back js-modal-close"></div>
-                <div class="modal-content">
-                  <%= render "users/edit", user: @user %>
-                  <a class="js-modal-close" href="">閉じる</a>
-                </div>
-              </div>
           <div class="menu-icon">
-            <img src="/assets/books.png" height="100" width="100">
-            <p>もくひょう</p>
+            <img src="/assets/books.png">
+            <p>もくひょう </p>
           </div>
           <div class="menu">
             <% if @goals.exists? %>
                 <% user_goals.first(4).each do |goal| %>
-                <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
+                  <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
                       <%= goal.category %> </br>
                       Lv.<%= cat_level(goal.id) %>
-                </a>
-                <div id="modal-goal-show" class="modal js-modal">
-                <div class="modal-back js-modal-close"></div>
-                <div class="modal-content">
+                  </a>
                   <%= render "goals/show", goal: goal %>
-                  <a class="js-modal-close" href="">閉じる</a>
-                </div>
-              </div>
                 <% end %>
               <% else %>
                 <p class="my-goal">みせってい</p>
@@ -59,14 +48,11 @@
           </div>
           <div class="menu-icon">
             <a class="js-modal-open" href="" data-target="modal-new-doc">
-              <img src="/assets/save-point.png" height="100" width="100"></br>
+              <img src="/assets/save-point.png"></br>
               きろくする
             </a>
-
-                  <%= render "documents/new", document: @document %>
-
+            <%= render "documents/new", document: @document %>
           </div>
-
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? then %>
