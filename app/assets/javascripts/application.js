@@ -91,4 +91,15 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  $('.menu').hide();
+
+  $(function(){
+    $('.menu-icon').on('click', function(event){
+      $(this).next().slideToggle();
+      event.preventDefault();
+    });
+  });
+
+
+
 });

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user_level = @documents.sum(:add_level)
     @goal = Goal.new
     @goals = Goal.where(user_id: params[:id])
+    
   end
 
   def edit

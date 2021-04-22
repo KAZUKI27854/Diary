@@ -8,44 +8,30 @@
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
         <p class="notice-message"><%= flash[:notice] %></p>
-        <div class="profile upper-contents">
-          <div class="user-info">
-            <div class="status-info">
-              <a class="js-modal-open" href="" data-target="modal-user-edit">
-              <%= attachment_image_tag @user, :profile_image, size: "40x50", fallback: "brave.png" %>
-              <%= @user.name %>
-              </a>
-              <div id="modal-user-edit" class="modal js-modal">
+        <div class="menu-icon">
+            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "brave.png" %>
+            <p>しゅじんこう</p>
+        </div>
+          <div class="menu">
+            <p>なまえ: <%= @user.name %></p>
+            <p class="user-level">ステータス: Lv.<%= @user_level %></p>
+            <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
+            <p>クリア: ○回</p>
+            <a class="js-modal-open" href="" data-target="modal-user-edit">へんしゅう</a>
+          </div>
+          <div id="modal-user-edit" class="modal js-modal">
                 <div class="modal-back js-modal-close"></div>
                 <div class="modal-content">
                   <%= render "users/edit", user: @user %>
                   <a class="js-modal-close" href="">閉じる</a>
                 </div>
               </div>
-            </div>
-              <p class="user-level">Lv.<%= @user_level %></p>
-              <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
+          <div class="menu-icon">
+            <img src="/assets/books.png" height="100" width="100">
+            <p>もくひょう</p>
           </div>
-          <div class="cat-info">
-            <div class="cat-info-header">
-              <a class="js-modal-open" href="" data-target="modal-new-goal">もくひょう</a>
-            </div>
-            <div id="modal-new-goal" class="modal js-modal">
-              <div class="modal-back js-modal-close"></div>
-              <div class="modal-content">
-              <%= render "goals/new", goal: @goal %>
-              <a class="js-modal-close" href="">閉じる</a>
-            </div>
-          </div>
-              <form name="sort_form" class="select-box">
-                <select name="sort" onchange="dropsort()">
-                  <option value="">せんたくできます</option>
-                  <% @goals.each do |goal| %>
-                    <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
-                  <% end %>
-                </select>
-              </form>
-              <% if @goals.exists? %>
+          <div class="menu">
+            <% if @goals.exists? %>
                 <% user_goals.first(4).each do |goal| %>
                 <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
                       <%= goal.category %> </br>
@@ -62,17 +48,21 @@
               <% else %>
                 <p class="my-goal">みせってい</p>
               <% end %>
-
-            </div>
+              <a class="js-modal-open" href="" data-target="modal-new-goal">へんしゅう</a>
+              <form name="sort_form" class="select-box">
+                <select name="sort" onchange="dropsort()">
+                  <option value="">せんたくできます</option>
+                  <% @goals.each do |goal| %>
+                    <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
+                  <% end %>
+                </select>
+              </form>
           </div>
-        <div class="side-menu">
-          <h3>メニュー</h3>
-          <ul>
-            <li>todoリスト</li>
-            <li>未定</li>
-            <li>未定</li>
-          </ul>
-        </div>
+          <div class="menu-icon">
+            <img src="/assets/save-point.png" height="100" width="100">
+            <p>きろくする</p>
+          </div>
+
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? then %>
@@ -85,7 +75,7 @@
            <% end %>
           <%= render "users/card", documents: @documents_index, document: @document, user: @user %>
         <% elsif @goals.blank? then %>
-          <h3 class="master-message upper-contents">「もくひょう」をおして</br>
+          <h3 class="master-message upper-contents">「<span class="cat-header">もくひょう</span>」をおして</br>
           せっていしてみるのじゃ！</h3>
         <% else %>
           <h3 class="master-message upper-contents">まだきろくはないぞ。</br>

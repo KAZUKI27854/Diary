@@ -1,8 +1,8 @@
 <div class="goal-show">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-2 col-sm-0"></div>
-      <div class="col-lg-6 col-md-8 col-sm-12 goal-post-form">
+      <div class="col-lg-1 col-md-1 col-sm-0"></div>
+      <div class="col-lg-10 col-md-10 col-sm-12 goal-post-form">
         <h3 class="master-message upper-contents">もくひょうのかくにんは</br>
         たいせつじゃな</h3>
         <div>
@@ -14,10 +14,10 @@
         	<h3><%= goal.deadline.strftime('%Y/%m/%d') %></h3>
         	<p>げんざいのレベル</p>
         	<h3>Lv.<%= cat_level(goal.id) %></h3>
-        	<%= link_to "へんこう", edit_goal_path(goal.id) %>
+        	<%= link_to "へんこう", edit_goal_path(goal.id), remote: true %>
         </div>
        </div>
-       <div class="col-lg-3 col-md-2 col-sm-0"></div>
+       <div class="col-lg-1 col-md-1 col-sm-0"></div>
     </div>
   </div>
 </div>
