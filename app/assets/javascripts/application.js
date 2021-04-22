@@ -94,9 +94,17 @@ document.addEventListener("turbolinks:load", function(){
   $('.menu').hide();
 
   $(function(){
-    $('.menu-icon').on('click', function(event){
+    $('.menu-icon').on('click', function(){
       $(this).next().slideToggle();
     });
+  });
+
+  $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
+
+  $('.tabBox a').on('click', function(event) {
+    $("#tabBoxes .tabBox").hide();
+    $($(this).attr("href")).show();
+    event.preventDefault();
   });
 
 

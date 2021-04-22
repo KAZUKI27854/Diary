@@ -25,9 +25,9 @@
 :root {
   --main-font: #fff;
   --main-back: #000;
+  --menu-logo: #00d9ff;
   --notice-back: #00ff89;
-  --user-info-back: #7fff94;
-  --cat-info-back: #7f95ff;
+  --error-back: #ff0050;
   --devise-link: #078000;
   --icon-width: 40px;
   --icon-height: 40px;
@@ -162,22 +162,58 @@ body {
   color: var(--devise-link);
 }
 
-.menu-logo {
-  background: blue;
+#tabBoxes {
+  background-color: var(--main-font);
+  height: 500px;
+  padding-top: 50px;
+  padding-left: 10%;
+}
+
+.tabBox {
+  a,p {
+    text-align: center;
+    color: blue;
+  }
+}
+
+.tabcontents {
+  background-color: var(--main-back);
+  height: 400px;
+  width: 90%;
+}
+
+.error-message {
+  list-style: none;
+  text-decoration: underline;
+}
+
+.error-explanation {
+  background: var(--error-back);
+}
+
+.menu-logo,
+.error-explanation {
   border: solid 5px var(--main-font);
   border-radius: 10px;
   margin-bottom: 20px;
-  font-size: 200%;
   text-align: center;
+}
+
+.menu-logo {
+  background: var(--menu-logo);
+  font-size: 150%;
 }
 
 .menu-icon {
   text-align: center;
-}
-
-.menu-icon img {
-  width: 100px;
-  height: 100px;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  a {
+    text-decoration: underline;
+    color: var(--main-font);
+  }
 }
 
 .menu {
@@ -374,7 +410,6 @@ body {
 
 .about,
 .my-page,
-.new-doc,
 .doc-edit {
   width: 100%;
   height: 100%;
@@ -383,10 +418,12 @@ body {
   background-size: cover;
 }
 
+.new-doc,
 .user-edit,
 .new-goal {
   background-position: 50% 50%;
   background-size: cover;
+  padding-bottom: 20px;
 }
 
 .user-edit {
@@ -395,7 +432,6 @@ body {
 
 .new-goal {
   background-image: url(forest.jpg);
-  padding-bottom: 20px;
 }
 
 .about {
@@ -443,7 +479,7 @@ body {
 .modal-content {
   background: #fff;
   left: 50%;
-  padding: 40px;
+  padding: 30px;
   position: absolute;
   top: 50%;
   transform: translate(-50%,-50%);

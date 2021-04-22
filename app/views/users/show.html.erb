@@ -32,7 +32,10 @@
                       <%= goal.category %> </br>
                       Lv.<%= cat_level(goal.id) %>
                   </a>
-                  <%= render "goals/show", goal: goal %>
+                  <div class="js-goal-show">
+                    <%= render "goals/show", goal: goal %>
+                  </div>
+
                 <% end %>
               <% else %>
                 <p class="my-goal">みせってい</p>
@@ -45,14 +48,16 @@
                   <% end %>
                 </select>
               </form>
+              <a class="js-modal-open cat-header" href="" data-target="modal-new-goal">せっていする</a>
+              <%= render "goals/new", goal: @goal %>
           </div>
           <div class="menu-icon">
             <a class="js-modal-open" href="" data-target="modal-new-doc">
               <img src="/assets/save-point.png"></br>
               きろくする
             </a>
-            <%= render "documents/new", document: @document %>
           </div>
+          <%= render "documents/new", document: @document %>
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? then %>

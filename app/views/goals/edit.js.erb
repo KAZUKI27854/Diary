@@ -1,7 +1,5 @@
-
-$("<%= j(render 'goals/show', instance: goal) %>").replaceWith(
+$("<%= render "goals/show", goal: @goal %>").replaceWith(
   "<%= j(
-    render 'goals/edit',
-    instance: goal
+    render 'goals/edit'
   ) %>"
 );

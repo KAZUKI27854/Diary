@@ -1,13 +1,7 @@
 class DocumentsController < ApplicationController
-	def new
-		@document = Document.new
-		@user = current_user
-	end
-
 	def create
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
-
 		respond_to do |format|
 		  if @document.save
 		  	flash[:level_up] = "LEVELUP!"
@@ -16,10 +10,6 @@ class DocumentsController < ApplicationController
 			format.js { render "document_errors" }
 		  end
 		end
-	end
-
-	def show
-		@document = Document.find(params[:id])
 	end
 
 	def edit
@@ -48,6 +38,6 @@ class DocumentsController < ApplicationController
 
 	private
 	def document_params
-		params.require(:document).permit(:title, :body, :document_image, :milestone, :add_level, :goal_id)
+		params.require(:document).permit(:body, :document_image, :milestone, :add_level, :goal_id)
 	end
 end
