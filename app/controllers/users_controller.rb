@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @document = Document.new
     @documents = Document.where(user_id: params[:id])
     @documents_index = @documents.page(params[:page]).reverse_order
     @user_level = @documents.sum(:add_level)
     @goal = Goal.new
     @goals = Goal.where(user_id: params[:id])
-    
   end
 
   def edit

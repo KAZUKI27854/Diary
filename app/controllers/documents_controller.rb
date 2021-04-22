@@ -7,11 +7,14 @@ class DocumentsController < ApplicationController
 	def create
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
-		if @document.save
-		   flash[:level_up] = "LEVELUP!"
-		   redirect_to user_path(current_user.id)
-		else
-			render "new"
+
+		respond_to do |format|
+		  if @document.save
+		  	flash[:level_up] = "LEVELUP!"
+		    format.html { redirect_to user_path(current_user.id) }
+		  else
+			format.js { render "document_errors" }
+		  end
 		end
 	end
 

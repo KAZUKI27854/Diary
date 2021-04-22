@@ -48,7 +48,6 @@
               <% else %>
                 <p class="my-goal">みせってい</p>
               <% end %>
-              <a class="js-modal-open" href="" data-target="modal-new-goal">へんしゅう</a>
               <form name="sort_form" class="select-box">
                 <select name="sort" onchange="dropsort()">
                   <option value="">せんたくできます</option>
@@ -59,8 +58,13 @@
               </form>
           </div>
           <div class="menu-icon">
-            <img src="/assets/save-point.png" height="100" width="100">
-            <p>きろくする</p>
+            <a class="js-modal-open" href="" data-target="modal-new-doc">
+              <img src="/assets/save-point.png" height="100" width="100"></br>
+              きろくする
+            </a>
+
+                  <%= render "documents/new", document: @document %>
+
           </div>
 
       </div>
