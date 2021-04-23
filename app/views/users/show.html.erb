@@ -1,9 +1,14 @@
 <div class="my-page img-fluid">
-  <% if flash[:level_up] %>
+  <!--% if flash[:level_up] %-->
     <div class="levelup-back">
+      <div class="levelup-char">
+        <img src="/assets/monster/monster1.png">
+        <img src="/assets/monster/monster2.png">
+        <img src="/assets/monster/monster3.png">
+      </div>
       <p class="levelup-text"><%= flash[:level_up] %></p>
     </div>
-  <% end %>
+  <!--% end %-->
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">

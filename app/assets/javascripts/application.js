@@ -78,7 +78,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    setTimeout("$('.levelup-back, .levelup-text').fadeOut('slow')", 1200
+    setTimeout("$('.levelup-back, .levelup-text, .levelup-comment').fadeOut('slow')", 1200
     );
   });
 
@@ -96,6 +96,7 @@ document.addEventListener("turbolinks:load", function(){
   $(function(){
     $('.menu-icon').on('click', function(){
       $(this).next().slideToggle();
+      $(this).children('p').toggleClass('active');
     });
   });
 

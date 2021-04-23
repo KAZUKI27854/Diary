@@ -296,7 +296,13 @@ body {
 }
 
 .menu-icon p:after {
-  background-image: url(under-cursor.png);
+  background-image: url(downward-cursor.png);
+  width: 10px;
+  height: 10px;
+}
+
+.menu-icon .active:after {
+  background-image: url(upward-cursor.png);
   width: 10px;
   height: 10px;
 }
@@ -499,9 +505,19 @@ body {
   z-index: 1;
 }
 
-.levelup-text {
+.levelup-text,
+.levelup-char {
   text-align: center;
-  line-height: 100vh;
+  line-height: 30vh;
+}
+
+@-webkit-keyframes textWave {
+ 0% {
+ top: 0.5em;
+ }
+ 100% {
+ top: 0em;
+ }
 }
 
 @keyframes textWave {
@@ -513,54 +529,103 @@ body {
  }
 }
 
-.levelup-text span {
-font-size: 130px;
-color: var(--main-font);
-display: inline-block;
-position: relative;
+@-webkit-keyframes commentWave {
+ 0% {
+ top: 1.5em;
+ }
+ 100% {
+ top: 0em;
+ }
+}
+
+@keyframes commentWave {
+ 0% {
+ top: 1.5em;
+ }
+ 100% {
+ top: 0em;
+ }
+}
+
+.levelup-text span,
+.levelup-char img {
+  display: inline-block;
+  position: relative;
 }
 
 .levelup-text span {
-animation-name: textWave;
-animation-duration: 1s;
-animation-timing-function: ease;
-animation-iteration-count: infinite;
+  font-size: 130px;
+  color: var(--main-font);
 }
 
-.levelup-text span:nth-of-type(2) {
-animation-delay: 0.1s;
+.levelup-char img {
+  width: 100px;
+  height: 100px;
 }
 
-.levelup-text span:nth-of-type(3) {
-animation-delay: 0.2s;
+.levelup-text span,
+.levelup-char img {
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.levelup-text span {
+  animation-name: textWave;
+}
+
+.levelup-char img {
+  animation-name: commentWave;
+}
+
+.levelup-text span:nth-of-type(2),
+.levelup-char img:nth-of-type(2){
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+}
+
+.levelup-text span:nth-of-type(3),
+.levelup-char img:nth-of-type(3){
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
 }
 
 .levelup-text span:nth-of-type(4) {
-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
 }
 
 .levelup-text span:nth-of-type(5) {
-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
 }
 
 .levelup-text span:nth-of-type(6) {
-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
 }
 
 .levelup-text span:nth-of-type(7) {
-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
 }
 
 .levelup-text span:nth-of-type(8) {
-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
 }
 
 .levelup-text span:nth-of-type(9) {
-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
 }
 
 .levelup-text span:nth-of-type(10) {
-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+  -webkit-animation-delay: 0.9s;
 }
 
 .footer {
