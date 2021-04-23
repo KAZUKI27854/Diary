@@ -266,13 +266,13 @@ body {
 
 .top-link-btn:hover:before,
 .head-link-btn:hover:before {
-  background-image: url(cursor.png);
+  background-image: url(icon/cursor.png);
   width: 20px;
   height: 20px;
 }
 
 .guest-link-btn:before {
-  background-image: url(brave.png);
+  background-image: url(character/brave.png);
 }
 
 .log-in-link:before {
@@ -296,35 +296,35 @@ body {
 }
 
 .menu-icon p:after {
-  background-image: url(downward-cursor.png);
+  background-image: url(icon/downward-cursor.png);
   width: 10px;
   height: 10px;
 }
 
 .menu-icon .active:after {
-  background-image: url(upward-cursor.png);
+  background-image: url(icon/upward-cursor.png);
   width: 10px;
   height: 10px;
 }
 
 .my-goal:nth-of-type(1):before {
-  background-image: url(red-book.png);
+  background-image: url(icon/red-book.png);
 }
 
 .my-goal:nth-of-type(2):before {
-  background-image: url(blue-book.png);
+  background-image: url(icon/blue-book.png);
 }
 
 .my-goal:nth-of-type(3):before {
-  background-image: url(green-book.png);
+  background-image: url(icon/green-book.png);
 }
 
 .my-goal:nth-of-type(4):before {
-  background-image: url(purple-book.png);
+  background-image: url(icon/purple-book.png);
 }
 
 .master-message:before {
-  background-image: url(master.png);
+  background-image: url(character/master.png);
 }
 
 .my-goal {
@@ -529,7 +529,7 @@ body {
  }
 }
 
-@-webkit-keyframes commentWave {
+@-webkit-keyframes charWave {
  0% {
  top: 1.5em;
  }
@@ -538,7 +538,7 @@ body {
  }
 }
 
-@keyframes commentWave {
+@keyframes charWave {
  0% {
  top: 1.5em;
  }
@@ -575,10 +575,12 @@ body {
 
 .levelup-text span {
   animation-name: textWave;
+  -webkit-animation-name: textWave;
 }
 
 .levelup-char img {
-  animation-name: commentWave;
+  animation-name: charWave;
+  -webkit-animation-name: charWave;
 }
 
 .levelup-text span:nth-of-type(2),
@@ -593,7 +595,8 @@ body {
   -webkit-animation-delay: 0.2s;
 }
 
-.levelup-text span:nth-of-type(4) {
+.levelup-text span:nth-of-type(4),
+.levelup-char img:nth-of-type(4) {
   animation-delay: 0.3s;
   -webkit-animation-delay: 0.3s;
 }

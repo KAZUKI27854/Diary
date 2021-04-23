@@ -1,21 +1,22 @@
 <div class="my-page img-fluid">
-  <!--% if flash[:level_up] %-->
+  <% if flash[:level_up] %>
     <div class="levelup-back">
       <div class="levelup-char">
-        <img src="/assets/monster/monster1.png">
-        <img src="/assets/monster/monster2.png">
-        <img src="/assets/monster/monster3.png">
+        <img src="/assets/character/brave.png">
+        <img src="/assets/character/witch.png">
+        <img src="/assets/character/priest.png">
+        <img src="/assets/character/princess.png">
       </div>
       <p class="levelup-text"><%= flash[:level_up] %></p>
     </div>
-  <!--% end %-->
+  <% end %>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
         <p class="notice-message"><%= flash[:notice] %></p>
         <p class="menu-logo upper-contents"> M E N U </p>
         <div class="menu-icon">
-            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "brave.png" %>
+            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png" %>
             <p>しゅじんこう </p>
         </div>
           <div class="menu">
@@ -27,7 +28,7 @@
             <%= render "users/edit", user: @user %>
           </div>
           <div class="menu-icon">
-            <img src="/assets/books.png">
+            <img src="/assets/icon/books.png">
             <p>もくひょう </p>
           </div>
           <div class="menu">
@@ -58,7 +59,7 @@
           </div>
           <div class="menu-icon">
             <a class="js-modal-open" href="" data-target="modal-new-doc">
-              <img src="/assets/save-point.png"></br>
+              <img src="/assets/icon/save-point.png"></br>
               きろくする
             </a>
           </div>
