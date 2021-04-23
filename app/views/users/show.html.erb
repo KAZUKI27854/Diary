@@ -1,3 +1,8 @@
+<div class="loading">
+  <div class="loading-animation">
+    <p>Now Loading．．．</p>
+  </div>
+</div>
 <div class="my-page img-fluid">
   <% if flash[:level_up] %>
     <div class="levelup-back">
@@ -38,6 +43,10 @@
                       <%= goal.category %> </br>
                       Lv.<%= cat_level(goal.id) %>
                   </a>
+                  <p>
+                    つぎのもくひょう:</br>
+                    aaaaaa
+                  </p>
                   <div class="js-goal-show">
                     <%= render "goals/show", goal: goal %>
                   </div>

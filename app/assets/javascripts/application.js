@@ -91,6 +91,15 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  $(window).on('load',function(){
+    $('.loading').delay(1500).fadeOut(300);
+  });
+
+  $(function(){
+    setTimeout("$('.loading').fadeOut('slow')", 10000
+    );
+  });
+
   $('.menu').hide();
 
   $(function(){

@@ -182,6 +182,54 @@ body {
   width: 90%;
 }
 
+.loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: var(--main-back);
+  z-index: 2;
+}
+
+@-webkit-keyframes loadAnime {
+  from,to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes loadAnime {
+  from,to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-animation p {
+  position:absolute;
+  font-size: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  color: var(--main-font);
+  animation: loadAnime;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  -webkit-animation: loadAnime;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+}
+
 .error-message {
   list-style: none;
   text-decoration: underline;
@@ -240,10 +288,7 @@ body {
 
 .top-link-btn:hover:before,
 .head-link-btn:hover:before,
-.guest-link-btn:before,
-.log-in-link:before,
-.sign-up-link:before,
-.reset-psw-link:before,
+.link:before,
 .menu-logo:before,
 .menu-logo:after,
 .menu-icon p:after,
@@ -271,7 +316,7 @@ body {
   height: 20px;
 }
 
-.guest-link-btn:before {
+.guest-link:before {
   background-image: url(character/brave.png);
 }
 
