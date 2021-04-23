@@ -5,18 +5,19 @@ module UsersHelper
   end
 
   def cat_name(id)
-	Goal.find_by(id: id).category
+	  Goal.find_by(id: id).category
   end
 
-  def clear_count(goal_id)
-	@goals.group(cat_level(goal_id) >= 100).count
-	Document.having()
+  def clear_count(user_id)
+    document = Document.where(user_id: user_id)
+    documents = document.group(:goal_id).sum(:add_level)
+    documents.values.count{ |level| level >= 100 }
   end
 
   def doc_count_by_cat(goal_id, document_id)
-	documents = Document.where(goal_id: goal_id)
-	id_index = documents.pluck(:id)
-	id_index.index(document_id) + 1
+	  documents = Document.where(goal_id: goal_id)
+	  id_index = documents.pluck(:id)
+	  id_index.index(document_id) + 1
   end
 
   def timelimit(id, document)

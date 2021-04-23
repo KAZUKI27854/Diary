@@ -1,8 +1,3 @@
-<div class="loading">
-  <div class="loading-animation">
-    <p>Now Loading．．．</p>
-  </div>
-</div>
 <div class="my-page img-fluid">
   <% if flash[:level_up] %>
     <div class="levelup-back">
@@ -28,7 +23,7 @@
             <p>なまえ: <%= @user.name %></p>
             <p class="user-level">ステータス: Lv.<%= @user_level %></p>
             <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
-            <p>クリア: ○回</p>
+            <p>クリア: <%= clear_count(params[:id]) %>回</p>
             <a class="js-modal-open" href="" data-target="modal-user-edit">へんしゅう</a>
             <%= render "users/edit", user: @user %>
           </div>
@@ -37,24 +32,27 @@
             <p>もくひょう </p>
           </div>
           <div class="menu">
-            <% if @goals.exists? %>
-                <% user_goals.first(4).each do |goal| %>
-                  <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
-                      <%= goal.category %> </br>
-                      Lv.<%= cat_level(goal.id) %>
-                  </a>
-                  <p>
-                    つぎのもくひょう:</br>
-                    aaaaaa
-                  </p>
-                  <div class="js-goal-show">
-                    <%= render "goals/show", goal: goal %>
-                  </div>
 
+            <% if @goals.exists? %>
+              <% user_goals.first(4).each do |goal| %>
+                <a class="js-modal-open my-goal" href="" data-target="modal-goal-show">
+                  <%= goal.category %> </br>
+                  Lv.<%= cat_level(goal.id) %>
+                </a>
+                <p>つぎのもくひょう:</br>
+                <% if Document.where(goal_id: goal.id).exists? %>
+                  <%= latest_milestone(goal.id) %>
+                <% else %>
+                  <a class="js-modal-open" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
                 <% end %>
-              <% else %>
-                <p class="my-goal">みせってい</p>
+                </p>
+                <div class="js-goal-show">
+                  <%= render "goals/show", goal: goal %>
+                </div>
               <% end %>
+            <% else %>
+              <p class="my-goal">みせってい</p>
+            <% end %>
               <form name="sort_form" class="select-box">
                 <select name="sort" onchange="dropsort()">
                   <option value="">せんたくできます</option>
@@ -63,7 +61,7 @@
                   <% end %>
                 </select>
               </form>
-              <a class="js-modal-open cat-header" href="" data-target="modal-new-goal">せっていする</a>
+              <a class="js-modal-open" href="" data-target="modal-new-goal">せっていする</a>
               <%= render "goals/new", goal: @goal %>
           </div>
           <div class="menu-icon">
