@@ -1,0 +1,11 @@
+<% if flash[:level_up] %>
+  <div class="levelup-back">
+    <div class="levelup-char">
+      <img src="/assets/character/brave.png" alt="flash-image">
+      <img src="/assets/character/witch.png" alt="flash-image">
+      <img src="/assets/character/priest.png" alt="flash-image">
+      <img src="/assets/character/princess.png" alt="flash-image">
+    </div>
+    <p class="levelup-text"><%= flash[:level_up] %></p>
+  </div>
+<% end %>

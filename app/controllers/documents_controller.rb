@@ -1,13 +1,20 @@
 class DocumentsController < ApplicationController
+
 	def create
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
+		goal = Goal.find(@document.goal_id)
+		cat_level = ApplicationController.helpers.cat_level(@document.goal_id)
 		respond_to do |format|
 		  if @document.save
-		  	flash[:level_up] = "LEVELUP!"
+		  	if cat_level < 100 && (cat_level + @document.add_level) >= 100
+		  	  flash[:clear] = "#{goal.category}のレベルが100になった!!"
+		  	else
+		  	  flash[:level_up] = "LEVELUP!"
+		  	end
 		    format.html { redirect_to user_path(current_user.id) }
 		  else
-			format.js { render "document_errors" }
+			  format.js { render "document_errors" }
 		  end
 		end
 	end

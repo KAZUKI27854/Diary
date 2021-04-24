@@ -1,22 +1,13 @@
 <div class="my-page img-fluid">
-  <% if flash[:level_up] %>
-    <div class="levelup-back">
-      <div class="levelup-char">
-        <img src="/assets/character/brave.png">
-        <img src="/assets/character/witch.png">
-        <img src="/assets/character/priest.png">
-        <img src="/assets/character/princess.png">
-      </div>
-      <p class="levelup-text"><%= flash[:level_up] %></p>
-    </div>
-  <% end %>
+  <%= render "layouts/level_up_flash" %>
+  <%= render "layouts/clear_flash" %>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
         <p class="notice-message"><%= flash[:notice] %></p>
         <p class="menu-logo upper-contents"> M E N U </p>
         <div class="menu-icon">
-            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png" %>
+            <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png", alt: "menu-icon" %>
             <p>しゅじんこう </p>
         </div>
           <div class="menu">
@@ -28,7 +19,7 @@
             <%= render "users/edit", user: @user %>
           </div>
           <div class="menu-icon">
-            <img src="/assets/icon/books.png">
+            <img src="/assets/icon/books.png" alt="menu-icon">
             <p>もくひょう </p>
           </div>
           <div class="menu">
@@ -66,7 +57,7 @@
           </div>
           <div class="menu-icon">
             <a class="js-modal-open" href="" data-target="modal-new-doc">
-              <img src="/assets/icon/save-point.png"></br>
+              <img src="/assets/icon/save-point.png" alt="menu-icon"></br>
               きろくする
             </a>
           </div>
@@ -74,7 +65,7 @@
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if @documents.exists? then %>
-         <h3 class="master-message upper-contents">これまでのきろくじゃ</h3>
+         <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
            <%= form_with model: @goal do |f| %>
              <div class="form-group">
                <%= f.select :goal_id, @goals.all.map { |goal| [goal.category, goal.id] }, {include_blank: 'もくひょうでわける'},

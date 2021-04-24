@@ -78,7 +78,12 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    setTimeout("$('.levelup-back, .levelup-text, .levelup-comment').fadeOut('slow')", 1200
+    setTimeout("$('.levelup-back').fadeOut('slow')", 1200
+    );
+  });
+
+  $(function(){
+    setTimeout("$('.clear-back').fadeOut('slow')", 2500
     );
   });
 
