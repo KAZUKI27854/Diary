@@ -83,7 +83,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    setTimeout("$('.clear-back').fadeOut('slow')", 2500
+    setTimeout("$('.clear-back').fadeOut('slow')", 3500
     );
   });
 

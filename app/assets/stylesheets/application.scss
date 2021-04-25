@@ -363,18 +363,25 @@ body {
   height: 100%;
 }
 
-.monster1,
-.monster2 {
+.boss-monster {
+  width: 50%;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+}
+
+.monster-left,
+.monster-right {
   width: 25%;
   position: absolute;
   top: 50%;
 }
 
-.monster1 {
+.monster-left {
   left: 20%;
 }
 
-.monster2 {
+.monster-right {
   left: 55%;
 }
 

@@ -12,16 +12,23 @@
                 <img src="/assets/dungeon/dungeon<%= (doc_number(document.goal_id, document.id)/5) + 1 %>.jpg"
                      class="dungeon-img" alt="dungeon-image">
                 <!--%= image_tag '', class: "dungeon-img" %-->
-                <div class="monster1">
-                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
-                       class="monster-img" alt="monster-image">
+                <% if doc_number(document.goal_id, document.id) % 5 == 4 %>
+                  <div class="boss-monster">
+                    <img src="/assets/monster/boss<%= doc_number(document.goal_id, document.id) / 4 %>.png"
+                         class="monster-img" alt="monster-image">
+                  </div>
+                <% else %>
+                  <div class="monster-left">
+                    <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
+                         class="monster-img" alt="monster-image">
                   <!--%= image_tag '', class: "monster-img" %-->
-                </div>
-                <div class="monster2">
-                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
-                       class="monster-img" alt="monster-image">
+                  </div>
+                  <div class="monster-right">
+                    <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
+                         class="monster-img" alt="monster-image">
                   <!--%= image_tag '', class: "monster-img" %-->
-                </div>
+                  </div>
+                <% end %>
               </div>
             <% end %>
             <div class="card-body doc-body">
@@ -30,13 +37,22 @@
                   <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
                 </p>
                 <p class="doc-body">
-                  <%= document.body %> </br>
-                  <%= user.name %>は <%= document.add_level %> レベルアップした！
+                  <% if doc_number(document.goal_id, document.id) % 5 == 4 %>
+                    ボスがあらわれた！</br>
+                    <%= document.body %> </br>
+                    <%= user.name %>はボスをたおし、 </br>
+                    <%= document.add_level %> レベルアップした！
+                  <% else %>
+                    <%= document.body %> </br>
+                    <%= user.name %>は <%= document.add_level %> レベルアップした！
+                  <% end %>
                 </p>
                 <p class="doc-body">
                   【つぎのもくひょう】　</br>
                   <%= document.milestone %> </br>
-                  せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
+                  <% unless cat_level(document.goal_id) >= 100 %>
+                    せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
+                  <% end %>
                 </p>
                 <p class="doc-bottom">
                   <% if current_user.id == document.user_id %>
