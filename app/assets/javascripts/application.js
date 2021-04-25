@@ -54,21 +54,21 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $(function(){
+  /*$(function(){
     $('.dungeon-img').each(function(i){
       var array = [...Array(5)].map((_, i) => i + 1);
       var number = array[Math.floor(Math.random() * array.length)];
       $(this).prop('src','/assets/dungeon/dungeon' + number + '.jpg');
     });
-  });
+  });*/
 
-  $(function(){
+  /*$(function(){
     $('.monster-img').each(function(i){
       var array = [...Array(5)].map((_, i) => i + 1);
       var number = array[Math.floor(Math.random() * array.length)];
       $(this).prop('src','/assets/monster/monster' + number + '.png');
     });
-  });
+  });*/
 
   $(function(){
     $('.levelup-text').each(function(){

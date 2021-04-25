@@ -8,21 +8,26 @@
                 <%= attachment_image_tag document, :document_image,
                     class: "card-img-top doc-img", id: "imageArea" %>
             <% else %>
-
               <div class="dungeon">
-                <%= image_tag '', class: "dungeon-img" %>
+                <img src="/assets/dungeon/dungeon<%= (doc_number(document.goal_id, document.id)/5) + 1 %>.jpg"
+                     class="dungeon-img" alt="dungeon-image">
+                <!--%= image_tag '', class: "dungeon-img" %-->
                 <div class="monster1">
-                  <%= image_tag '', class: "monster-img" %>
+                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
+                       class="monster-img" alt="monster-image">
+                  <!--%= image_tag '', class: "monster-img" %-->
                 </div>
                 <div class="monster2">
-                  <%= image_tag '', class: "monster-img" %>
+                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
+                       class="monster-img" alt="monster-image">
+                  <!--%= image_tag '', class: "monster-img" %-->
                 </div>
               </div>
             <% end %>
             <div class="card-body doc-body">
               <div class="row">
                 <p class="doc-title">
-                  <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_count_by_cat(document.goal_id, document.id) %></span> F )にいどんだ！
+                  <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
                 </p>
                 <p class="doc-body">
                   <%= document.body %> </br>

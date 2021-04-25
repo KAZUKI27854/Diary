@@ -30,6 +30,8 @@
                   <%= goal.category %> </br>
                   Lv.<%= cat_level(goal.id) %>
                 </a>
+                <p>ステージ: 6F</br>
+                まよいのもり</p>
                 <p>つぎのもくひょう:</br>
                 <% if Document.where(goal_id: goal.id).exists? %>
                   <%= latest_milestone(goal.id) %>
@@ -44,14 +46,6 @@
             <% else %>
               <p class="my-goal">みせってい</p>
             <% end %>
-              <form name="sort_form" class="select-box">
-                <select name="sort" onchange="dropsort()">
-                  <option value="">せんたくできます</option>
-                  <% @goals.each do |goal| %>
-                    <option value="/goals/<%= goal.id %>"><%= goal.category %></option>
-                  <% end %>
-                </select>
-              </form>
               <a class="js-modal-open" href="" data-target="modal-new-goal">せっていする</a>
               <%= render "goals/new", goal: @goal %>
           </div>
