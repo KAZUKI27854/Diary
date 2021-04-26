@@ -48,6 +48,12 @@
             <% else %>
               <p class="my-goal">みせってい</p>
             <% end %>
+
+             <div class="form-group">
+               <%= select_tag 'goal_id', options_from_collection_for_select(@goals, :id, :category),
+                   include_blank: 'せんたくする', class: 'js-select-box' %>
+             </div>
+
               <a class="js-modal-open" href="" data-target="modal-new-goal">せっていする</a>
               <%= render "goals/new", goal: @goal %>
           </div>
@@ -70,7 +76,7 @@
            <% end %>
           <%= render "users/card", documents: @documents_index, document: @document, user: @user %>
         <% elsif @goals.blank? then %>
-          <h3 class="master-message upper-contents">「<span class="cat-header">もくひょう</span>」をおして</br>
+          <h3 class="master message upper-contents">「もくひょう」をおして</br>
           せっていしてみるのじゃ！</h3>
         <% else %>
           <h3 class="master-message upper-contents">まだきろくはないぞ。</br>

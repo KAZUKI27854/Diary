@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get 'goals' => 'goals#new'
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :documents
-  resources :goals, except: [:index]
+  resources :goals
 
 end

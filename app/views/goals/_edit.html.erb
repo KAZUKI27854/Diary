@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 goal-post-form">
-        <h3 class="master message upper-contents">もくひょうをへんこうできるぞ</h3>
+        <h3 class="witch message upper-contents">もくひょうのへんこうかしら？</h3>
         <div class="form-group">
 
             <% if @goal.present? %>
@@ -11,7 +11,7 @@
           	    <label for="inputCategory">レベルアップしたいこと</label>
                 <%= f.text_field :category, class: "form-control", placeholder: "レベルアップしたいこと" %>
                 <label for="inputGoalStatus">さいしゅうもくひょう</label>
-                <%= f.text_field :goal_status, class: "form-control", placeholder: "どうなっていたいか" %>
+                <%= f.text_field :goal_status, class: "form-control", placeholder: "Lv.100のじょうたい" %>
                 <label for="inputDeadline">きげん</label>
                 <%= f.date_select :deadline, class: "form-control" %>
                 <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>

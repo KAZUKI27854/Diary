@@ -88,13 +88,27 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
+    $('.js-select-box').change(function(){
+      var id = $(this).val();
+
+      /*console.log(id);*/
+      /*$.ajax({
+      type: 'GET', // リクエストのタイプ
+      url: '/goals/search', // リクエストを送信するURL
+      data:  { goal_id: id }, // サーバーに送信するデータ
+      dataType: 'json' // サーバーから返却される型
+    });*/
+    });
+  });
+
+  /*$(function(){
     $('.doc-title span').each(function(key, value){
       var text = $(value).text();
       var result = Number(text);
       console.log(result)
       console.log(key)
     });
-  });
+  });*/
 
   $('.menu').hide();
 
