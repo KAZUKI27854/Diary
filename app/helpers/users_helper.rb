@@ -14,6 +14,10 @@ module UsersHelper
     documents.values.count{ |level| level >= 100 }
   end
 
+  def doc_count(goal_id)
+    Document.where(goal_id: goal_id).count
+  end
+
   def doc_number(goal_id, document_id)
 	  documents = Document.where(goal_id: goal_id)
 	  id_index = documents.pluck(:id)
