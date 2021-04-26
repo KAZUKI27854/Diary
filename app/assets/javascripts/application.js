@@ -62,13 +62,13 @@ document.addEventListener("turbolinks:load", function(){
     });
   });*/
 
-  /*$(function(){
-    $('.monster-img').each(function(i){
+  $(function(){
+    $('.random-monster-img').each(function(i){
       var array = [...Array(5)].map((_, i) => i + 1);
       var number = array[Math.floor(Math.random() * array.length)];
       $(this).prop('src','/assets/monster/monster' + number + '.png');
     });
-  });*/
+  });
 
   $(function(){
     $('.levelup-text').each(function(){
