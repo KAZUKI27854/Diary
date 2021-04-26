@@ -8,9 +8,9 @@
                 <%= attachment_image_tag document, :document_image,
                     class: "card-img-top doc-img", id: "imageArea" %>
             <% else %>
-              <div class="dungeon">
-                <img src="/assets/dungeon/dungeon<%= (doc_number(document.goal_id, document.id)/5) + 1 %>.jpg"
-                     class="dungeon-img" alt="dungeon-image">
+              <div class="stage">
+                <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id)/5) + 1 %>.jpg"
+                     class="stage-img" alt="stage-image">
                 <!--%= image_tag '', class: "dungeon-img" %-->
                 <% if doc_number(document.goal_id, document.id) % 5 == 4 %>
                   <div class="boss-monster">

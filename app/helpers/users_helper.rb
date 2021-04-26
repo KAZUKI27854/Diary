@@ -24,6 +24,11 @@ module UsersHelper
 	  id_index.index(document_id) + 1
   end
 
+  def stage_name(goal_id)
+    stage_number = (doc_count(goal_id) / 5) + 1
+    Stage.find_by(id: stage_number).name
+  end
+
   def timelimit(id, document)
 	 ((Goal.find_by(id: id).deadline - document.updated_at)/86400).to_i
   end

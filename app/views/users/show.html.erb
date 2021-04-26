@@ -30,8 +30,10 @@
                   <%= goal.category %> </br>
                   Lv.<%= cat_level(goal.id) %>
                 </a>
-                <p>ステージ: <%= doc_count(goal.id) %>F</br>
-                まよいのもり<!-- Dungeon.find_by(id: ( (doc_count(goal.id) / 5) + 1 )).name --></p>
+                <p>
+                  ステージ: <%= doc_count(goal.id) %>F</br>
+                  <%= stage_name(goal.id) %>
+                </p>
                 <p>つぎのもくひょう:</br>
                 <% if Document.where(goal_id: goal.id).exists? %>
                   <%= latest_milestone(goal.id) %>
