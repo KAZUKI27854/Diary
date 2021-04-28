@@ -28,12 +28,15 @@
                 <%= link_to "マイページ", user_path(current_user.id), class: "head-link-btn mr-5" %>
               </li>
               <li>
-                <%= link_to "サイトせつめい", "/about", class: "head-link-btn mr-5" %>
+                <%= link_to "あそびかた", "/about", class: "head-link-btn mr-5" %>
               </li>
               <li>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "head-link-btn" %>
               </li>
             <% else %>
+              <li>
+                <%= link_to "あそびかた", "/about", class: "head-link-btn mr-5" %>
+              </li>
               <li>
                 <%= link_to "あたらしくはじめる", new_user_registration_path, class: "head-link-btn mr-5" %>
               </li>

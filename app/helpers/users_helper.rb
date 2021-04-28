@@ -25,7 +25,7 @@ module UsersHelper
   end
 
   def stage_name(goal_id)
-    stage_number = (doc_count(goal_id) / 5) + 1
+    stage_number = (doc_count(goal_id) + 4) / 5
     Stage.find_by(id: stage_number).name
   end
 

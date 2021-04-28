@@ -5,7 +5,7 @@ RSpec.describe 'Goalモデルのテスト', type: :model do
     subject { goal.valid? }
 
     let(:user) { create(:user) }
-    let!(:goal) { build(:goal, user_id: user.id) }
+    let(:goal) { build(:goal, user_id: user.id) }
 
     context 'categoryカラム' do
       it '空欄でないこと' do

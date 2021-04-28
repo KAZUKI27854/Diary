@@ -6,7 +6,7 @@ RSpec.describe 'Documentモデルのテスト', type: :model do
 
     let(:user) { create(:user) }
     let(:goal) { create(:goal, user_id: user.id) }
-    let!(:document) { build(:document, user_id: user.id, goal_id: goal.id) }
+    let(:document) { build(:document, user_id: user.id, goal_id: goal.id) }
 
     context 'bodyカラム' do
       it '空欄でないこと' do
