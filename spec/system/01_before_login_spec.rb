@@ -112,6 +112,24 @@ describe '1.ユーザログイン前のテスト' do
         click_button 'とうろく'
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
+      it '新規登録時に「アカウントを作成しました」というフラッシュが表示される' do
+        click_button 'とうろく'
+        expect(page).to have_selector '.notice-message', text: 'アカウントを作成しました'
+      end
+    end
+
+    context '新規登録失敗のテスト' do
+      before do
+        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
+        fill_in 'user[password]', with: ''
+        fill_in 'user[password_confirmation]', with: ''
+        click_button 'とうろく'
+      end
+
+      it '新規登録に失敗し、エラーメッセージが表示される' do
+        expect(page).to have_css '.error-explanation'
+      end
     end
   end
 
@@ -145,6 +163,32 @@ describe '1.ユーザログイン前のテスト' do
         expect(page).not_to have_field 'user[name]'
       end
     end
+
+
+    context 'ログイン成功のテスト' do
+      before do
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
+      end
+
+      it 'ログイン後のリダイレクト先が、ログインしたユーザのマイページになっている' do
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+    end
+
+    context 'ログイン失敗のテスト' do
+      before do
+        fill_in 'user[email]', with: ''
+        fill_in 'user[password]', with: ''
+        click_button 'ログイン'
+      end
+
+      it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
+        expect(current_path).to eq new_user_session_path
+      end
+    end
+
   end
 
 end

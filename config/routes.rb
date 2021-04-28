@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   get 'documents' => 'documents#new'
   get 'goals' => 'goals#new'
+  get 'users' => 'homes#top'
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :documents
   resources :goals

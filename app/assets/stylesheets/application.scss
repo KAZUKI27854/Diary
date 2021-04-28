@@ -199,6 +199,10 @@ body {
   text-align: center;
 }
 
+.error-explanation>ul>li {
+  list-style: none;
+}
+
 .menu-logo {
   background: var(--menu-logo);
   font-size: 150%;
