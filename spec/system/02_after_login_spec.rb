@@ -3,7 +3,7 @@ require 'rails_helper'
 describe '2.ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:goal) { create(:goal, user_id: user.id) }
-  let!(:document) { create(:document, user_id: user.id, goal_id: goal.id) }
+  let!(:document) { 5.times.collect { |i| create(:document, user_id: user.id, goal_id: goal.id) } }
   let!(:stage) { create(:stage) }
 
   before do
@@ -78,7 +78,8 @@ describe '2.ユーザログイン後のテスト' do
       it 'ユーザのもくひょうに応じた「ステージ」が表示される' do
         expect(page).to have_selector '.menu p', text: stage.name
       end
-      it 'ユーザの「つぎのもくひょう」が表示される' do
+      it 'ユーザの最新の投稿にある「つぎのもくひょう」が表示される' do
+        document = Document.find_by(id: 5)
         expect(page).to have_selector '.menu p', text: document.milestone
       end
       it '「もくひょうせってい」のモーダルウインドウへのリンクが表示される' do
@@ -87,20 +88,44 @@ describe '2.ユーザログイン後のテスト' do
     end
 
     context 'メニュー>>きろくするのテスト' do
-      before do
-        find("#document_goal_id").find("option[value='1']").select_option
-        fill_in "#document_body", with: Faker::Games::Zelda.game
-        fill_in "#document_milestone", with: Faker::Games::Zelda.location
-        #select(value="1", from: document[add_level])
-        find("#document_add_level").find("option[value='1']").select_option
+      it '新規投稿のモーダルウインドウへのリンクが表示される' do
+        expect(page).to have_selector 'a.js-modal-open', text: 'きろくする'
       end
+    end
+  end
 
-      it 'ユーザの新しい投稿が正しく保存される' do
-        expect { click_button 'きろくする' }.to change(user.document, :count).by(1)
+  describe '投稿一覧のテスト' do
+    context '表示件数のテスト' do
+      it '1ページに表示されるのが4件である' do
+        expect(all('.doc-card').size).to eq(4)
       end
-      it 'リダイレクト先がマイページになっている' do
-        click_button 'きろくする'
-        expect(current_path).to eq '/users/' + user.id.to_s
+    end
+
+    context '投稿文のテスト' do
+      it 'bodyの冒頭に、「目標のカテゴリー名+ダンジョン」が表示される' do
+        expect(page).to have_selector '.doc-title', text: goal.category + 'のダンジョン'
+      end
+      it 'bodyの末尾に、「ユーザ名+documentごとのadd_level+レベルアップした」という文が表示される' do
+        expect(page).to have_selector '.doc-body', text: user.name + 'は ' + '1 レベルアップした'
+      end
+      it 'bodyの末尾に、【つぎのもくひょう】というテキストとdocumentごとのmilestoneが表示される' do
+        expect(page).to have_selector '.doc-body', text: '【つぎのもくひょう】'
+        documents = Document.where(id: 1..4)
+        documents.each do |document|
+          expect(page).to have_selector '.doc-body', text: document.milestone
+        end
+      end
+    end
+
+    context '100番目までの投稿のテスト' do
+      xit '投稿回数が5の倍数の時、ボスモンスターが表示される' do
+        #document = Document.find_by(id: 5)
+        #img = find_all('.monster-img')[9]
+        #img = find('.monster-img')
+        #card = find_all('.doc-card')[1]
+        #expect(card).to have_css '.monster-img'
+        expect(page).to have_selector ("img[src='/assets/monster/boss1.png']")
+
       end
     end
   end
