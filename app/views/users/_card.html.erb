@@ -71,7 +71,7 @@
                     <span class="link">
                       <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
                       <%= link_to 'さくじょ', document_path(document.id), method: :delete,
-                          "data-confirm" => "削除してよろしいですか？" %>
+                          "data-confirm" => "削除してよろしいですか？", class: "delete_link" %>
                     </span>
                   <% end %>
                     <span class="doc-date">

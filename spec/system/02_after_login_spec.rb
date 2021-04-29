@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe '2.ユーザログイン後のテスト' do
   let(:user) { create(:user) }
-  let!(:goal) { create(:goal, user_id: user.id) }
-  let!(:document) { 5.times.collect { |i| create(:document, user_id: user.id, goal_id: goal.id) } }
+  let!(:goal) { 5.times.collect { |i| create(:goal, user_id: user.id) } }
+  let!(:document) { 5.times.collect { |i| create(:document, user_id: user.id, goal_id: Goal.find(5).id) } }
   let!(:stage) { create(:stage) }
 
   before do
@@ -73,14 +73,28 @@ describe '2.ユーザログイン後のテスト' do
 
     context 'メニュー>>もくひょうのテスト' do
       it 'ユーザのもくひょうがモーダルウインドウへのリンクとして表示される' do
-        expect(page).to have_selector 'a.js-modal-open', text: goal.category
+        goals = Goal.where(id: 2..5)
+        goals.each do |goal|
+          expect(page).to have_selector 'a.js-modal-open', text: goal.category
+        end
+      end
+      it '更新順で数えて5つ目以降のもくひょうは表示されない' do
+        goal = Goal.find(1)
+        expect(page).not_to have_selector 'a.js-modal-open', text: goal.category
       end
       it 'ユーザのもくひょうに応じた「ステージ」が表示される' do
-        expect(page).to have_selector '.menu p', text: stage.name
+        4.times do |i|
+          expect(page).to have_selector '.menu p', text: stage.name
+        end
       end
-      it 'ユーザの最新の投稿にある「つぎのもくひょう」が表示される' do
-        document = Document.find_by(id: 5)
+      it '投稿があるもくひょうに最新の「つぎのもくひょう」が表示される' do
+        document = Document.last
         expect(page).to have_selector '.menu p', text: document.milestone
+      end
+      it '投稿がないもくひょうには「ぼうけんをきろくする」というリンクが表示される' do
+        3.times do |i|
+          expect(page).to have_link 'ぼうけんをきろくする'
+        end
       end
       it '「もくひょうせってい」のモーダルウインドウへのリンクが表示される' do
         expect(page).to have_selector 'a.js-modal-open', text: 'せってい'
@@ -96,28 +110,39 @@ describe '2.ユーザログイン後のテスト' do
 
   describe '投稿一覧のテスト' do
     context '表示件数のテスト' do
-      it '1ページに表示されるのが4件である' do
+      it '1ページに表示される投稿が4件である' do
         expect(all('.doc-card').size).to eq(4)
       end
     end
 
     context '投稿文のテスト' do
       it 'bodyの冒頭に、「目標のカテゴリー名+ダンジョン」が表示される' do
+        goal = Goal.find(5)
         expect(page).to have_selector '.doc-title', text: goal.category + 'のダンジョン'
       end
-      it 'bodyの末尾に、「ユーザ名+documentごとのadd_level+レベルアップした」という文が表示される' do
+      it 'bodyに、「ユーザ名+documentごとのadd_level+レベルアップした」という文が表示される' do
         expect(page).to have_selector '.doc-body', text: user.name + 'は ' + '1 レベルアップした'
       end
-      it 'bodyの末尾に、【つぎのもくひょう】というテキストとdocumentごとのmilestoneが表示される' do
-        expect(page).to have_selector '.doc-body', text: '【つぎのもくひょう】'
-        documents = Document.where(id: 1..4)
+      it 'bodyに、【つぎのもくひょう】というテキストとdocumentごとのmilestoneが表示される' do
+        documents = Document.where(id: 2..5)
         documents.each do |document|
+          expect(page).to have_selector '.doc-body', text: '【つぎのもくひょう】'
           expect(page).to have_selector '.doc-body', text: document.milestone
         end
       end
+      it '「へんしゅう」リンクがある' do
+        expect(page).to have_link 'へんしゅう'
+      end
+      it '「さくじょ」リンクがある' do
+        expect(page).to have_link 'さくじょ'
+      end
+      it '削除の前に「削除してよろしいですか？」という確認がある' do
+        delete_link = find_all('.delete_link') .first
+        expect(delete_link['data-confirm']).to eq '削除してよろしいですか？'
+      end
     end
 
-    context '100番目までの投稿のテスト' do
+    context '画像のテスト' do
       xit '投稿回数が5の倍数の時、ボスモンスターが表示される' do
         #document = Document.find_by(id: 5)
         #img = find_all('.monster-img')[9]
