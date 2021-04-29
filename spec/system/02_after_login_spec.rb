@@ -4,7 +4,7 @@ describe '2.ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:goal) { 5.times.collect { |i| create(:goal, user_id: user.id) } }
   let!(:document) { 5.times.collect { |i| create(:document, user_id: user.id, goal_id: Goal.find(5).id) } }
-  let!(:stage) { create(:stage) }
+  let!(:stage) { 2.times.collect { |i| create(:stage) } }
 
   before do
     visit new_user_session_path
@@ -83,6 +83,7 @@ describe '2.ユーザログイン後のテスト' do
         expect(page).not_to have_selector 'a.js-modal-open', text: goal.category
       end
       it 'ユーザのもくひょうに応じた「ステージ」が表示される' do
+        stage = Stage.find(1)
         4.times do |i|
           expect(page).to have_selector '.menu p', text: stage.name
         end
@@ -137,20 +138,33 @@ describe '2.ユーザログイン後のテスト' do
         expect(page).to have_link 'さくじょ'
       end
       it '削除の前に「削除してよろしいですか？」という確認がある' do
-        delete_link = find_all('.delete_link') .first
+        delete_link = find_all('.delete_link').first
         expect(delete_link['data-confirm']).to eq '削除してよろしいですか？'
       end
     end
 
     context '画像のテスト' do
-      xit '投稿回数が5の倍数の時、ボスモンスターが表示される' do
-        #document = Document.find_by(id: 5)
-        #img = find_all('.monster-img')[9]
-        #img = find('.monster-img')
-        #card = find_all('.doc-card')[1]
-        #expect(card).to have_css '.monster-img'
-        expect(page).to have_selector ("img[src='/assets/monster/boss1.png']")
-
+      it '投稿回数が5の倍数の時、ボスモンスターが表示される' do
+        card = find_all('.doc-card').first
+        expect(card).to have_selector 'div[class=boss-monster]'
+      end
+      it '投稿回数が5の倍数の時、モンスター2体は表示されない' do
+        card = find_all('.doc-card').first
+        expect(card).not_to have_selector 'div[class=monster-left], div[class=monster-right]'
+      end
+      it '投稿回数が5の倍数でない時、モンスターが２体表示される' do
+        card = find_all('.doc-card')[1]
+        expect(card).to have_selector 'div[class=monster-left], div[class=monster-right]'
+      end
+      it '投稿回数が5の倍数でない時、ボスモンスターは表示されない' do
+        card = find_all('.doc-card')[1]
+        expect(card).not_to have_selector 'div[class=boss-monster]'
+      end
+      it '投稿回数が「5n + 1」回の時、ステージ画像が変わっている(6回目の投稿時にステージ2の画像か)' do
+        create(:document, user_id: user.id, goal_id: Goal.find(5).id)
+        visit user_path(user.id)
+        card = find_all('.doc-card').first
+        expect(card).to have_selector "img[src$='stage2.jpg']"
       end
     end
   end
