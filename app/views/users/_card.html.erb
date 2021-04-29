@@ -7,7 +7,7 @@
             <% if document.document_image_id.present? %>
                 <%= attachment_image_tag document, :document_image,
                     class: "card-img-top doc-img", id: "imageArea" %>
-            <% elsif doc_number(document.goal_id, document.id) <= 100 && (doc_number(document.goal_id, document.id) % 5) != 0 then %>
+            <% elsif within_100_and_not_multiples_of_5?(document.goal_id, document.id) then %>
               <div class="stage">
                 <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) + 1 %>.jpg"
                      class="stage-img" alt="stage-image">
@@ -21,7 +21,7 @@
                          class="monster-img" alt="monster-image">
                   </div>
               </div>
-            <% elsif doc_number(document.goal_id, document.id) <= 100 && (doc_number(document.goal_id, document.id) % 5) == 0 then %>
+            <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
               <div class="stage">
                 <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) %>.jpg"
                      class="stage-img" alt="stage-image">
@@ -49,13 +49,13 @@
                 <p class="doc-body">
                   <% if document.document_image_id.present? %>
                     <%= document.body %> </br>
-                  <% elsif doc_number(document.goal_id, document.id) % 5 == 0 then %>
+                  <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
                     このステージのボスがあらわれた！</br>
                     <%= document.body %> </br>
                     ボスをたおした！ </br>
                   <% else %>
                     <%= document.body %> </br>
-                    モンスターたちをたおした！</br>
+                    モンスターをたおした！</br>
                   <% end %>
                   <%= user.name %>は <%= document.add_level %> レベルアップした！
                 </p>

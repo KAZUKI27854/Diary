@@ -160,11 +160,17 @@ describe '2.ユーザログイン後のテスト' do
         card = find_all('.doc-card')[1]
         expect(card).not_to have_selector 'div[class=boss-monster]'
       end
-      it '投稿回数が「5n + 1」回の時、ステージ画像が変わっている(6回目の投稿時にステージ2の画像か)' do
+    end
+
+    context '画像のテスト(投稿回数6回以上）' do
+      before do
         create(:document, user_id: user.id, goal_id: Goal.find(5).id)
         visit user_path(user.id)
+      end
+      it '投稿回数が「5n + 1」回の時、ステージ画像が変わっている(6回目の投稿時にステージ2の画像か)' do
         card = find_all('.doc-card').first
         expect(card).to have_selector "img[src$='stage2.jpg']"
+        expect(card).not_to have_selector "img[src$='stage1.jpg']"
       end
     end
   end

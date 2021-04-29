@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
 
   validates :name, {presence: true, length: {maximum: 10}}
+  validates :email, {presence: true, uniqueness: true}
 
   attachment :profile_image
 

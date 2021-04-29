@@ -24,6 +24,18 @@ module UsersHelper
 	  id_index.index(document_id) + 1
   end
 
+  def within_100_and_not_multiples_of_5?(goal_id, document_id)
+    number = doc_number(goal_id, document_id)
+    number <= 100 && (number % 5) != 0
+  end
+
+  def within_100_and_multiples_of_5?(goal_id, document_id)
+    number = doc_number(goal_id, document_id)
+    number <= 100 && (number % 5) == 0
+  end
+
+
+
   def stage_name(goal_id)
     stage_number = (doc_count(goal_id) + 4) / 5
     Stage.find_by(id: stage_number).name
