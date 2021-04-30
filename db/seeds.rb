@@ -1,3 +1,4 @@
+User.create!(name: 'ゆうしゃ', password: SecureRandom.urlsafe_base64, email: 'guest@example.com')
 user = User.find_by(email: 'guest@example.com')
 
 user.goals.create!(
@@ -20,20 +21,108 @@ user.goals.create!(
 goal = Goal.where(user_id: user.id).first
 second_goal = Goal.where(user_id: user.id).second
 
+exercise = ['スクワット', 'うでたて伏せ', '太もものストレッチ', 'せなかのストレッチ', '走りこみ']
+count = ['10', '20', '30', '40', '50']
+date = Date.new(2021, 4, 1)
+
 4.times do |i|
-  exercise = ['スクワット', 'うでたて伏せ', '太もものストレッチ', 'おなかのストレッチ']
-  count = ['10', '20', '30', '40', '50']
-  Document.create!(body: exercise[rand(4)] + 'を ' + count[rand(5)] + ' 回した！', milestone: '明日も運動する', add_level: 2, user_id: user.id, goal_id: goal.id, updated_at: (Date.today - i))
-  Document.create!(body: 'べんきょうした！', milestone: '明日も勉強する', add_level: 5, user_id: user.id, goal_id: second_goal.id)
+  Document.create!(
+    [
+      {
+        body: exercise[rand(4)] + 'を ' + count[rand(5)] + ' 回した！',
+        milestone: '明日もうんどうする',
+        add_level: 10,
+        user_id: user.id,
+        goal_id: goal.id,
+        created_at: (date + i),
+        updated_at: (date + i)
+      }
+    ]
+  )
+end
+
+programing = ['HTML', 'CSS', 'Ruby', 'Python', 'Javascript']
+time = [*(1..10)]
+6.times do |i|
+  Document.create!(
+    [
+      {
+        body: programing[rand(5)] + 'のべんきょうを ' + time[rand(10)].to_s + ' 時間した！',
+        milestone: '明日もべんきょうする',
+        add_level: time[rand(10)],
+        user_id: user.id,
+        goal_id: second_goal.id,
+        created_at: (date + i),
+        updated_at: (date + i)
+      }
+    ]
+  )
 end
 
 Stage.create!(
   [
     {
-      name: 'ゆうわくのもり',
+      name: 'はじまりのもり',
     },
     {
       name: 'サボタージュさばく'
+    },
+    {
+      name: 'まよいのうみ'
+    },
+    {
+      name: 'ゴロゴロかざん'
+    },
+    {
+      name: 'マンネリけいこく'
+    },
+    {
+      name: 'グータラせつげん'
+    },
+    {
+      name: 'だせいのあれち'
+    },
+    {
+      name: 'あんいつのほらあな'
+    },
+    {
+      name: 'たいだのしろ'
+    },
+    {
+      name: 'はまりぬま'
+    },
+    {
+      name: 'あぶらうりのまち'
+    },
+    {
+      name: 'たいまんのとち'
+    },
+    {
+      name: 'ダラダラひょうざん'
+    },
+    {
+      name: 'おうちゃくやま'
+    },
+    {
+      name: 'ゆうだのとう'
+    },
+    {
+      name: 'めいむ'
+    },
+    {
+      name: 'ものぐさしつげん'
+    },
+    {
+      name: 'ゆうわくのやみ'
+    },
+    {
+      name: 'せいちょうのみち'
+    },
+    {
+      name: '終わりの地'
+    },
+    {
+      name: 'みっかぼうずのやぼう'
     }
   ]
 )
