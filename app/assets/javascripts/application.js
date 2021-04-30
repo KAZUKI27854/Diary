@@ -87,6 +87,22 @@ document.addEventListener("turbolinks:load", function(){
     );
   });
 
+  /* global jQuery */
+  jQuery.fn.exists = function(){return Boolean($('body:has(' + this.selector + ')').length > 0);};
+  jQuery.fn.noExists = function(){return !this.exists();};
+
+  /* global gon */
+  $(function(){
+    if (gon.goals == 0) {
+      $('.goal-icon, .create-goal-link').addClass('js-bound');
+    } else if (gon.goals >= 1 && gon.documents == 0) {
+      $('.goal-icon, .create-goal-link').removeClass('js-bound');
+      $('.create-doc-icon').addClass('js-bound');
+    } else {
+      $('.create-doc-icon').removeClass('js-bound');
+    }
+  })
+
   $(function(){
     $('.js-select-box').change(function(){
       var id = $(this).val();
