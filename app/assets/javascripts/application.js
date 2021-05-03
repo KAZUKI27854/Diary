@@ -19,8 +19,8 @@
 //= require_tree .
 
 
-/*global $,onload*/
-onload = function(){
+/*global $*/
+$(function(){
   $('#tab-contents .tab[id != "tab1"]').hide();
 
   $('#tab-menu a').on('click', function(event) {
@@ -30,7 +30,7 @@ onload = function(){
     $($(this).attr("href")).show();
     event.preventDefault();
   });
-};
+});
 
 /* global location */
 function dropsort(){
@@ -136,10 +136,13 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
+  $('#js-message .message[id != "message1"]').hide();
 
   $('.tabBox a').on('click', function(event) {
     $("#tabBoxes .tabBox").hide();
+    $('#js-message .message').hide();
     $($(this).attr("href")).show();
+    $($(this).attr("class")).show();
     event.preventDefault();
   });
 
