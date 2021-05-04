@@ -129,37 +129,26 @@ body {
   .brave-img {
     width: 200px;
     height: 200px;
-    top: 100%;
-    left: 36%;
-    z-index: 1;
   }
 
   .knight-img {
     width: 140px;
     height: 140px;
-    top: 107%;
-    left: 70%;
   }
 
   .priest-img {
     width: 140px;
     height: 140px;
-    top: 107%;
-    left: 10%;
   }
 
   .princess-img {
     width: 140px;
     height: 170px;
-    top: 101%;
-    left: 22%;
   }
 
   .witch-img {
     width: 170px;
     height: 170px;
-    top: 101%;
-    left: 55%;
   }
 }
 
@@ -870,24 +859,38 @@ body {
 
 
 @media (max-width: 991px) {
+  .top-img {
+    img {
+      width: 600px;
+    }
+
+    .left-hand-img {
+      left: -15%;
+    }
+
+    .right-hand-img {
+      right: -18%;
+    }
+  }
+
   .master-message {
     width: 90%;
     margin-left: 5%;
-}
-
-.log-in-form,
-.sign-up-form,
-.reset-psw-form {
-  h3, form {
-    width: 80%;
-    margin-left: 10%;
   }
-}
+
+  .log-in-form,
+  .sign-up-form,
+  .reset-psw-form {
+    h3, form {
+      width: 80%;
+      margin-left: 10%;
+    }
+  }
 
   .modal-content {
     padding: 20px;
     width: 70%;
-}
+  }
 
   .my-goal {
     width: 50%;
@@ -918,10 +921,41 @@ body {
     font-size: 20px;
   }
 
+  .top-img img {
+    width: 450px;
+  }
+
+  .top-icon {
+    .brave-img {
+      width: 170px;
+      height: 170px;
+    }
+
+    .witch-img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .princess-img {
+      width: 110px;
+      height: 140px;
+    }
+
+    .knight-img {
+      width: 110px;
+      height: 110px;
+    }
+
+    .priest-img {
+      width: 110px;
+      height: 110px;
+    }
+  }
+
   .nav-list {
     margin-top: 65px;
     font-size: 17px;
-}
+  }
 
   .log-in-form,
   .sign-up-form,
@@ -930,7 +964,7 @@ body {
       width: 80%;
       margin-left: 10%;
     }
-}
+  }
 
   .modal-content {
     width: 80%;
@@ -954,6 +988,58 @@ body {
 
   .sub-title {
     font-size: 20px;
+  }
+
+  .top-img {
+    img {
+      width: 300px;
+    }
+
+    .left-hand-img {
+      left: -17%;
+    }
+
+    .right-hand-img {
+      right: -23%;
+    }
+  }
+
+  .top-icon {
+    img {
+      position: absolute;
+    }
+
+    .brave-img {
+      width: 140px;
+      height: 140px;
+      z-index: 2;
+    }
+
+    .witch-img {
+      width: 110px;
+      height: 110px;
+      left: 55%;
+      z-index: 1;
+    }
+
+    .princess-img {
+      width: 80px;
+      height: 110px;
+      left: 20%;
+      z-index: 1;
+    }
+
+    .knight-img {
+      width: 80px;
+      height: 80px;
+      right: 7%;
+    }
+
+    .priest-img {
+      width: 80px;
+      height: 80px;
+      left: 5%;
+    }
   }
 
   .nav-list {
