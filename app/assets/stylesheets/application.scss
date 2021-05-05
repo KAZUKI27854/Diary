@@ -156,24 +156,27 @@ body {
   max-width: 100vw;
   color: var(--main-back);
 
-    p {
-      font-size: 45px;
-    }
+  .text-area {
+    text-align: center;
 
+    .about-text {
+      font-size: 18px;
+    }
+  }
+
+  .header-area {
+    padding-right: 30px;
+    
     .about-header {
       writing-mode: vertical-rl;
       -ms-writing-mode: vertical-rl;
-      font-size: 60px;
+      font-size: 100px;
     }
-
-    .header-area {
-      width: 200px;
-      padding-left: 10%;
-    }
+  }
 
     .story {
       position: relative;
-      padding: 20px 0 60px 0;
+      padding: 20px 0 40px 0;
     }
 
     .story::after {
@@ -193,15 +196,19 @@ body {
   .char-col {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .img-area {
+      padding-left: 5%;
+    }
 
     .story-header {
       margin: 10px 20px 50px 0;
     }
 
     .about-brave-img {
-      width: 200px;
-      height: 200px;
-      margin: 20px 0 0 20px;
+      width: 150px;
+      height: 150px;
     }
   }
 }
@@ -215,7 +222,7 @@ body {
       content: "";
       display: block;
       position: absolute;
-      bottom: 146px;
+      bottom: 200px;
       right: 0;
       width: 100%;
       height: 0;
