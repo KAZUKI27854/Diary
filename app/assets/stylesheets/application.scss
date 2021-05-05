@@ -155,6 +155,46 @@ body {
 .about-container {
   max-width: 100vw;
   color: var(--main-back);
+  
+  .story-col,
+  .char-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .about-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-header {
+    writing-mode: vertical-rl;
+    -ms-writing-mode: vertical-rl;
+    font-size: 100px;
+  }
+
+  .story::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 5%;
+    background:
+    linear-gradient(to bottom left, red 48%, transparent 52%) ;
+  }
+
+  .story {
+    position: relative;
+    padding: 20px 0 40px 0;
+  }
+
+  .img-area {
+      padding-left: 5%;
+  }
 
   .text-area {
     text-align: center;
@@ -166,73 +206,29 @@ body {
 
   .header-area {
     padding-right: 30px;
-    
-    .about-header {
-      writing-mode: vertical-rl;
-      -ms-writing-mode: vertical-rl;
-      font-size: 100px;
-    }
-  }
-
-    .story {
-      position: relative;
-      padding: 20px 0 40px 0;
-    }
-
-    .story::after {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0;
-      padding-top: 5%;
-      background:
-      linear-gradient(to bottom left, red 48%, transparent 52%) ;
-    }
-
-  .story-col,
-  .char-col {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .img-area {
-      padding-left: 5%;
-    }
 
     .story-header {
       margin: 10px 20px 50px 0;
     }
-
-    .about-brave-img {
-      width: 150px;
-      height: 150px;
-    }
+  }
+  
+  .char::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 200px;
+    right: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 5%;
+    background:
+    linear-gradient(to top right, green 48%, transparent 52%) ;
+  }
+  
+  .char {
+    background-color: blue;
   }
 }
-
-
-    .char {
-      background-color: blue;
-    }
-
-    .char::before {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 200px;
-      right: 0;
-      width: 100%;
-      height: 0;
-      padding-top: 5%;
-      background:
-      linear-gradient(to top right, green 48%, transparent 52%) ;
-    }
-
-
-
 
 .nav-list {
   list-style: none;
