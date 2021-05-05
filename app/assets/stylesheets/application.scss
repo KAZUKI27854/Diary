@@ -152,47 +152,78 @@ body {
   }
 }
 
-.about-area {
+.about-container {
+  max-width: 100vw;
   color: var(--main-back);
-  padding-right: 0;
-  padding-left: 0;
 
-  .story {
-    position: relative;
-    padding: 20px 0 30px 0;
-  }
+    p {
+      font-size: 45px;
+    }
 
-  .story::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    padding-top: 5%;
-    background:
-    linear-gradient(to bottom left, red 48%, transparent 52%) ;
-  }
+    .about-header {
+      writing-mode: vertical-rl;
+      -ms-writing-mode: vertical-rl;
+      font-size: 60px;
+    }
 
-  .char {
-    background-color: blue;
-    width: 100%;
-  }
+    .header-area {
+      width: 200px;
+      padding-left: 10%;
+    }
 
-  .char::before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 56px;
-    right: 0;
-    width: 100%;
-    height: 0;
-    padding-top: 5%;
-    background:
-    linear-gradient(to top right, green 48%, transparent 52%) ;
+    .story {
+      position: relative;
+      padding: 20px 0 60px 0;
+    }
+
+    .story::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      padding-top: 5%;
+      background:
+      linear-gradient(to bottom left, red 48%, transparent 52%) ;
+    }
+
+  .story-col,
+  .char-col {
+    display: flex;
+    justify-content: space-between;
+
+    .story-header {
+      margin: 10px 20px 50px 0;
+    }
+
+    .about-brave-img {
+      width: 200px;
+      height: 200px;
+      margin: 20px 0 0 20px;
+    }
   }
 }
+
+
+    .char {
+      background-color: blue;
+    }
+
+    .char::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 146px;
+      right: 0;
+      width: 100%;
+      height: 0;
+      padding-top: 5%;
+      background:
+      linear-gradient(to top right, green 48%, transparent 52%) ;
+    }
+
 
 
 
