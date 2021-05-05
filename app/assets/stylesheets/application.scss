@@ -152,6 +152,48 @@ body {
   }
 }
 
+.about-area {
+  color: var(--main-back);
+  padding-right: 0;
+  padding-left: 0;
+
+  .story {
+    position: relative;
+    padding: 20px 0 30px 0;
+  }
+
+  .story::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 5%;
+    background:
+    linear-gradient(to bottom left, red 48%, transparent 52%) ;
+  }
+
+  .char {
+    background-color: blue;
+    width: 100%;
+  }
+
+  .char::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 56px;
+    right: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 5%;
+    background:
+    linear-gradient(to top right, green 48%, transparent 52%) ;
+  }
+}
+
 
 
 .nav-list {
@@ -873,7 +915,7 @@ body {
     }
   }
 
-  .master-message {
+  .message {
     width: 90%;
     margin-left: 5%;
   }
@@ -1047,7 +1089,7 @@ body {
     font-size: 15px;
 }
 
-  .master-message {
+  .message {
     width: 100%;
     margin-left: 0;
 }
@@ -1090,6 +1132,59 @@ body {
 
 }
 
+@media (max-width: 320px) {
+  .top-img {
+    img {
+      width: 240px;
+    }
 
+    .left-hand-img {
+      left: -20%;
+    }
+
+    .right-hand-img {
+      right: -24%;
+    }
+  }
+
+  .top-icon {
+    img {
+      position: absolute;
+    }
+
+    .brave-img {
+      width: 130px;
+      height: 130px;
+      z-index: 2;
+    }
+
+    .witch-img {
+      width: 100px;
+      height: 100px;
+      left: 57%;
+      z-index: 1;
+    }
+
+    .princess-img {
+      width: 80px;
+      height: 100px;
+      left: 14%;
+      z-index: 1;
+    }
+
+    .knight-img {
+      width: 70px;
+      height: 70px;
+      right: 0%;
+    }
+
+    .priest-img {
+      width: 70px;
+      height: 70px;
+      left: 0%;
+    }
+  }
+
+}
 
 
