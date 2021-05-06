@@ -157,7 +157,8 @@ body {
   color: var(--main-back);
 
   .story-col,
-  .contents-col {
+  .contents-col,
+  .character-col {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -176,7 +177,8 @@ body {
 
   .story::after,
   .contents::after,
-  .contents::before {
+  .contents::before,
+  .character::after {
     content: "";
     display: block;
     position: absolute;
@@ -186,16 +188,17 @@ body {
 
   }
 
-  .story::afetr {
-    bottom: 0;
-    left: 0;
-    background:
-    linear-gradient(to bottom left, red 48%, transparent 52%) ;
-  }
 
   .story {
     position: relative;
     padding: 20px 0 40px 0;
+
+    &::after {
+      bottom: 0;
+      left: 0;
+      background:
+      linear-gradient(to bottom left, red 48%, transparent 52%) ;
+    }
   }
 
   .img-area-left {
@@ -220,28 +223,30 @@ body {
     .story-header {
       margin: 10px 20px 50px 0;
     }
-  }
 
-  .contents::before {
-    bottom: 510px;
-    right: 0;
-    background:
-    linear-gradient(to top right, green 48%, transparent 52%) ;
-  }
-
-  .contents::afetr {
-    bottom: 0;
-    left: 0;
-    background:
-    linear-gradient(to bottom left, red 48%, transparent 52%) ;
+    .contents-header {
+      margin: 10px 0 50px 20px;
+    }
   }
 
   .contents {
     background-color: blue;
 
-    .contents-header {
-      margin: 10px 0 50px 20px;
+    &::before {
+      bottom: 510px;
+      right: 0;
+      background:
+      linear-gradient(to top right, green 48%, transparent 52%) ;
     }
+
+    &::after {
+      bottom: 0;
+      left: 0;
+      background:
+      linear-gradient(to bottom right, aqua 48%, transparent 52%) ;
+    }
+
+
   }
 }
 
