@@ -158,7 +158,8 @@ body {
 
   .story-col,
   .contents-col,
-  .character-col {
+  .character-col,
+  .something-col {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -176,7 +177,7 @@ body {
   }
 
   .story::after,
-  .contents::after,
+  .character::before,
   .contents::before,
   .character::after {
     content: "";
@@ -185,19 +186,22 @@ body {
     width: 100%;
     height: 0;
     padding-top: 5%;
-
   }
 
+  .story,
+  .contents,
+  .character {
+    padding: 20px 0 40px 0;
+  }
 
   .story {
     position: relative;
-    padding: 20px 0 40px 0;
 
     &::after {
       bottom: 0;
       left: 0;
       background:
-      linear-gradient(to bottom left, red 48%, transparent 52%) ;
+      linear-gradient(to top right, purple 48%, transparent 52%) ;
     }
   }
 
@@ -220,33 +224,39 @@ body {
   .header-area {
     padding-right: 30px;
 
-    .story-header {
+    .story-header,
+    .character-header {
       margin: 10px 20px 50px 0;
     }
 
-    .contents-header {
+    .contents-header,
+    .something-header {
       margin: 10px 0 50px 20px;
     }
   }
 
   .contents {
     background-color: blue;
+  }
+
+  .character {
+    background-color: beige;
+    position: relative;
 
     &::before {
-      bottom: 510px;
-      right: 0;
-      background:
-      linear-gradient(to top right, green 48%, transparent 52%) ;
-    }
-
-    &::after {
-      bottom: 0;
+      top: 0;
       left: 0;
       background:
       linear-gradient(to bottom right, aqua 48%, transparent 52%) ;
     }
 
 
+    &::after {
+      bottom: 0;
+      left: 0;
+      background:
+      linear-gradient(to top right, pink 48%, transparent 52%) ;
+    }
   }
 }
 
