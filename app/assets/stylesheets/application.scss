@@ -240,11 +240,27 @@ body {
 
     .contents-text {
       color: var(--main-font);
+      width: 70%;
+      margin-left: 15%;
 
       &::before {
         background-image: url(icon/books.png);
       }
     }
+
+    .screen-area {
+      display: flex;
+      justify-content: space-around;
+
+      .screen {
+        width: 30%;
+
+        .screen-img {
+          width: 100%;
+        }
+      }
+    }
+
   }
 
   .character {
