@@ -170,6 +170,14 @@ body {
     height: 150px;
   }
 
+  .about-left-text {
+    padding-left: 15%;
+  }
+
+  .about-right-text {
+    padding-left: 28%;
+  }
+
   .about-header {
     writing-mode: vertical-rl;
     -ms-writing-mode: vertical-rl;
@@ -190,7 +198,8 @@ body {
 
   .story,
   .contents,
-  .character {
+  .character,
+  .something {
     padding: 20px 0 40px 0;
   }
 
@@ -205,14 +214,6 @@ body {
     }
   }
 
-  .img-area-left {
-      padding-left: 5%;
-  }
-
-  .img-area-right {
-      padding-right: 5%;
-  }
-
   .text-area {
     text-align: center;
 
@@ -222,7 +223,6 @@ body {
   }
 
   .header-area {
-    padding-right: 30px;
 
     .story-header,
     .character-header {
@@ -237,6 +237,14 @@ body {
 
   .contents {
     background-color: blue;
+
+    .contents-text {
+      color: var(--main-font);
+
+      &::before {
+        background-image: url(icon/books.png);
+      }
+    }
   }
 
   .character {
@@ -378,6 +386,11 @@ body {
 }
 
 @keyframes bound {
+  0% {transform: translateY(0px);}
+  100% {transform: translateY(-10px);}
+}
+
+@-webkit-keyframes bound {
   0% {transform: translateY(0px);}
   100% {transform: translateY(-10px);}
 }

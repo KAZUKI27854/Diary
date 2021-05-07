@@ -1,3 +1,4 @@
+
 User.create!(name: 'ゆうしゃ', password: SecureRandom.urlsafe_base64, email: 'guest@example.com')
 guest_user = User.find_by(email: 'guest@example.com')
 
