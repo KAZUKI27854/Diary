@@ -221,6 +221,14 @@ body {
       background:
       linear-gradient(to top right, var(--about-back-bl) 48%, transparent 52%) ;
     }
+
+    .story-text {
+      color: var(--main-font);
+
+      &::before {
+        background-image: url(character/princess.png);
+      }
+    }
   }
 
   .text-area {
@@ -249,8 +257,8 @@ body {
 
     .contents-text {
       color: var(--main-font);
-      width: 70%;
-      margin-left: 15%;
+      width: 80%;
+      margin-left: 10%;
 
       &::before {
         background-image: url(icon/books.png);
