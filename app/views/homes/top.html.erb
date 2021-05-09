@@ -1,14 +1,14 @@
-<div class="top-page img-fluid">
+<div class="top img-fluid">
   <div class="container">
     <div class="row">
-      <div class="col-12 top-img">
-        <img src="/assets/monster-hand.png" class="left-hand-img" alt="left-hand-image">
-        <img src="/assets/monster-hand.png" class="right-hand-img" alt="right-hand-image">
+      <div class="col-12 top__img">
+        <img src="/assets/monster-hand.png" class="top__img--left-hand" alt="left-hand-image">
+        <img src="/assets/monster-hand.png" class="top__img--right-hand" alt="right-hand-image">
       </div>
       <div class="col-lg-1 col-md-1 col-sm-0"></div>
       <div class="col-lg-10 col-md-10 col-sm-12">
         <noscript>
-          <p class="noscript-message">
+          <p class="top__text--noscript">
             このサイトではJavaScriptを使用しています。現在のままでは一部機能が制限されますので、
             以下のサイトを参考に、JavaScriptの設定を有効にした上でご利用ください。
           </p>
@@ -17,22 +17,22 @@
             （リンク先：政府インターネットテレビ>>JavaScriptの設定方法）
           </a>
         </noscript>
-        <h1 class="main-title">Dot Diary</h1>
-        <h3 class="sub-title">〜みっかぼうずのやぼう〜</h3>
-        <ul class="nav-list">
+        <h1 class="top__text--main-title">Dot Diary</h1>
+        <h3 class="top__text--sub-title">〜みっかぼうずのやぼう〜</h3>
+        <ul class="top__link--list">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top-link-btn" %>
+              <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top__link" %>
             </li>
             <li class="bottom-link">
-              <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top-link-btn"  %>
+              <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top__link"  %>
             </li>
           <% else %>
             <li>
-              <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top-link-btn" %>
+              <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top__link" %>
             </li>
             <li>
-              <%= link_to "つづきから", new_user_session_path, class: "top-link-btn" %>
+              <%= link_to "つづきから", new_user_session_path, class: "top__link" %>
             </li>
             <li class="bottom-link">
               <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "guest-link link" %>
@@ -42,12 +42,12 @@
 
       </div>
       <div class="col-lg-1 col-md-1 col-sm-0"></div>
-      <div class="col-12 top-icon">
-        <img src="/assets/character/priest.png" class="priest-img" alt="priest-image">
-        <img src="/assets/character/princess.png" class="princess-img" alt="princess-image">
-        <img src="/assets/character/brave.png" class="brave-img" alt="brave-image">
-        <img src="/assets/character/witch.png" class="witch-img" alt="witch-image">
-        <img src="/assets/character/knight.png" class="knight-img" alt="knight-image">
+      <div class="col-12 top__img--chars">
+        <img src="/assets/character/priest.png" class="top__img--chars--priest" alt="priest-image">
+        <img src="/assets/character/princess.png" class="top__img--chars--princess" alt="princess-image">
+        <img src="/assets/character/brave.png" class="top__img--chars--brave" alt="brave-image">
+        <img src="/assets/character/witch.png" class="top__img--chars--witch" alt="witch-image">
+        <img src="/assets/character/knight.png" class="top__img--chars--knight" alt="knight-image">
       </div>
     </div>
   </div>

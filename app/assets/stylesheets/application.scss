@@ -53,24 +53,20 @@ body {
   color: var(--main-font);
 }
 
-.main-header {
+.header {
   background-color: var(--main-back);
+
+  &__link {
+    color: var(--main-font);
+  }
+
+  .navbar-toggler {
+    border-color: var(--main-font);
+    background-color: var(--main-font);
+  }
 }
 
-.head-link-btn {
-  color: var(--main-font);
-}
-
-.navbar-toggler {
-  border-color: var(--main-font);
-  background-color: var(--main-font);
-}
-
-.noscript-message {
-  background: var(--main-back);
-}
-
-.top-page {
+.top {
   width: 100%;
   height: 100vh;
   background-image: url(back/top-back.jpg);
@@ -82,81 +78,90 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-}
 
-.top-img {
-  width: 100vw;
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  &__link {
+    &--list {
+      list-style: none;
+    }
+  }
 
-  img {
-    width: 700px;
+  &__text {
+    &--noscript {
+      background: var(--main-back);
+    }
+
+    &--main-title{
+      font-size: 120px;
+    }
+
+    &--sub-title {
+      font-size: 30px;
+    }
+  }
+
+  &__img {
+    width: 100vw;
     position: absolute;
     top: 0%;
-  }
+    left: 0%;
 
-  .left-hand-img {
-    left: -9%;
-    transform: rotateZ(-45deg);
-    -webkit-transform: rotateZ(-45deg);
-    -moz-transform: rotateZ(-45deg);
-    -ms-transform: rotateZ(-45deg);
-  }
+    &--left-hand,
+    &--right-hand{
+      width: 700px;
+      position: absolute;
+      top: 0%;
+    }
 
-  .right-hand-img {
-    right: -10%;
-    transform: rotateZ(40deg);
-    -webkit-transform: rotateZ(40deg);
-    -moz-transform: rotateZ(40deg);
-    -ms-transform: rotateZ(40deg);
-  }
-}
+    &--left-hand {
+      left: -9%;
+      transform: rotateZ(-45deg);
+      -webkit-transform: rotateZ(-45deg);
+      -moz-transform: rotateZ(-45deg);
+      -ms-transform: rotateZ(-45deg);
+    }
 
-.title-container {
-  text-align: center;
-}
+    &--right-hand {
+      right: -10%;
+      transform: rotateZ(40deg);
+      -webkit-transform: rotateZ(40deg);
+      -moz-transform: rotateZ(40deg);
+      -ms-transform: rotateZ(40deg);
+    }
 
-.main-title{
-  font-size: 120px;
-}
+    &--chars {
+      width: 100vw;
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
 
-.sub-title {
-  font-size: 30px;
-}
+      &--brave {
+        width: 200px;
+        height: 200px;
+      }
 
-.top-icon {
-  width: 100vw;
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+      &--knight {
+        width: 140px;
+        height: 140px;
+      }
 
-  .brave-img {
-    width: 200px;
-    height: 200px;
-  }
+      &--priest {
+        width: 140px;
+        height: 140px;
+      }
 
-  .knight-img {
-    width: 140px;
-    height: 140px;
-  }
+      &--princess {
+        width: 140px;
+        height: 170px;
+      }
 
-  .priest-img {
-    width: 140px;
-    height: 140px;
-  }
-
-  .princess-img {
-    width: 140px;
-    height: 170px;
-  }
-
-  .witch-img {
-    width: 170px;
-    height: 170px;
+      &--witch {
+        width: 170px;
+        height: 170px;
+      }
+    }
   }
 }
 
@@ -1027,17 +1032,20 @@ body {
 
 
 @media (max-width: 991px) {
-  .top-img {
-    img {
-      width: 600px;
-    }
+  .top {
+    &__img {
+      &--left-hand,
+      &--right-hand {
+        width: 600px;
+      }
 
-    .left-hand-img {
-      left: -15%;
-    }
+      &--left-hand {
+        left: -15%;
+      }
 
-    .right-hand-img {
-      right: -18%;
+      &--right-hand {
+        right: -18%;
+      }
     }
   }
 
@@ -1081,42 +1089,49 @@ body {
 }
 
 @media (max-width: 768px) {
-   .main-title {
-    font-size: 100px;
-  }
+  .top {
+    &__text {
+      &--main-title {
+        font-size: 100px;
+      }
 
-  .sub-title {
-    font-size: 20px;
-  }
-
-  .top-img img {
-    width: 450px;
-  }
-
-  .top-icon {
-    .brave-img {
-      width: 170px;
-      height: 170px;
+      &--sub-title {
+        font-size: 20px;
+      }
     }
 
-    .witch-img {
-      width: 140px;
-      height: 140px;
-    }
+    &__img {
+      &--left-hand,
+      &--right-hand {
+        width: 450px;
+      }
 
-    .princess-img {
-      width: 110px;
-      height: 140px;
-    }
+      &--chars{
+        &--brave {
+          width: 170px;
+          height: 170px;
+        }
 
-    .knight-img {
-      width: 110px;
-      height: 110px;
-    }
+        &--witch {
+          width: 140px;
+          height: 140px;
+        }
 
-    .priest-img {
-      width: 110px;
-      height: 110px;
+        &--princess {
+          width: 110px;
+          height: 140px;
+        }
+
+        .knight-img {
+          width: 110px;
+          height: 110px;
+        }
+
+        .priest-img {
+          width: 110px;
+          height: 110px;
+        }
+      }
     }
   }
 
@@ -1210,70 +1225,77 @@ body {
 
 
 @media (max-width: 425px) {
-  .main-title {
-    font-size: 90px;
+  .top {
+    &__text {
+      &--main-title {
+        font-size: 90px;
+      }
+
+      &--sub-title {
+        font-size: 20px;
+      }
+    }
+
+    &__img {
+      &--left-hand,
+      &--right-hand {
+        width: 300px;
+      }
+
+      &--left-hand {
+        left: -17%;
+      }
+
+      &--right-hand {
+        right: -23%;
+      }
+
+      &--chars {
+        img {
+          position: absolute;
+        }
+
+        &--brave {
+          width: 140px;
+          height: 140px;
+          z-index: 2;
+        }
+
+        &--witch {
+          width: 110px;
+          height: 110px;
+          left: 55%;
+          z-index: 1;
+        }
+
+        &--princess {
+          width: 80px;
+          height: 110px;
+          left: 20%;
+          z-index: 1;
+        }
+
+        &--knight {
+          width: 80px;
+          height: 80px;
+          right: 7%;
+        }
+
+        &--priest {
+          width: 80px;
+          height: 80px;
+          left: 5%;
+        }
+      }
+
+      &--link {
+        &--list {
+          margin-top: 30px;
+          font-size: 15px;
+        }
+      }
+    }
   }
-
-  .sub-title {
-    font-size: 20px;
-  }
-
-  .top-img {
-    img {
-      width: 300px;
-    }
-
-    .left-hand-img {
-      left: -17%;
-    }
-
-    .right-hand-img {
-      right: -23%;
-    }
-  }
-
-  .top-icon {
-    img {
-      position: absolute;
-    }
-
-    .brave-img {
-      width: 140px;
-      height: 140px;
-      z-index: 2;
-    }
-
-    .witch-img {
-      width: 110px;
-      height: 110px;
-      left: 55%;
-      z-index: 1;
-    }
-
-    .princess-img {
-      width: 80px;
-      height: 110px;
-      left: 20%;
-      z-index: 1;
-    }
-
-    .knight-img {
-      width: 80px;
-      height: 80px;
-      right: 7%;
-    }
-
-    .priest-img {
-      width: 80px;
-      height: 80px;
-      left: 5%;
-    }
-  }
-
-  .nav-list {
-    margin-top: 30px;
-    font-size: 15px;
-}
 
   .message {
     width: 100%;
@@ -1319,55 +1341,58 @@ body {
 }
 
 @media (max-width: 320px) {
-  .top-img {
-    img {
-      width: 240px;
-    }
+  .top {
+    &__img {
+      &--left-hand,
+      &--right-hand {
+        width: 240px;
+      }
 
-    .left-hand-img {
-      left: -20%;
-    }
+      &--left-hand {
+        left: -20%;
+      }
 
-    .right-hand-img {
-      right: -24%;
-    }
-  }
+      &--right-hand {
+        right: -24%;
+      }
 
-  .top-icon {
-    img {
-      position: absolute;
-    }
+      &--chars {
+        img {
+          position: absolute;
+        }
 
-    .brave-img {
-      width: 130px;
-      height: 130px;
-      z-index: 2;
-    }
+        &--brave {
+          width: 130px;
+          height: 130px;
+          z-index: 2;
+        }
 
-    .witch-img {
-      width: 100px;
-      height: 100px;
-      left: 57%;
-      z-index: 1;
-    }
+        &--witch {
+          width: 100px;
+          height: 100px;
+          left: 57%;
+          z-index: 1;
+        }
 
-    .princess-img {
-      width: 80px;
-      height: 100px;
-      left: 14%;
-      z-index: 1;
-    }
+        &--princess {
+          width: 80px;
+          height: 100px;
+          left: 14%;
+          z-index: 1;
+        }
 
-    .knight-img {
-      width: 70px;
-      height: 70px;
-      right: 0%;
-    }
+        &--knight {
+          width: 70px;
+          height: 70px;
+          right: 0%;
+        }
 
-    .priest-img {
-      width: 70px;
-      height: 70px;
-      left: 0%;
+        &--priest {
+          width: 70px;
+          height: 70px;
+          left: 0%;
+        }
+      }
     }
   }
 

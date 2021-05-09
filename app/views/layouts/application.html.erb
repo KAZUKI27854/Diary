@@ -14,9 +14,9 @@
   </head>
 
   <body>
-    <header class="main-header">
+    <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <h2 class="nav-header"><%= link_to "Portfolio", root_path, class: "head-link-btn" %></h2>
+        <h2><%= link_to "Portfolio", root_path, class: "header__link" %></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
@@ -25,23 +25,23 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li>
-                <%= link_to "マイページ", user_path(current_user.id), class: "head-link-btn mr-5" %>
+                <%= link_to "マイページ", user_path(current_user.id), class: "header__link mr-5" %>
               </li>
               <li>
-                <%= link_to "あそびかた", "/about", class: "head-link-btn mr-5" %>
+                <%= link_to "あそびかた", "/about", class: "header__link mr-5" %>
               </li>
               <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "head-link-btn" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__link" %>
               </li>
             <% else %>
               <li>
-                <%= link_to "あそびかた", "/about", class: "head-link-btn mr-5" %>
+                <%= link_to "あそびかた", "/about", class: "header__link mr-5" %>
               </li>
               <li>
-                <%= link_to "あたらしくはじめる", new_user_registration_path, class: "head-link-btn mr-5" %>
+                <%= link_to "あたらしくはじめる", new_user_registration_path, class: "header__link mr-5" %>
               </li>
               <li>
-                <%= link_to "つづきから", new_user_session_path, class: "head-link-btn" %>
+                <%= link_to "つづきから", new_user_session_path, class: "header__link" %>
               </li>
             <% end %>
           </ul>
@@ -50,9 +50,7 @@
     </header>
     <%= yield %>
     <footer class="footer">
-      <!--div class="container"-->
         <p>フッター</p>
-      <!--/div-->
     </footer>
   </body>
 </html>
