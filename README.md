@@ -1,24 +1,20 @@
-# README
+# 「Dot Diary 」
+楽しみながら目標を記録する、日記形式の目標管理アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ストーリー
+これは、とある王国の物語...
+まじめな人がたくさん暮らすその国では、
+それぞれが「もくひょう」をもち平和に暮らしていました。
+しかし、とつぜん現れたモンスターによって王国中の
+「もくひょう」はうばわれ、人々は抜け殻のようになってしまいました。
+王国をはなれていた数人の戦士と、ひとりの「みっかぼうず」をのぞいて...
 
-Things you may want to cover:
+# 使い方
+## 1.目標を設定する
 
-* Ruby version
+ここにスクリーンショット
 
-* System dependencies
 
-* Configuration
+## 2.日々の行動を投稿する
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ここにスクリーンショット
