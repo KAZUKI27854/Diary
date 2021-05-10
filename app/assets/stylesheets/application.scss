@@ -82,6 +82,8 @@ body {
   &__link {
     &--list {
       list-style: none;
+      margin-top: 95px;
+      font-size: 20px;
     }
   }
 
@@ -165,41 +167,13 @@ body {
   }
 }
 
-.about-container {
+.about {
   max-width: 100vw;
 
-  .story-col,
-  .contents-col,
-  .char-col,
-  .something-col {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .about-img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .about-left-text {
-    padding-left: 15%;
-  }
-
-  .about-right-text {
-    padding-left: 28%;
-  }
-
-  .about-header {
-    writing-mode: vertical-rl;
-    -ms-writing-mode: vertical-rl;
-    font-size: 100px;
-  }
-
-  .story::after,
-  .contents::before,
-  .char::before,
-  .char::after {
+  &__story::after,
+  &__contents::before,
+  &__char::before,
+  &__char::after {
     content: "";
     display: block;
     position: absolute;
@@ -208,14 +182,88 @@ body {
     padding-top: 5%;
   }
 
-  .story,
-  .contents,
-  .char,
-  .something {
+  &__story,
+  &__contents,
+  &__char,
+  &__something {
     padding: 20px 0 40px 0;
   }
 
-  .story {
+  &__story--col,
+  &__contents--col,
+  &__char--col,
+  &__something--col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__img {
+    width: 150px;
+    height: 150px;
+  }
+
+  &__text {
+    font-size: 18px;
+
+    &--area {
+      text-align: center;
+    }
+
+    &--left {
+      padding-left: 15%;
+    }
+
+    &--right {
+      padding-left: 28%;
+    }
+
+    &--story {
+      color: var(--main-font);
+
+      &::before {
+        background-image: url(character/princess.png);
+      }
+    }
+
+    &--contents {
+      color: var(--main-font);
+      width: 80%;
+      margin-left: 10%;
+
+      &::before {
+        background-image: url(icon/books.png);
+      }
+    }
+
+    &--char {
+      color: var(--main-font);
+      width: 80%;
+      margin-left: 10%;
+
+      &::before {
+        background-image: url(monster/monster1.png);
+      }
+    }
+  }
+
+  &__header {
+    writing-mode: vertical-rl;
+    -ms-writing-mode: vertical-rl;
+    font-size: 100px;
+
+    &--story,
+    &--char {
+      margin: 10px 20px 50px 0;
+    }
+
+    &--contents
+    &--something {
+      margin: 10px 0 50px 20px;
+    }
+  }
+
+  &__story {
     background-color: var(--about-back-yl);
     position: relative;
     color: var(--main-back);
@@ -226,66 +274,26 @@ body {
       background:
       linear-gradient(to top right, var(--about-back-bl) 48%, transparent 52%) ;
     }
-
-    .story-text {
-      color: var(--main-font);
-
-      &::before {
-        background-image: url(character/princess.png);
-      }
-    }
   }
 
-  .text-area {
-    text-align: center;
-
-    .about-text {
-      font-size: 18px;
-    }
-  }
-
-  .header-area {
-
-    .story-header,
-    .char-header {
-      margin: 10px 20px 50px 0;
-    }
-
-    .contents-header,
-    .something-header {
-      margin: 10px 0 50px 20px;
-    }
-  }
-
-  .contents {
+  &__contents {
     background-color: var(--about-back-bl);
 
-    .contents-text {
-      color: var(--main-font);
-      width: 80%;
-      margin-left: 10%;
-
-      &::before {
-        background-image: url(icon/books.png);
-      }
-    }
-
-    .contents-screen-area {
+    &--screen-area-big {
       display: flex;
       justify-content: space-around;
-
-      .screen {
-        width: 30%;
-
-        .screen-img {
-          width: 100%;
-        }
-      }
     }
 
+    &--screen-area-small {
+      width: 30%;
+    }
+
+    &--screen-img {
+      width: 100%;
+    }
   }
 
-  .char {
+  &__char {
     background-color: var(--about-back-yl);
     position: relative;
     color: var(--main-back);
@@ -304,16 +312,6 @@ body {
       background:
       linear-gradient(to top right, var(--about-back-bl) 48%, transparent 52%) ;
     }
-
-    .char-text {
-      color: var(--main-font);
-      width: 80%;
-      margin-left: 10%;
-
-      &::before {
-        background-image: url(monster/monster1.png);
-      }
-    }
   }
 
   .something {
@@ -321,12 +319,6 @@ body {
   }
 }
 
-
-.nav-list {
-  list-style: none;
-  margin-top: 95px;
-  font-size: 20px;
-}
 
 .top-link-btn {
   color: var(--top-color);
@@ -1090,6 +1082,13 @@ body {
 
 @media (max-width: 768px) {
   .top {
+    &__link {
+      &--list {
+        margin-top: 65px;
+        font-size: 17px;
+      }
+    }
+
     &__text {
       &--main-title {
         font-size: 100px;
@@ -1135,69 +1134,56 @@ body {
     }
   }
 
-  .about-container {
-  .about-img {
-    width: 120px;
-    height: 120px;
-  }
+  .about {
+    &__img {
+      width: 120px;
+      height: 120px;
+    }
 
-  .about-left-text {
-    padding-left: 5%;
-  }
-
-  .about-right-text {
-    padding-left: 20%;
-  }
-
-  .about-header {
-    font-size: 70px;
-  }
-
-  .story,
-  .contents,
-  .char,
-  .something {
-    padding: 10px 0 10px 0;
-  }
-
-  .text-area {
-    .about-text {
+    &__text {
       font-size: 13px;
-    }
-  }
 
-  .header-area {
-    .story-header,
-    .char-header {
-      margin: 10px 0 20px 0;
+      &--left {
+        padding-left: 5%;
+      }
+
+      &--right {
+        padding-left: 20%;
+      }
+
+      &--contents {
+        width: 90%;
+        margin-left: 5%;
+        font-size: 17px;
+      }
+
+      &--char {
+        width: 90%;
+        margin-left: 5%;
+        font-size: 17px;
+      }
     }
 
-    .contents-header,
-    .something-header {
-      margin: 10px 0 20px 0;
-    }
-  }
+    &__header {
+      font-size: 70px;
 
-  .contents {
-    .contents-text {
-      width: 90%;
-      margin-left: 5%;
-      font-size: 17px;
-    }
-  }
+      &--story,
+      &--char {
+        margin: 10px 0 20px 0;
+      }
 
-  .char {
-    .char-text {
-      width: 90%;
-      margin-left: 5%;
-      font-size: 17px;
+      &--contents,
+      &--something {
+        margin: 10px 0 20px 0;
+      }
     }
-  }
-}
 
-  .nav-list {
-    margin-top: 65px;
-    font-size: 17px;
+    &__story,
+    &__contents,
+    &__char,
+    &__something {
+      padding: 10px 0 10px 0;
+    }
   }
 
   .log-in-form,
