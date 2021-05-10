@@ -24,7 +24,7 @@
             <li>
               <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top__link" %>
             </li>
-            <li class="bottom-link">
+            <li class="top__link--bottom">
               <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top__link"  %>
             </li>
           <% else %>
@@ -34,7 +34,7 @@
             <li>
               <%= link_to "つづきから", new_user_session_path, class: "top__link" %>
             </li>
-            <li class="bottom-link">
+            <li class="top__link--bottom">
               <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "guest-link link" %>
             </li>
           <% end %>
