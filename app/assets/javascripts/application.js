@@ -71,19 +71,19 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    $('.levelup-text').each(function(){
+    $('.levelup__text').each(function(){
       var txt = $(this).html();
       $(this).html(txt.replace("LEVELUP!","<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>"));
     });
   });
 
   $(function(){
-    setTimeout("$('.levelup-back').fadeOut('slow')", 1200
+    setTimeout("$('.levelup__back').fadeOut('slow')", 1200
     );
   });
 
   $(function(){
-    setTimeout("$('.clear-back').fadeOut('slow')", 3500
+    setTimeout("$('.clear__back').fadeOut('slow')", 3500
     );
   });
 

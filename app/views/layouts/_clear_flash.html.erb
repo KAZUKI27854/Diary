@@ -1,5 +1,5 @@
 <% if flash[:clear] %>
-  <div class="clear-back">
+  <div class="clear__back">
     <div class="fireworks fireworks-left">
       <img src="/assets/fireworks.png" alt="flash-image">
     </div>
@@ -15,13 +15,13 @@
     <div class="fireworks fireworks-under-left">
       <img src="/assets/red-fireworks.png" alt="flash-image">
     </div>
-    <div class="levelup-char">
+    <div class="levelup__char">
       <img src="/assets/character/brave.png" alt="flash-image">
       <img src="/assets/character/witch.png" alt="flash-image">
       <img src="/assets/character/priest.png" alt="flash-image">
       <img src="/assets/character/princess.png" alt="flash-image">
     </div>
-    <p class="clear-text message"><%= flash[:clear] %></p>
-    <p class="levelup-text">LEVELUP!</p>
+    <p class="clear__text message"><%= flash[:clear] %></p>
+    <p class="levelup__text">LEVELUP!</p>
   </div>
 <% end %>

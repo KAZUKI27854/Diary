@@ -411,6 +411,13 @@ body {
 }
 
 .my-page {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-image: url(road.jpg);
+
   &__menu {
     padding-left: 5%;
     background: var(--main-back);
@@ -481,11 +488,10 @@ body {
 /* テキスト前に表示させるアイコンのCSS */
 .top__link:hover:before,
 .header__link:hover:before,
-.link:before,
-.menu-logo:before,
-.menu-logo:after,
-.menu-icon p:after,
-.my-goal:before,
+.my-page__menu--logo:before,
+.my-page__menu--logo:after,
+.my-page__menu--text:after,
+.my-page__menu--text--goal:before,
 .message:before {
   content: '';
   display: inline-block;
@@ -544,6 +550,10 @@ body {
       }
 
       &--goal{
+        margin-top: 5px;
+        display: inline-block;
+        width: 100%;
+
         &:nth-of-type(1):before {
           background-image: url(icon/red-book.png);
         }
@@ -602,109 +612,113 @@ body {
 .clear-text:before {
   background-image: url(icon/books.png);
 }
+/* アイコンのCSSここまで */
 
-.my-goal {
-  margin-top: 5px;
-  display: inline-block;
-  width: 100%;
-}
+.doc {
+  &__card {
+    margin-bottom: 10px !important;
+    position: relative;
 
-.doc-card {
-  margin-bottom: 10px !important;
-  position: relative;
-}
+    &--img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
 
-.doc-body {
-  background-color: var(--main-back);
-  width: 100%;
-  p {
-    overflow: hidden;
+    &--stage {
+      position: relative;
+      width: 100%;
+
+      &-img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--monster {
+      &-left,
+      &-right {
+        width: 25%;
+        position: absolute;
+        top: 50%;
+      }
+
+      &-left {
+        left: 20%;
+      }
+
+      &-right {
+        left: 55%;
+      }
+
+      &-boss {
+        width: 50%;
+        position: absolute;
+        top: 30%;
+        left: 25%;
+      }
+
+      &-img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--body {
+      background-color: var(--main-back);
+      width: 100%;
+      p {
+        overflow: hidden;
+      }
+    }
+
+    &--date {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--main-back);
+      height: 13%;
+      width: 20%;
+      background-image: linear-gradient(-45deg, transparent 49%, white 49%, white 51%, transparent 51%, transparent);
+
+      &-month {
+        font-size: 150%;
+        margin-left: 10%;
+      }
+
+      &-day {
+        font-size: 150%;
+        margin-left: 50%;
+      }
+    }
+
+    &--bottom {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
   }
-}
-
-.doc-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.stage {
-  position: relative;
-  width: 100%;
-}
-
-.stage-img,
-.monster-img {
-  width: 100%;
-  height: 100%;
-}
-
-.boss-monster {
-  width: 50%;
-  position: absolute;
-  top: 30%;
-  left: 25%;
-}
-
-.monster-left,
-.monster-right {
-  width: 25%;
-  position: absolute;
-  top: 50%;
-}
-
-.monster-left {
-  left: 20%;
-}
-
-.monster-right {
-  left: 55%;
-}
-
-.doc-date {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--main-back);
-  height: 13%;
-  width: 20%;
-  background-image: linear-gradient(-45deg, transparent 49%, white 49%, white 51%, transparent 51%, transparent);
-}
-
-.doc-month {
-  font-size: 150%;
-  margin-left: 10%;
-}
-
-.doc-day {
-  font-size: 150%;
-  margin-left: 50%;
-}
-
-.doc-bottom {
-  margin-bottom: 0;
-  width: 100%;
 }
 
 .pagination {
   justify-content: center;
   margin-top: 30px;
+
+  a {
+    border: none;
+    color: var(--main-font);
+    background-color: var(--main-back);
+  }
 }
 
-.pagination>li>a {
-  border: none;
-  color: var(--main-font);
-  background-color: var(--main-back);
-}
 
-.about,
-.my-page,
 .doc-edit {
   width: 100%;
   height: 100%;
   min-height: 100vh;
   background-position: 50% 50%;
   background-size: cover;
+  background-image: url(wild_land.jpg);
 }
 
 .new-doc,
@@ -723,26 +737,12 @@ body {
   background-image: url(forest.jpg);
 }
 
-.about {
-  padding-top: 150px;
-  text-align: center;
-  background-image: url(sample2.png);
-}
-
-.my-page {
-  background-image: url(road.jpg);
-}
-
 .new-doc {
   background-image: url(cave.jpg);
 }
 
 .sytem-explanation {
   color: var(--menu-logo);
-}
-
-.doc-edit {
-  background-image: url(wild_land.jpg);
 }
 
 .goal-show {
@@ -767,44 +767,141 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+
+  &__content {
+    background: #fff;
+    left: 50%;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    text-align: center;
+  }
+
+  &__back {
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+  }
 }
 
-.modal-content {
-  background: #fff;
-  left: 50%;
-  padding: 30px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 60%;
-  text-align: center;
-}
-
-.modal-back,
-.levelup-back,
-.clear-back {
+.levelup__back,
+.clear__back {
   background: rgba(0,0,0,0.8);
   height: 100vh;
   width: 100%;
-}
-
-.modal-back {
-  position: absolute;
-}
-
-.levelup-back,
-.clear-back {
   z-index: 4;
   position: fixed;
   top: 0;
 }
 
-.levelup-text,
-.levelup-char {
-  text-align: center;
-  line-height: 30vh;
+.levelup {
+  &__back {
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    width: 100%;
+    z-index: 4;
+    position: fixed;
+    top: 0;
+  }
+
+  &__text {
+    text-align: center;
+    line-height: 30vh;
+
+    span {
+      display: inline-block;
+      position: relative;
+      font-size: 130px;
+      color: var(--main-font);
+      animation: 1s ease infinite;
+      -webkit-animation: 1s ease infinite;
+      animation-name: textWave;
+      -webkit-animation-name: textWave;
+
+      &:nth-of-type(2) {
+        animation-delay: 0.1s;
+        -webkit-animation-delay: 0.1s;
+      }
+
+      &:nth-of-type(3) {
+        animation-delay: 0.2s;
+        -webkit-animation-delay: 0.2s;
+      }
+
+      &:nth-of-type(4) {
+        animation-delay: 0.3s;
+        -webkit-animation-delay: 0.3s;
+      }
+
+      &:nth-of-type(5) {
+        animation-delay: 0.4s;
+        -webkit-animation-delay: 0.4s;
+      }
+
+      &:nth-of-type(6) {
+        animation-delay: 0.5s;
+        -webkit-animation-delay: 0.5s;
+      }
+
+      &:nth-of-type(7) {
+        animation-delay: 0.6s;
+        -webkit-animation-delay: 0.6s;
+      }
+
+      &:nth-of-type(8) {
+        animation-delay: 0.7s;
+        -webkit-animation-delay: 0.7s;
+      }
+
+      &:nth-of-type(9) {
+        animation-delay: 0.8s;
+        -webkit-animation-delay: 0.8s;
+      }
+
+      &:nth-of-type(10) {
+        animation-delay: 0.9s;
+        -webkit-animation-delay: 0.9s;
+      }
+    }
+  }
+
+  &__char {
+    text-align: center;
+    line-height: 30vh;
+
+    img {
+      display: inline-block;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      animation: 1s ease infinite;
+      -webkit-animation: 1s ease infinite;
+      animation-name: charWave;
+      -webkit-animation-name: charWave;
+
+      &:nth-of-type(2) {
+        animation-delay: 0.1s;
+        -webkit-animation-delay: 0.1s;
+      }
+
+      &:nth-of-type(3) {
+        animation-delay: 0.2s;
+        -webkit-animation-delay: 0.2s;
+      }
+
+      &:nth-of-type(4) {
+        animation-delay: 0.3s;
+        -webkit-animation-delay: 0.3s;
+      }
+    }
+  }
 }
 
+/* 記録投稿時のアニメーションCSS */
+/* 1.テキストが波打つアニメーション */
 @-webkit-keyframes textWave {
  0% {
    top: 0.5em;
@@ -823,6 +920,7 @@ body {
  }
 }
 
+/* 2.キャラが波打つアニメーション */
 @-webkit-keyframes charWave {
  0% {
    top: 1.5em;
@@ -841,86 +939,7 @@ body {
  }
 }
 
-.levelup-text span,
-.levelup-char img {
-  display: inline-block;
-  position: relative;
-}
-
-.levelup-text span {
-  font-size: 130px;
-  color: var(--main-font);
-}
-
-.levelup-char img {
-  width: 100px;
-  height: 100px;
-}
-
-.levelup-text span,
-.levelup-char img {
-  animation: 1s ease infinite;
-  -webkit-animation: 1s ease infinite;
-}
-
-.levelup-text span {
-  animation-name: textWave;
-  -webkit-animation-name: textWave;
-}
-
-.levelup-char img {
-  animation-name: charWave;
-  -webkit-animation-name: charWave;
-}
-
-.levelup-text span:nth-of-type(2),
-.levelup-char img:nth-of-type(2){
-  animation-delay: 0.1s;
-  -webkit-animation-delay: 0.1s;
-}
-
-.levelup-text span:nth-of-type(3),
-.levelup-char img:nth-of-type(3){
-  animation-delay: 0.2s;
-  -webkit-animation-delay: 0.2s;
-}
-
-.levelup-text span:nth-of-type(4),
-.levelup-char img:nth-of-type(4) {
-  animation-delay: 0.3s;
-  -webkit-animation-delay: 0.3s;
-}
-
-.levelup-text span:nth-of-type(5) {
-  animation-delay: 0.4s;
-  -webkit-animation-delay: 0.4s;
-}
-
-.levelup-text span:nth-of-type(6) {
-  animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
-}
-
-.levelup-text span:nth-of-type(7) {
-  animation-delay: 0.6s;
-  -webkit-animation-delay: 0.6s;
-}
-
-.levelup-text span:nth-of-type(8) {
-  animation-delay: 0.7s;
-  -webkit-animation-delay: 0.7s;
-}
-
-.levelup-text span:nth-of-type(9) {
-  animation-delay: 0.8s;
-  -webkit-animation-delay: 0.8s;
-}
-
-.levelup-text span:nth-of-type(10) {
-  animation-delay: 0.9s;
-  -webkit-animation-delay: 0.9s;
-}
-
+/* 3.花火が開いて消えるアニメーション（目標LV.100達成時のみ） */
 @-webkit-keyframes fireworks {
 	0% {
 		opacity: 0;
@@ -963,64 +982,62 @@ body {
   position: absolute;
   animation: fireworks linear infinite;
   -webkit-animation: fireworks linear infinite;
-  /* animation-name: fireworks;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite; */
+
+  &-left {
+    top: 0;
+    left: 0;
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+  }
+
+  &-center {
+    top: -10%;
+    left: 27%;
+    animation-duration: 2s;
+    animation-delay: 0.6s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0.6s;
+  }
+
+  &-right {
+    top: 10%;
+    right: 0;
+    animation-duration: 2s;
+    animation-delay: 0.3s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0.3s;
+  }
+
+  &-under-right {
+    top: 50%;
+    right: 0;
+    animation-duration: 2s;
+    animation-delay: 0.6s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0.6s;
+  }
+
+  &-under-left {
+    top: 50%;
+    left: 0;
+    animation-duration: 2s;
+    animation-delay: 0.3s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0.3s;
+  }
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
 }
 
-.fireworks-left {
-  top: 0;
-  left: 0;
-  animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-}
-
-.fireworks-center {
-  top: -10%;
-  left: 27%;
-  animation-duration: 2s;
-  animation-delay: 0.6s;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 0.6s;
-}
-
-.fireworks-right {
-  top: 10%;
-  right: 0;
-  animation-duration: 2s;
-  animation-delay: 0.3s;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 0.3s;
-}
-
-.fireworks-under-right {
-  top: 50%;
-  right: 0;
-  animation-duration: 2s;
-  animation-delay: 0.6s;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 0.6s;
-}
-
-.fireworks-under-left {
-  top: 50%;
-  left: 0;
-  animation-duration: 2s;
-  animation-delay: 0.3s;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 0.3s;
-}
-
-.fireworks img {
-  width: 300px;
-  height: 300px;
-}
-
-.clear-text {
+.clear__text {
   width: 50%;
   margin-left: 25%;
   position: absolute;
 }
+
 
 .footer {
   position: absolute;
@@ -1031,11 +1048,14 @@ body {
 }
 
 @media (min-width: 1200px) {
-  .doc-img {
-    height: 296px;
+  .doc {
+    &__card {
+      &--img {
+        height: 296px;
+      }
+    }
   }
 }
-
 
 @media (max-width: 991px) {
   .top {
@@ -1069,27 +1089,31 @@ body {
     }
   }
 
-  .modal-content {
+  .modal__content {
     padding: 20px;
     width: 70%;
   }
 
-  .my-goal {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
+  .my-page{
+    &__menu {
+      &--text {
+        &--goal {
+          width: 50%;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-left: 0;
+        }
+      }
+    }
   }
 
-  .my-goal {
-    margin-top: 20px;
-  }
-
-  .my-goal {
-    margin-left: 0;
-  }
-
-  .levelup-text span {
-    font-size: 100px;
+  .levelup {
+    &__text {
+      span {
+        font-size: 100px;
+      }
+    }
   }
 
 }
@@ -1209,18 +1233,25 @@ body {
     }
   }
 
-  .modal-content {
+  .modal__content {
     width: 80%;
   }
 
-  .levelup-text span {
-    font-size: 90px;
+  .levelup {
+    &__text {
+      span {
+        font-size: 90px;
+      }
+    }
   }
 
-  .fireworks img {
-    width: 200px;
-    height: 200px;
+  .fireworks {
+    img {
+      width: 200px;
+      height: 200px;
+    }
   }
+
 }
 
 
@@ -1311,31 +1342,39 @@ body {
     }
 }
 
-  .modal-content {
+  .modal__content {
     padding: 10px;
     width: 94%;
 }
 
-  .levelup-char img {
-    width: 60px;
-    height: 60px;
-}
+  .levelup {
+    &__char {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
 
-  .levelup-text span {
-    font-size: 65px;
+    &__text {
+      span {
+        font-size: 65px;
+      }
+    }
   }
 
-  .fireworks img {
-    width: 150px;
-    height: 150px;
-  }
+  .fireworks {
+    &-center {
+      top: 0%;
+    }
 
-  .fireworks-center {
-    top: 0%;
-  }
+    &-left {
+      top: 10%;
+    }
 
-  .fireworks-left {
-    top: 10%;
+    img {
+      width: 150px;
+      height: 150px;
+    }
   }
 
 }

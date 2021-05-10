@@ -3,50 +3,50 @@
     <div class="row" id="index">
       <% documents.each do |document| %>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="card doc-card">
+          <div class="card doc__card">
             <% if document.document_image_id.present? %>
                 <%= attachment_image_tag document, :document_image,
-                    class: "card-img-top doc-img", id: "imageArea" %>
+                    class: "doc__card--img-top doc__card--img", id: "imageArea" %>
             <% elsif within_100_and_not_multiples_of_5?(document.goal_id, document.id) then %>
-              <div class="stage">
+              <div class="doc__card--stage">
                 <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) + 1 %>.jpg"
-                     class="stage-img" alt="stage-image">
+                     class="doc__card--stage-img" alt="stage-image">
 
-                  <div class="monster-left">
+                  <div class="doc__card--monster-left">
                     <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
-                         class="monster-img" alt="monster-image">
+                         class="doc__card--monster-img" alt="monster-image">
                   </div>
-                  <div class="monster-right">
+                  <div class="doc__card--monster-right">
                     <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
-                         class="monster-img" alt="monster-image">
+                         class="doc__card--monster-img" alt="monster-image">
                   </div>
               </div>
             <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
-              <div class="stage">
+              <div class="doc__card--stage">
                 <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) %>.jpg"
-                     class="stage-img" alt="stage-image">
-                  <div class="boss-monster">
+                     class="doc__card--stage-img" alt="stage-image">
+                  <div class="doc__card--monster-boss">
                     <img src="/assets/monster/boss<%= doc_number(document.goal_id, document.id) / 5 %>.png"
-                         class="monster-img" alt="monster-image">
+                         class="doc__card--monster-img" alt="monster-image">
                   </div>
               </div>
             <% else %>
-              <div class="stage">
-                <img src="/assets/stage/stage21.jpg" class="stage-img" alt="stage-image">
-                <div class="monster-left">
-                  <%= image_tag '', class: "random-monster-img monster-img" %>
+              <div class="doc__card--stage">
+                <img src="/assets/stage/stage21.jpg" class="doc__card--stage-img" alt="stage-image">
+                <div class="doc__card--monster-left">
+                  <%= image_tag '', class: "random-monster-img doc__card--monster-img" %>
                 </div>
-                <div class="monster-right">
-                  <%= image_tag '', class: "random-monster-img monster-img" %>
+                <div class="doc__card--monster-right">
+                  <%= image_tag '', class: "random-monster-img doc__card--monster-img" %>
                 </div>
               </div>
             <% end %>
-            <div class="card-body doc-body">
+            <div class="card-body doc__card--body">
               <div class="row">
-                <p class="doc-title">
+                <p class="doc__card--title">
                   <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
                 </p>
-                <p class="doc-body">
+                <p class="doc__card--body">
                   <% if document.document_image_id.present? %>
                     <%= document.body %> </br>
                   <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
@@ -59,14 +59,14 @@
                   <% end %>
                   <%= user.name %>は <%= document.add_level %> レベルアップした！
                 </p>
-                <p class="doc-body">
+                <p class="doc__card--body">
                   【つぎのもくひょう】</br>
                   <%= document.milestone %> </br>
                   <% unless cat_level(document.goal_id) >= 100 %>
                     せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
                   <% end %>
                 </p>
-                <p class="doc-bottom">
+                <p class="doc__card--bottom">
                   <% if current_user.id == document.user_id %>
                     <span class="link">
                       <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
@@ -74,9 +74,9 @@
                           "data-confirm" => "削除してよろしいですか？", class: "delete_link" %>
                     </span>
                   <% end %>
-                    <span class="doc-date">
-                      <span class="doc-month"><%= document.created_at.strftime('%m') %></span>
-                      <span class="doc-day"><%= document.created_at.strftime('%d') %></span>
+                    <span class="doc__card--date">
+                      <span class="doc__card--date-month"><%= document.created_at.strftime('%m') %></span>
+                      <span class="doc__card--date-day"><%= document.created_at.strftime('%d') %></span>
                     </span>
                 </p>
               </div>
