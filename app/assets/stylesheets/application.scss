@@ -80,12 +80,14 @@ body {
   overflow: hidden;
 
   &__link {
+    color: var(--main-font);
+
     &--list {
       list-style: none;
       margin-top: 95px;
       font-size: 20px;
     }
-    
+
     &--bottom {
       margin-top: 10px;
     }
@@ -350,7 +352,7 @@ body {
   text-align: center;
   height: 100vh;
   padding-top: 5%;
-  
+
   h3, form {
     width: 60%;
     margin-left: 20%;
@@ -362,7 +364,7 @@ body {
     padding-bottom: 1%;
     padding-top: 2%;
   }
-  
+
   .field,
   .actions {
     margin-bottom: 5%;
@@ -395,32 +397,57 @@ body {
   width: 90%;
 }
 
-.error-message {
-  list-style: none;
-  text-decoration: underline;
-}
-
-.error-explanation {
+.error__message {
   background: var(--error-back);
-}
-
-.menu-logo,
-.error-explanation {
   border: solid 5px var(--main-font);
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
+
+  &--list {
+    list-style: none;
+    text-decoration: underline;
+  }
 }
 
-.error-explanation>ul>li {
-  list-style: none;
+.my-page {
+  &__menu {
+    padding-left: 5%;
+    background: var(--main-back);
+    border: solid 5px var(--main-font);
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+
+    &--logo{
+      background: var(--menu-logo);
+      font-size: 150%;
+      border: solid 5px var(--main-font);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    &--icon {
+      text-align: center;
+
+      &--img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  &__link {
+    &--modal {
+      text-decoration: underline;
+      color: var(--main-font);
+    }
+  }
+
 }
 
-.menu-logo {
-  background: var(--menu-logo);
-  font-size: 150%;
-}
-
+/* 「バウンド」アニメーション（目標か記録が無い場合に該当アイコンがバウンド */
 @keyframes bound {
   0% {transform: translateY(0px);}
   100% {transform: translateY(-10px);}
@@ -436,32 +463,13 @@ body {
   animation: bound 0.3S ease infinite alternate;
   -webkit-animation: bound 0.3S ease infinite alternate;
 }
+/* 「バウンド」アニメーションここまで */
 
-.menu-icon {
-  text-align: center;
-  img {
-    width: 100px;
-    height: 100px;
-  }
-  a {
-    text-decoration: underline;
-    color: var(--main-font);
-  }
-}
-
-.menu {
-  padding-left: 5%;
-}
-
-.menu,
 .message {
   background: var(--main-back);
   border: solid 5px var(--main-font);
   border-radius: 10px;
   margin-bottom: 20px;
-}
-
-.message {
   text-align: center;
   font-size: 20px;
 }
@@ -470,8 +478,9 @@ body {
   margin-top: var(--upper-margin);
 }
 
-.top-link-btn:hover:before,
-.head-link-btn:hover:before,
+/* テキスト前に表示させるアイコンのCSS */
+.top__link:hover:before,
+.header__link:hover:before,
 .link:before,
 .menu-logo:before,
 .menu-logo:after,
@@ -487,69 +496,83 @@ body {
   vertical-align: middle;
 }
 
-.top-link-btn:hover,
-.head-link-btn:hover {
+.top__link:hover,
+.header__link:hover {
   text-decoration: none;
   color: var(--main-font);
+
+  &:before {
+    background-image: url(icon/cursor.png);
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.top-link-btn:hover:before,
-.head-link-btn:hover:before {
-  background-image: url(icon/cursor.png);
-  width: 20px;
-  height: 20px;
-}
-
-.guest-link:before {
+.top__link--guest:before {
   background-image: url(character/brave.png);
 }
 
-.log-in-link:before {
+.log-in__link:before {
   background-image: url(monster/monster4.png);
 }
 
-.sign-up-link:before {
+.sign-up__link:before {
   background-image: url(monster/monster1.png);
 }
 
-.reset-psw-link:before {
+.reset-psw__link:before {
   background-image: url(monster/monster5.png);
 }
 
-.menu-logo:before {
-  background-image: url(monster/monster13.png);
-}
+.my-page {
+  &__menu {
+    &--logo {
+      &:before {
+        background-image: url(monster/monster13.png);
+      }
 
-.menu-logo:after {
-  background-image: url(monster/monster14.png);
-}
+      &:after {
+        background-image: url(monster/monster14.png);
+      }
+    }
 
-.menu-icon p:after {
-  background-image: url(icon/downward-cursor.png);
-  width: 10px;
-  height: 10px;
-}
+    &--text {
+      &:after {
+        background-image: url(icon/downward-cursor.png);
+        width: 10px;
+        height: 10px;
+      }
 
-.menu-icon .active:after {
-  background-image: url(icon/upward-cursor.png);
-  width: 10px;
-  height: 10px;
-}
+      &--goal{
+        &:nth-of-type(1):before {
+          background-image: url(icon/red-book.png);
+        }
 
-.my-goal:nth-of-type(1):before {
-  background-image: url(icon/red-book.png);
-}
+        &:nth-of-type(2):before {
+          background-image: url(icon/blue-book.png);
+        }
 
-.my-goal:nth-of-type(2):before {
-  background-image: url(icon/blue-book.png);
-}
+        &:nth-of-type(3):before {
+          background-image: url(icon/green-book.png);
+        }
 
-.my-goal:nth-of-type(3):before {
-  background-image: url(icon/green-book.png);
-}
+        &:nth-of-type(4):before {
+          background-image: url(icon/purple-book.png);
+        }
+      }
+    }
 
-.my-goal:nth-of-type(4):before {
-  background-image: url(icon/purple-book.png);
+    &--icon {
+      .active {
+        &:after {
+          background-image: url(icon/upward-cursor.png);
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+
+  }
 }
 
 .master:before {

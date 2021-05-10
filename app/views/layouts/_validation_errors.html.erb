@@ -1,9 +1,9 @@
 <% if instance.errors.any? %>
-  <div class="error-explanation">
+  <div class="error-message">
     <h3><%= pluralize(instance.errors.count,"つの") %>エラーがあります</h3>
-    <ul class="error-message">
+    <ul>
       <% instance.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error__message--list"><%= message %></li>
       <% end %>
     </ul>
   </div>

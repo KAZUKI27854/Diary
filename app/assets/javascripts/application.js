@@ -94,12 +94,12 @@ document.addEventListener("turbolinks:load", function(){
   /* global gon */
   $(function(){
     if (gon.goals == 0) {
-      $('.goal-icon, .create-goal-link').addClass('js-bound');
+      $('.my-page__menu--icon--goal, my-page__link--create-goal').addClass('js-bound');
     } else if (gon.goals >= 1 && gon.documents == 0) {
-      $('.goal-icon, .create-goal-link').removeClass('js-bound');
-      $('.create-doc-icon').addClass('js-bound');
+      $('.my-page__menu--icon--goal, my-page__link--create-goal').removeClass('js-bound');
+      $('.my-page__link--create-doc-img').addClass('js-bound');
     } else {
-      $('.create-doc-icon').removeClass('js-bound');
+      $('.my-page__link--create-doc-img').removeClass('js-bound');
     }
   })
 
@@ -126,12 +126,12 @@ document.addEventListener("turbolinks:load", function(){
     });
   });*/
 
-  $('.menu').hide();
+  $('.my-page__menu').hide();
 
   $(function(){
-    $('.menu-icon').on('click', function(){
+    $('.my-page__menu--icon').on('click', function(){
       $(this).next().slideToggle();
-      $(this).children('p').toggleClass('active');
+      $(this).children('.my-page__menu--text').toggleClass('active');
     });
   });
 
