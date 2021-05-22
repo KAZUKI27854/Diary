@@ -207,6 +207,41 @@ body {
   &__img {
     width: 150px;
     height: 150px;
+
+    &--area {
+      display: flex;
+      height: 100px;
+      margin-left: 20%;
+    }
+
+    &--monster {
+      width: 12%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 5%;
+      margin-bottom: 3%;
+      background-color: var(--main-back);
+
+      &:nth-of-type(1) {
+        background-image: url(monster/monster1.png);
+      }
+
+      &:nth-of-type(2) {
+        background-image: url(monster/monster5.png);
+      }
+
+      &:nth-of-type(3) {
+        background-image: url(monster/boss1.png);
+      }
+
+      &:nth-of-type(4) {
+        background-image: url(monster/monster4.png);
+      }
+
+      &:nth-of-type(5) {
+        background-image: url(monster/monster6.png);
+      }
+    }
   }
 
   &__text {
@@ -1176,6 +1211,14 @@ body {
     &__img {
       width: 120px;
       height: 120px;
+
+      &--area {
+        margin-left: 10%;
+      }
+
+      &--monster {
+        width: 13%;
+      }
     }
 
     &__text {
@@ -1324,6 +1367,14 @@ body {
           margin-top: 30px;
           font-size: 15px;
         }
+      }
+    }
+  }
+
+  .about {
+    &__img {
+      &--area {
+        height: 0;
       }
     }
   }
