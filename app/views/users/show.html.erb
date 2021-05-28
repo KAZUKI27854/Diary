@@ -29,13 +29,13 @@
               <% user_goals.first(4).each do |goal| %>
                 <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal-show">
                   <%= goal.category %> </br>
-                  Lv.<%= cat_level(goal.id) %>
+                  Lv.<%= goal.level %>
                 </a>
 
                 <p>
-                  ステージ: <%= doc_count(goal.id) %>F</br>
-                  <% if doc_count(goal.id) != 0 %>
-                    <%= stage_name(goal.id) %>
+                  ステージ: <%= goal.doc_count %>F</br>
+                  <% if goal.doc_count != 0 %>
+                    <%= goal.stage.name %>
                   <% else %>
                     きろくなし
                   <% end %>

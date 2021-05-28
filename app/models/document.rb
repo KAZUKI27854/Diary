@@ -7,4 +7,5 @@ class Document < ApplicationRecord
 	validates :add_level, presence: true
 
 	attachment :document_image
+
 end

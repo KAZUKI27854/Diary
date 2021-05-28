@@ -1,12 +1,5 @@
 module UsersHelper
 
-  def cat_level(goal_id)
-    Document.where(goal_id: goal_id).sum(:add_level)
-  end
-
-  def cat_name(id)
-	  Goal.find_by(id: id).category
-  end
 
   def clear_count(user_id)
     document = Document.where(user_id: user_id)
@@ -14,15 +7,6 @@ module UsersHelper
     documents.values.count{ |level| level >= 100 }
   end
 
-  def doc_count(goal_id)
-    Document.where(goal_id: goal_id).count
-  end
-
-  def doc_number(goal_id, document_id)
-	  documents = Document.where(goal_id: goal_id)
-	  id_index = documents.pluck(:id)
-	  id_index.index(document_id) + 1
-  end
 
   def within_100_and_not_multiples_of_5?(goal_id, document_id)
     number = doc_number(goal_id, document_id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_010401) do
+ActiveRecord::Schema.define(version: 2021_05_22_082523) do
 
   create_table "documents", force: :cascade do |t|
     t.text "body"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2021_04_26_010401) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level", default: 0
+    t.integer "stage_id"
+    t.integer "doc_count", default: 0
   end
 
   create_table "stages", force: :cascade do |t|

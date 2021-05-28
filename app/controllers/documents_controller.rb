@@ -1,17 +1,18 @@
 class DocumentsController < ApplicationController
+	include DocumentsHelper
 
 	def create
 		@document = Document.new(document_params)
 		@document.user_id = current_user.id
 		goal = Goal.find(@document.goal_id)
-		cat_level = ApplicationController.helpers.cat_level(@document.goal_id)
 		respond_to do |format|
 		  if @document.save
-		  	if cat_level < 100 && (cat_level + @document.add_level) >= 100
+		  	if goal.level < 100 && (goal.level + @document.add_level) >= 100
 		  	  flash[:clear] = "#{goal.category}のレベルが100になった!!"
 		  	else
 		  	  flash[:level_up] = "LEVELUP!"
 		  	end
+		  	when_doc_post_goal_auto_update(goal.id)
 		    format.html { redirect_to user_path(current_user.id) }
 		  else
 			  format.js { render "document_errors" }
@@ -37,8 +38,9 @@ class DocumentsController < ApplicationController
 	end
 
 	def destroy
-		@document = Document.find(params[:id])
-		@document.destroy
+		document = Document.find(params[:id])
+		when_doc_destroy_goal_auto_update(document.goal_id, document.id)
+		document.destroy
 		flash[:notice] = "きろくをさくじょしました"
 		redirect_to user_path(current_user.id)
 	end
