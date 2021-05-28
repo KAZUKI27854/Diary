@@ -1,4 +1,5 @@
 module DocumentsHelper
+
   def when_doc_post_goal_auto_update(goal_id)
     goal = Goal.find(goal_id)
 		goal.level += params[:document][:add_level].to_i

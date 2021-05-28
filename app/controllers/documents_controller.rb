@@ -12,10 +12,10 @@ class DocumentsController < ApplicationController
 		  	else
 		  	  flash[:level_up] = "LEVELUP!"
 		  	end
-		  	when_doc_post_goal_auto_update(goal.id)
+		  	goal.when_doc_post_goal_auto_update
 		    format.html { redirect_to user_path(current_user.id) }
 		  else
-			  format.js { render "document_errors" }
+			format.js { render "document_errors" }
 		  end
 		end
 	end
@@ -39,7 +39,8 @@ class DocumentsController < ApplicationController
 
 	def destroy
 		document = Document.find(params[:id])
-		when_doc_destroy_goal_auto_update(document.goal_id, document.id)
+		goal = document.goal
+		goal.when_doc_destroy_goal_auto_update(document.id)
 		document.destroy
 		flash[:notice] = "きろくをさくじょしました"
 		redirect_to user_path(current_user.id)
