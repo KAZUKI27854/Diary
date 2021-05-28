@@ -103,17 +103,29 @@ document.addEventListener("turbolinks:load", function(){
     }
   })
 
-  $(function(){
-    $('.js-select-box').change(function(){
-      var id = $(this).val();
+  $(function () {
+    $('.my-page__js-select-box').on('change', function () {
+      var category = $(this).val();
 
-      /*console.log(id);*/
-      /*$.ajax({
-      type: 'GET', // リクエストのタイプ
-      url: '/goals/search', // リクエストを送信するURL
-      data:  { goal_id: id }, // サーバーに送信するデータ
-      dataType: 'json' // サーバーから返却される型
-    });*/
+      $.ajax({
+        type: 'GET',
+        url: '/documents',
+        data:  { category: category },
+        dataType: 'json'
+      })
+
+      .done(function (data) {
+        console.log(data)
+
+        /*$('.my-page__js-card').html("<%= j(render partial: 'users/card', locals: { documents: @selected_documents }) %>");*/
+        $('.my-page__js-card').html("<%= render 'users/card', documents: @selected_documents %>");
+      })
+
+      .fail(function() {
+        alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
+      })
+
+
     });
   });
 
