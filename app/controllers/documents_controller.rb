@@ -6,9 +6,9 @@ class DocumentsController < ApplicationController
 		@selected_documents = selected_goal.documents
 
 		respond_to do |format|
-      format.html { redirect_to :root }
-      format.json { render json: @selected_documents }
-    end
+	      format.html { redirect_to :root }
+	      format.json { render json: @selected_documents }
+        end
 	end
 
 	def create
