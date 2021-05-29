@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'goals' => 'goals#new'
-  get 'users' => 'users#show', as: :user
+  get 'users' => 'users#show', as: :my_page
   resources :users, only: [:update, :destroy]
   resources :documents
   resources :goals

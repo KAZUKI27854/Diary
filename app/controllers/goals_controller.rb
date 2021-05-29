@@ -5,7 +5,7 @@ class GoalsController < ApplicationController
 		respond_to do |format|
 		  if @goal.save
 		    flash[:notice] = "もくひょうをついかしました"
-		    format.html { redirect_to user_path }
+		    format.html { redirect_to my_page_path }
 		  else
 			format.js { render "goal_errors" }
 		  end
@@ -27,7 +27,7 @@ class GoalsController < ApplicationController
 		@goal = Goal.find(params[:id])
 		if @goal.update(goal_params)
 			flash[:notice] = "もくひょうをへんこうしました"
-		    redirect_to user_path
+		    redirect_to my_page_path
 		else
 		    render "edit"
 		end
@@ -37,7 +37,7 @@ class GoalsController < ApplicationController
 		goal = Goal.find(params[:id])
 		goal.destroy
 		flash[:notice] = "もくひょうをさくじょしました"
-		redirect_to user_path
+		redirect_to my_page_path
 	end
 
 	private

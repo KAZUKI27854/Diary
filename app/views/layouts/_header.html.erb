@@ -9,7 +9,7 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "マイページ", user_path, class: "header__link mr-5" %>
+            <%= link_to "マイページ", my_page_path, class: "header__link mr-5" %>
           </li>
           <li>
             <%= link_to "あそびかた", "/about", class: "header__link mr-5" %>

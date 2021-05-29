@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = "データをへんこうしました"
-        format.html { redirect_to user_path(current_user.id) }
+        format.html { redirect_to my_page_path }
       else
         format.js { render "user_errors" }
       end
