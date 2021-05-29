@@ -29,7 +29,7 @@
 
         <div class="my-page__menu">
           <% if @goals.exists? %>
-            <% user_goals.first(4).each do |goal| %>
+            <% @goals.first(4).each do |goal| %>
               <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal-show">
                 <%= goal.category %> </br>
                 Lv.<%= goal.level %>
