@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'goals' => 'goals#new'
-  get 'users' => 'homes#top'
-  resources :users, only: [:show, :edit, :update, :destroy]
+  get 'users' => 'users#show', as: :user
+  resources :users, only: [:update, :destroy]
   resources :documents
   resources :goals
 

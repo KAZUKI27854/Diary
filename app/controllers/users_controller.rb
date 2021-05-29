@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = current_user
 
     @document = Document.new
     @documents = current_user.documents.page(params[:page]).reverse_order
@@ -11,12 +11,6 @@ class UsersController < ApplicationController
 
     gon.goals = @goals.count
     gon.documents = @documents.count
-  end
-
-  def edit
-    if @user.id != current_user.id
-      redirect_to root_path
-    end
   end
 
   def update
