@@ -7,73 +7,18 @@
         <p class="my-page__notice-message"><%= flash[:notice] %></p>
         <p class="my-page__menu--logo upper-contents"> M E N U </p>
 
-        <div class="my-page__menu--icon">
-          <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png",
-              class: "my-page__menu--icon--img", alt: "menu-icon" %>
-          <p class="my-page__menu--text">しゅじんこう </p>
-        </div>
-
-        <div class="my-page__menu">
-          <p>なまえ: <%= @user.name %></p>
-          <p class="user-level">ステータス: Lv.<%= @user_level %></p>
-          <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
-          <p>クリア: <%= clear_count(params[:id]) %>回</p>
-          <a class="js-modal-open my-page__link--modal" href="" data-target="modal-user-edit">へんしゅう</a>
-          <%= render "users/edit", user: @user %>
-        </div>
-
-        <div class="my-page__menu--icon">
-          <img src="/assets/icon/books.png" alt="menu-icon" class="my-page__menu--icon--img my-page__menu--icon--goal">
-          <p class="my-page__menu--text">もくひょう </p>
-        </div>
-
-        <div class="my-page__menu">
-          <% if @goals.exists? %>
-            <% @goals.first(4).each do |goal| %>
-              <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal-show">
-                <%= goal.category %> </br>
-                Lv.<%= goal.level %>
-              </a>
-              <p>
-                ステージ: <%= goal.doc_count %>F</br>
-                <% if goal.doc_count != 0 %>
-                  <%= goal.stage.name %>
-                <% else %>
-                  きろくなし
-                <% end %>
-              </p>
-              <p>つぎのもくひょう:</br>
-              <% if goal.documents.exists? %>
-                <%= latest_milestone(goal.id) %>
-              <% else %>
-                <a class="js-modal-open" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
-              <% end %>
-              </p>
-              <div class="js-goal-show">
-                <%= render "goals/show", goal: goal %>
-              </div>
-            <% end %>
-          <% else %>
-            <p class="my-page__menu--text--goal">みせってい</p>
-          <% end %>
-
-          <div class="form-group">
-            <%= select_tag 'goal_id', options_from_collection_for_select(@goals, :id, :category),
-               include_blank: 'せんたくする', class: 'js-select-box' %>
-          </div>
-
-          <a class="js-modal-open my-page__link--modal my-page__link--create-goal" href="" data-target="modal-new-goal">せっていする</a>
-          <%= render "goals/new", goal: @goal %>
-        </div>
+        <%= render "menu/user_menu" %>
+        <%= render "menu/goal_menu" %>
 
         <div class="my-page__menu--icon">
           <a class="js-modal-open" href="" data-target="modal-new-doc">
             <img src="/assets/icon/save-point.png" alt="menu-icon" class="my-page__menu--icon--img my-page__link--create-doc-img"></br>
             きろくする
           </a>
+          <%= render "documents/new", document: @document %>
         </div>
 
-        <%= render "documents/new", document: @document %>
+
       </div>
 
       <div class="col-lg-9 col-md-12 col-sm-12">

@@ -1,0 +1,14 @@
+<div class="my-page__menu--icon">
+  <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png",
+      class: "my-page__menu--icon--img", alt: "menu-icon" %>
+  <p class="my-page__menu--text">しゅじんこう </p>
+</div>
+
+<div class="my-page__menu">
+  <p>なまえ: <%= @user.name %></p>
+  <p class="user-level">ステータス: Lv.<%= @user_level %></p>
+  <p class="doc-count">ぼうけん: <%= @documents.count %> 回</p>
+  <p>クリア: <%= clear_count(params[:id]) %>回</p>
+  <a class="js-modal-open my-page__link--modal" href="" data-target="modal-user-edit">へんしゅう</a>
+  <%= render "users/edit", user: @user %>
+</div>
