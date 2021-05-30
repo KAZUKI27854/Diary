@@ -822,14 +822,21 @@ body {
   }
 }
 
-.levelup__back,
-.clear__back {
-  background: rgba(0,0,0,0.8);
-  height: 100vh;
-  width: 100%;
-  z-index: 4;
-  position: fixed;
-  top: 0;
+.clear {
+  &__back {
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    width: 100%;
+    z-index: 4;
+    position: fixed;
+    top: 0;
+  }
+
+  &__text {
+    width: 50%;
+    margin-left: 25%;
+    position: absolute;
+  }
 }
 
 .levelup {
@@ -1066,13 +1073,6 @@ body {
     height: 300px;
   }
 }
-
-.clear__text {
-  width: 50%;
-  margin-left: 25%;
-  position: absolute;
-}
-
 
 .footer {
   position: absolute;
