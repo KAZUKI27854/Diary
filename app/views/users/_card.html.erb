@@ -1,5 +1,4 @@
 <div class="document-container">
-
     <div class="row" id="index">
       <% documents.each do |document| %>
         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -44,7 +43,7 @@
             <div class="card-body doc__card--body">
               <div class="row">
                 <p class="doc__card--title">
-                  <%= cat_name(document.goal_id) %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
+                  <%= document.goal.category %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
                 </p>
                 <p class="doc__card--body">
                   <% if document.document_image_id.present? %>
@@ -62,7 +61,7 @@
                 <p class="doc__card--body">
                   【つぎのもくひょう】</br>
                   <%= document.milestone %> </br>
-                  <% unless cat_level(document.goal_id) >= 100 %>
+                  <% unless document.goal.level >= 100 %>
                     せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
                   <% end %>
                 </p>

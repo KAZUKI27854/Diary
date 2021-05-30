@@ -18,7 +18,7 @@
         	    <p>きげん</p>
         	      <h3><%= goal.deadline.strftime('%Y/%m/%d') %></h3>
         	    <p>げんざいのレベル</p>
-        	      <h3>Lv.<%= cat_level(goal.id) %></h3>
+        	      <h3>Lv.<%= goal.level %></h3>
         	    <%= link_to "へんこう", edit_goal_path(goal.id), remote: true %>
             </div>
           </div>

@@ -17,21 +17,9 @@ module DocumentsHelper
 		goal.update_attributes(level: goal.level, doc_count: goal.doc_count, stage_id: goal.stage_id)
   end
 
-	def doc_count(goal_id)
-	  Document.where(goal_id: goal_id).count
-	end
-
   def doc_number(goal_id, document_id)
 	  documents = Document.where(goal_id: goal_id)
 	  id_index = documents.pluck(:id)
 	  id_index.index(document_id) + 1
-  end
-
-  def cat_level(goal_id)
-    Document.where(goal_id: goal_id).sum(:add_level)
-  end
-
-  def cat_name(id)
-	  Goal.find_by(id: id).category
   end
 end
