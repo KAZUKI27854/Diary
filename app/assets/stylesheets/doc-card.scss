@@ -83,3 +83,13 @@
 
   }
 }
+
+@media (min-width: 1200px) {
+  .doc {
+    &__card {
+      &--img {
+        height: 296px;
+      }
+    }
+  }
+}

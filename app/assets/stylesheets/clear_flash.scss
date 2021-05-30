@@ -111,3 +111,29 @@
     height: 300px;
   }
 }
+
+@media (max-width: 768px) {
+  .fireworks {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .fireworks {
+    &-center {
+      top: 0%;
+    }
+
+    &-left {
+      top: 10%;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

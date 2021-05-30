@@ -134,3 +134,19 @@
   animation: bound 0.3S ease infinite alternate;
   -webkit-animation: bound 0.3S ease infinite alternate;
 }
+
+@media (max-width: 991px) {
+  .my-page{
+    &__menu {
+      &--text {
+        &--goal {
+          width: 50%;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

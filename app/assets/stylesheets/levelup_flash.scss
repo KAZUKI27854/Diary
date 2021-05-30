@@ -139,3 +139,40 @@
    top: 0em;
  }
 }
+
+@media (max-width: 991px) {
+  .levelup {
+    &__text {
+      span {
+        font-size: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .levelup {
+    &__text {
+      span {
+        font-size: 90px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .levelup {
+    &__char {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    &__text {
+      span {
+        font-size: 65px;
+      }
+    }
+  }
+}

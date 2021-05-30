@@ -277,16 +277,6 @@ body {
   background-color: var(--main-back);
 }
 
-@media (min-width: 1200px) {
-  .doc {
-    &__card {
-      &--img {
-        height: 296px;
-      }
-    }
-  }
-}
-
 @media (max-width: 991px) {
   .top {
     &__img {
@@ -310,40 +300,9 @@ body {
     margin-left: 5%;
   }
 
-  .log-in__form,
-  .sign-up__form,
-  .reset-psw__form {
-    h3, form {
-      width: 80%;
-      margin-left: 10%;
-    }
-  }
-
   .modal__content {
     padding: 20px;
     width: 70%;
-  }
-
-  .my-page{
-    &__menu {
-      &--text {
-        &--goal {
-          width: 50%;
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 20px;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-
-  .levelup {
-    &__text {
-      span {
-        font-size: 100px;
-      }
-    }
   }
 
 }
@@ -402,92 +361,8 @@ body {
     }
   }
 
-  .about {
-    &__img {
-      width: 120px;
-      height: 120px;
-
-      &--area {
-        margin-left: 10%;
-      }
-
-      &--monster {
-        width: 13%;
-      }
-    }
-
-    &__text {
-      font-size: 13px;
-
-      &--left {
-        padding-left: 5%;
-      }
-
-      &--right {
-        padding-left: 20%;
-      }
-
-      &--contents {
-        width: 90%;
-        margin-left: 5%;
-        font-size: 17px;
-      }
-
-      &--char {
-        width: 90%;
-        margin-left: 5%;
-        font-size: 17px;
-      }
-    }
-
-    &__header {
-      font-size: 70px;
-
-      &--story,
-      &--char {
-        margin: 10px 0 20px 0;
-      }
-
-      &--contents,
-      &--something {
-        margin: 10px 0 20px 0;
-      }
-    }
-
-    &__story,
-    &__contents,
-    &__char,
-    &__something {
-      padding: 10px 0 10px 0;
-    }
-  }
-
-  .log-in__form,
-  .sign-up__form,
-  .reset-psw__form {
-    h3, form {
-      width: 80%;
-      margin-left: 10%;
-    }
-  }
-
   .modal__content {
     width: 80%;
-  }
-
-  .levelup {
-    &__text {
-      span {
-        font-size: 90px;
-      }
-    }
-  }
-
-  .fireworks {
-    img {
-      width: 200px;
-      height: 200px;
-    }
   }
 
 }
@@ -566,62 +441,17 @@ body {
     }
   }
 
-  .about {
-    &__img {
-      &--area {
-        height: 0;
-      }
-    }
-  }
-
   .message {
     width: 100%;
     margin-left: 0;
-}
-
-  .log-in__form,
-  .sign-up__form,
-  .reset-psw__form {
-    h3, form {
-      width: 100%;
-      margin-left: 0%;
-    }
-}
+  }
 
   .modal__content {
     padding: 10px;
     width: 94%;
-}
-
-  .levelup {
-    &__char {
-      img {
-        width: 60px;
-        height: 60px;
-      }
-    }
-
-    &__text {
-      span {
-        font-size: 65px;
-      }
-    }
   }
 
-  .fireworks {
-    &-center {
-      top: 0%;
-    }
-
-    &-left {
-      top: 10%;
-    }
-
-    img {
-      width: 150px;
-      height: 150px;
-    }
-  }
+  
 
 }
 
