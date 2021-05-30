@@ -18,26 +18,13 @@
 //= require turbolinks
 //= require_tree .
 
-
-/*global $*/
-$(function(){
-  $('#tab-contents .tab[id != "tab1"]').hide();
-
-  $('#tab-menu a').on('click', function(event) {
-    $("#tab-contents .tab").hide();
-    $("#tab-menu .active").removeClass("active");
-    $(this).addClass("active");
-    $($(this).attr("href")).show();
-    event.preventDefault();
-  });
-});
-
 /* global location */
 function dropsort(){
   var page = document.sort_form.sort.value;
   location.href = page
 }
 
+/*global $*/
 document.addEventListener("turbolinks:load", function(){
   $(function(){
     $('.js-modal-open').each(function(){
@@ -71,10 +58,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    $('.levelup__text').each(function(){
-      var txt = $(this).html();
-      $(this).html(txt.replace("LEVELUP!","<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>"));
-    });
+      $('.levelup__text').html("<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>");
   });
 
   $(function(){
@@ -87,10 +71,6 @@ document.addEventListener("turbolinks:load", function(){
     );
   });
 
-  /* global jQuery */
-  jQuery.fn.exists = function(){return Boolean($('body:has(' + this.selector + ')').length > 0);};
-  jQuery.fn.noExists = function(){return !this.exists();};
-
   /* global gon */
   $(function(){
     if (gon.goals == 0) {
@@ -101,7 +81,7 @@ document.addEventListener("turbolinks:load", function(){
     } else {
       $('.my-page__link--create-doc-img').removeClass('js-bound');
     }
-  })
+  });
 
   $(function () {
     $('.my-page__js-select-box').on('change', function () {
@@ -115,7 +95,7 @@ document.addEventListener("turbolinks:load", function(){
       })
 
       .done(function (data) {
-        console.log(data)
+        console.log(data);
 
         /*$('.my-page__js-card').html("<%= j(render partial: 'users/card', locals: { documents: @selected_documents }) %>");*/
         $('.my-page__js-card').html("<%= render 'users/card', documents: @selected_documents %>");
@@ -123,7 +103,7 @@ document.addEventListener("turbolinks:load", function(){
 
       .fail(function() {
         alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
-      })
+      });
 
 
     });
