@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
 		    flash[:notice] = "もくひょうをついかしました"
 		    format.html { redirect_to my_page_path }
 		  else
-			format.js { render "goal_errors" }
+			  format.js { render "goal_errors" }
 		  end
 		end
 	end

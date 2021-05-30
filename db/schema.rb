@@ -10,33 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_082523) do
+ActiveRecord::Schema.define(version: 2021_05_30_063828) do
 
   create_table "documents", force: :cascade do |t|
-    t.text "body"
+    t.integer "user_id", null: false
+    t.integer "goal_id", null: false
     t.string "document_image_id"
-    t.integer "user_id"
+    t.text "body", null: false
+    t.integer "add_level", null: false
+    t.string "milestone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "milestone"
-    t.integer "add_level"
-    t.integer "goal_id"
   end
 
   create_table "goals", force: :cascade do |t|
-    t.text "goal_status"
-    t.datetime "deadline"
-    t.text "category"
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.integer "stage_id", default: 1, null: false
+    t.string "category", null: false
+    t.string "goal_status", null: false
+    t.datetime "deadline", null: false
+    t.integer "level", default: 0, null: false
+    t.integer "doc_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "level", default: 0
-    t.integer "stage_id"
-    t.integer "doc_count", default: 0
   end
 
   create_table "stages", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.integer "goal_id", null: false
+    t.string "body", null: false
+    t.datetime "deadline", null: false
+    t.boolean "is_finished", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

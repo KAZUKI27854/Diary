@@ -50,8 +50,7 @@ class DocumentsController < ApplicationController
 
 	def destroy
 		document = Document.find(params[:id])
-		goal = document.goal
-		when_doc_destroy_goal_auto_update(goal.id, document.id)
+		when_doc_destroy_goal_auto_update(document.id)
 		document.destroy
 		flash[:notice] = "きろくをさくじょしました"
 		redirect_to my_page_path
