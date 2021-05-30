@@ -173,68 +173,6 @@ body {
   }
 }
 
-.my-page {
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  background-position: 50% 50%;
-  background-size: cover;
-  background-image: url(road.jpg);
-
-  &__menu {
-    padding-left: 5%;
-    background: var(--main-back);
-    border: solid 5px var(--main-font);
-    border-radius: 10px;
-    margin-bottom: 20px;
-
-
-    &--logo{
-      background: var(--menu-logo);
-      font-size: 150%;
-      border: solid 5px var(--main-font);
-      border-radius: 10px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    &--icon {
-      text-align: center;
-
-      &--img {
-        width: 100px;
-        height: 100px;
-      }
-    }
-  }
-
-  &__link {
-    &--modal {
-      text-decoration: underline;
-      color: var(--main-font);
-    }
-  }
-
-}
-
-/* 「バウンド」アニメーション（目標か記録が無い場合に該当アイコンがバウンド */
-@keyframes bound {
-  0% {transform: translateY(0px);}
-  100% {transform: translateY(-10px);}
-}
-
-@-webkit-keyframes bound {
-  0% {transform: translateY(0px);}
-  100% {transform: translateY(-10px);}
-}
-
-.js-bound {
-  display: inline-block;
-  animation: bound 0.3S ease infinite alternate;
-  -webkit-animation: bound 0.3S ease infinite alternate;
-}
-/* 「バウンド」アニメーションここまで */
-
 .message {
   background: var(--main-back);
   border: solid 5px var(--main-font);
@@ -248,14 +186,10 @@ body {
   margin-top: var(--upper-margin);
 }
 
-/* テキスト前に表示させるアイコンのCSS */
+/* テキスト前に表示させるアイコンのSCSS */
 .link:before,
 .top__link:hover:before,
 .header__link:hover:before,
-.my-page__menu--logo:before,
-.my-page__menu--logo:after,
-.my-page__menu--text:after,
-.my-page__menu--text--goal:before,
 .message:before {
   content: '';
   display: inline-block;
@@ -292,61 +226,6 @@ body {
 
 .reset-psw__link:before {
   background-image: url(monster/monster5.png);
-}
-
-.my-page {
-  &__menu {
-    &--logo {
-      &:before {
-        background-image: url(monster/monster13.png);
-      }
-
-      &:after {
-        background-image: url(monster/monster14.png);
-      }
-    }
-
-    &--text {
-      &:after {
-        background-image: url(icon/downward-cursor.png);
-        width: 10px;
-        height: 10px;
-      }
-
-      &--goal{
-        margin-top: 5px;
-        display: inline-block;
-        width: 100%;
-
-        &:nth-of-type(1):before {
-          background-image: url(icon/red-book.png);
-        }
-
-        &:nth-of-type(2):before {
-          background-image: url(icon/blue-book.png);
-        }
-
-        &:nth-of-type(3):before {
-          background-image: url(icon/green-book.png);
-        }
-
-        &:nth-of-type(4):before {
-          background-image: url(icon/purple-book.png);
-        }
-      }
-    }
-
-    &--icon {
-      .active {
-        &:after {
-          background-image: url(icon/upward-cursor.png);
-          width: 10px;
-          height: 10px;
-        }
-      }
-    }
-
-  }
 }
 
 .master:before {
