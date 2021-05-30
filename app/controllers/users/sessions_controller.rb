@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     flash[:notice] = "ゲストでログインしました"
-    redirect_to user_path(user.id)
+    redirect_to my_page_path
   end
   # before_action :configure_sign_in_params, only: [:create]
 

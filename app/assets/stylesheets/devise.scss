@@ -55,3 +55,16 @@
     margin-bottom: 5%;
   }
 }
+
+.error__message {
+  background: var(--error-back);
+  border: solid 5px var(--main-font);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  &--list {
+    list-style: none;
+    text-decoration: underline;
+  }
+}

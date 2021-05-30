@@ -1,0 +1,19 @@
+#tabBoxes {
+  background-color: var(--main-font);
+  height: 500px;
+  padding-top: 50px;
+  padding-left: 10%;
+}
+
+.tabBox {
+  a,p {
+    text-align: center;
+    color: blue;
+  }
+}
+
+.tabcontents {
+  background-color: var(--main-back);
+  height: 400px;
+  width: 90%;
+}
