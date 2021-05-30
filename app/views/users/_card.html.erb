@@ -12,14 +12,14 @@
                 <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) + 1 %>.jpg"
                      class="doc__card--stage-img" alt="stage-image">
 
-                  <div class="doc__card--monster-left">
-                    <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
-                         class="doc__card--monster-img" alt="monster-image">
-                  </div>
-                  <div class="doc__card--monster-right">
-                    <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
-                         class="doc__card--monster-img" alt="monster-image">
-                  </div>
+                <div class="doc__card--monster-left">
+                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
+                       class="doc__card--monster-img" alt="monster-image">
+                </div>
+                <div class="doc__card--monster-right">
+                  <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
+                       class="doc__card--monster-img" alt="monster-image">
+                </div>
               </div>
             <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
               <div class="doc__card--stage">
