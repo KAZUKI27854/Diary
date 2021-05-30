@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:update, :destroy]
   resources :documents
   resources :goals
+  resources :todo_lists
 
 end
