@@ -186,8 +186,6 @@ body {
   margin-top: var(--upper-margin);
 }
 
-/* テキスト前に表示させるアイコンのSCSS */
-.link:before,
 .top__link:hover:before,
 .header__link:hover:before,
 .message:before {
@@ -214,18 +212,6 @@ body {
 
 .top__link--guest:before {
   background-image: url(character/brave.png);
-}
-
-.log-in__link:before {
-  background-image: url(monster/monster4.png);
-}
-
-.sign-up__link:before {
-  background-image: url(monster/monster1.png);
-}
-
-.reset-psw__link:before {
-  background-image: url(monster/monster5.png);
 }
 
 .master:before {
@@ -255,7 +241,6 @@ body {
 .clear-text:before {
   background-image: url(icon/books.png);
 }
-/* アイコンのCSSここまで */
 
 .doc {
   &__card {

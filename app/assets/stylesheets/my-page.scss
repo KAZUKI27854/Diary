@@ -100,7 +100,7 @@
 
 }
 
-/* 「バウンド」アニメーション（目標か記録が無い場合に該当アイコンがバウンド */
+/*目標か記録が無い場合に、該当のメニューアイコンがバウンドして次の操作箇所を明示する */
 @keyframes bound {
   0% {transform: translateY(0px);}
   100% {transform: translateY(-10px);}

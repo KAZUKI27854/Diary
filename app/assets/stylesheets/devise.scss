@@ -1,34 +1,11 @@
-.log-in {
-  background-image: url(sky.jpg);
-  background-position: 50% 35%;
-  background-size: cover;
-  height: 100vh;
-
-  &__link {
-    color: var(--devise-link);
-  }
-}
-
-.sign-up {
-  background-image: url(sky.jpg);
-  background-position: 50% 35%;
-  background-size: cover;
-  height: 100vh;
-
-  &__link {
-    color: var(--devise-link);
-  }
-}
-
-.reset-psw {
-  background-image: url(sample3.png);
-  background-position: 50% 35%;
-  background-size: cover;
-  height: 100vh;
-
-  &__link {
-    color: var(--devise-link);
-  }
+.link:before {
+  content: '';
+  display: inline-block;
+  width: var(--icon-width);
+  height: var(--icon-height);
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
 }
 
 .log-in__form,
@@ -36,7 +13,6 @@
 .reset-psw__form {
   text-align: center;
   height: 100vh;
-  padding-top: 5%;
 
   h3, form {
     width: 60%;
@@ -56,11 +32,55 @@
   }
 }
 
+.log-in {
+  background-image: url(sky.jpg);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 5%;
+
+  &__link {
+    color: var(--devise-link);
+
+    &:before {
+      background-image: url(monster/monster4.png);
+    }
+  }
+}
+
+.sign-up {
+  background-image: url(sky.jpg);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+
+  &__link {
+    color: var(--devise-link);
+
+    &:before {
+      background-image: url(monster/monster1.png);
+    }
+  }
+}
+
+.reset-psw {
+  background-image: url(sample3.png);
+  background-position: 50% 35%;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 5%;
+
+  &__link {
+    color: var(--devise-link);
+
+    &:before {
+      background-image: url(monster/monster5.png);
+    }
+  }
+}
+
 .error__message {
   background: var(--error-back);
-  border: solid 5px var(--main-font);
-  border-radius: 10px;
-  margin-bottom: 20px;
   text-align: center;
 
   &--list {
