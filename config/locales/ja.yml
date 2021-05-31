@@ -20,17 +20,19 @@ ja:
         password: パスワード
         password_confirmation: かくにんようパスワード
         remember_me: ログインしたままにする
-        activated: アクティブフラグ
-        admin: かんりしゃフラグ
       document:
         body: ぼうけんのないよう
         milestone: つぎのもくひょう
         add_level: レベル
-        goal: レベルアップしたこと
+        goal_id: レベルアップしたこと
       goal:
         category: レベルアップしたいこと
         goal_status: さいしゅうもくひょう
         deadline: もくひょうのきげん
+      todo_list:
+        goal_id: もくひょう
+        body: やること
+        deadline: きげん
 
 
 
