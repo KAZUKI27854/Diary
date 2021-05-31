@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="col-lg-9 col-md-12 col-sm-12">
+      <div class="col-lg-9 col-md-12 col-sm-12 js-switch-area">
         <% if current_user.documents.exists? then %>
          <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
           <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "my-page__js-select-box"}) %>

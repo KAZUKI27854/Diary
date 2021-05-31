@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     @user_level = @documents.sum(:add_level)
 
     @goal = Goal.new
-    @goals = current_user.goals
+    @goals = @user.goals
+
+    @todo_list = TodoList.new
+    @todo_lists = @user.todo_lists
 
     gon.goals = @goals.count
     gon.documents = @documents.count
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user
     @user.destroy
     flash[:notice] = "データをすべてさくじょしました"
     redirect_to root_path

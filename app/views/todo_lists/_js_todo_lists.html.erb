@@ -1,7 +1,8 @@
-
-  <li>
-    <%= todo_list.body %>
-  </li>
-  <li>
-    <%= todo_list.deadline %>
-  </li>
+<li id="list<%= todo_list.id %>-body">
+  <%= todo_list.body %>
+  <%= link_to "へんしゅう", edit_todo_list_path(todo_list.id), class: "js-todo-lists__link--edit", remote: true %>
+  <%= link_to "さくじょ", todo_list_path(todo_list.id), class: "js-todo-lists__link--destroy", method: :delete, remote: true %>
+</li>
+<li id="list<%= todo_list.id %>-deadline">
+  きげん：<%= todo_list.deadline.strftime("%m月%d日") %>
+</li>

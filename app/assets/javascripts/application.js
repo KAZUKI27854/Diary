@@ -18,12 +18,6 @@
 //= require turbolinks
 //= require_tree .
 
-/* global location */
-function dropsort(){
-  var page = document.sort_form.sort.value;
-  location.href = page
-}
-
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
   $(function(){
@@ -145,6 +139,7 @@ document.addEventListener("turbolinks:load", function(){
       $('.my-page').css({'background-image': 'url(assets/back/bar.jpg)'});
       $(".js-switch-image").prop('src','/assets/icon/door.png');
       $(".js-switch-text").html('きろくへもどる');
+      $(".js-switch-area").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
     } else {
       $('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
       $(".js-switch-image").prop('src','/assets/icon/catsle.png');

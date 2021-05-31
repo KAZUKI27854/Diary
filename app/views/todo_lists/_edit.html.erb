@@ -1,0 +1,13 @@
+<%= form_with model: todo_list do |f| %>
+  <div class="form-group">
+    <%= f.text_field :body, size: 35 %>
+  </div>
+  <div class="form-group">
+    <label for="inputDeadline">きげん</label>
+    <%= f.date_select :deadline %>
+  </div>
+  <div class="form-btn">
+    <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
+    </div>
+<% end %>
+<%= link_to "もどる", todo_lists_path, remote: true %>
