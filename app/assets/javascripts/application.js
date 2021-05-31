@@ -97,8 +97,8 @@ document.addEventListener("turbolinks:load", function(){
       .done(function (data) {
         console.log(data);
 
-        /*$('.my-page__js-card').html("<%= j(render partial: 'users/card', locals: { documents: @selected_documents }) %>");*/
-        $('.my-page__js-card').html("<%= render 'users/card', documents: @selected_documents %>");
+        /*$('.js-card').html("<%= j(render partial: 'users/card', locals: { documents: @selected_documents }) %>");*/
+        $('.js-card').html("<%= render 'users/card', documents: @selected_documents %>");
       })
 
       .fail(function() {
@@ -131,11 +131,28 @@ document.addEventListener("turbolinks:load", function(){
   $('#js-message .message[id != "message1"]').hide();
 
   $('.tabBox a').on('click', function(event) {
-    $("#tabBoxes .tabBox").hide();
+    $('#tabBoxes .tabBox').hide();
     $('#js-message .message').hide();
     $($(this).attr("href")).show();
     $($(this).attr("class")).show();
     event.preventDefault();
+  });
+
+  $('.js-switch-todo_lists').on('click', function(event) {
+    $(this).toggleClass('switched js-switch-todo_lists');
+
+    if($(this).hasClass('switched')) {
+      $('.my-page').css({'background-image': 'url(assets/back/bar.jpg)'});
+      $(".js-switch-image").prop('src','/assets/icon/door.png');
+      $(".js-switch-text").html('きろくへもどる');
+    } else {
+      $('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
+      $(".js-switch-image").prop('src','/assets/icon/catsle.png');
+      $(".js-switch-text").html('Todoリスト');
+    }
+
+    event.preventDefault();
+    return false;
   });
 
 

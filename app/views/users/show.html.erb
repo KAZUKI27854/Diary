@@ -18,14 +18,19 @@
           <%= render "documents/new", document: @document %>
         </div>
 
-
+        <div class="my-page__menu--icon">
+          <a class="js-switch-todo_lists" href="">
+            <img src="/assets/icon/catsle.png" alt="menu-icon" class="my-page__menu--icon--img js-switch-image"></br>
+            <p class="js-switch-text">Todoリスト</p>
+          </a>
+        </div>
       </div>
 
       <div class="col-lg-9 col-md-12 col-sm-12">
         <% if current_user.documents.exists? then %>
          <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
-          <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "選択してください"}, {class: "my-page__js-select-box"}) %>
-          <div class="my-page__js-card">
+          <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "my-page__js-select-box"}) %>
+          <div class="js-card">
               <%= render "users/card", documents: @documents %>
           </div>
         <% elsif @goals.blank? then %>

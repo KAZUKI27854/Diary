@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :documents, dependent: :destroy
   has_many :goals, dependent: :destroy
+  has_many :todo_lists, dependent: :destroy
 
   validates :name, {presence: true, length: {maximum: 10}}
   validates :email, {presence: true, uniqueness: true}

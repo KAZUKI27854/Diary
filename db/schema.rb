@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_063828) do
   end
 
   create_table "todo_lists", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.integer "goal_id", null: false
     t.string "body", null: false
     t.datetime "deadline", null: false
