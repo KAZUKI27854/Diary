@@ -5,4 +5,9 @@
   background-position: 50% 50%;
   background-size: cover;
   background-image: url(back/wood-board.png);
+
+  &__icon {
+    width: 4%;
+    height: 4%;
+  }
 }

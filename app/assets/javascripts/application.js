@@ -150,6 +150,22 @@ document.addEventListener("turbolinks:load", function(){
     return false;
   });
 
+  $('.js-todo-lists__form').hide();
+
+  $('.js-create-todo-lists__icon').on('click', function(event) {
+    $(this).toggleClass('active-form');
+    $('.js-todo-lists__form').show();
+
+    if($(this).hasClass('active-form')) {
+      $(this).prop('src','/assets/icon/quill-pen.png');
+    } else {
+      $(this).prop('src','/assets/icon/create-icon.png');
+      $('.js-todo-lists__form').hide();
+      $('#todo_list_body').val("");
+      $('.error__message').remove();
+    }
+  });
+
 
 
 });

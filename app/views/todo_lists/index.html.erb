@@ -1,24 +1,30 @@
 <div class="col-lg-9 col-md-12 col-sm-12">
   <div class="todo-lists">
     <h3 class="knight message upper-contents">やることをまとめるのよ</h3>
-    <div>
+    <div class="todo-lists__search form-inline">
       <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょう別"}, {class: "my-page__js-select-box"}) %>
+      <%= text_field_tag :word, '', class: 'js-text_field', placeholder: 'キーワードけんさく' %>
     </div>
-    <h3>すべてのTodoリスト</h3>
+    <h3>
+      すべてのTodoリスト
+      <img src="assets/icon/create-icon.png" alt="create-icon" class="todo-lists__icon js-create-todo-lists__icon">
+    </h3>
     <%= form_with model: @todo_list do |f| %>
       <div class="todo-lists__form">
-        <div class="form-group">
-          <%= f.collection_select :goal_id, @goals, :id, :category %>のやることを追加
-        </div>
-        <div class="form-group">
-          <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
-        </div>
-        <div class="form-group">
-          <label for="inputDeadline">きげん</label>
-          <%= f.date_select :deadline %>
-        </div>
-        <div class="form-btn">
-          <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
+        <div class="js-todo-lists__form form-inline">
+          <div class="form-group">
+            <%= f.collection_select :goal_id, @goals, :id, :category %>
+          </div>
+          <div class="form-group">
+            <label for="inputDeadline">きげん</label>
+            <%= f.date_field :deadline %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
+          </div>
+          <div class="form-btn">
+            <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
+          </div>
         </div>
       </div>
     <% end %>

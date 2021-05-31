@@ -1,8 +1,15 @@
-<li id="list<%= todo_list.id %>-body">
+<div id="list<%= todo_list.id %>-area">
+<li>
   <%= todo_list.body %>
-  <%= link_to "へんしゅう", edit_todo_list_path(todo_list.id), class: "js-todo-lists__link--edit", remote: true %>
-  <%= link_to "さくじょ", todo_list_path(todo_list.id), class: "js-todo-lists__link--destroy", method: :delete, remote: true %>
+  <%= link_to edit_todo_list_path(todo_list.id), class: "js-todo-lists__link--edit", remote: true do %>
+    <img src="/assets/icon/edit-icon.png" alt="edit-icon" class="todo-lists__icon">
+  <% end %>
+  <%= link_to todo_list_path(todo_list.id), class: "js-todo-lists__link--destroy",
+      method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true do %>
+    <img src="/assets/icon/delete-icon.png" alt="delete-icon" class="todo-lists__icon">
+  <% end %>
 </li>
-<li id="list<%= todo_list.id %>-deadline">
+<li>
   きげん：<%= todo_list.deadline.strftime("%m月%d日") %>
 </li>
+</div>
