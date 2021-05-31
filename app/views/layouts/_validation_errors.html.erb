@@ -1,8 +1,8 @@
-<% if instance.errors.any? %>
-  <div class="error-message">
-    <h3><%= pluralize(instance.errors.count,"つの") %>エラーがあります</h3>
+<% if obj.errors.any? %>
+  <div class="error__message">
+    <h3><%= pluralize(obj.errors.count,"つの") %>エラーがあります</h3>
     <ul>
-      <% instance.errors.full_messages.each do |message| %>
+      <% obj.errors.full_messages.each do |message| %>
         <li class="error__message--list"><%= message %></li>
       <% end %>
     </ul>

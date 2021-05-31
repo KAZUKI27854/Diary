@@ -1,6 +1,1 @@
-$('.js-message-errors').replaceWith(
-  "<%= j(
-    render 'layouts/validation_errors',
-    instance: @goal
-  ) %>"
-);
+$('.js-message-errors').replaceWith("<%= j(render 'layouts/validation_errors',obj: @goal) %>");
