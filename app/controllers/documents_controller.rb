@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+	before_action :authenticate_user!
 	include DocumentsHelper
 
 	def index
