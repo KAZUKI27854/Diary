@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def ensure_normal_user
     if resource.email == 'guest@example.com'
       flash[:notice] = "ゲストユーザーはさくじょできません"
-      redirect_to user_path(current_user.id)
+      redirect_to my_page_path
     end
   end
   # before_action :configure_sign_up_params, only: [:create]

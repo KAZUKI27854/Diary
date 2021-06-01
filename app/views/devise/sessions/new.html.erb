@@ -4,6 +4,9 @@
       <div class="col-lg-1 col-md-1 col-sm-0"></div>
       <div class="col-lg-10 col-md-10 col-sm-12 log-in__form">
         <h3 class="father message upper-contents">かみのごかごがあらんことを…</h3>
+        <div class="log-in__flash--danger">
+          <%= flash[:danger] %>
+        </div>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">

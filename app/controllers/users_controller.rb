@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user
 
   def show
-    @user = current_user
-
     @document = Document.new
-    @documents = current_user.documents.page(params[:page]).reverse_order
+    @documents = @user.documents.page(params[:page]).reverse_order
     @user_level = @documents.sum(:add_level)
 
     @goal = Goal.new
@@ -19,8 +18,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = "データをへんこうしました"
@@ -31,15 +28,17 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def destroy
-    @user = current_user
-    @user.destroy
-    flash[:notice] = "データをすべてさくじょしました"
+  def withdraw
+    @user.update(is_active: false)
+    reset_session
     redirect_to root_path
   end
 
   private
+
+  def set_current_user
+    @user = current_user
+  end
 
   def user_params
     params.require(:user).permit(:name, :profile_image)

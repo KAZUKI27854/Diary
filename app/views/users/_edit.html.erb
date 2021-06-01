@@ -23,6 +23,8 @@
               <div class="form-btn">
                 <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
               </div>
+              <%= link_to "退会する", withdraw_user_path, method: :patch,
+                  "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger btn-sm" %>
             <% end %>
           </div>
           <div class="col-lg-1 col-md-1 col-sm-0"></div>

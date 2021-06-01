@@ -39,6 +39,12 @@
   height: 100vh;
   padding-top: 5%;
 
+  &__flash {
+    &--danger {
+      color: var(--error-back);
+    }
+  }
+
   &__link {
     color: var(--devise-link);
 
