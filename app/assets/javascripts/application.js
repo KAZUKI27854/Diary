@@ -35,6 +35,24 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  $(function(){
+    var goal_select_box = '.my-page__menu--js-select-box';
+
+    if (gon.goals <= 3) {
+      $(goal_select_box).hide();
+    } else {
+      $(goal_select_box).show();
+    }
+
+    $(goal_select_box).on('change',function(){
+      var goal_id = $(this).val();
+      var goal_edit_modal = '#modal-goal' + goal_id  + '-edit';
+
+      $(goal_edit_modal).fadeIn();
+      return false;
+    });
+  });
+
   /*$(function(){
     $('.dungeon-img').each(function(i){
       var array = [...Array(5)].map((_, i) => i + 1);

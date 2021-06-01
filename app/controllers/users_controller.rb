@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user_level = @documents.sum(:add_level)
 
     @goal = Goal.new
-    @goals = @user.goals
+    @goals = @user.goals.order(updated_at: "DESC")
 
     @todo_list = TodoList.new
     @todo_lists = @user.todo_lists
