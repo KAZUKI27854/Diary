@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
   end
 
+  namespace :todo_lists do
+    resources :searches, only: :index, defaults: { format: :json }
+  end
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'goals' => 'goals#new'

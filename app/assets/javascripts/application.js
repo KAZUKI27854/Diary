@@ -103,15 +103,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  /*$(function(){
-    $('.doc-title span').each(function(key, value){
-      var text = $(value).text();
-      var result = Number(text);
-      console.log(result)
-      console.log(key)
-    });
-  });*/
-
   $('.my-page__menu').hide();
 
   $(function(){
@@ -164,6 +155,30 @@ document.addEventListener("turbolinks:load", function(){
       $('#todo_list_body').val("");
       $('.error__message').remove();
     }
+  });
+
+  $('.js-text_field').on('keyup', function () {
+    var word = $.trim($(this).val());
+
+    $.ajax({
+      type: 'GET',
+      url: '/todo_lists/searches',
+      data:  { word: word },
+      dataType: 'json'
+    })
+
+    .done(function (data) {
+      $('.js-todo-lists li').remove();
+
+      $(data).each(function(i,todo_list) {
+        $('.js-todo-lists').append(`<li>${todo_list.body}</li>`);
+        /*$('.js-todo-lists').append(`<%= j(render ${todo_list}) %>`);*/
+      });
+    })
+
+    .fail(function() {
+      alert("検索に失敗しました。ページを再読み込みして下さい。");
+    });
   });
 
 
