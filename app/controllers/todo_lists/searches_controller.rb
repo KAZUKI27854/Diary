@@ -4,10 +4,10 @@ class TodoLists::SearchesController < ApplicationController
   def index
     @todo_lists = current_user.todo_lists.where('body LIKE(?)', "%#{params[:word]}%")
 
-    #respond_to do |format|
-      #format.html { redirect_to :root }
-      #format.json { render json: @todo_lists }
-    #end
-    
+    respond_to do |format|
+      format.html { redirect_to :root }
+      format.json { render json: @todo_lists }
+    end
+
   end
 end
