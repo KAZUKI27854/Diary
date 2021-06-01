@@ -19,11 +19,18 @@
   background-size: cover;
   background-image: url(back/road.jpg);
 
-  &__notice-message {
+  &__message {
     text-align: center;
-    background-color: var(--notice-back);
     border-radius: 10px;
     margin-top: 10px;
+
+    &--notice {
+      background-color: var(--notice-back);
+    }
+
+    &--alert {
+      background-color: var(--error-back);
+    }
   }
 
   &__menu {
@@ -74,9 +81,6 @@
           background-image: url(icon/green-book.png);
         }
 
-        &:nth-of-type(4):before {
-          background-image: url(icon/purple-book.png);
-        }
       }
     }
 

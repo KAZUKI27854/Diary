@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: :destroy
-
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      flash[:notice] = "ゲストユーザーはさくじょできません"
-      redirect_to my_page_path
-    end
-  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 

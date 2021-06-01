@@ -130,6 +130,24 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  $(function(){
+    $('.js-withdraw-confirm').hide();
+  });
+
+  $(function(){
+    $('.js-withdraw-btn').on('click', function(){
+      $('.js-user-edit').hide();
+      $('.js-withdraw-confirm').show();
+      event.preventDefault();
+
+      $('.js-user-edit-btn').on('click', function(){
+        $('.js-user-edit').show();
+        $('.js-withdraw-confirm').hide();
+        event.preventDefault();
+      });
+    });
+  });
+
   $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
   $('#js-message .message[id != "message1"]').hide();
 

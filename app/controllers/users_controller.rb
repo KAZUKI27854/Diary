@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
+  before_action :ensure_normal_user, only: :withdraw
 
   def show
     @document = Document.new
@@ -38,6 +39,13 @@ class UsersController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def ensure_normal_user
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストはさくじょできません"
+      redirect_to my_page_path
+    end
   end
 
   def user_params
