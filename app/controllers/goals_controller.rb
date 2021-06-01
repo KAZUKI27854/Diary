@@ -14,24 +14,16 @@ class GoalsController < ApplicationController
 		end
 	end
 
-	def show
-		@goal = Goal.find(params[:id])
-	end
-
-	def edit
-		@goal = Goal.find(params[:id])
-		if @goal.user_id != current_user.id
-			redirect_to root_path
-		end
-	end
-
 	def update
 		@goal = Goal.find(params[:id])
-		if @goal.update(goal_params)
-			flash[:notice] = "もくひょうをへんこうしました"
-		    redirect_to my_page_path
-		else
-		    render "edit"
+
+		respond_to do |format|
+			if @goal.update(goal_params)
+				flash[:notice] = "もくひょうをへんこうしました"
+			  format.html { redirect_to my_page_path }
+			else
+			  format.js { render "goal_errors" }
+			end
 		end
 	end
 

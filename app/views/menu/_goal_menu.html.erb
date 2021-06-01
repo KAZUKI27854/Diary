@@ -6,7 +6,7 @@
 <div class="my-page__menu">
   <% if @goals.exists? %>
     <% @goals.first(4).each do |goal| %>
-      <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal<%= goal.id %>-show">
+      <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal<%= goal.id %>-edit">
         <%= goal.category %> </br>
         Lv.<%= goal.level %>
       </a>
@@ -26,7 +26,7 @@
       <% end %>
       </p>
       <div class="js-goal-show">
-        <%= render "goals/show", goal: goal %>
+        <%= render "goals/edit", goal: goal %>
       </div>
     <% end %>
   <% else %>
