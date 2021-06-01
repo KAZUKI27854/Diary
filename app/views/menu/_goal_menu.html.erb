@@ -6,16 +6,16 @@
 <div class="my-page__menu">
   <% if @goals.exists? %>
     <% @goals.first(4).each do |goal| %>
-      <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal-show">
+      <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal<%= goal.id %>-show">
         <%= goal.category %> </br>
         Lv.<%= goal.level %>
       </a>
       <p>
         ステージ: <%= goal.doc_count %>F</br>
-        <% if goal.doc_count != 0 %>
-          <%= goal.stage.name %>
-        <% else %>
+        <% if goal.doc_count = 0 %>
           きろくなし
+        <% else %>
+          <%= goal.stage.name %>
         <% end %>
       </p>
       <p>つぎのもくひょう:</br>
