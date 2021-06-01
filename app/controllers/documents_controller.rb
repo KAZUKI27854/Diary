@@ -9,16 +9,15 @@ class DocumentsController < ApplicationController
 		@selected_documents = selected_goal.documents.page(params[:page]).reverse_order
 		@documents = @user.documents.page(params[:page]).reverse_order
 
-        if @selected_documents.exists?
-		  render partial: "users/card", locals: { documents: @selected_documents }
-		else
-		  render partial: "users/card", locals: { documents: @documents }
-		end
+    if @selected_documents.exists?
+    	render partial: "users/card", locals: { documents: @selected_documents }
+    else
+    	render partial: "users/card", locals: { documents: @documents }
+    end
 	end
 
 	def create
-		@document = Document.new(document_params)
-		@document.user_id = current_user.id
+		@document = @user.document.new(document_params)
 		goal = Goal.find(@document.goal_id)
 
 		respond_to do |format|
@@ -38,7 +37,7 @@ class DocumentsController < ApplicationController
 
 	def edit
 		@document = Document.find(params[:id])
-		if @document.user.id != current_user.id
+		if @document.user.id != @user.id
 			redirect_to root_path
 		end
 	end
@@ -64,8 +63,8 @@ class DocumentsController < ApplicationController
 	private
 
 	def set_current_user
-        @user = current_user
-    end
+		@user = current_user
+	end
 
 	def document_params
 		params.require(:document).permit(:body, :document_image, :milestone, :add_level, :goal_id)
