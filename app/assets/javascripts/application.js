@@ -29,7 +29,7 @@ document.addEventListener("turbolinks:load", function(){
         return false;
       });
     });
-    $('js-modal-close').on('click',function(){
+    $('.js-modal-close').on('click',function(){
       $('.js-modal').fadeOut();
       return false;
     });
@@ -103,14 +103,11 @@ document.addEventListener("turbolinks:load", function(){
         type: 'GET',
         url: '/documents',
         data:  { category: category },
-        dataType: 'json'
+        dataType: 'html'
       })
 
       .done(function (data) {
-        console.log(data);
-
-        /*$('.js-card').html("<%= j(render partial: 'users/card', locals: { documents: @selected_documents }) %>");*/
-        $('.js-card').html("<%= render 'users/card', documents: @selected_documents %>");
+        $('.js-card').html(data);
       })
 
       .fail(function() {

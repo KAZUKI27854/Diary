@@ -1,15 +1,19 @@
 class DocumentsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_current_user
+
 	include DocumentsHelper
 
 	def index
-		selected_goal = current_user.goals.find_by(category: params[:category])
-		@selected_documents = selected_goal.documents
+		selected_goal = @user.goals.find_by(category: params[:category])
+		@selected_documents = selected_goal.documents.page(params[:page]).reverse_order
+		@documents = @user.documents.page(params[:page]).reverse_order
 
-		respond_to do |format|
-	      format.html { redirect_to :root }
-	      format.json { render json: @selected_documents }
-        end
+        if @selected_documents.exists?
+		  render partial: "users/card", locals: { documents: @selected_documents }
+		else
+		  render partial: "users/card", locals: { documents: @documents }
+		end
 	end
 
 	def create
@@ -58,6 +62,11 @@ class DocumentsController < ApplicationController
 	end
 
 	private
+
+	def set_current_user
+        @user = current_user
+    end
+
 	def document_params
 		params.require(:document).permit(:body, :document_image, :milestone, :add_level, :goal_id)
 	end
