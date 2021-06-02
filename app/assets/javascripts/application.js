@@ -96,7 +96,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function () {
-    $('.my-page__js-select-box').on('change', function () {
+    $('.js-doc-search-select').on('change', function () {
       var category = $(this).val();
 
       $.ajax({
@@ -172,6 +172,8 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
     return false;
   });*/
+
+  $(".js-todo-lists-search").hide();
 
   $('.js-todo-lists__form').hide();
 

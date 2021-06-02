@@ -1,8 +1,16 @@
-$(".js-card").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
+<!-- ドキュメント一覧 => Todoリスト 切り替え時-->
+
+<!-- 背景の変更 -->
 $('.my-page').css({'background-image': 'url(assets/back/bar.jpg)'});
+
+<!--メニュー側の変更 -->
 $(".js-switch-image").prop('src','/assets/icon/door.png');
-$(".js-switch-text").html('きろくへもどる');
 $(".js-switch-link").prop('href','/users');
-$(".js-goal-select").hide();
+$(".js-switch-text").html('きろくへもどる');
+
+<!-- ドキュメント一覧の変更 -->
+$(".js-doc-search").hide();
+$(".js-todo-lists-search").show();
 $(".js-message").toggleClass('knight master');
 $(".js-message").html('やることをまとめるのよ');
+$(".js-card").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");

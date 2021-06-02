@@ -30,12 +30,16 @@
       <div class="col-lg-9 col-md-12 col-sm-12 js-switch-area">
         <% if current_user.documents.exists? then %>
          <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
-         <div class="js-goal-select">
-           <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "my-page__js-select-box"}) %>
+         <div class="js-doc-search">
+           <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "js-doc-search-select"}) %>
          </div>
-          <div class="js-card">
-              <%= render "users/card", documents: @documents %>
-          </div>
+         <div class="js-todo-lists-search form-inline">
+          <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょう別"}, {class: "my-page__js-select-box"}) %>
+          <%= text_field_tag :word, '', class: 'js-text_field', placeholder: 'キーワードけんさく' %>
+        </div>
+        <div class="js-card">
+            <%= render "users/card", documents: @documents %>
+        </div>
         <% elsif @goals.blank? then %>
           <h3 class="master message upper-contents">まずは「もくひょう」をおして</br>
           せっていしてみるのじゃ！</h3>

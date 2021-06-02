@@ -1,9 +1,5 @@
 <div class="col-lg-9 col-md-12 col-sm-12">
   <div class="todo-lists">
-    <div class="todo-lists__search form-inline">
-      <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょう別"}, {class: "my-page__js-select-box"}) %>
-      <%= text_field_tag :word, '', class: 'js-text_field', placeholder: 'キーワードけんさく' %>
-    </div>
     <h3>
       すべてのTodoリスト
       <img src="assets/icon/create-icon.png" alt="create-icon" class="todo-lists__icon js-create-todo-lists__icon">

@@ -1,8 +1,16 @@
-$(".js-card").html("<%= j(render 'users/card', documents: @documents) %>");
+<!-- Todoリスト => ドキュメント一覧 切り替え時-->
+
+<!-- 背景の変更 -->
 $('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
+
+<!--メニュー側の変更 -->
 $(".js-switch-image").prop('src','/assets/icon/bar-icon.png');
-$(".js-switch-text").html('Todoリスト');
 $(".js-switch-link").prop('href','/todo_lists');
-$(".js-goal-select").show();
+$(".js-switch-text").html('Todoリスト');
+
+<!-- Todoリスト一覧の変更 -->
+$(".js-doc-search").show();
+$(".js-todo-lists-search").hide();
 $(".js-message").toggleClass('knight master');
 $(".js-message").html('これまでのきろくじゃ');
+$(".js-card").html("<%= j(render 'users/card', documents: @documents) %>");
