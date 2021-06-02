@@ -108,13 +108,12 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
         $('.js-card').html(data);
+        return false;
       })
 
       .fail(function() {
         alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
       });
-
-
     });
   });
 
@@ -156,7 +155,7 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  $('.js-switch-todo_lists').on('click', function(event) {
+  /*$('.js-switch-todo_lists').on('click', function(event) {
     $(this).toggleClass('switched js-switch-todo_lists');
 
     if($(this).hasClass('switched')) {
@@ -166,13 +165,13 @@ document.addEventListener("turbolinks:load", function(){
       $(".js-switch-area").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
     } else {
       $('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
-      $(".js-switch-image").prop('src','/assets/icon/catsle.png');
+      $(".js-switch-image").prop('src','/assets/icon/bar-icon.png');
       $(".js-switch-text").html('Todoリスト');
     }
 
     event.preventDefault();
     return false;
-  });
+  });*/
 
   $('.js-todo-lists__form').hide();
 

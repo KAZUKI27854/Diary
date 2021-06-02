@@ -1,2 +1,8 @@
-$(".js-todo-lists").html("<%= j(render @todo_lists) %>");
-$(".error__message").remove();
+$(".js-card").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
+$('.my-page').css({'background-image': 'url(assets/back/bar.jpg)'});
+$(".js-switch-image").prop('src','/assets/icon/door.png');
+$(".js-switch-text").html('きろくへもどる');
+$(".js-switch-link").prop('href','/users');
+$(".js-goal-select").hide();
+$(".js-message").toggleClass('knight master');
+$(".js-message").html('やることをまとめるのよ');

@@ -20,17 +20,19 @@
         </div>
 
         <div class="my-page__menu--icon">
-          <a class="js-switch-todo_lists" href="">
+          <%= link_to todo_lists_path, class: "js-switch-link", remote: true do %>
             <img src="/assets/icon/bar-icon.png" alt="menu-icon" class="my-page__menu--icon--img js-switch-image"></br>
             <p class="js-switch-text">Todoリスト</p>
-          </a>
+          <% end %>
         </div>
       </div>
 
       <div class="col-lg-9 col-md-12 col-sm-12 js-switch-area">
         <% if current_user.documents.exists? then %>
-         <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
-          <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "my-page__js-select-box"}) %>
+         <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
+         <div class="js-goal-select">
+           <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "もくひょうで分ける"}, {class: "my-page__js-select-box"}) %>
+         </div>
           <div class="js-card">
               <%= render "users/card", documents: @documents %>
           </div>
