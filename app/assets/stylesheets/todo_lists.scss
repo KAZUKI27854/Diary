@@ -4,10 +4,35 @@
   min-height: 100vh;
   background-position: 50% 50%;
   background-size: cover;
-  background-image: url(back/wood-board.png);
 
   &__icon {
-    width: 4%;
-    height: 4%;
+    width: 50%;
+
+    &--submit {
+      background-image: url(icon/edit-icon.png);
+    }
+  }
+
+  &__search {
+    justify-content: space-around;
+  }
+
+  &__table {
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  &__thead {
+    &--goal {
+      width: 20%;
+    }
+
+    &--body {
+      width: 60%;
+    }
+
+    &--icon {
+      width: 10%;
+    }
   }
 }

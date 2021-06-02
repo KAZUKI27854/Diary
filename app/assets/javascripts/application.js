@@ -108,7 +108,6 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
         $('.js-card').html(data);
-        return false;
       })
 
       .fail(function() {
@@ -155,25 +154,7 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  /*$('.js-switch-todo_lists').on('click', function(event) {
-    $(this).toggleClass('switched js-switch-todo_lists');
-
-    if($(this).hasClass('switched')) {
-      $('.my-page').css({'background-image': 'url(assets/back/bar.jpg)'});
-      $(".js-switch-image").prop('src','/assets/icon/door.png');
-      $(".js-switch-text").html('きろくへもどる');
-      $(".js-switch-area").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
-    } else {
-      $('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
-      $(".js-switch-image").prop('src','/assets/icon/bar-icon.png');
-      $(".js-switch-text").html('Todoリスト');
-    }
-
-    event.preventDefault();
-    return false;
-  });*/
-
-  $(".js-todo-lists-search").hide();
+  $('.js-todo-lists-search').hide();
 
   $('.js-todo-lists__form').hide();
 

@@ -10,9 +10,6 @@ ja:
       truncate: "..."
 
   activerecord:
-
-
-
     attributes:
       user:
         name: なまえ
@@ -30,7 +27,7 @@ ja:
         goal_status: さいしゅうもくひょう
         deadline: もくひょうのきげん
       todo_list:
-        goal_id: もくひょう
+        goal: もくひょう
         body: やること
         deadline: きげん
 

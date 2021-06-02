@@ -1,13 +1,13 @@
 <%= form_with model: todo_list do |f| %>
-  <div class="form-group">
-    <%= f.text_field :body, size: 35 %>
+<div class="row">
+  <div class="form-inline">
+    <%= f.collection_select :goal_id, goals, :id, :category %>
+    <%= f.date_field :deadline, class: "ml-2" %>
+    <%= f.text_field :body, size: 30, class: "ml-3" %>
+    <%= f.submit '＋', class: "ml-5 btn btn-primary btn-sm" %>
+    <%= link_to "−", todo_list_path(todo_list.id), class: "ml-5 btn btn-danger btn-sm",
+      method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true %>
+    <%= link_to "もどる", todo_lists_path, class: "ml-5", remote: true %>
   </div>
-  <div class="form-group">
-    <label for="inputDeadline">きげん</label>
-    <%= f.date_field :deadline %>
-  </div>
-  <div class="form-btn">
-    <%= f.submit 'へんこう', class: "btn btn-primary btn-sm" %>
-    </div>
+</div>
 <% end %>
-<%= link_to "もどる", todo_lists_path, remote: true %>

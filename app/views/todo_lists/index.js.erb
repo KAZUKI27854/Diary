@@ -11,6 +11,5 @@ $(".js-switch-text").html('きろくへもどる');
 <!-- ドキュメント一覧の変更 -->
 $(".js-doc-search").hide();
 $(".js-todo-lists-search").show();
-$(".js-message").toggleClass('knight master');
-$(".js-message").html('やることをまとめるのよ');
+$(".js-message").html('やることをまとめるのじゃ！');
 $(".js-card").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
