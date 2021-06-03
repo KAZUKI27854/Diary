@@ -11,9 +11,6 @@ class UsersController < ApplicationController
     @goal = Goal.new
     @goals = @user.goals.order(updated_at: "DESC")
 
-    @todo_list = TodoList.new
-    @todo_lists = @user.todo_lists
-
     gon.goals = @goals.count
     gon.documents = @documents.count
   end
