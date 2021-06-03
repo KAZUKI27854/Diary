@@ -18,7 +18,7 @@ class TodoListsController < ApplicationController
     end
 
     if @todo_list.save
-      @todo_lists = @user.todo_lists.classify
+      @todo_lists = @user.todo_lists.classify.page(params[:page]).per(10)
       render :create
     else
       render :todo_list_errors
@@ -39,7 +39,7 @@ class TodoListsController < ApplicationController
     end
 
     if @todo_list.update(todo_list_params)
-      @todo_lists = @user.todo_lists.classify
+      @todo_lists = @user.todo_lists.classify.page(params[:page]).per(10)
       render :update
     else
       render :todo_list_errors
@@ -55,13 +55,13 @@ class TodoListsController < ApplicationController
     else
       @todo_list.update_attributes(is_finished: false, priority: 0)
     end
-    @todo_lists = @user.todo_lists.classify
+    @todo_lists = @user.todo_lists.classify.page(params[:page]).per(10)
   end
 
   def destroy
     todo_list = TodoList.find(params[:id])
     todo_list.destroy
-    @todo_lists = @user.todo_lists.classify
+    @todo_lists = @user.todo_lists.classify.page(params[:page]).per(10)
   end
 
   private
@@ -71,7 +71,7 @@ class TodoListsController < ApplicationController
     end
 
     def set_user_todo_lists
-      @todo_lists = @user.todo_lists.classify
+      @todo_lists = @user.todo_lists.classify.page(params[:page]).per(10)
     end
 
     def todo_list_params

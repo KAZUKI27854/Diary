@@ -1,3 +1,4 @@
 $(".js-todo-lists").html("<%= j(render @todo_lists) %>");
 $("#todo_list_body, #todo_list_goal_id, #todo_list_deadline").val("");
+$(".js-pagination").html("<%= j(paginate @todo_lists, remote: true) %>");
 $(".error__message").remove();
