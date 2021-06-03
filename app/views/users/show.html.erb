@@ -19,6 +19,9 @@
           <%= render "documents/new", document: @document %>
         </div>
 
+        <!-- ドキュメント作成時にエラーメッセージを表示すると直後の要素がdisplay:none;になるため、対策として空の要素を記載 -->
+        <div></div>
+
         <div class="my-page__menu--icon">
           <%= link_to todo_lists_path, class: "js-switch-link", remote: true do %>
             <img src="/assets/icon/bar-icon.png" alt="menu-icon" class="my-page__menu--icon--img js-switch-image"></br>

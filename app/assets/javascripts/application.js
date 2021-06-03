@@ -84,6 +84,11 @@ document.addEventListener("turbolinks:load", function(){
     );
   });
 
+  $(function(){
+    setTimeout("$('.my-page__message').fadeOut('slow')", 2500
+    );
+  });
+
   /* global gon */
   $(function(){
     if (gon.goals == 0) {
