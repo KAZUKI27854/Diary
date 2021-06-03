@@ -5,14 +5,14 @@ class DocumentsController < ApplicationController
 	include DocumentsHelper
 
 	def index
-    if params[:category].blank?
-      documents = @user.documents.page(params[:page]).reverse_order
-      render partial: "users/card", locals: { documents: documents }
-    else
-      selected_goal = @user.goals.find_by(category: params[:category])
-      selected_documents = selected_goal.documents.page(params[:page]).reverse_order
-      render partial: "users/card", locals: { documents: selected_documents }
-    end
+		if params[:category].blank?
+			documents = @user.documents.page(params[:page]).reverse_order
+			render partial: "users/card", locals: { documents: documents }
+		else
+			selected_goal = @user.goals.find_by(category: params[:category])
+			selected_documents = selected_goal.documents.page(params[:page]).reverse_order
+			render partial: "users/card", locals: { documents: selected_documents }
+		end
 	end
 
 	def create
@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
 	  	  when_doc_post_goal_auto_update(goal.id)
 	      format.html { redirect_to my_page_path }
 	    else
-		    format.js { render "document_errors" }
+	    	format.js { render "document_errors" }
 	    end
 	  end
 	end

@@ -30,7 +30,7 @@ document.addEventListener("turbolinks:load", function(){
       });
     });
     $('.js-modal-close').on('click',function(){
-      $('.error__message').remove();
+      $('.error__message').replaceWith('<div class="js-message-errors"></div>');
       $('.js-modal').fadeOut();
       return false;
     });
