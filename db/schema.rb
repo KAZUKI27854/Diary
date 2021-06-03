@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(version: 2021_06_01_063303) do
     t.integer "user_id", null: false
     t.integer "goal_id", null: false
     t.string "body", null: false
-    t.datetime "deadline", null: false
+    t.datetime "deadline"
     t.boolean "is_finished", default: false, null: false
+    t.integer "priority", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
