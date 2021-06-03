@@ -1,38 +1,41 @@
 <div class="todo-lists">
-  <h3>
-    すべてのTodoリスト
-  </h3>
+  <h4 class="js-create-todo-lists__icon">
+    <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべて"}, {class: "js-todo-list-search-select"}) %>
+    のTodoリスト
+  </h4>
   <%= form_with model: @todo_list do |f| %>
-    <div class="todo-lists__form">
-      <div class="js-todo-lists__form form-inline">
+    <div class="todo-lists__form--create js-todo-lists-form">
+      <div class="form-inline todo-lists__form--upper">
         <div class="form-group">
-          <label for="inputDeadline">きげん</label>
           <%= f.date_field :deadline %>
         </div>
         <div class="form-group">
-          <%= f.collection_select :goal_id, @goals, :id, :category, {prompt: "もくひょうをえらぶ"} %>
-        </div>
-        <div class="form-group">
-          <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
-        </div>
-        <div class="form-btn">
-          <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
+          <%= f.collection_select :goal_id, @goals, :id, :category, {prompt: "もくひょう"} %>
         </div>
       </div>
+      <div class="form-group">
+        <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
+      </div>
+      <div class="form-btn">
+        <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
+      </div>
+      <p>※きげんは必須ではありません</p>
     </div>
   <% end %>
-  <div class="container">
-    <div class="row">
-      <div class="col-3">きげん</div>
-      <div class="col-7">やること</div>
-      <div class="col-1">
-        <%= link_to todo_lists_path, remote: true do %>
-          <img src="/assets/icon/not-checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
-        <% end %>
+  <div class="todo-lists__index">
+    <div class="container">
+      <div class="row">
+        <div class="col-3">きげん</div>
+        <div class="col-7">やること</div>
+        <div class="col-1">
+          <%= link_to todo_lists_path, remote: true do %>
+            <img src="/assets/icon/not-checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="js-todo-lists">
-      <%= render @todo_lists %>
+      <div class="js-todo-lists">
+        <%= render @todo_lists %>
+      </div>
     </div>
   </div>
 </div>

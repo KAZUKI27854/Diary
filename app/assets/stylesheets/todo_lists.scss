@@ -4,6 +4,8 @@
   min-height: 100vh;
   background-position: 50% 50%;
   background-size: cover;
+  text-align: center;
+  margin-top: 3%;
 
   &__finished {
     text-decoration: line-through;
@@ -30,6 +32,17 @@
 
   &__search {
     justify-content: space-around;
+  }
+
+  &__form {
+
+    &--upper {
+      justify-content: center;
+    }
+  }
+
+  &__index {
+    font-size: 20px;
   }
 
 }

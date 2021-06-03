@@ -37,7 +37,6 @@
            <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
          </div>
          <div class="js-todo-lists-search todo-lists__search form-inline">
-          <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-todo-list-search-select"}) %>
           <%= text_field_tag :word, '', class: 'js-text_field', placeholder: 'キーワードけんさく' %>
         </div>
         <div class="js-card">

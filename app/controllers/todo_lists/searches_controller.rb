@@ -9,5 +9,12 @@ class TodoLists::SearchesController < ApplicationController
       format.json { render json: @todo_lists }
     end
 
+    #if params[:word].blank?
+      #todo_lists = @user.todo_lists
+			#render partial: "todo_lists/todo_list", collection: todo_lists
+    #else
+      #render partial: "todo_lists/todo_list", collection: todo_lists
+    #end
+
   end
 end
