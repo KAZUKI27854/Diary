@@ -16,7 +16,8 @@ class DocumentsController < ApplicationController
 	end
 
 	def create
-	  @document = @user.document.new(document_params)
+	  @document = Document.new(document_params)
+	  @document.user_id = @user.id
 	  goal = Goal.find(@document.goal_id)
 
 	  respond_to do |format|
@@ -29,7 +30,7 @@ class DocumentsController < ApplicationController
 	  	  when_doc_post_goal_auto_update(goal.id)
 	      format.html { redirect_to my_page_path }
 	    else
-		  format.js { render "document_errors" }
+		    format.js { render "document_errors" }
 	    end
 	  end
 	end
