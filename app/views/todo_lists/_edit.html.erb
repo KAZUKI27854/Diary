@@ -1,17 +1,19 @@
 <%= form_with model: todo_list do |f| %>
 <div class="row">
   <div class="form-inline">
-    <%= f.collection_select :goal_id, goals, :id, :category %>
-    <%= f.date_field :deadline, class: "ml-2" %>
-    <%= f.text_field :body, size: 30, class: "ml-3" %>
-    <%= f.submit '＋', class: "ml-5 btn btn-primary btn-sm" %>
-    <%= link_to "−", todo_list_path(todo_list.id), class: "ml-5 btn btn-danger btn-sm",
+    <%= f.date_field :deadline %>
+    <%= f.collection_select :goal_id, goals, :id, :category, class: "ml-2" %>
+    <%= f.text_field :body, size: 30, class: "ml-2" %>
+    <%= f.submit '＋', class: "ml-2 btn btn-primary btn-sm" %>
+    <%= link_to "−", todo_list_path(todo_list.id), class: "ml-4 btn btn-danger btn-sm",
       method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true %>
   </div>
 </div>
 <% end %>
 <div class="row">
-  <%= link_to todo_lists_path, class: "ml-5", remote: true do %>
-      <img src="/assets/icon/back-icon.png" alt="menu-icon">
+  <div class="todo-lists__icon--area">
+    <%= link_to todo_lists_path, class: "ml-5", remote: true do %>
+      <img src="/assets/icon/back-icon.png" alt="back-icon" class="todo-lists__icon--back">
     <% end %>
+  </div>
 </div>

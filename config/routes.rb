@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'goals' => 'goals#new'
   get 'users' => 'users#show', as: :my_page
   patch 'users/withdraw' => 'users#withdraw', as: :withdraw_user
+  get 'todo_lists/:id/check' => 'todo_lists#check', as: :check_todo_list
   resources :users, only: [:update]
   resources :documents
   resources :goals

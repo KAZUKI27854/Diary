@@ -5,11 +5,26 @@
   background-position: 50% 50%;
   background-size: cover;
 
-  &__icon {
-    width: 50%;
+  &__finished {
+    text-decoration: line-through;
+  }
 
-    &--submit {
-      background-image: url(icon/edit-icon.png);
+  &__not-finished {
+    text-decoration: underline;
+  }
+
+  &__icon {
+    &--area {
+      width: 100%;
+      text-align: center;
+    }
+
+    &--back {
+      width: 5%;
+    }
+
+    &--check {
+      width: 100%;
     }
   }
 
@@ -17,22 +32,4 @@
     justify-content: space-around;
   }
 
-  &__table {
-    margin-top: 5%;
-    text-align: center;
-  }
-
-  &__thead {
-    &--goal {
-      width: 20%;
-    }
-
-    &--body {
-      width: 60%;
-    }
-
-    &--icon {
-      width: 10%;
-    }
-  }
 }

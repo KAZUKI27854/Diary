@@ -162,7 +162,7 @@ document.addEventListener("turbolinks:load", function(){
 
   $('.js-todo-lists-search').hide();
 
-  $('.js-todo-lists__form').hide();
+  /*$('.js-todo-lists__form').hide();
 
   $('.js-create-todo-lists__icon').on('click', function(event) {
     $(this).toggleClass('active-form');
@@ -176,7 +176,7 @@ document.addEventListener("turbolinks:load", function(){
       $('#todo_list_body').val("");
       $('.error__message').remove();
     }
-  });
+  });*/
 
   $('.js-text_field').on('keyup', function () {
     var word = $.trim($(this).val());

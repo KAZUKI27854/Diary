@@ -3,9 +3,21 @@
     <div class="col-3"><%= todo_list.deadline.strftime("%m/%d") %></div>
     <div class="col-7">
       <%= link_to edit_todo_list_path(todo_list.id), class: "js-todo-lists__link--edit", remote: true do %>
-        <%= todo_list.body %>
+        <% if todo_list.is_finished == true %>
+          <p class="todo-lists__finished"><%= todo_list.body %></p>
+        <% else %>
+          <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+        <% end %>
       <% end %>
     </div>
-    <div class="col-1">□</div>
+    <div class="col-1">
+      <%= link_to check_todo_list_path(todo_list.id), remote: true do %>
+        <% if todo_list.is_finished == true %>
+          <img src="/assets/icon/checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
+        <% else %>
+          <img src="/assets/icon/not-checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

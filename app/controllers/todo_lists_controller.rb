@@ -1,18 +1,15 @@
 class TodoListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current_user
+  before_action :set_current_user, :set_user_todo_lists
 
   def index
     @goals = @user.goals
-
     @todo_list = TodoList.new
-    @todo_lists = @user.todo_lists
   end
 
   def create
     @todo_list = TodoList.new(todo_list_params)
     @todo_list.user_id = @user.id
-    @todo_lists = @user.todo_lists
 
     if @todo_list.save
       render :create
@@ -27,8 +24,6 @@ class TodoListsController < ApplicationController
   end
 
   def update
-    @todo_lists = @user.todo_lists
-
     @todo_list = @todo_lists.find(params[:id])
     if @todo_list.update(todo_list_params)
       render :update
@@ -37,9 +32,16 @@ class TodoListsController < ApplicationController
     end
   end
 
-  def destroy
-    @todo_lists = @user.todo_lists
+  def check
+    @todo_list = @todo_lists.find(params[:id])
+    if @todo_list.is_finished == false
+      @todo_list.update(is_finished: true)
+    else
+      @todo_list.update(is_finished: false)
+    end
+  end
 
+  def destroy
     todo_list = @todo_lists.find(params[:id])
     todo_list.destroy
   end
@@ -48,6 +50,10 @@ class TodoListsController < ApplicationController
 
     def set_current_user
       @user = current_user
+    end
+
+    def set_user_todo_lists
+      @todo_lists = @user.todo_lists
     end
 
     def todo_list_params
