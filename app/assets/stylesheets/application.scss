@@ -30,6 +30,10 @@
   --about-back-bl: #007bff;
   --notice-back: #00ff89;
   --error-back: #ff0050;
+  --modal-content: #fff;
+  --modal-back: #000000d6;
+  --todo-lists-back: #000000a8;
+  --line-through: #dc3545;
   --devise-link: #078000;
   --icon-width: 40px;
   --icon-height: 40px;
@@ -251,7 +255,7 @@ body {
   width: 100%;
 
   &__content {
-    background: #fff;
+    background: var(--modal-content);
     left: 50%;
     padding: 30px;
     position: absolute;
@@ -262,7 +266,7 @@ body {
   }
 
   &__back {
-    background: rgba(0,0,0,0.8);
+    background: var(--modal-back);
     height: 100vh;
     width: 100%;
     position: absolute;

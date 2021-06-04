@@ -8,11 +8,25 @@
   margin-top: 3%;
 
   &__finished {
-    text-decoration: line-through;
+    text-decoration: line-through 2px solid var(--line-through);
   }
 
   &__not-finished {
     text-decoration: underline;
+    color: var(--main-font);
+
+    &:hover {
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-image: url(icon/cursor.png);
+      }
+    }
   }
 
   &__icon {
@@ -26,7 +40,7 @@
     }
 
     &--check {
-      width: 100%;
+      width: 90%;
     }
   }
 
@@ -54,9 +68,17 @@
 
   &__index {
     font-size: 20px;
+    background-color: var(--todo-lists-back);
   }
 
   &__link {
+    &--edit {
+      &:hover {
+        text-decoration: none;
+        color: var(--main-font);
+      }
+    }
+
     &--destroy {
       margin-left: 4%;
     }

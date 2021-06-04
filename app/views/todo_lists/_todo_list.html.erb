@@ -11,7 +11,7 @@
       <% if todo_list.is_finished == true %>
         <p class="todo-lists__finished"><%= todo_list.body %></p>
       <% else %>
-        <%= link_to edit_todo_list_path(todo_list.id), class: "js-todo-lists__link--edit", remote: true do %>
+        <%= link_to edit_todo_list_path(todo_list.id), class: "todo-lists__link--edit", remote: true do %>
           <p class="todo-lists__not-finished"><%= todo_list.body %></p>
         <% end %>
       <% end %>
