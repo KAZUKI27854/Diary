@@ -74,3 +74,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'kaminari','~> 1.2.1'
 gem 'gon'
 gem 'whenever', require: false
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
