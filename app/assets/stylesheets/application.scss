@@ -73,7 +73,7 @@ body {
 .top {
   width: 100%;
   height: 100vh;
-  background-image: url(back/top-back.jpg);
+  background-image: image-url("back/top-back.jpg");
   background-position: 50% 35%;
   background-size: cover;
   display: flex;
@@ -208,38 +208,38 @@ body {
   color: var(--main-font);
 
   &:before {
-    background-image: url(icon/cursor.png);
+    background-image: image-url("icon/cursor.png");
     width: 20px;
     height: 20px;
   }
 }
 
 .top__link--guest:before {
-  background-image: url(character/brave.png);
+  background-image: image-url("character/brave.png");
 }
 
 .master:before {
-  background-image: url(character/master.png);
+  background-image: image-url("character/master.png");
 }
 
 .father:before {
-  background-image: url(character/father.png);
+  background-image: image-url("character/father.png");
 }
 
 .knight:before {
-  background-image: url(character/knight.png);
+  background-image: image-url("character/knight.png");
 }
 
 .priest:before {
-  background-image: url(character/priest.png);
+  background-image: image-url("character/priest.png");
 }
 
 .princess:before {
-  background-image: url(character/princess.png);
+  background-image: image-url("character/princess.png");
 }
 
 .witch:before {
-  background-image: url(character/witch.png);
+  background-image: image-url("character/witch.png");
 }
 
 .content {
