@@ -1,0 +1,10 @@
+.withdraw-confirm {
+  height: 35vh;
+  padding-top: 10vh;
+
+  &__text {
+    background-color: var(--error-back);
+    border-radius: 10px;
+    padding: 5% 0;
+  }
+}

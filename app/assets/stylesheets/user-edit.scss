@@ -3,4 +3,25 @@
   background-size: cover;
   padding-bottom: 20px;
   background-image: url(forest.jpg);
+
+  &__form {
+    &--name {
+      width: 60%;
+      margin-left: 10%;
+    }
+
+    &--image {
+      margin-left: 25%;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .user-edit {
+    &__form {
+      &--image {
+        margin-left: 10%;
+      }
+    }
+  }
 }
