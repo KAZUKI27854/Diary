@@ -17,7 +17,7 @@
   min-height: 100vh;
   background-position: 50% 50%;
   background-size: cover;
-  background-image: url(back/road.jpg);
+  background-image: image-url("back/road.jpg");
 
   &__message {
     text-align: center;
@@ -49,17 +49,17 @@
       text-align: center;
 
       &:before {
-        background-image: url(monster/monster13.png);
+        background-image: image-url("monster/monster13.png");
       }
 
       &:after {
-        background-image: url(monster/monster14.png);
+        background-image: image-url("monster/monster14.png");
       }
     }
 
     &--text {
       &:after {
-        background-image: url(icon/downward-cursor.png);
+        background-image: image-url("icon/downward-cursor.png");
         width: 10px;
         height: 10px;
       }
@@ -70,15 +70,15 @@
         width: 100%;
 
         &:nth-of-type(1):before {
-          background-image: url(icon/red-book.png);
+          background-image: image-url("icon/red-book.png");
         }
 
         &:nth-of-type(2):before {
-          background-image: url(icon/blue-book.png);
+          background-image: image-url("icon/blue-book.png");
         }
 
         &:nth-of-type(3):before {
-          background-image: url(icon/green-book.png);
+          background-image: image-url("icon/green-book.png");
         }
 
       }
@@ -89,7 +89,7 @@
 
       .active {
         &:after {
-          background-image: url(icon/upward-cursor.png);
+          background-image: image-url("icon/upward-cursor.png");
           width: 10px;
           height: 10px;
         }
