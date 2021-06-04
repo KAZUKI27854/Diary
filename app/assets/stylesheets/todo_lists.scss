@@ -40,7 +40,7 @@
     }
 
     &--check {
-      width: 90%;
+      width: 25%;
     }
   }
 
@@ -89,4 +89,22 @@
     }
   }
 
+}
+
+@media (max-width: 425px) {
+  todo-lists {
+    &__icon {
+      &--back {
+        width: 170%;
+      }
+
+      &--check {
+        width: 100%;
+      }
+    }
+
+    &__index {
+      font-size: 15px;
+    }
+  }
 }
