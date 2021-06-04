@@ -22,7 +22,7 @@
     }
 
     &--back {
-      width: 5%;
+      width: 100%;
     }
 
     &--check {
@@ -35,6 +35,17 @@
   }
 
   &__form {
+    &--area {
+      justify-content: center;
+    }
+
+    &--edit {
+      width: 100%;
+    }
+
+    &--text {
+      margin: 1% 0;
+    }
 
     &--upper {
       justify-content: center;
@@ -43,6 +54,17 @@
 
   &__index {
     font-size: 20px;
+  }
+
+  &__link {
+    &--destroy {
+      margin-left: 4%;
+    }
+
+    &--index {
+      margin-left: 4%;
+      width: 5%;
+    }
   }
 
 }
