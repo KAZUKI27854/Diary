@@ -33,7 +33,7 @@
 }
 
 .log-in {
-  background-image: url(sky.jpg);
+  background-image: image-url("back/sky.jpg");
   background-position: 50% 35%;
   background-size: cover;
   height: 100vh;
@@ -49,13 +49,13 @@
     color: var(--devise-link);
 
     &:before {
-      background-image: url(monster/monster4.png);
+      background-image: image-url("monster/monster4.png");
     }
   }
 }
 
 .sign-up {
-  background-image: url(sky.jpg);
+  background-image: image-url("back/sky.jpg");
   background-position: 50% 35%;
   background-size: cover;
   height: 100vh;
@@ -64,13 +64,13 @@
     color: var(--devise-link);
 
     &:before {
-      background-image: url(monster/monster1.png);
+      background-image: image-url("monster/monster1.png");
     }
   }
 }
 
 .reset-psw {
-  background-image: url(sample3.png);
+  background-image: image-url("back/dusk-sky.png");
   background-position: 50% 35%;
   background-size: cover;
   height: 100vh;
@@ -80,7 +80,7 @@
     color: var(--devise-link);
 
     &:before {
-      background-image: url(monster/monster5.png);
+      background-image: image-url("monster/monster5.png");
     }
   }
 }
