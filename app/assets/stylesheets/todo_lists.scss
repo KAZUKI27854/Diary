@@ -35,6 +35,10 @@
       text-align: center;
     }
 
+    &--create {
+      width: 8%;
+    }
+
     &--back {
       width: 100%;
     }
@@ -44,8 +48,8 @@
     }
   }
 
-  &__search {
-    justify-content: space-around;
+  &__header {
+    text-align: center;
   }
 
   &__form {

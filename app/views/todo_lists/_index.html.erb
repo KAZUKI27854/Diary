@@ -1,27 +1,5 @@
 <div class="todo-lists">
-  <h4 class="js-create-todo-lists__icon">
-    <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべて"}, {class: "js-todo-list-search-select"}) %>
-    のTodoリスト
-  </h4>
-  <%= form_with model: @todo_list do |f| %>
-    <div class="todo-lists__form--create js-todo-lists-form">
-      <div class="form-inline todo-lists__form--upper">
-        <div class="form-group">
-          <%= f.date_field :deadline %>
-        </div>
-        <div class="form-group">
-          <%= f.collection_select :goal_id, @goals, :id, :category, {prompt: "もくひょう"} %>
-        </div>
-      </div>
-      <div class="form-group todo-lists__form--text">
-        <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
-      </div>
-      <div>
-        <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
-      </div>
-      <p>※きげんは必須ではありません</p>
-    </div>
-  <% end %>
+  
   <div class="todo-lists__index">
     <div class="container">
       <div class="row">

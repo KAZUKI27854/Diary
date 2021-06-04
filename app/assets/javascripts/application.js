@@ -160,22 +160,22 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  $('.js-todo-lists-search').hide();
+  $('.js-todo-lists-header').hide();
 
-  /*$('.js-todo-lists-form').hide();*/
+  $('.js-todo-lists-form').hide();
 
   $('.js-create-todo-lists__icon').on('click', function(event) {
     $(this).toggleClass('active-form');
     $('.js-todo-lists-form').show();
 
-    /*if($(this).hasClass('active-form')) {
+    if($(this).hasClass('active-form')) {
       $(this).prop('src','/assets/icon/quill-pen.png');
     } else {
       $(this).prop('src','/assets/icon/create-icon.png');
-      $('.js-todo-lists__form').hide();
+      $('.js-todo-lists-form').hide();
       $('#todo_list_body').val("");
       $('.error__message').remove();
-    }*/
+    }
   });
 
   $('.js-text_field').on('keyup', function () {

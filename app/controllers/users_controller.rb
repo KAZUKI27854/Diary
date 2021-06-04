@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @documents = @user.documents.page(params[:page]).reverse_order
     @user_level = @documents.sum(:add_level)
 
+    @todo_list = TodoList.new
+
     @goal = Goal.new
     @goals = @user.goals.order(updated_at: "DESC")
 
