@@ -1,5 +1,4 @@
 <div class="todo-lists">
-  
   <div class="todo-lists__index">
     <div class="container">
       <div class="row">
@@ -15,6 +14,6 @@
         <%= render @todo_lists %>
       </div>
     </div>
-    <span class="js-pagination"><%= paginate @todo_lists, remote: true %></span>
+    <%= paginate @todo_lists, remote: true %>
   </div>
 </div>

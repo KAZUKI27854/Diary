@@ -160,13 +160,13 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  $('.js-todo-lists-header').hide();
+  $('.js-todo-lists-header, .js-todo-lists').hide();
 
   $('.js-todo-lists-form').hide();
 
   $('.js-create-todo-lists__icon').on('click', function(event) {
     $(this).toggleClass('active-form');
-    $('.js-todo-lists-form').show();
+    $('.js-todo-lists-form').fadeIn();
 
     if($(this).hasClass('active-form')) {
       $(this).prop('src','/assets/icon/quill-pen.png');

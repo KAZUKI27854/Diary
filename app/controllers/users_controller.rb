@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @document = Document.new
-    @documents = @user.documents.page(params[:page]).reverse_order
+    @documents = @user.documents.page(params[:page]).per(4).reverse_order
     @user_level = @documents.sum(:add_level)
 
     @todo_list = TodoList.new

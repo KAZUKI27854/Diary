@@ -20,8 +20,10 @@
       <%= f.text_field :body, size: 35, placeholder: "やることを入力" %>
     </div>
     <div>
-      <%= f.submit 'ついか', class: "btn btn-primary btn-sm" %>
+      <%= f.submit "ついか", class: "btn btn-primary btn-sm" %>
     </div>
     <p>※きげんは必須ではありません</p>
   </div>
 <% end %>
+<%= link_to "チェックずみをさくじょ", delete_finished_path, class: "btn btn-danger",
+    method: :delete, "data-confirm" => "チェック済みのリストを全て削除してもよろしいですか？", remote: true %>

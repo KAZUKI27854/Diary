@@ -32,14 +32,14 @@
 
       <div class="col-lg-9 col-md-12 col-sm-12 js-switch-area">
         <% if current_user.documents.exists? then %>
-         <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
-         <!-- 最初は表示、TodoListへ切り替え時に非表示 -->
-         <div class="js-doc-search">
-           <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
-         </div>
-         <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
-         <div class="js-todo-lists-header todo-lists__header">
-           <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
+          <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
+          <!-- 最初は表示、TodoListへ切り替え時に非表示 -->
+          <div class="js-doc-search">
+            <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
+          </div>
+          <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
+          <div class="js-todo-lists-header todo-lists__header">
+            <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
           </div>
           <div class="js-card">
             <%= render "users/card", documents: @documents %>
