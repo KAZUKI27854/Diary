@@ -196,7 +196,6 @@ document.addEventListener("turbolinks:load", function(){
 
       $(data).each(function(i,todo_list) {
         $('.js-todo-lists').append(`<li>${todo_list.body}</li>`);
-        /*$('.js-todo-lists').append(`<%= j(render ${todo_list}) %>`);*/
       });
     })
 

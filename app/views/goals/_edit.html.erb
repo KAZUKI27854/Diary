@@ -20,9 +20,9 @@
                         placeholder: "Lv.100のじょうたい" %>
                     <label for="inputDeadline">きげん</label>
                     <%= f.date_field :deadline, class: "form-control", id: "edit-goal#{goal.id}-deadline" %>
-                    <%= f.submit 'へんこう', class: "btn btn-primary btn-sm goal-edit__button" %>
+                    <%= f.submit 'へんこう', class: "btn btn-primary btn-sm mt-3 ml-5" %>
 
-                    <%= link_to "さくじょ", goal_path(goal.id), method: :delete, class: "btn btn-danger btn-sm goal-edit__button",
+                    <%= link_to "さくじょ", goal_path(goal.id), method: :delete, class: "btn btn-danger btn-sm mt-3 ml-5",
                       "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？" %>
                   <% end %>
                 <% else %>
