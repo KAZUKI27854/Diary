@@ -64,9 +64,8 @@ document.addEventListener("turbolinks:load", function(){
 
   $(function(){
     $('.random-monster-img').each(function(i){
-      var array = [...Array(5)].map((_, i) => i + 1);
-      var number = array[Math.floor(Math.random() * array.length)];
-      $(this).prop('src','/assets/monster/monster' + number + '.png');
+      var random_number = Math.floor(Math.random() * ((5 + 1) - 1)) + 1;
+      $(this).prop('src','/assets/monster/monster' + random_number + '.png');
     });
   });
 
