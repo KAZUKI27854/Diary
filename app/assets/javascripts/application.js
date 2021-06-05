@@ -153,19 +153,18 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  $('.js-todo-lists-header, .js-todo-lists').hide();
+  $('.js-todo-lists-header, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
 
-  $('.js-todo-lists-form').hide();
+  $('.todo-lists__icon--create').on('click', function(event) {
+    $('.js-todo-lists-form').toggleClass('active-form');
+    $('.js-todo-lists-form').slideToggle();
 
-  $('.js-create-todo-lists__icon').on('click', function(event) {
-    $(this).toggleClass('active-form');
-    $('.js-todo-lists-form').fadeIn();
-
-    if($(this).hasClass('active-form')) {
-      $(this).prop('src','/assets/icon/quill-pen.png');
+    if($('.js-todo-lists-form').hasClass('active-form')) {
+      $('.js-write-todo-lists-icon').show();
+      $('.js-create-todo-lists-icon').hide();
     } else {
-      $(this).prop('src','/assets/icon/create-icon.png');
-      $('.js-todo-lists-form').hide();
+      $('.js-write-todo-lists-icon').hide();
+      $('.js-create-todo-lists-icon').show();
       $('#todo_list_body').val("");
       $('.error__message').remove();
     }
