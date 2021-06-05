@@ -37,20 +37,24 @@
           <div class="js-doc-search">
             <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
           </div>
-          <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
-          <div class="js-todo-lists-header todo-lists__header">
-            <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
-          </div>
-          <div class="js-card">
-            <%= render "users/card", documents: @documents %>
-          </div>
         <% elsif @goals.blank? then %>
-          <h3 class="master message upper-contents">まずは「もくひょう」をおして</br>
-          せっていしてみるのじゃ！</h3>
+          <h3 class="master message upper-contents">
+            まずは「もくひょう」をおして</br>
+            せっていしてみるのじゃ！
+          </h3>
         <% else %>
-          <h3 class="master message upper-contents">つぎは「きろくする」をおして</br>
-          とうこうしてみるのじゃ！</h3>
+          <h3 class="master message upper-contents">
+            つぎは「きろくする」をおして</br>
+            とうこうしてみるのじゃ！
+          </h3>
         <% end %>
+         <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
+        <div class="js-todo-lists-header todo-lists__header">
+          <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
+        </div>
+        <div class="js-card">
+          <%= render "users/card", documents: @documents %>
+        </div>
       </div>
     </div>
   </div>
