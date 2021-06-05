@@ -194,7 +194,8 @@ document.addEventListener("turbolinks:load", function(){
     .done(function (data) {
 
       $(data).each(function(i,todo_list) {
-        $('.js-todo-lists').append(`<li>${todo_list.body}</li>`);
+        /*$('.js-todo-lists').append(`<li>${todo_list.body}</li>`);*/
+        $('.js-todo-lists').append("<li>" + todo_list.body + "</li>");
       });
     })
 
