@@ -6,7 +6,7 @@
         <div class="col-7">やること</div>
         <div class="col-2">
           <%= link_to todo_lists_path, remote: true do %>
-            <img src="/assets/icon/check-icon.png" alt="check-icon" class="todo-lists__icon--check">
+            <%= image_tag "icon/check-icon.png", class: "todo-lists__icon--check", alt: "check-icon" %>
           <% end %>
         </div>
       </div>

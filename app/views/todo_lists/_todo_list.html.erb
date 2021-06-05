@@ -19,9 +19,9 @@
     <div class="col-2">
       <%= link_to check_todo_list_path(todo_list.id), remote: true do %>
         <% if todo_list.is_finished == true %>
-          <img src="/assets/icon/checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
+          <%= image_tag "icon/checked-icon.png", class: "todo-lists__icon--check", alt: "check-icon" %>
         <% else %>
-          <img src="/assets/icon/not-checked-icon.png" alt="check-icon" class="todo-lists__icon--check">
+          <%= image_tag "icon/not-checked-icon.png", class: "todo-lists__icon--check", alt: "check-icon" %>
         <% end %>
       <% end %>
     </div>
