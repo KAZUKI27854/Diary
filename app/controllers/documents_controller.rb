@@ -6,11 +6,11 @@ class DocumentsController < ApplicationController
 
 	def index
 		if params[:category].blank?
-			documents = @user.documents.page(params[:page]).reverse_order
+			documents = @user.documents.page(params[:page]).per(6).reverse_order
 			render partial: "users/card", locals: { documents: documents }
 		else
 			selected_goal = @user.goals.find_by(category: params[:category])
-			selected_documents = selected_goal.documents.page(params[:page]).reverse_order
+			selected_documents = selected_goal.documents.page(params[:page]).per(6).reverse_order
 			render partial: "users/card", locals: { documents: selected_documents }
 		end
 	end
