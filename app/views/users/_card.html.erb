@@ -6,32 +6,32 @@
           <% if document.document_image_id.present? %>
               <%= attachment_image_tag document, :document_image,
                   class: "doc__card--img-top doc__card--img", id: "imageArea" %>
-          <% elsif within_100_and_not_multiples_of_5?(document.goal_id, document.id) then %>
+          <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
             <div class="doc__card--stage">
-              <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) + 1 %>.jpg"
-                   class="doc__card--stage-img" alt="stage-image">
+              <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) + 1 }.jpg",
+                   class: "doc__card--stage-img", alt: "stage-image" %>
 
               <div class="doc__card--monster-left">
-                <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) %>.png"
-                     class="doc__card--monster-img" alt="monster-image">
+                <%= image_tag "monster/monster#{ doc_number(document.id) }.png",
+                     class: "doc__card--monster-img", alt: "monster-image" %>
               </div>
               <div class="doc__card--monster-right">
-                <img src="/assets/monster/monster<%= doc_number(document.goal_id, document.id) + 1 %>.png"
-                     class="doc__card--monster-img" alt="monster-image">
+                <%= image_tag "monster/monster#{ doc_number(document.id) + 1 }.png",
+                     class: "doc__card--monster-img", alt: "monster-image" %>
               </div>
             </div>
-          <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
+          <% elsif within_100_and_multiples_of_5?(document.id) then %>
             <div class="doc__card--stage">
-              <img src="/assets/stage/stage<%= (doc_number(document.goal_id, document.id) / 5) %>.jpg"
-                   class="doc__card--stage-img" alt="stage-image">
-                <div class="doc__card--monster-boss">
-                  <img src="/assets/monster/boss<%= doc_number(document.goal_id, document.id) / 5 %>.png"
-                       class="doc__card--monster-img" alt="monster-image">
-                </div>
+              <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) }.jpg",
+                   class: "doc__card--stage-img", alt: "stage-image" %>
+              <div class="doc__card--monster-boss">
+                <%= image_tag "monster/boss#{ doc_number(document.id) / 5 }.png",
+                     class: "doc__card--monster-img", alt: "monster-image" %>
+              </div>
             </div>
           <% else %>
             <div class="doc__card--stage">
-              <img src="/assets/stage/stage21.jpg" class="doc__card--stage-img" alt="stage-image">
+              <%= image_tag "stage/stage21.jpg", class: "doc__card--stage-img", alt: "stage-image" %>
               <div class="doc__card--monster-left">
                 <%= image_tag '', class: "random-monster-img doc__card--monster-img" %>
               </div>
@@ -43,12 +43,12 @@
           <div class="card-body doc__card--body">
             <div class="row">
               <p class="doc__card--title">
-                <%= document.goal.category %>のダンジョン( <span><%= doc_number(document.goal_id, document.id) %></span> F )にいどんだ！
+                <%= document.goal.category %>のダンジョン( <span><%= doc_number(document.id) %></span> F )にいどんだ！
               </p>
               <p class="doc__card--body">
                 <% if document.document_image_id.present? %>
                   <%= document.body %> </br>
-                <% elsif within_100_and_multiples_of_5?(document.goal_id, document.id) then %>
+                <% elsif within_100_and_multiples_of_5?(document.id) then %>
                   このステージのボスがあらわれた！</br>
                   <%= document.body %> </br>
                   ボスをたおした！ </br>

@@ -17,9 +17,20 @@ module DocumentsHelper
 		goal.update_attributes(level: goal.level, doc_count: goal.doc_count, stage_id: goal.stage_id)
   end
 
-  def doc_number(goal_id, document_id)
-	  documents = Document.where(goal_id: goal_id)
+  def doc_number(document_id)
+    document = Document.find_by(id: document_id)
+	  documents = Document.where(goal_id: document.goal_id)
 	  id_index = documents.pluck(:id)
 	  id_index.index(document_id) + 1
+  end
+
+  def within_100_and_not_multiples_of_5?(document_id)
+    number = doc_number(document_id)
+    number <= 100 && (number % 5) != 0
+  end
+
+  def within_100_and_multiples_of_5?(document_id)
+    number = doc_number(document_id)
+    number <= 100 && (number % 5) == 0
   end
 end
