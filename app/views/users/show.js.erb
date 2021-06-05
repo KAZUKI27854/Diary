@@ -1,10 +1,19 @@
 <!-- Todoリスト => ドキュメント一覧 切り替え時-->
 
 <!-- 背景の変更 -->
-$('.my-page').css({'background-image': 'url(assets/back/road.jpg)'});
+<% if Rails.env == 'production' %>
+  <% back = asset_url('back/road.jpg') %>
+  $('.my-page').css({'background-image': 'url("<%= back %>")'});
+<% else %>
+  $('.my-page').css({'background-image': 'url("assets/back/road.jpg")'});
+<% end %>
 
 <!--メニュー側の変更 -->
-$(".js-switch-image").prop('src','/assets/icon/bar-icon.png');
+<% if Rails.env == 'production' %>
+  $(".js-switch-image").prop('src',"<%= asset_url('icon/bar-icon.png') %>");
+<% else %>
+  $(".js-switch-image").prop('src','/assets/icon/bar-icon.png');
+<% end %>
 $(".js-switch-link").prop('href','/todo_lists');
 $(".js-switch-text").html('Todoリスト');
 
