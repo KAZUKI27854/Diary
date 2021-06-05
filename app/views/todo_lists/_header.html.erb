@@ -4,7 +4,7 @@
 <h4 class="js-create-todo-lists__icon">
   <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべて"}, {class: "js-todo-list-search-select"}) %>
   のTodoリスト
-  <img src="assets/icon/create-icon.png" alt="create-icon" class="todo-lists__icon--create js-create-todo-lists__icon">
+  <%= image_tag "icon/create-icon.png", class: "todo-lists__icon--create js-create-todo-lists__icon" alt: "create-icon" %>
 </h4>
 <%= form_with model: @todo_list do |f| %>
   <div class="todo-lists__form--create js-todo-lists-form">
