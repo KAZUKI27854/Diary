@@ -54,14 +54,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  /*$(function(){
-    $('.dungeon-img').each(function(i){
-      var array = [...Array(5)].map((_, i) => i + 1);
-      var number = array[Math.floor(Math.random() * array.length)];
-      $(this).prop('src','/assets/dungeon/dungeon' + number + '.jpg');
-    });
-  });*/
-
   $(function(){
     $('.random-monster-img').each(function(i){
       var random_number = Math.floor(Math.random() * ((5 + 1) - 1)) + 1;
@@ -84,16 +76,18 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    setTimeout("$('.my-page__message').fadeOut('slow')", 2500
+    setTimeout("$('.my-page__message').fadeOut('slow')", 3500
     );
   });
 
   /* global gon */
   $(function(){
     if (gon.goals == 0) {
-      $('.my-page__menu--icon--goal, my-page__link--create-goal').addClass('js-bound');
+      $('.my-page__menu--icon--goal').addClass('js-bound');
+      $('.js-save-icon, .js-todo-list-icon').css('opacity', 0.5 );
+      $('.js-save-link, .js-todo-list-link').css('pointer-events', 'none' );
     } else if (gon.goals >= 1 && gon.documents == 0) {
-      $('.my-page__menu--icon--goal, my-page__link--create-goal').removeClass('js-bound');
+      $('.my-page__menu--icon--goal').removeClass('js-bound');
       $('.my-page__link--create-doc-img').addClass('js-bound');
     } else {
       $('.my-page__link--create-doc-img').removeClass('js-bound');
