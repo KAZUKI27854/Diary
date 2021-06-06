@@ -314,4 +314,6 @@ Devise.setup do |config|
   HOST = Rails.env.production? ? ENV['HOST_PROD'] : ENV['HOST_DEV']
 
   config.omniauth :google_oauth2, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, scope: 'email', redirect_uri: "#{HOST}/users/auth/google_oauth2/callback"
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email', info_fields: 'email', callback_url: "#{HOST}/users/auth/facebook/callback"
+  config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'], scope: 'email', oauth_callback: "#{HOST}/users/auth/twitter/callback"
 end

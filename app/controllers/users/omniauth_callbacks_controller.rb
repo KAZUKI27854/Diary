@@ -5,11 +5,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:google)
   end
 
+  def facebook
+    callback_for(:facebook)
+  end
+
+  def twitter
+    callback_for(:twitter)
+  end
+
   def callback_for(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
-      flash[:notice] = "Googleアカウントでログインしました"
+      flash[:notice] = "#{provider}アカウントでログインしました"
     else
       redirect_to new_user_registration_path
     end

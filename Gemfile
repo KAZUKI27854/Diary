@@ -77,6 +77,8 @@ gem 'whenever', require: false
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :production do
   gem 'mysql2'
