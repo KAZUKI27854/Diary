@@ -2,7 +2,9 @@ name: Rails CI/CD
 
 on:
   push:
-    branches: [main]
+    branches-ignore:
+      - '**'
+    #branches: [main]
 
 jobs:
   build:
