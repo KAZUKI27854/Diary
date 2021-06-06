@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_063303) do
+ActiveRecord::Schema.define(version: 2021_06_06_011919) do
 
   create_table "documents", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_06_01_063303) do
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
     t.boolean "is_active", default: true, null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

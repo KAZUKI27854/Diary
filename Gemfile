@@ -75,6 +75,9 @@ gem 'kaminari','~> 1.2.1'
 gem 'gon'
 gem 'whenever', require: false
 gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
 group :production do
   gem 'mysql2'
 end
