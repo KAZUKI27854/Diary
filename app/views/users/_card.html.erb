@@ -67,7 +67,10 @@
               </p>
               <p class="doc__card--bottom">
                 <span class="link">
-                  <%= link_to 'へんしゅう', edit_document_path(document.id) %> ｜
+                  <%#= link_to 'へんしゅう', edit_document_path(document.id) %>
+                  <a class="js-modal-open" href="" data-target="modal-doc<%= document.id %>-edit">
+                    へんしゅう
+                  </a>｜
                   <%= link_to 'さくじょ', document_path(document.id), method: :delete,
                       "data-confirm" => "削除してよろしいですか？", class: "delete_link" %>
                 </span>
@@ -76,6 +79,9 @@
                   <span class="doc__card--date-day"><%= document.created_at.strftime('%d') %></span>
                 </span>
               </p>
+            </div>
+            <div class="js-doc-edit">
+              <%= render "documents/edit", document: document %>
             </div>
           </div>
         </div>

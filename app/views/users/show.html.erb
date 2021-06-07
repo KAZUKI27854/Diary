@@ -9,7 +9,7 @@
         <p class="my-page__menu--logo upper-contents"> M E N U </p>
 
         <%= render "menu/user_menu" %>
-        <%= render "menu/goal_menu" %>
+        <%= render "menu/goal_menu", goals: @goals %>
 
         <div class="my-page__menu--icon js-save-icon">
           <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">

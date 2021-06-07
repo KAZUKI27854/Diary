@@ -35,21 +35,17 @@ class DocumentsController < ApplicationController
 	  end
 	end
 
-	def edit
-	  @document = Document.find(params[:id])
-	  if @document.user.id != @user.id
-		redirect_to root_path
-	  end
-	end
-
 	def update
 	  @document = Document.find(params[:id])
-	  if @document.update(document_params)
-	    flash[:notice] = "きろくをへんこうしました"
-	    redirect_to my_page_path
-	  else
-	    render "edit"
-	  end
+
+    respond_to do |format|
+		  if @document.update(document_params)
+		    flash[:notice] = "きろくをへんこうしました"
+		    redirect_to my_page_path
+		  else
+		    format.js { render "document_errors" }
+		  end
+		end
 	end
 
 	def destroy

@@ -1,0 +1,46 @@
+<div id="modal-doc<%= document.id %>-edit" class="modal js-modal">
+  <div class="modal__back js-modal-close"></div>
+  <div class="modal__content">
+    <div class="doc-edit">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-2 col-sm-0"></div>
+          <div class="col-lg-6 col-md-8 col-sm-12 user-edit-form">
+            <h3 class="master message upper-contents">かきなおすならここじゃ</h3>
+            <div class="js-message-errors"></div>
+            <%= form_with model: document do |f| %>
+              <div class="form-group">
+                <label for="inputSkill">レベルアップしたスキル</label>
+                <!-- documents/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
+                <%= f.collection_select :goal_id, current_user.goals, :id, :category, id: "edit-doc#{document.id}-category" %>
+              </div>
+              <div class="form-group mt-2">
+                <label for="inputImage">がぞう</label>
+                <%= f.attachment_field :document_image, class: "form-control-file", id: "edit-doc#{document.id}-image" %>
+              </div>
+              <div class="form-group">
+                <label for="inputBody">ぼうけんのないよう</label>
+                <%= f.text_area :body, size: "20x7", class: "form-control",
+                    id: "edit-doc#{document.id}-body", placeholder: "ぼうけんのないよう" %>
+              </div>
+              <div class="form-group">
+                <label for="inputMilestone">つぎのもくひょう</label>
+                <%= f.text_field :milestone, class: "form-control",
+                    id: "edit-doc#{document.id}-milestone", placeholder: "つぎのもくひょう" %>
+              </div>
+              <div class="form-group">
+                <label for="inputAddLevel">かくとくレベル</label>
+                <%= f.select :add_level, options_for_select((1..50).to_a),
+                    class: "form-control", id: "edit-doc#{document.id}-add_level" %>
+              </div>
+              <div class="form-btn">
+                <%= f.submit 'きろくしなおす', class: "btn btn-primary btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-lg-3 col-md-2 col-sm-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

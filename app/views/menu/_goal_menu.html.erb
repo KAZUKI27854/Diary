@@ -4,8 +4,8 @@
 </div>
 
 <div class="my-page__menu">
-  <% if @goals.exists? %>
-    <% @goals.first(3).each do |goal| %>
+  <% if goals.exists? %>
+    <% goals.first(3).each do |goal| %>
       <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal<%= goal.id %>-edit">
         <%= goal.category %> </br>
         Lv.<%= goal.level %>
@@ -29,7 +29,7 @@
         <%= render "goals/edit", goal: goal %>
       </div>
     <% end %>
-    <%= collection_select(:goal, :category, @goals.drop(3), :id, :category,
+    <%= collection_select(:goal, :category, goals.drop(3), :id, :category,
       {prompt: "その他のもくひょう"}, {class: "my-page__menu--js-select-box"}) %></br>
   <% else %>
     <p class="my-page__menu--text--goal">みせってい</p>
