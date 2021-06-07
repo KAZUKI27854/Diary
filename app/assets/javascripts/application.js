@@ -197,10 +197,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $('.test').on('click', function(event) {
-  $(this).css('color', '#f00');
-  event.preventDefault();
-})
 
 });
 
