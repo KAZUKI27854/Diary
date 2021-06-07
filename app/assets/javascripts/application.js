@@ -114,7 +114,9 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $('.my-page__menu').hide();
+  $(function() {
+    $('.my-page__menu').hide();
+  });
 
   $(function(){
     $('.my-page__menu--icon').on('click', function(){
@@ -141,59 +143,63 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
-  $('#js-message .message[id != "message1"]').hide();
-
-  $('.tabBox a').on('click', function(event) {
-    $('#tabBoxes .tabBox').hide();
-    $('#js-message .message').hide();
-    $($(this).attr("href")).show();
-    $($(this).attr("class")).show();
-    event.preventDefault();
+  $(function() {
+    $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
+    $('#js-message .message[id != "message1"]').hide();
   });
 
-  $('.js-todo-lists-area, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
-
-  $('.todo-lists__icon--create').on('click', function(event) {
-    $('.js-todo-lists-form').toggleClass('active-form');
-    $('.js-todo-lists-form').slideToggle();
-
-    if($('.js-todo-lists-form').hasClass('active-form')) {
-      $('.js-write-todo-lists-icon').show();
-      $('.js-create-todo-lists-icon').hide();
-    } else {
-      $('.js-write-todo-lists-icon').hide();
-      $('.js-create-todo-lists-icon').show();
-      $('#todo_list_body').val("");
-      $('.error__message').remove();
-    }
-  });
-
-  $('.js-text_field').on('keyup', function () {
-    var word = $.trim($(this).val());
-
-    $.ajax({
-      type: 'GET',
-      url: '/todo_lists/searches',
-      data:  { word: word },
-      dataType: 'html'
-    })
-
-    .done(function (data) {
-        $('.js-todo-lists').html(data);
-      })
-
-    /*.done(function (data) {
-
-      $(data).each(function(i,todo_list) {
-        $('.js-todo-lists').append("<li>" + todo_list.body + "</li>");
-      });
-    })*/
-
-    .fail(function() {
-      alert("検索に失敗しました。ページを再読み込みして下さい。");
+  $(function() {
+    $('.tabBox a').on('click', function(event) {
+      $('#tabBoxes .tabBox').hide();
+      $('#js-message .message').hide();
+      $($(this).attr("href")).show();
+      $($(this).attr("class")).show();
+      event.preventDefault();
     });
   });
+
+  $(function() {
+    $('.js-todo-lists-area, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
+  });
+
+  $(function() {
+    $('.todo-lists__icon--create').on('click', function(event) {
+      $('.js-todo-lists-form').toggleClass('active-form');
+      $('.js-todo-lists-form').slideToggle();
+
+      if($('.js-todo-lists-form').hasClass('active-form')) {
+        $('.js-write-todo-lists-icon').show();
+        $('.js-create-todo-lists-icon').hide();
+      } else {
+        $('.js-write-todo-lists-icon').hide();
+        $('.js-create-todo-lists-icon').show();
+        $('#todo_list_body').val("");
+        $('.error__message').remove();
+      }
+    });
+  });
+
+  $(function() {
+    $('.js-text_field').on('keyup', function () {
+      var word = $.trim($(this).val());
+
+      $.ajax({
+        type: 'GET',
+        url: '/todo_lists/searches',
+        data:  { word: word },
+        dataType: 'html'
+      })
+
+      .done(function (data) {
+          $('.js-todo-lists').html(data);
+        })
+
+      .fail(function() {
+        alert("検索に失敗しました。ページを再読み込みして下さい。");
+      });
+    });
+  });
+
 
 
 });
