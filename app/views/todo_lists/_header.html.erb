@@ -1,9 +1,9 @@
 <div class="todo-lists__header">
   <div class="form-group">
-    <%= text_field_tag :word, '', class: 'js-text_field', placeholder: 'キーワードけんさく' %>
+    <%= text_field_tag :word, '', class: 'js-todo-lists-search-field', placeholder: 'キーワードけんさく' %>
   </div>
   <h4 class="js-create-todo-lists__icon">
-    <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべて"}, {class: "js-todo-list-search-select"}) %>
+    <%= collection_select(:goal, :category, @goals, :category, :category, {prompt: "すべて"}, {class: "js-todo-lists-search-select"}) %>
     のTodoリスト
     <%= image_tag "icon/create-icon.png", class: "todo-lists__icon--create js-create-todo-lists-icon", alt: "create-icon" %>
     <%= image_tag "icon/quill-pen.png", class: "todo-lists__icon--create js-write-todo-lists-icon", alt: "write-icon" %>

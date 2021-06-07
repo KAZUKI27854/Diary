@@ -180,7 +180,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function() {
-    $('.js-text_field').on('keyup', function () {
+    $('.js-todo-lists-search-field').on('keyup', function () {
       var word = $.trim($(this).val());
 
       $.ajax({
@@ -199,6 +199,30 @@ document.addEventListener("turbolinks:load", function(){
       });
     });
   });
+
+  $(function() {
+    $('.js-todo-lists-search-select').on('change', function () {
+      var category = $(this).val();
+      var word = $.trim($('.js-todo-lists-search-field').val());
+
+      $.ajax({
+        type: 'GET',
+        url: '/todo_lists/search_category',
+        data:  { category: category, word: word },
+        dataType: 'html'
+      })
+
+      .done(function (data) {
+          $('.js-todo-lists').html(data);
+          /*console.log(word)*/
+        })
+
+      .fail(function() {
+        alert("検索に失敗しました。ページを再読み込みして下さい。");
+      });
+    });
+  });
+
 
 
 
