@@ -18,7 +18,7 @@ $(".js-switch-link").prop('href','/users');
 $(".js-switch-text").html('きろくへもどる');
 
 <!-- ドキュメント一覧の変更 -->
-$(".js-doc-search").hide();
-$(".js-todo-lists-header").show();
 $(".js-message").html('やることをまとめるのじゃ！');
-$(".js-card").html("<%= j(render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists) %>");
+$(".js-doc-search").hide();
+$(".js-card").hide();
+$(".js-todo-lists-area").show();

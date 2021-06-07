@@ -18,7 +18,7 @@ $(".js-switch-link").prop('href','/todo_lists');
 $(".js-switch-text").html('Todoリスト');
 
 <!-- Todoリスト一覧の変更 -->
-$(".js-doc-search").show();
-$(".js-todo-lists-header").hide();
 $(".js-message").html('これまでのきろくじゃ');
-$(".js-card").html("<%= j(render 'users/card', documents: @documents) %>");
+$(".js-doc-search").show();
+$(".js-card").show();
+$(".js-todo-lists-area").hide();

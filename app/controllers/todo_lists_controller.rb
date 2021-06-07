@@ -1,12 +1,15 @@
 class TodoListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
-  #index以外はアクション実行後にソートしたいので、アクション内に記述
-  before_action :set_user_todo_lists, only: [:index]
+  #index,back(indexへ戻る処理)以外はアクション実行後にソートしたいので、アクション内に記述
+  before_action :set_user_todo_lists, only: [:index, :back]
 
   def index
     @goals = @user.goals
     @todo_list = TodoList.new
+  end
+
+  def back
   end
 
   def create

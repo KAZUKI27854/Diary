@@ -153,7 +153,7 @@ document.addEventListener("turbolinks:load", function(){
     event.preventDefault();
   });
 
-  $('.js-todo-lists-header, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
+  $('.js-todo-lists-header, .js-todo-lists-body, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
 
   $('.todo-lists__icon--create').on('click', function(event) {
     $('.js-todo-lists-form').toggleClass('active-form');

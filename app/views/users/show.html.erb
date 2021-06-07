@@ -48,12 +48,13 @@
             とうこうしてみるのじゃ！
           </h3>
         <% end %>
-         <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
-        <div class="js-todo-lists-header todo-lists__header">
-          <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
-        </div>
         <div class="js-card">
           <%= render "users/card", documents: @documents %>
+        </div>
+         <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
+        <div class="js-todo-lists-area">
+          <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
+          <%= render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists %>
         </div>
       </div>
     </div>
