@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace :todo_lists do
-    resources :searches, only: :index, defaults: { format: :json }
+    resources :searches, only: :index
   end
 
   root to: 'homes#top'

@@ -177,20 +177,19 @@ document.addEventListener("turbolinks:load", function(){
       type: 'GET',
       url: '/todo_lists/searches',
       data:  { word: word },
-      dataType: 'json'
+      dataType: 'html'
     })
-
-    /*.done(function (data) {
-        $('.js-todo-lists').html(data);
-      })*/
 
     .done(function (data) {
+        $('.js-todo-lists').html(data);
+      })
+
+    /*.done(function (data) {
 
       $(data).each(function(i,todo_list) {
-        /*$('.js-todo-lists').append(`<li>${todo_list.body}</li>`);*/
         $('.js-todo-lists').append("<li>" + todo_list.body + "</li>");
       });
-    })
+    })*/
 
     .fail(function() {
       alert("検索に失敗しました。ページを再読み込みして下さい。");
