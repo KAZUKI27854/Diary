@@ -11,7 +11,6 @@ class TodoLists::SearchesController < ApplicationController
     else
       render partial: "todo_lists/todo_list", collection: @todo_lists
     end
-
   end
 
   private
