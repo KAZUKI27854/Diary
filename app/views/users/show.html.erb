@@ -8,7 +8,7 @@
         <p class="my-page__message my-page__message--alert"><%= flash[:alert] %></p>
         <p class="my-page__menu--logo upper-contents"> M E N U </p>
 
-        <%= render "menu/user_menu" %>
+        <%= render "menu/user_menu", user: current_user, user_level: @user_level, documents: @user_documents %>
         <%= render "menu/goal_menu", goals: @goals %>
 
         <div class="my-page__menu--icon js-save-icon">
