@@ -21,15 +21,14 @@
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
   $(function(){
-    $('.js-modal-open').each(function(){
-      $(this).on('click',function(){
-        var target = $(this).data('target');
-        var modal = document.getElementById(target);
-        $(modal).fadeIn();
-        return false;
-      });
+    $(document).on('click','.js-modal-open', function(){
+      var target = $(this).data('target');
+      var modal = document.getElementById(target);
+      $(modal).fadeIn();
+      return false;
     });
-    $('.js-modal-close').on('click',function(){
+
+    $(document).on('click', '.js-modal-close', function(){
       $('.error__message').replaceWith('<div class="js-message-errors"></div>');
       $('.js-modal').fadeOut();
       return false;
