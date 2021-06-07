@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
 	  	  when_doc_post_goal_auto_update(goal.id)
 	      format.html { redirect_to my_page_path }
 	    else
-	    	format.js { render "document_errors" }
+	      format.js { render "document_errors" }
 	    end
 	  end
 	end
@@ -38,14 +38,14 @@ class DocumentsController < ApplicationController
 	def update
 	  @document = Document.find(params[:id])
 
-    respond_to do |format|
-		  if @document.update(document_params)
-		    flash[:notice] = "きろくをへんこうしました"
-		    redirect_to my_page_path
-		  else
-		    format.js { render "document_errors" }
-		  end
-		end
+      respond_to do |format|
+	    if @document.update(document_params)
+	      flash[:notice] = "きろくをへんこうしました"
+		  redirect_to my_page_path
+	    else
+	      format.js { render "document_errors" }
+	    end
+	  end
 	end
 
 	def destroy
