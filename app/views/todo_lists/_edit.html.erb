@@ -13,7 +13,7 @@
       <%= link_to "−", todo_list_path(todo_list.id), class: "todo-lists__link--destroy btn btn-danger btn-sm",
         method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true %>
       <%= link_to todo_lists_path, class: "todo-lists__link--index", remote: true do %>
-        <%= "icon/back-icon.png", class: "todo-lists__icon--back", alt: "back-icon" %>
+        <%= image_tag "icon/back-icon.png", class: "todo-lists__icon--back", alt: "back-icon" %>
       <% end %>
     </div>
   </div>
