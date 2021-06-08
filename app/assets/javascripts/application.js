@@ -114,8 +114,6 @@ document.addEventListener("turbolinks:load", function(){
       var goal_id = $(this).val();
       var goal_edit_modal = '#modal-goal' + goal_id  + '-edit';
 
-      console.log(goal_edit_modal)
-
       $(goal_edit_modal).fadeIn();
       return false;
     });
