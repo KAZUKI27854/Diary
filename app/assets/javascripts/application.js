@@ -62,6 +62,8 @@ document.addEventListener("turbolinks:load", function(){
     } else if (gon.goals >= 1 && gon.documents == 0) {
       $('.my-page__menu--icon--goal').removeClass('js-bound');
       $('.my-page__link--create-doc-img').addClass('js-bound');
+      $('.js-todo-list-icon').css('opacity', 0.5 );
+      $('.js-todo-list-link').css('pointer-events', 'none' );
     } else {
       $('.my-page__link--create-doc-img').removeClass('js-bound');
     }
