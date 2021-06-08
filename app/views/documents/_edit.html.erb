@@ -15,7 +15,7 @@
                 <%= f.collection_select "#{document.id}-cat", current_user.goals, :id, :category %>
               </div>
               <div class="form-group mt-2">
-                <label for="inputImage">がぞう</label>
+                <label for="inputImage">がぞう（※必須ではありません）</label>
                 <%= f.attachment_field :document_image, class: "form-control-file", id: "edit-doc#{document.id}-image" %>
               </div>
               <div class="form-group">
@@ -42,5 +42,6 @@
         </div>
       </div>
     </div>
+    <a class="js-modal-close" href="">閉じる</a>
   </div>
 </div>
