@@ -1,7 +1,7 @@
 .my-page__menu--logo:before,
 .my-page__menu--logo:after,
 .my-page__menu--text:after,
-.my-page__menu--text--goal:before {
+.my-page__menu--text-goal:before {
   content: '';
   display: inline-block;
   width: var(--icon-width);
@@ -64,7 +64,7 @@
         height: 10px;
       }
 
-      &--goal{
+      &-goal{
         margin-top: 5px;
         display: inline-block;
         width: 100%;
@@ -96,7 +96,7 @@
         }
       }
 
-      &--img {
+      &-img {
         width: 100px;
         height: 100px;
       }
@@ -104,11 +104,6 @@
   }
 
   &__link {
-    &--modal {
-      text-decoration: underline;
-      color: var(--main-font);
-    }
-
     &--text {
       text-decoration: underline;
       color: var(--main-font);
@@ -171,14 +166,12 @@
 @media (max-width: 991px) {
   .my-page{
     &__menu {
-      &--text {
-        &--goal {
-          width: 50%;
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 20px;
-          margin-left: 0;
-        }
+      &--text-goal {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        margin-left: 0;
       }
     }
   }

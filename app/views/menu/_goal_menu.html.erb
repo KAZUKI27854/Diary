@@ -1,12 +1,12 @@
 <div class="my-page__menu--icon">
-  <%= image_tag "icon/books.png", class: "my-page__menu--icon--img my-page__menu--icon--goal", alt: "menu-icon" %>
+  <%= image_tag "icon/books.png", class: "my-page__menu--icon-img", alt: "menu-icon" %>
   <p class="my-page__menu--text">もくひょう </p>
 </div>
 
 <div class="my-page__menu">
   <% if goals.exists? %>
     <% goals.first(3).each do |goal| %>
-      <a class="js-modal-open my-page__menu--text--goal" href="" data-target="modal-goal<%= goal.id %>-edit">
+      <a class="js-modal-open my-page__menu--text-goal" href="" data-target="modal-goal<%= goal.id %>-edit">
         <%= goal.category %> </br>
         Lv.<%= goal.level %>
       </a>
@@ -35,7 +35,9 @@
     <%= collection_select(:goal, :category, goals.drop(3), :id, :category,
       {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %></br>
   <% else %>
-    <p class="my-page__menu--text--goal">みせってい</p>
+    <p class="my-page__menu--text-goal">みせってい</p>
   <% end %>
-  <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
+  <div class="my-page__menu--link--bottom">
+    <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
+  </div>
 </div>
