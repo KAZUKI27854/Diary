@@ -12,10 +12,10 @@
       </a>
       <p>
         ステージ: <%= goal.doc_count %>F</br>
-        <% if goal.doc_count = 0 %>
-          きろくなし
-        <% else %>
+        <% if goal.doc_count != 0 %>
           <%= goal.stage.name %>
+        <% else %>
+          きろくなし
         <% end %>
       </p>
       <p>つぎのもくひょう:</br>
@@ -25,16 +25,17 @@
         <a class="js-modal-open my-page__link--text" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
       <% end %>
       </p>
-      <div class="js-goal-show">
-        <%= render "goals/edit", goal: goal %>
-      </div>
     <% end %>
+    <!-- モーダルウインドウ -->
+    <%= render "goals/new", goal: @goal %>
+    <% goals.each do |goal| %>
+      <%= render "goals/edit", goal: goal %>
+    <% end %>
+    <!-- 目標が4つ以上の場合にセレクトボックス表示-->
     <%= collection_select(:goal, :category, goals.drop(3), :id, :category,
-      {prompt: "その他のもくひょう"}, {class: "my-page__menu--js-select-box"}) %></br>
+      {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %></br>
   <% else %>
     <p class="my-page__menu--text--goal">みせってい</p>
   <% end %>
-
   <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
-  <%= render "goals/new", goal: @goal %>
 </div>

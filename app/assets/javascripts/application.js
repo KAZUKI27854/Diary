@@ -100,17 +100,21 @@ document.addEventListener("turbolinks:load", function(){
 
   /* 目標数が4つ以上の場合、更新順で4番目以降の目標はセレクトボックスに表示*/
   $(function(){
-    var goal_select_box = '.my-page__menu--js-select-box';
+    var goal_select = '.js-menu-goal-select';
 
     if (gon.goals <= 3) {
-      $(goal_select_box).hide();
+      $(goal_select).hide();
     } else {
-      $(goal_select_box).show();
+      $(goal_select).show();
     }
-    /* モーダルウインドウ */
-    $(goal_select_box).on('change',function(){
+  });
+
+  $(function(){
+    $('.js-menu-goal-select').on('change',function(){
       var goal_id = $(this).val();
       var goal_edit_modal = '#modal-goal' + goal_id  + '-edit';
+
+      console.log(goal_edit_modal)
 
       $(goal_edit_modal).fadeIn();
       return false;
