@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @todo_lists = @user.todo_lists.classify.page(params[:page])
 
     @goal = Goal.new
-    @goals = @user.goals.order(updated_at: "DESC")
+    @goals = @user.goals.order("updated_at DESC")
 
     gon.goals = @goals.count
     gon.documents = @documents.count

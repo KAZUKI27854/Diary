@@ -5,7 +5,7 @@
 
 <div class="my-page__menu">
   <% if goals.exists? %>
-    <% goals.first(3).each do |goal| %>
+    <% goals.includes(:stage).first(3).each do |goal| %>
       <a class="js-modal-open my-page__menu--text-goal" href="" data-target="modal-goal<%= goal.id %>-edit">
         <%= goal.category %> </br>
         Lv.<%= goal.level %>
