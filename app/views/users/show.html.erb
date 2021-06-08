@@ -34,7 +34,7 @@
         <% if current_user.documents.exists? then %>
           <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
           <!-- 最初は表示、TodoListへ切り替え時に非表示 -->
-          <div class="js-doc-search">
+          <div class="js-doc-search doc__card--search">
             <%= collection_select(:doc_goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
             <%= text_field_tag :doc_word,'', class: 'js-doc-search-field', placeholder: 'キーワードけんさく' %>
           </div>
