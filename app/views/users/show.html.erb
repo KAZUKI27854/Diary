@@ -14,7 +14,7 @@
         <div class="my-page__menu--icon js-save-icon">
           <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">
             <%= image_tag "icon/save-point.png", class: "my-page__menu--icon--img my-page__link--create-doc-img", alt: "menu-icon" %></br>
-            きろくする
+            <p class="my-page__link--text">きろくする</p>
           </a>
           <%= render "documents/new", document: @document %>
         </div>
@@ -25,7 +25,7 @@
         <div class="my-page__menu--icon js-todo-list-icon">
           <%= link_to todo_lists_path, class: "js-switch-link js-todo-list-link", remote: true do %>
             <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon--img js-switch-image", alt: "menu-icon" %></br>
-            <p class="js-switch-text">Todoリスト</p>
+            <p class="js-switch-text my-page__link--text">Todoリスト</p>
           <% end %>
         </div>
       </div>

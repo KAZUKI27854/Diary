@@ -78,8 +78,8 @@
       &:before {
         content: '';
         display: inline-block;
-        width: 15px;
-        height: 15px;
+        width: var(--cursor-width);
+        height: var(--cursor-height);
         background-size: contain;
         background-repeat: no-repeat;
         vertical-align: middle;

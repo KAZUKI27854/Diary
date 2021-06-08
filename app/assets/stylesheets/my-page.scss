@@ -107,8 +107,28 @@
       text-decoration: underline;
       color: var(--main-font);
     }
-  }
 
+    &--text {
+      text-decoration: underline;
+      color: var(--main-font);
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--main-font);
+
+        &:before {
+          content: '';
+          display: inline-block;
+          width: var(--cursor-width);
+          height: var(--cursor-height);
+          background-size: contain;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          background-image: image-url("icon/cursor.png");
+        }
+      }
+    }
+  }
 }
 
 .pagination {

@@ -9,6 +9,6 @@
   <p class="user-level">ステータス: Lv.<%= user_level %></p>
   <p class="doc-count">ぼうけん: <%= documents.count %> 回</p>
   <p>クリア: <%= clear_count(params[:id]) %>回</p>
-  <a class="js-modal-open my-page__link--modal" href="" data-target="modal-user-edit">へんしゅう</a>
+  <a class="js-modal-open my-page__link--text" href="" data-target="modal-user-edit">へんしゅう</a>
   <%= render "users/edit", user: user %>
 </div>

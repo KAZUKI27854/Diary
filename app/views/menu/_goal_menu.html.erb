@@ -22,7 +22,7 @@
       <% if goal.documents.exists? %>
         <%= latest_milestone(goal.id) %>
       <% else %>
-        <a class="js-modal-open" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
+        <a class="js-modal-open my-page__link--text" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
       <% end %>
       </p>
       <div class="js-goal-show">
@@ -35,6 +35,6 @@
     <p class="my-page__menu--text--goal">みせってい</p>
   <% end %>
 
-  <a class="js-modal-open my-page__link--modal my-page__link--create-goal" href="" data-target="modal-new-goal">せっていする</a>
+  <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
   <%= render "goals/new", goal: @goal %>
 </div>
