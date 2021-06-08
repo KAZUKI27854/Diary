@@ -7,28 +7,6 @@
   text-align: center;
   margin-top: 3%;
 
-  &__finished {
-    text-decoration: line-through 2px solid var(--line-through);
-  }
-
-  &__not-finished {
-    text-decoration: underline;
-    color: var(--main-font);
-
-    &:hover {
-      &:before {
-        content: '';
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        vertical-align: middle;
-        background-image: image-url("icon/cursor.png");
-      }
-    }
-  }
-
   &__icon {
     &--create {
       width: 8%;
@@ -88,6 +66,27 @@
     }
   }
 
+  &__finished {
+    text-decoration: line-through 2px solid var(--line-through);
+  }
+
+  &__not-finished {
+    text-decoration: underline;
+    color: var(--main-font);
+
+    &:hover {
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-image: image-url("icon/cursor.png");
+      }
+    }
+  }
 }
 
 @media (max-width: 425px) {
