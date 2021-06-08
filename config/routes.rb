@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   namespace :todo_lists do
     resources :searches, only: :index
-    get 'search_category' => 'searches#index_by_category', as: :search_category
   end
 
   root to: 'homes#top'

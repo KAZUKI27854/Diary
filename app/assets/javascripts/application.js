@@ -182,11 +182,12 @@ document.addEventListener("turbolinks:load", function(){
   $(function() {
     $('.js-todo-lists-search-field').on('keyup', function () {
       var word = $.trim($(this).val());
+      var category = $('.js-todo-lists-search-select').val();
 
       $.ajax({
         type: 'GET',
         url: '/todo_lists/searches',
-        data:  { word: word },
+        data:  { word: word, category: category },
         dataType: 'html'
       })
 
@@ -207,14 +208,13 @@ document.addEventListener("turbolinks:load", function(){
 
       $.ajax({
         type: 'GET',
-        url: '/todo_lists/search_category',
+        url: '/todo_lists/searches',
         data:  { category: category, word: word },
         dataType: 'html'
       })
 
       .done(function (data) {
           $('.js-todo-lists').html(data);
-          /*console.log(word)*/
         })
 
       .fail(function() {
