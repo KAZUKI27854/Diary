@@ -68,10 +68,11 @@
               <p class="doc__card--bottom">
                 <span class="link">
                   <a class="js-modal-open" href="" data-target="modal-doc<%= document.id %>-edit">
-                    へんしゅう
-                  </a>｜
-                  <%= link_to 'さくじょ', document_path(document.id), method: :delete,
-                      "data-confirm" => "削除してよろしいですか？", class: "delete_link" %>
+                    <%= image_tag "icon/edit-icon.png", class: "doc__card--icon", alt: "edit-icon" %>
+                  </a>
+                  <%= link_to document_path(document.id), method: :delete, "data-confirm" => "削除してよろしいですか？" do %>
+                    <%= image_tag "icon/delete-icon.png", class: "doc__card--icon", alt: "delete-icon" %>
+                  <% end %>
                 </span>
                 <span class="doc__card--date">
                   <span class="doc__card--date-month"><%= document.created_at.strftime('%m') %></span>
