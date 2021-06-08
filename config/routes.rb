@@ -11,9 +11,12 @@ Rails.application.routes.draw do
     resources :searches, only: :index
   end
 
+  namespace :documents do
+    resources :searches, only: :index
+  end
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
-  get 'goals' => 'goals#new'
   get 'users' => 'users#show', as: :my_page
   patch 'users/withdraw' => 'users#withdraw', as: :withdraw_user
   get 'todo_lists/:id/check' => 'todo_lists#check', as: :check_todo_list
@@ -23,5 +26,4 @@ Rails.application.routes.draw do
   resources :documents
   resources :goals
   resources :todo_lists
-
 end

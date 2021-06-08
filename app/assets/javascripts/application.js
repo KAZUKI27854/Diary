@@ -20,6 +20,23 @@
 
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
+  /* チュートリアルページのタブボックス */
+  $(function() {
+    $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
+    $('#js-message .message[id != "message1"]').hide();
+  });
+
+  $(function() {
+    $('.tabBox a').on('click', function(event) {
+      $('#tabBoxes .tabBox').hide();
+      $('#js-message .message').hide();
+      $($(this).attr("href")).show();
+      $($(this).attr("class")).show();
+      event.preventDefault();
+    });
+  });
+
+  /* モーダルウインドウ */
   $(function(){
     $(document).on('click','.js-modal-open', function(){
       var target = $(this).data('target');
@@ -35,51 +52,8 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $(function(){
-    var goal_select_box = '.my-page__menu--js-select-box';
-
-    if (gon.goals <= 3) {
-      $(goal_select_box).hide();
-    } else {
-      $(goal_select_box).show();
-    }
-
-    $(goal_select_box).on('change',function(){
-      var goal_id = $(this).val();
-      var goal_edit_modal = '#modal-goal' + goal_id  + '-edit';
-
-      $(goal_edit_modal).fadeIn();
-      return false;
-    });
-  });
-
-  $(function(){
-    $('.random-monster-img').each(function(i){
-      var random_number = Math.floor(Math.random() * ((5 + 1) - 1)) + 1;
-      $(this).prop('src','/assets/monster/monster' + random_number + '.png');
-    });
-  });
-
-  $(function(){
-      $('.levelup__text').html("<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>");
-  });
-
-  $(function(){
-    setTimeout("$('.levelup__back').fadeOut('slow')", 1200
-    );
-  });
-
-  $(function(){
-    setTimeout("$('.clear__back').fadeOut('slow')", 3500
-    );
-  });
-
-  $(function(){
-    setTimeout("$('.my-page__message').fadeOut('slow')", 3500
-    );
-  });
-
   /* global gon */
+  /* ユーザーの目標数、ドキュメント数が０の場合に、次に進む箇所をバウンドアニメーションで明示*/
   $(function(){
     if (gon.goals == 0) {
       $('.my-page__menu--icon--goal').addClass('js-bound');
@@ -91,27 +65,6 @@ document.addEventListener("turbolinks:load", function(){
     } else {
       $('.my-page__link--create-doc-img').removeClass('js-bound');
     }
-  });
-
-  $(function () {
-    $('.js-doc-search-select').on('change', function () {
-      var category = $(this).val();
-
-      $.ajax({
-        type: 'GET',
-        url: '/documents',
-        data:  { category: category },
-        dataType: 'html'
-      })
-
-      .done(function (data) {
-        $('.js-card').html(data);
-      })
-
-      .fail(function() {
-        alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
-      });
-    });
   });
 
   $(function() {
@@ -143,18 +96,94 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  $(function() {
-    $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
-    $('#js-message .message[id != "message1"]').hide();
+  /* 目標数が4つ以上の場合、更新順で4番目以降の目標はセレクトボックスに表示*/
+  $(function(){
+    var goal_select_box = '.my-page__menu--js-select-box';
+
+    if (gon.goals <= 3) {
+      $(goal_select_box).hide();
+    } else {
+      $(goal_select_box).show();
+    }
+    /* モーダルウインドウ */
+    $(goal_select_box).on('change',function(){
+      var goal_id = $(this).val();
+      var goal_edit_modal = '#modal-goal' + goal_id  + '-edit';
+
+      $(goal_edit_modal).fadeIn();
+      return false;
+    });
   });
 
+  /* 同一目標で投稿回数が101回以上の場合に、モンスター画像をランダムで表示*/
+  $(function(){
+    $('.random-monster-img').each(function(i){
+      var random_number = Math.floor(Math.random() * ((5 + 1) - 1)) + 1;
+      $(this).prop('src','/assets/monster/monster' + random_number + '.png');
+    });
+  });
+
+  $(function(){
+      $('.levelup__text').html("<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>");
+  });
+
+  $(function(){
+    setTimeout("$('.levelup__back').fadeOut('slow')", 1200
+    );
+  });
+
+  $(function(){
+    setTimeout("$('.clear__back').fadeOut('slow')", 3500
+    );
+  });
+
+  $(function(){
+    setTimeout("$('.my-page__message').fadeOut('slow')", 3500
+    );
+  });
+
+  /* ドキュメントのインクリメンタルサーチ */
   $(function() {
-    $('.tabBox a').on('click', function(event) {
-      $('#tabBoxes .tabBox').hide();
-      $('#js-message .message').hide();
-      $($(this).attr("href")).show();
-      $($(this).attr("class")).show();
-      event.preventDefault();
+    $('.js-doc-search-field').on('keyup', function () {
+      var word = $.trim($(this).val());
+      var category = $('.js-doc-search-select').val();
+
+      $.ajax({
+        type: 'GET',
+        url: '/documents/searches',
+        data:  { word: word, category: category },
+        dataType: 'html'
+      })
+
+      .done(function (data) {
+          $('.js-card').html(data);
+        })
+
+      .fail(function() {
+        alert("検索に失敗しました。ページを再読み込みして下さい。");
+      });
+    });
+  });
+
+  $(function () {
+    $('.js-doc-search-select').on('change', function () {
+      var category = $(this).val();
+      var word = $.trim($('.js-doc-search-field').val());
+
+      $.ajax({
+        type: 'GET',
+        url: '/documents/searches',
+        data:  { category: category, word: word },
+        dataType: 'html'
+      })
+
+      .done(function (data) {
+        $('.js-card').html(data);
+      })
+
+      .fail(function() {
+        alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
+      });
     });
   });
 
@@ -162,6 +191,7 @@ document.addEventListener("turbolinks:load", function(){
     $('.js-todo-lists-area, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
   });
 
+  /* Todoリスト作成フォーム開閉時の処理 */
   $(function() {
     $('.todo-lists__icon--create').on('click', function(event) {
       $('.js-todo-lists-form').toggleClass('active-form');
@@ -179,6 +209,7 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  /* Todoリストのインクリメンタルサーチ */
   $(function() {
     $('.js-todo-lists-search-field').on('keyup', function () {
       var word = $.trim($(this).val());
