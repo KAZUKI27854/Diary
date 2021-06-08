@@ -68,6 +68,8 @@
         margin-top: 5px;
         display: inline-block;
         width: 100%;
+        color: var(--main-font);
+        text-decoration: underline;
 
         &:nth-of-type(1):before {
           background-image: image-url("icon/red-book.png");
@@ -80,7 +82,6 @@
         &:nth-of-type(3):before {
           background-image: image-url("icon/green-book.png");
         }
-
       }
     }
 
