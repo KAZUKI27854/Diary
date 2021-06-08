@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
       respond_to do |format|
 	    if @document.update(document_params)
 	      flash[:notice] = "きろくをへんこうしました"
-		  redirect_to my_page_path
+		  format.html { redirect_to my_page_path }
 	    else
 	      format.js { render "document_errors" }
 	    end
