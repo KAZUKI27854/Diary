@@ -92,8 +92,8 @@ guest_user.goals.create!(
   ]
 )
 
-goal = Goal.where(user_id: guest_user.id).first
-second_goal = Goal.where(user_id: guest_user.id).second
+goal = guest_user.goals.first
+second_goal = guest_user.goals.second
 
 exercise = ['スクワット', 'うでたて伏せ', '太もものストレッチ', 'せなかのストレッチ', '走りこみ']
 count = ['10', '20', '30', '40', '50']
@@ -106,7 +106,7 @@ programing_date = Date.new(2021, 4, 1)
   Document.create!(
     [
       {
-        body: exercise[rand(4)] + 'を ' + count[rand(5)] + ' 回した！',
+        body: exercise[rand(5)] + 'を ' + count[rand(5)] + ' 回した！',
         milestone: '明日もうんどうする',
         add_level: 10,
         user_id: guest_user.id,
@@ -133,3 +133,53 @@ end
     ]
   )
 end
+
+3.times do |i|
+  TodoList.create!(
+    [
+      {
+        user_id: guest_user.id,
+        goal_id: second_goal.id,
+        body: programing[i] + 'の課題を提出する',
+        deadline: Date.new(2021, 9, 1),
+        is_finished: false,
+        priority: 0
+      }
+    ]
+  )
+end
+
+5.times do |i|
+  TodoList.create!(
+    [
+      {
+        user_id: guest_user.id,
+        goal_id: goal.id,
+        body: exercise[rand(5)] + 'を週1回以上する',
+        is_finished: false,
+        priority: 1
+      }
+    ]
+  )
+end
+
+TodoList.create!(
+  [
+    {
+      user_id: guest_user.id,
+      goal_id: second_goal.id,
+      body: 'プログラミングの本を2冊読む',
+      deadline: Date.new(2021, 8, 1),
+      is_finished: true,
+      priority: 2
+    },
+    {
+      user_id: guest_user.id,
+      goal_id: second_goal.id,
+      body: 'Javascriptを使った機能を3つ自作する',
+      deadline: Date.new(2021, 9, 1),
+      is_finished: true,
+      priority: 2
+    },
+  ]
+)
