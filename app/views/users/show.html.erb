@@ -16,7 +16,7 @@
             <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
             <p class="my-page__link--text">きろくする</p>
           </a>
-          <%= render "documents/new", document: @document %>
+          <%= render "documents/new", document: @document, goals: @goals %>
         </div>
 
         <!-- ドキュメント作成時にエラーメッセージを表示すると直後の要素がdisplay:none;になるため、対策として空の要素を記載 -->

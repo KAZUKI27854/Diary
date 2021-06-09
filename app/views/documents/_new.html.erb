@@ -11,7 +11,7 @@
             <%= form_with model: document, remote: true do |f| %>
               <div class="form-group">
                 <label for="inputSkill">レベルアップしたこと</label></br>
-                <%= f.collection_select :goal_id, current_user.goals, :id, :category %>
+                <%= f.collection_select :goal_id, goals, :id, :category %>
               </div>
               <div class="form-group mt-2">
                 <label for="inputImage">

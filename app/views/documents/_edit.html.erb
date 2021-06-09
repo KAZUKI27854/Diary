@@ -12,7 +12,7 @@
               <div class="form-group">
                 <label for="inputSkill">レベルアップしたスキル</label>
                 <!-- documents/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
-                <%= f.collection_select "#{document.id}-cat", current_user.goals, :id, :category %>
+                <%= f.collection_select "#{document.id}-cat", goals, :id, :category %>
               </div>
               <div class="form-group mt-2">
                 <label for="inputImage">がぞう（※必須ではありません）</label>
