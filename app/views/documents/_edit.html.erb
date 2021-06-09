@@ -12,7 +12,7 @@
               <div class="form-group">
                 <label for="inputSkill">レベルアップしたスキル</label>
                 <!-- documents/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
-                <%= f.collection_select "#{document.id}-cat", goals, :id, :category %>
+                <%= f.collection_select :category, goals, :id, :category, {}, { id: "edit-doc#{document.id}-cat" } %>
               </div>
               <div class="form-group mt-2">
                 <label for="inputImage">がぞう（※必須ではありません）</label>
@@ -30,8 +30,8 @@
               </div>
               <div class="form-group">
                 <label for="inputAddLevel">かくとくレベル</label>
-                <%= f.select "#{document.id}-level", options_for_select((1..50).to_a),
-                    class: "form-control", id: "edit-doc#{document.id}-add_level" %>
+                <%= f.select :add_level, options_for_select((1..50).to_a), {},
+                    { id: "edit-doc#{document.id}-add-level" } %>
               </div>
               <div class="form-btn">
                 <%= f.submit 'きろくしなおす', class: "btn btn-primary btn-sm" %>

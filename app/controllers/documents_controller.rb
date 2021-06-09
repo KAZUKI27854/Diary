@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
 	  	  else
 	  	    flash[:level_up] = "LEVELUP!"
 	  	  end
-	  	  when_doc_post_goal_auto_update(goal.id)
+	  	  when_doc_create_goal_auto_update(goal.id)
 	      format.html { redirect_to my_page_path }
 	    else
 	      format.js { render "document_errors" }
@@ -26,11 +26,15 @@ class DocumentsController < ApplicationController
 
 	def update
 	  @document = Document.find(params[:id])
+	  goal = @document.goal
+    goal.level -= @document.add_level
 
-      respond_to do |format|
+    respond_to do |format|
 	    if @document.update(document_params)
+    		updated_goal_level = goal.level + params[:document][:add_level].to_i
+    		goal.update(level: updated_goal_level)
 	      flash[:notice] = "きろくをへんこうしました"
-		  format.html { redirect_to my_page_path }
+		    format.html { redirect_to my_page_path }
 	    else
 	      format.js { render "document_errors" }
 	    end
