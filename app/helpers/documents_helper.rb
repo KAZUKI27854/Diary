@@ -13,7 +13,11 @@ module DocumentsHelper
     goal = document.goal
     goal.level -= document.add_level
 		goal.doc_count -= 1
-		goal.stage_id = (goal.doc_count + 4) / 5
+		if goal.doc_count == 0
+		  goal.stage_id = 1
+		else
+		  goal.stage_id = (goal.doc_count + 4) / 5
+		end
 		goal.update_attributes(level: goal.level, doc_count: goal.doc_count, stage_id: goal.stage_id)
   end
 
