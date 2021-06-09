@@ -10,9 +10,9 @@
             <div class="js-message-errors"></div>
             <%= form_with model: document do |f| %>
               <div class="form-group">
-                <label for="inputSkill">レベルアップしたスキル</label>
+                <label for="inputSkill">レベルアップしたもくひょう</label></br>
                 <!-- documents/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
-                <%= f.collection_select :goal_id, goals, :id, :category, {}, { id: "edit-doc#{document.id}-cat" } %>
+                <%= f.collection_select :goal_id, current_user.goals, :id, :category, {}, { id: "edit-doc#{document.id}-cat" } %>
               </div>
               <div class="form-group mt-2">
                 <label for="inputImage">がぞう（※必須ではありません）</label>

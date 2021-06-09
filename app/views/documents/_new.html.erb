@@ -10,7 +10,7 @@
             <div class="js-message-errors"></div>
             <%= form_with model: document, remote: true do |f| %>
               <div class="form-group">
-                <label for="inputSkill">レベルアップしたこと</label>
+                <label for="inputSkill">レベルアップしたもくひょう</label></br>
                 <%= f.collection_select :goal_id, goals, :id, :category %>
               </div>
               <div class="form-group mt-2">
