@@ -1,0 +1,36 @@
+<div class="todo-lists">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+        <%= render "layouts/side_menu", goals: @goals %>
+        <div class="my-page__menu--icon js-todo-list-icon">
+          <%= link_to my_page_path do %>
+            <%= image_tag "icon/door.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
+            <p class="my-page__link--text">マイページ</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12 col-sm-12">
+        <h3 class="master message upper-contents">やることをまとめるのじゃ！</h3>
+        <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
+        <div class="todo-lists__index">
+          <div class="container">
+            <div class="row">
+              <div class="col-3">きげん</div>
+              <div class="col-7">やること</div>
+              <div class="col-2">
+                <%= link_to todo_lists_path, remote: true do %>
+                  <%= image_tag "icon/check-icon.png", class: "todo-lists__icon--check", alt: "check-icon" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="js-todo-lists">
+              <%= render @todo_lists %>
+            </div>
+          </div>
+          <%= paginate @todo_lists %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

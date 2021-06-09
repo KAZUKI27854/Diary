@@ -4,37 +4,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
-        <p class="my-page__message my-page__message--notice"><%= flash[:notice] %></p>
-        <p class="my-page__message my-page__message--alert"><%= flash[:alert] %></p>
-        <p class="my-page__menu--logo upper-contents"> M E N U </p>
-
-        <%= render "menu/user_menu", user: current_user, user_level: @user_level, documents: @user_documents %>
-        <%= render "menu/goal_menu", goals: @goals %>
-
-        <div class="my-page__menu--icon js-save-icon">
-          <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">
-            <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
-            <p class="my-page__link--text">きろくする</p>
-          </a>
-          <%= render "documents/new", document: @document, goals: @goals %>
-        </div>
-
-        <!-- ドキュメント作成時にエラーメッセージを表示すると直後の要素がdisplay:none;になるため、対策として空の要素を記載 -->
-        <div></div>
-
-        <div class="my-page__menu--icon js-todo-list-icon">
-          <%= link_to todo_lists_path, class: "js-switch-link js-todo-list-link", remote: true do %>
-            <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img js-switch-image", alt: "menu-icon" %></br>
-            <p class="js-switch-text my-page__link--text">Todoリスト</p>
+        <%= render "layouts/side_menu", goals: @goals %>
+        <div class="my-page__menu--icon">
+          <%= link_to todo_lists_path do %>
+            <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
+            <p class="my-page__link--text">Todoリスト</p>
           <% end %>
         </div>
       </div>
-
-      <div class="col-lg-9 col-md-12 col-sm-12 js-switch-area">
+      <div class="col-lg-9 col-md-12 col-sm-12">
         <% if current_user.documents.exists? then %>
-          <h3 class="master message upper-contents js-message">これまでのきろくじゃ</h3>
-          <!-- 最初は表示、TodoListへ切り替え時に非表示 -->
-          <div class="js-doc-search doc__card--search">
+          <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
+          <div class="doc__card--search">
             <%= collection_select(:doc_goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
             <%= text_field_tag :doc_word,'', class: 'js-doc-search-field', placeholder: 'キーワードけんさく' %>
           </div>
@@ -51,11 +32,6 @@
         <% end %>
         <div class="js-card">
           <%= render "users/card", documents: @documents %>
-        </div>
-         <!-- 最初は非表示、TodoListへ切り替え時に表示 -->
-        <div class="js-todo-lists-area">
-          <%= render "todo_lists/header", goals: @goals, todo_list: @todo_list %>
-          <%= render 'todo_lists/index', goals: @goals, todo_list: @todo_list, todo_lists: @todo_lists %>
         </div>
       </div>
     </div>

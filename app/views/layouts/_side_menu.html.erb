@@ -1,0 +1,17 @@
+<p class="my-page__message my-page__message--notice"><%= flash[:notice] %></p>
+<p class="my-page__message my-page__message--alert"><%= flash[:alert] %></p>
+<p class="my-page__menu--logo upper-contents"> M E N U </p>
+
+<%= render "menu/user_menu", user: @user, user_level: @user_level, documents: @user_documents %>
+<%= render "menu/goal_menu", goals: @goals %>
+
+<div class="my-page__menu--icon js-save-icon">
+  <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">
+    <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
+    <p class="my-page__link--text">きろくする</p>
+  </a>
+  <%= render "documents/new", document: @document, goals: @goals %>
+</div>
+
+<!-- ドキュメント作成時にエラーメッセージを表示すると直後の要素がdisplay:none;になるため、対策として空の要素を記載 -->
+<div></div>

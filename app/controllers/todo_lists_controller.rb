@@ -5,8 +5,15 @@ class TodoListsController < ApplicationController
   before_action :set_user_todo_lists, only: [:index, :back]
 
   def index
-    @goals = @user.goals
+    @document = Document.new
+    @user_documents = @user.documents
+    @user_level = @user_documents.sum(:add_level)
+
     @todo_list = TodoList.new
+    @todo_lists = @user.todo_lists.classify.page(params[:page])
+
+    @goal = Goal.new
+    @goals = @user.goals.order("updated_at DESC")
   end
 
   def back
