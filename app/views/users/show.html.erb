@@ -4,6 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
+        <p class="my-page__message my-page__message--notice"><%= flash[:notice] %></p>
+        <p class="my-page__message my-page__message--alert"><%= flash[:alert] %></p>
         <%= render "layouts/side_menu", goals: @goals %>
         <div class="my-page__menu--icon">
           <%= link_to todo_lists_path do %>
