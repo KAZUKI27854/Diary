@@ -27,14 +27,25 @@ class DocumentsController < ApplicationController
 	def update
 	  @document = Document.find(params[:id])
 	  goal = @document.goal
-    goal.level -= @document.add_level
+      update_goal = Goal.find(params[:document][:goal_id])
 
-    respond_to do |format|
+      respond_to do |format|
 	    if @document.update(document_params)
-    		updated_goal_level = goal.level + params[:document][:add_level].to_i
-    		goal.update(level: updated_goal_level)
+	      #ドキュメント更新時に目標が変わっているかで条件分岐
+    	  case update_goal.id
+    	  #目標が変わっていない場合、獲得レベルの差分だけ目標レベルに加える
+    	  when goal.id
+    	  	origin_add_level = params[:document][:origin_add_level].to_i
+    	  	update_add_level = params[:document][:add_level].to_i
+    	  	goal.level += (update_add_level - origin_add_level)
+		    goal.update(level: goal.level)
+		  #目標が変わっている場合、変更前の目標と変更後の目標のデータを更新
+    	  else
+    	  	when_doc_create_goal_auto_update(update_goal.id)
+    	  	when_doc_change_goal_origin_goal_auto_update
+          end
 	      flash[:notice] = "きろくをへんこうしました"
-		    format.html { redirect_to my_page_path }
+		  format.html { redirect_to my_page_path }
 	    else
 	      format.js { render "document_errors" }
 	    end
