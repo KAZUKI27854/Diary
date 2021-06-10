@@ -11,11 +11,13 @@ class DocumentsController < ApplicationController
 
 	  respond_to do |format|
 	    if @document.save
+	    	#はじめて目標レベル100を超えた場合、クリア時のフラッシュ演出実行
 	  	  if goal.level < 100 && (goal.level + @document.add_level) >= 100
 	  	    flash[:clear] = "#{goal.category}のレベルが100になった!!"
 	  	  else
 	  	    flash[:level_up] = "LEVELUP!"
 	  	  end
+	  	  #関連する目標データのdoc_number,stage_idを更新
 	  	  when_doc_create_goal_auto_update(goal.id)
 	      format.html { redirect_to my_page_path }
 	    else
@@ -41,7 +43,7 @@ class DocumentsController < ApplicationController
   	  	origin_add_level = params[:document][:origin_add_level].to_i
   	  	update_add_level = params[:document][:add_level].to_i
   	  	goal.level += (update_add_level - origin_add_level)
-	    goal.update(level: goal.level)
+	      goal.update(level: goal.level)
 	    #目標が変わっている場合、変更前の目標と変更後の目標のデータを更新
   	  else
   	  	when_doc_create_goal_auto_update(update_goal.id)

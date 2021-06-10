@@ -147,6 +147,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   /* ドキュメントのインクリメンタルサーチ */
+  /* global location */
   $(function() {
     $('.js-doc-search-field').on('keyup', function () {
       var word = $.trim($(this).val());
@@ -161,6 +162,11 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
           $('.js-card').html(data);
+          if(word != '' || category != ''){
+            $('.pagination').hide();
+          } else {
+            location.reload(true);
+          }
         })
 
       .fail(function() {
@@ -183,6 +189,11 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
         $('.js-card').html(data);
+        if(word != '' || category != ''){
+          $('.pagination').hide();
+        } else {
+          location.reload(true);
+        }
       })
 
       .fail(function() {
@@ -257,9 +268,6 @@ document.addEventListener("turbolinks:load", function(){
       });
     });
   });
-
-
-
 
 });
 
