@@ -79,7 +79,8 @@
   }
 
   &__body {
-    background-color: var(--main-back);
+    background-size: cover;
+    background-image: image-url("back/wood-board.png");
     width: 100%;
     p {
       overflow: hidden;
