@@ -10,9 +10,6 @@ class UsersController < ApplicationController
     @user_documents = @user.documents
     @user_level = @user_documents.sum(:add_level)
 
-    @todo_list = TodoList.new
-    @todo_lists = @user.todo_lists.classify.page(params[:page])
-
     @goal = Goal.new
     @goals = @user.goals.order("updated_at DESC")
 
