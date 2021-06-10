@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
+  get 'policy' => 'homes#policy'
   get 'users' => 'users#show', as: :my_page
   patch 'users/withdraw' => 'users#withdraw', as: :withdraw_user
   #エラーメッセージ発生後にリロードするとエラーになるため指定
