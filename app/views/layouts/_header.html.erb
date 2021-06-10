@@ -15,6 +15,9 @@
             <%= link_to "あそびかた", "/about", class: "header__link mr-5" %>
           </li>
           <li>
+            <%= link_to "プライバシーポリシー", policy_path, class: "header__link mr-5" %>
+          </li>
+          <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__link" %>
           </li>
         <% else %>
@@ -25,7 +28,10 @@
             <%= link_to "あたらしくはじめる", new_user_registration_path, class: "header__link mr-5" %>
           </li>
           <li>
-            <%= link_to "つづきから", new_user_session_path, class: "header__link" %>
+            <%= link_to "つづきから", new_user_session_path, class: "header__link mr-5" %>
+          </li>
+          <li>
+            <%= link_to "プライバシーポリシー", policy_path, class: "header__link" %>
           </li>
         <% end %>
       </ul>
