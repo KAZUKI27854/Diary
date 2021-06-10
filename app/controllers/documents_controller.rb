@@ -24,12 +24,16 @@ class DocumentsController < ApplicationController
 	  end
 	end
 
+	def edit
+		@document = Document.find(params[:id])
+	end
+
 	def update
 	  @document = Document.find(params[:id])
 	  goal = @document.goal
       update_goal = Goal.find(params[:document][:goal_id])
 
-      respond_to do |format|
+      #respond_to do |format|
 	    if @document.update(document_params)
 	      #ドキュメント更新時に目標が変わっているかで条件分岐
     	  case update_goal.id
@@ -45,11 +49,13 @@ class DocumentsController < ApplicationController
     	  	when_doc_change_goal_origin_goal_auto_update
           end
 	      flash[:notice] = "きろくをへんこうしました"
-		  format.html { redirect_to my_page_path }
+		    #format.html { redirect_to my_page_path }
+		    redirect_to my_page_path
 	    else
-	      format.js { render "document_errors" }
+	      #format.js { render "document_errors" }
+	      render "edit"
 	    end
-	  end
+	  #end
 	end
 
 	def destroy
