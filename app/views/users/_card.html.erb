@@ -2,83 +2,82 @@
   <div class="row" id="index">
     <% documents.each do |document| %>
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="card doc__card">
+        <div class="card doc-card">
+          <div class="doc-card__head">
+            <p class="doc-card__head--text"><%= document.created_at.strftime('%-m月%-d日') %></br><%= document.goal.category %>のきろく</p>
+          </div>
           <% if document.document_image_id.present? %>
               <%= attachment_image_tag document, :document_image,
-                  class: "doc__card--img-top doc__card--img", id: "imageArea" %>
+                  class: "doc-card__img--top doc__card--img" %>
           <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
-            <div class="doc__card--stage">
+            <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) + 1 }.jpg",
-                   class: "doc__card--stage-img", alt: "stage-image" %>
+                   class: "doc-card__stage--img", alt: "stage-image" %>
 
-              <div class="doc__card--monster-left">
+              <div class="doc-card__monster--left">
                 <%= image_tag "monster/monster#{ doc_number(document.id) }.png",
-                     class: "doc__card--monster-img", alt: "monster-image" %>
+                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
-              <div class="doc__card--monster-right">
+              <div class="doc-card__monster--right">
                 <%= image_tag "monster/monster#{ doc_number(document.id) + 1 }.png",
-                     class: "doc__card--monster-img", alt: "monster-image" %>
+                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
           <% elsif within_100_and_multiples_of_5?(document.id) then %>
-            <div class="doc__card--stage">
+            <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) }.jpg",
-                   class: "doc__card--stage-img", alt: "stage-image" %>
-              <div class="doc__card--monster-boss">
+                   class: "doc-card__stage--img", alt: "stage-image" %>
+              <div class="doc-card__monster--boss">
                 <%= image_tag "monster/boss#{ doc_number(document.id) / 5 }.png",
-                     class: "doc__card--monster-img", alt: "monster-image" %>
+                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
           <% else %>
-            <div class="doc__card--stage">
-              <%= image_tag "stage/stage21.jpg", class: "doc__card--stage-img", alt: "stage-image" %>
-              <div class="doc__card--monster-left">
-                <%= image_tag '', class: "random-monster-img doc__card--monster-img" %>
+            <div class="doc-card__stage">
+              <%= image_tag "stage/stage21.jpg", class: "doc-card__stage--img", alt: "stage-image" %>
+              <div class="doc-card__monster--left">
+                <%= image_tag '', class: "random-monster-img doc-card__monster--img" %>
               </div>
-              <div class="doc__card--monster-right">
-                <%= image_tag '', class: "random-monster-img doc__card--monster-img" %>
+              <div class="doc-card__monster--right">
+                <%= image_tag '', class: "random-monster-img doc-card__monster--img" %>
               </div>
             </div>
           <% end %>
-          <div class="card-body doc__card--body">
+          <div class="card-body doc-card__body">
             <div class="row">
-              <p class="doc__card--title">
+              <p class="doc-card__title">
                 <%= document.goal.category %>のダンジョン( <span><%= doc_number(document.id) %></span> F )にいどんだ！
               </p>
-              <p class="doc__card--body">
+              <p>
                 <% if document.document_image_id.present? %>
                   <%= document.body %> </br>
+                <% elsif document.goal.level >= 100 then %>
+                  <%= document.user.name %>はさらに成長した！
                 <% elsif within_100_and_multiples_of_5?(document.id) then %>
                   このステージのボスがあらわれた！</br>
                   <%= document.body %> </br>
-                  ボスをたおした！ </br>
+                  かいしんのいちげき！ボスをたおした！ </br>
                 <% else %>
                   <%= document.body %> </br>
                   モンスターをたおした！</br>
                 <% end %>
                 <%= document.user.name %>は <%= document.add_level %> レベルアップした！
               </p>
-              <p class="doc__card--body">
+              <p>
                 【つぎのもくひょう】</br>
                 <%= document.milestone %> </br>
                 <% unless document.goal.level >= 100 %>
-                  せかいめつぼうまで　のこり <%= timelimit(document.goal_id, document) %>  にち
+                  もくひょうきげんまで　のこり <%= timelimit(document.goal_id, document) %>  にち
                 <% end %>
               </p>
-              <p class="doc__card--bottom">
-                <span class="link">
-                  <%= link_to edit_document_path(document.id) do %>
-                    <%= image_tag "icon/edit-icon.png", class: "doc__card--icon", alt: "edit-icon" %>
-                  <% end %>
-                  <%= link_to document_path(document.id), method: :delete, "data-confirm" => "削除してよろしいですか？" do %>
-                    <%= image_tag "icon/delete-icon.png", class: "doc__card--icon", alt: "delete-icon" %>
-                  <% end %>
-                </span>
-                <span class="doc__card--date">
-                  <span class="doc__card--date-month"><%= document.created_at.strftime('%m') %></span>
-                  <span class="doc__card--date-day"><%= document.created_at.strftime('%d') %></span>
-                </span>
-              </p>
+              <div class="doc-card__bottom">
+                <%= link_to edit_document_path(document.id) do %>
+                  <%= image_tag "icon/edit-icon.png", class: "doc-card__icon doc-card__icon--edit", alt: "edit-icon" %>
+                <% end %>
+                <%= link_to document_path(document.id), method: :delete, "data-confirm" => "削除してよろしいですか？" do %>
+                  <%= image_tag "icon/delete-icon.png", class: "doc-card__icon doc-card__icon--delete", alt: "delete-icon" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

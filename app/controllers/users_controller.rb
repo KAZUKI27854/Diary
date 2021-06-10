@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @document = Document.new
-    @documents = @user.documents.page(params[:page]).per(6).reverse_order
+    @documents = @user.documents.includes(:goal).page(params[:page]).per(6).reverse_order
+
     @user_documents = @user.documents
     @user_level = @user_documents.sum(:add_level)
 

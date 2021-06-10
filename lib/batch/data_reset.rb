@@ -1,10 +1,7 @@
 class Batch::DataReset
   def self.data_reset
     guest_user = User.find_by(email: 'guest@example.com')
-    goals = Goal.where(user_id: guest_user.id)
-    goals.delete_all
-    documents =Document.where(user_id: guest_user.id)
-    documents.delete_all
+    guest_user.goals.delete_all
 
     guest_user.goals.create(
       [
@@ -12,13 +9,19 @@ class Batch::DataReset
           goal_status: '体重を10キロへらす',
           category: 'ダイエット',
           deadline: '2021/12/31',
-          user_id: guest_user.id
+          user_id: guest_user.id,
+          level: 50,
+          doc_count: 5,
+          stage_id: 1
         },
         {
           goal_status: '自力でアプリ開発とデプロイができるようになる',
           category: 'プログラミング',
           deadline: '2021/12/31',
-          user_id: guest_user.id
+          user_id: guest_user.id,
+          level: 90,
+          doc_count: 10,
+          stage_id: 2
         }
       ]
     )

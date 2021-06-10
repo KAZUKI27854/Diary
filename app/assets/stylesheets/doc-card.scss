@@ -1,104 +1,97 @@
-.doc {
-  &__card {
-    margin-bottom: 10px !important;
-    position: relative;
+.doc-card {
+  margin-bottom: 10px !important;
+  position: relative;
 
-    &--search {
-      text-align: center;
-      margin-bottom: 2%;
+  &__head {
+    background-size: cover;
+    background-image: image-url("back/wood-board.png");
+    height: 60px;
+    text-align: center;
+    padding: 0 10%;
+
+    &--text {
+      line-height: 30px;
+    }
+  }
+
+  &__search {
+    text-align: center;
+    margin-bottom: 2%;
+  }
+
+  &__icon {
+    width: 10%;
+    position: absolute;
+    top: 2%;
+
+    &--edit {
+      left: 1%;
     }
 
-    &--icon {
-      width: 12%;
+    &--delete {
+      right: 1%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  &__stage {
+    position: relative;
+    width: 100%;
+
+    &--img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__monster {
+    &--left,
+    &--right {
+      width: 25%;
+      position: absolute;
+      top: 50%;
+    }
+
+    &--left {
+      left: 20%;
+    }
+
+    &--right {
+      left: 55%;
+    }
+
+    &--boss {
+      width: 50%;
+      position: absolute;
+      top: 30%;
+      left: 25%;
     }
 
     &--img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: 100%;
     }
-
-    &--stage {
-      position: relative;
-      width: 100%;
-
-      &-img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    &--monster {
-      &-left,
-      &-right {
-        width: 25%;
-        position: absolute;
-        top: 50%;
-      }
-
-      &-left {
-        left: 20%;
-      }
-
-      &-right {
-        left: 55%;
-      }
-
-      &-boss {
-        width: 50%;
-        position: absolute;
-        top: 30%;
-        left: 25%;
-      }
-
-      &-img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    &--body {
-      background-color: var(--main-back);
-      width: 100%;
-      p {
-        overflow: hidden;
-      }
-    }
-
-    &--date {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: var(--main-back);
-      height: 13%;
-      width: 20%;
-      background-image: linear-gradient(-45deg, transparent 49%, white 49%, white 51%, transparent 51%, transparent);
-
-      &-month {
-        font-size: 150%;
-        margin-left: 10%;
-      }
-
-      &-day {
-        font-size: 150%;
-        margin-left: 50%;
-      }
-    }
-
-    &--bottom {
-      margin-bottom: 0;
-      width: 100%;
-    }
-
   }
+
+  &__body {
+    background-color: var(--main-back);
+    width: 100%;
+    p {
+      overflow: hidden;
+    }
+  }
+
 }
 
 @media (min-width: 1200px) {
-  .doc {
-    &__card {
-      &--img {
-        height: 296px;
-      }
+  .doc-card {
+    &__img {
+      height: 296px;
     }
   }
 }
