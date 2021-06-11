@@ -76,7 +76,7 @@ body {
   width: 100%;
   height: 100vh;
   background-image: image-url("back/top-back.jpg");
-  background-position: 50% 35%;
+  background-position: 50% 45%;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -85,12 +85,18 @@ body {
   position: relative;
   overflow: hidden;
 
+  &__title {
+    &--area {
+      margin-bottom: 10%;
+    }
+  }
+
   &__link {
     color: var(--main-font);
 
     &--list {
       list-style: none;
-      margin-top: 95px;
+      margin-top: 70px;
       font-size: 20px;
     }
 
@@ -288,7 +294,7 @@ body {
     &__img {
       &--left-hand,
       &--right-hand {
-        width: 600px;
+        width: 500px;
       }
 
       &--left-hand {
@@ -370,7 +376,6 @@ body {
   .modal__content {
     width: 80%;
   }
-
 }
 
 
@@ -438,7 +443,7 @@ body {
         }
       }
 
-      &--link {
+      &__link {
         &--list {
           margin-top: 30px;
           font-size: 15px;
@@ -456,7 +461,6 @@ body {
     padding: 10px;
     width: 94%;
   }
-
 }
 
 @media (max-width: 320px) {
@@ -514,5 +518,4 @@ body {
       }
     }
   }
-
 }
