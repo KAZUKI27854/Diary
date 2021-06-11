@@ -242,11 +242,6 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
           $('.js-todo-lists').html(data);
-          if(word != '' || category != ''){
-            $('.pagination').hide();
-          } else {
-            location.reload(true);
-          }
         })
 
       .fail(function() {
@@ -269,11 +264,6 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
           $('.js-todo-lists').html(data);
-          if(word != '' || category != ''){
-            $('.pagination').hide();
-          } else {
-            location.reload(true);
-          }
         })
 
       .fail(function() {
