@@ -10,7 +10,6 @@ class TodoListsController < ApplicationController
     @user_level = @user_documents.sum(:add_level)
 
     @todo_list = TodoList.new
-    @todo_lists = @user.todo_lists.classify.page(params[:page])
 
     @goal = Goal.new
     @goals = @user.goals.order("updated_at DESC")
@@ -29,8 +28,7 @@ class TodoListsController < ApplicationController
     end
 
     if @todo_list.save
-      @todo_lists = @user.todo_lists.classify.page(params[:page])
-      render :create
+      @todo_lists = @user.todo_lists.classify
     else
       render :todo_list_errors
     end
@@ -50,8 +48,7 @@ class TodoListsController < ApplicationController
     end
 
     if @todo_list.update(todo_list_params)
-      @todo_lists = @user.todo_lists.classify.page(params[:page])
-      render :update
+      @todo_lists = @user.todo_lists.classify
     else
       render :todo_list_errors
     end
@@ -66,18 +63,18 @@ class TodoListsController < ApplicationController
     else
       @todo_list.update_attributes(is_finished: false, priority: 0)
     end
-    @todo_lists = @user.todo_lists.classify.page(params[:page])
+    @todo_lists = @user.todo_lists.classify
   end
 
   def destroy
     todo_list = TodoList.find(params[:id])
     todo_list.destroy
-    @todo_lists = @user.todo_lists.classify.page(params[:page])
+    @todo_lists = @user.todo_lists.classify
   end
 
   def delete_finished
     @user.todo_lists.where(is_finished: true).delete_all
-    @todo_lists = @user.todo_lists.classify.page(params[:page])
+    @todo_lists = @user.todo_lists.classify
   end
 
   private
@@ -87,10 +84,10 @@ class TodoListsController < ApplicationController
     end
 
     def set_user_todo_lists
-      @todo_lists = @user.todo_lists.classify.page(params[:page])
+      @todo_lists = @user.todo_lists.classify
     end
 
     def todo_list_params
-      params.require(:todo_list).permit(:goal_id, :body, :deadline, :priority)
+      params.require(:todo_list).permit(:goal_id, :body, :deadline)
     end
 end

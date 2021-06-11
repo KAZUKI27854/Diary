@@ -19,18 +19,18 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   get 'policy' => 'homes#policy', as: :policy
 
-  resources :users, only: [:update]
   get 'users' => 'users#show', as: :my_page
   patch 'users/withdraw' => 'users#withdraw', as: :withdraw_user
+  resources :users, only: [:update]
 
-  resources :documents, only: [:create, :edit, :update, :destroy]
   #エラーメッセージ発生後にリロードするとエラーになるため指定
   get 'documents/:id' => 'documents#edit'
+  resources :documents, only: [:create, :edit, :update, :destroy]
 
   resources :goals, only: [:create, :update, :destroy]
 
-  resources :todo_lists, except: [:new, :show]
   get 'todo_lists/back' => 'todo_lists#back', as: :back_todo_lists
   get 'todo_lists/:id/check' => 'todo_lists#check', as: :check_todo_list
   delete 'todo_lists/delete_finished' => 'todo_lists#delete_finished', as: :delete_finished
+  resources :todo_lists, except: [:new, :show]
 end

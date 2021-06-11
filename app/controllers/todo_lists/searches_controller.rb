@@ -16,7 +16,7 @@ class TodoLists::SearchesController < ApplicationController
       todo_lists = @user.todo_lists.where('body LIKE(?)', "%#{params[:word]}%")
     end
 
-    sort_lists = todo_lists.classify.page(params[:page])
+    sort_lists = todo_lists.classify
     render partial: "todo_lists/todo_list", collection: sort_lists
   end
 

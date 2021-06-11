@@ -20,6 +20,7 @@
           <div class="doc-card__search">
             <%= collection_select(:doc_goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
             <%= text_field_tag :doc_word,'', class: 'js-doc-search-field', placeholder: 'キーワードけんさく' %>
+            <p>※けんさく結果は最大20件表示されます</p>
           </div>
         <% elsif @goals.blank? then %>
           <h3 class="master message upper-contents">

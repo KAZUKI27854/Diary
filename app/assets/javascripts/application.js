@@ -160,11 +160,14 @@ document.addEventListener("turbolinks:load", function(){
         dataType: 'html'
       })
 
+      /* searches/indexからパーシャルを受け取り、部分更新 */
       .done(function (data) {
           $('.js-card').html(data);
           if(word != '' || category != ''){
+            /* ページネーション: 検索時 => 効かなくなる為非表示 */
             $('.pagination').hide();
           } else {
+            /* ページネーション: valueが無い場合 => ページをリロードしページネーションを有効化 */
             location.reload(true);
           }
         })
@@ -239,6 +242,11 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
           $('.js-todo-lists').html(data);
+          if(word != '' || category != ''){
+            $('.pagination').hide();
+          } else {
+            location.reload(true);
+          }
         })
 
       .fail(function() {
@@ -261,6 +269,11 @@ document.addEventListener("turbolinks:load", function(){
 
       .done(function (data) {
           $('.js-todo-lists').html(data);
+          if(word != '' || category != ''){
+            $('.pagination').hide();
+          } else {
+            location.reload(true);
+          }
         })
 
       .fail(function() {

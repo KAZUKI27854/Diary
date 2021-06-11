@@ -15,8 +15,8 @@ class Documents::SearchesController < ApplicationController
     else
       documents = @user.documents.where('body LIKE(?)', "%#{params[:word]}%")
     end
-    
-    sort_documents = documents.page(params[:page]).per(6).reverse_order
+
+    sort_documents = documents.page(params[:page]).per(20).reverse_order
     render partial: "users/card", locals: { documents: sort_documents }
   end
 
