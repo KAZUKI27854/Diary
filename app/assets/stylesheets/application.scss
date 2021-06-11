@@ -85,6 +85,10 @@ body {
   position: relative;
   overflow: hidden;
 
+  &__noscript {
+    background: var(--main-back);
+  }
+
   &__title {
     &--area {
       margin-bottom: 10%;
@@ -106,10 +110,6 @@ body {
   }
 
   &__text {
-    &--noscript {
-      background: var(--main-back);
-    }
-
     &--main-title{
       font-size: 120px;
     }
