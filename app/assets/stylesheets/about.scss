@@ -157,6 +157,16 @@
     &--screen-img {
       width: 100%;
     }
+
+    &--header-bottom {
+      font-size: 20px;
+      background: var(--main-back);
+      border: solid 5px var(--main-font);
+      border-radius: 10px;
+      width: 60%;
+      margin-left: 20%;
+      margin-top: 3%;
+    }
   }
 
   &__char {
