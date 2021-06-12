@@ -219,7 +219,24 @@ describe '1.ユーザログイン前のテスト', type: :feature do
         expect(page).not_to have_field 'user[name]'
       end
     end
-
+    
+    context 'リンクのテスト' do
+      it '新規登録リンクが表示される' do
+        expect(page).to have_link 'しんきとうろく'
+      end
+      it 'パスワード変更リンクが表示される' do
+        expect(page).to have_link 'パスワードをおわすれですか'
+      end
+      it 'GoogleのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'GoogleOauth2でログインする'
+      end
+      it 'FacebookのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'Facebookでログインする'
+      end
+      it 'TwitterのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'Twitterでログインする'
+      end
+    end
 
     context 'ログイン成功のテスト' do
       before do
@@ -228,8 +245,8 @@ describe '1.ユーザログイン前のテスト', type: :feature do
         click_button 'ログイン'
       end
 
-      it 'ログイン後のリダイレクト先が、ログインしたユーザのマイページになっている' do
-        expect(current_path).to eq '/users/' + user.id.to_s
+      it 'ログイン後のリダイレクト先がマイページである' do
+        expect(current_path).to eq my_page_path
       end
     end
 
