@@ -7,8 +7,8 @@
         <p class="my-page__message my-page__message--notice"><%= flash[:notice] %></p>
         <p class="my-page__message my-page__message--alert"><%= flash[:alert] %></p>
         <%= render "layouts/side_menu", goals: @goals %>
-        <div class="my-page__menu--icon">
-          <%= link_to todo_lists_path do %>
+        <div class="my-page__menu--icon js-todo-list-icon">
+          <%= link_to todo_lists_path, class: "js-todo-list-link" do %>
             <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
             <p class="my-page__link--text">Todoリスト</p>
           <% end %>

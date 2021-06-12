@@ -1,5 +1,5 @@
 <div class="my-page__menu--icon">
-  <%= image_tag "icon/books.png", class: "my-page__menu--icon-img", alt: "menu-icon" %>
+  <%= image_tag "icon/books.png", class: "my-page__menu--icon-img my-page__menu--icon--goal", alt: "menu-icon" %>
   <p class="my-page__menu--text">もくひょう </p>
 </div>
 
@@ -27,7 +27,6 @@
       </p>
     <% end %>
     <!-- モーダルウインドウ -->
-    <%= render "goals/new", goal: @goal %>
     <% goals.each do |goal| %>
       <%= render "goals/edit", goal: goal %>
     <% end %>
@@ -37,6 +36,8 @@
   <% else %>
     <p class="my-page__menu--text-goal">みせってい</p>
   <% end %>
+  <!-- モーダルウインドウ -->
+  <%= render "goals/new", goal: @goal %>
   <div class="my-page__menu--link--bottom">
     <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
   </div>
