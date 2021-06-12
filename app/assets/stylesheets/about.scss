@@ -246,10 +246,43 @@
 
   &__start {
     background-color: var(--about-back-bl);
-    
+
     &--text-area {
       width: 60%;
       height: 100%;
+    }
+
+    &--img {
+      width: 10vw;
+    }
+
+    &--link-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5vw;
+    }
+
+    &--link {
+      font-size: 2.25rem;
+      color: var(--main-font);
+      border-bottom: 5px solid var(--about-back-yl);
+
+      &:hover {
+        color: var(--main-font);
+        text-decoration: none;
+
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          background-image: image-url("icon/cursor.png");
+        }
+      }
     }
   }
 }

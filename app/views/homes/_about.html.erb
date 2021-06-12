@@ -110,9 +110,26 @@
           ユーザーとうろくをして冒険をはじめましょう！<br>
           SNSのアカウントでもとうろく・ログインができます！
         </h3>
+        <div class="about__start--link-area">
+          <%= image_tag "character/witch.png", class: "about__start--img", alt: "witch-image" %>
+          <%= link_to "はじめてとうろくする方", new_user_registration_path, class: "about__start--link" %>
+        </div>
+        <div class="about__start--link-area">
+          <%= link_to "すでにとうろく済みの方", new_user_session_path, class: "about__start--link" %>
+          <%= image_tag "character/knight.png", class: "about__start--img", alt: "knight-image" %>
+        </div>
+        <div class="about__start--link-area">
+          <%= image_tag "character/priest.png", class: "about__start--img", alt: "priest-image" %>
+          <%= link_to "ゲストユーザーでお試し", users_guest_sign_in_path, method: :post, class: "about__start--link" %>
+        </div>
+        <p>※ゲストユーザーのデータは1日1回リセットされますので、ご注意下さい</p>
       </div>
       <div class="about__img--right-area">
         <%= image_tag "character/father.png", class: "about__img", alt: "father-image" %>
+        <p class="about__start--img-text">
+          かみのごかごが<br>
+          あらんことを...
+        </p>
       </div>
     </div>
   </div>
