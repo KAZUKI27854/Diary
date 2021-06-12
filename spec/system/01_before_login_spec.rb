@@ -114,8 +114,8 @@ describe '1.ユーザログイン前のテスト', type: :feature do
       visit new_user_registration_path
     end
 
-    context '表示内容の確認' do
-      it 'URLが正しい' do
+    context 'URLとフォーム内容のテスト' do
+      it 'URLが「/users/sign_up」である' do
         expect(current_path).to eq '/users/sign_up'
       end
       it '「ぼうけんのはじまりじゃ」と表示される' do
@@ -141,6 +141,21 @@ describe '1.ユーザログイン前のテスト', type: :feature do
       end
     end
 
+    context 'リンクのテスト' do
+      it 'ログインリンクが表示される' do
+        expect(page).to have_link 'ログイン'
+      end
+      it 'GoogleのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'GoogleOauth2でログインする'
+      end
+      it 'FacebookのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'Facebookでログインする'
+      end
+      it 'TwitterのOAuth認証のリンクが表示される' do
+        expect(page).to have_link 'Twitterでログインする'
+      end
+    end
+
     context '新規登録成功のテスト' do
       before do
         fill_in 'user[name]', with: Faker::Games::Pokemon.name
@@ -152,13 +167,13 @@ describe '1.ユーザログイン前のテスト', type: :feature do
       it '正しく新規登録される' do
         expect { click_button 'とうろく' }.to change(User.all, :count).by(1)
       end
-      it '新規登録後のリダイレクト先が、そのユーザのマイページである' do
+      it '新規登録後のリダイレクト先がマイページである' do
         click_button 'とうろく'
-        expect(current_path).to eq '/users/' + User.last.id.to_s
+        expect(current_path).to eq my_page_path
       end
       it '新規登録時に「アカウントを作成しました」というフラッシュが表示される' do
         click_button 'とうろく'
-        expect(page).to have_selector '.notice-message', text: 'アカウントを作成しました'
+        expect(page).to have_content 'アカウントを作成しました'
       end
     end
 
@@ -168,11 +183,14 @@ describe '1.ユーザログイン前のテスト', type: :feature do
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         fill_in 'user[password_confirmation]', with: ''
-        click_button 'とうろく'
       end
 
-      it '新規登録に失敗し、エラーメッセージが表示される' do
-        expect(page).to have_css '.error-explanation'
+      it '新規登録に失敗している' do
+        expect(User.all.count).to be 0
+      end
+      it 'エラーメッセージが表示される' do
+        click_button 'とうろく'
+        expect(page).to have_css '.error__message'
       end
     end
   end
@@ -232,8 +250,52 @@ describe '1.ユーザログイン前のテスト', type: :feature do
         expect(current_path).to eq new_user_session_path
       end
     end
-
   end
 
+  #Facebook,Twitterは本番環境でのみ導入しているため割愛
+  describe 'OAuth認証のテスト（Googleのみ）' do
+    before do
+      visit new_user_registration_path
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+        "provider" => "google_oauth2",
+        "uid" => "123456",
+        "info" => {
+          "email" => "test@example.com"
+        }
+      })
+      click_on 'GoogleOauth2でログインする'
+    end
+
+    context 'OAuth認証による新規登録のテスト' do
+      it 'GoogleOauth2認証による新規登録が成功する' do
+        expect(User.all.count).to be 1
+      end
+      it 'OAuth認証後のリダイレクト先がマイページである' do
+        expect(current_path).to eq my_page_path
+      end
+      it 'OAuth認証時に「googleアカウントでログインしました」というフラッシュが表示される' do
+        expect(page).to have_content 'googleアカウントでログインしました'
+      end
+    end
+
+    context 'OAuth認証によるログインのテスト' do
+      before do
+        click_on 'ログアウト'
+        visit new_user_session_path
+        click_on 'GoogleOauth2でログインする'
+      end
+
+      it 'OAuth認証済みのアカウントでログインできる' do
+        expect(current_path).to eq my_page_path
+      end
+      it 'ログイン後に「googleアカウントでログインしました」というフラッシュが表示される' do
+        expect(page).to have_content 'googleアカウントでログインしました'
+      end
+      it '新しいユーザーが作成されていない' do
+        expect(User.all.count).to be 1
+      end
+    end
+  end
 end
 
