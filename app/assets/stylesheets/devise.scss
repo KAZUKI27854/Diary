@@ -40,8 +40,11 @@
   padding-top: 5%;
 
   &__flash {
-    &--danger {
-      color: var(--error-back);
+    &--alert {
+      background-color: var(--error-back);
+      width: 60%;
+      margin-left: 20%;
+      border-radius: 10px;
     }
   }
 
@@ -97,7 +100,6 @@
 }
 
 @media (max-width: 991px) {
-  .log-in__form,
   .sign-up__form,
   .reset-psw__form {
     h3, form {
@@ -105,15 +107,46 @@
       margin-left: 10%;
     }
   }
+
+  .log-in {
+    &__form {
+      h3, form {
+        width: 80%;
+        margin-left: 10%;
+      }
+    }
+
+    &__flash {
+      &--alert {
+        width: 80%;
+        margin-left: 10%;
+      }
+    }
+  }
 }
 
 @media (max-width: 425px) {
-  .log-in__form,
   .sign-up__form,
   .reset-psw__form {
     h3, form {
       width: 100%;
       margin-left: 0%;
+    }
+  }
+
+  .log-in {
+    &__form {
+      h3, form {
+        width: 100%;
+        margin-left: 0%;
+      }
+    }
+
+    &__flash {
+      &--alert {
+        width: 100%;
+        margin-left: 0%;
+      }
     }
   }
 }

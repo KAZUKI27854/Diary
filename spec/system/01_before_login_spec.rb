@@ -115,9 +115,6 @@ describe '1.ユーザログイン前のテスト', type: :feature do
     end
 
     context 'URLとフォーム内容のテスト' do
-      it 'URLが「/users/sign_up」である' do
-        expect(current_path).to eq '/users/sign_up'
-      end
       it '「ぼうけんのはじまりじゃ」と表示される' do
         expect(page).to have_content 'ぼうけんのはじまりじゃ'
       end
@@ -196,16 +193,13 @@ describe '1.ユーザログイン前のテスト', type: :feature do
   end
 
   describe 'ログイン画面のテスト' do
-    let(:user) { create(:user) }
+    let!(:user) { create(:user) }
 
     before do
       visit new_user_session_path
     end
 
     context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/users/sign_in'
-      end
       it '「かみのごかごがあらんことを」と表示される' do
         expect(page).to have_content 'かみのごかごがあらんことを'
       end
@@ -298,4 +292,3 @@ describe '1.ユーザログイン前のテスト', type: :feature do
     end
   end
 end
-
