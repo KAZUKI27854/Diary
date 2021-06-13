@@ -69,17 +69,19 @@ describe '5.ユーザログイン後のメニュー画面のテスト', type: :f
         expect(page).to have_selector '#modal-user-edit'
         expect(page).not_to have_selector '.withdraw-confirm'
       end
-      xit '退会確認画面で「退会する」をクリックするとユーザーが論理削除される' do
-        click_on '退会する'
-        page.driver.browser.switch_to.alert.accept
-        # page.accept_confirm do
-        #   click_on '退会する'
-        # end
+      it '退会確認画面で「退会する」をクリックするとユーザーが論理削除される' do
+        page.accept_confirm do
+          click_on '退会する'
+        end
+        visit my_page_path
         expect(current_path).to eq root_path
-        expect(User.first.is_active).to be false
-        #expect{ page.driver.browser.switch_to.alert.accept }.to change{ User.first.is_active }.from(true).to(false)
+        expect(user.reload.is_active).to eq false
       end
-      xit '退会済みユーザーの情報でログインするとエラーメッセージが表示され、ログインできない' do
+      it '退会済みユーザーの情報でログインするとエラーメッセージが表示され、ログインできない' do
+        page.accept_confirm do
+          click_on '退会する'
+        end
+        visit my_page_path
         visit new_user_session_path
         fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
