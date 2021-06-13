@@ -32,7 +32,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.before(:each, type: :system) do
+
   end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -69,4 +71,5 @@ RSpec.configure do |config|
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   Capybara.javascript_driver = :selenium_chrome_headless
+  config.include Warden::Test::Helpers
 end

@@ -58,14 +58,22 @@ document.addEventListener("turbolinks:load", function(){
     if (gon.goals == 0) {
       $('.my-page__menu--icon--goal').addClass('js-bound');
       $('.js-save-icon, .js-todo-list-icon').css('opacity', 0.5 );
+      /* 目標設定後に進むべきアイコンのhover時のカーソル表示無効化 */
       $('.js-save-link, .js-todo-list-link').css('pointer-events', 'none' );
+      /* 上記記述だけではモーダルリンクが有効な為、リンクも合わせて無効化 */
+      $('.js-save-link, .js-todo-list-link').click(function(){
+        return false;
+      });
     } else if (gon.goals >= 1 && gon.documents == 0) {
       $('.my-page__menu--icon--goal').removeClass('js-bound');
-      $('.my-page__link--create-doc-img').addClass('js-bound');
+      $('.my-page__link--create-doc').addClass('js-bound');
       $('.js-todo-list-icon').css('opacity', 0.5 );
       $('.js-todo-list-link').css('pointer-events', 'none' );
+      $('.js-todo-list-link').click(function(){
+        return false;
+      });
     } else {
-      $('.my-page__link--create-doc-img').removeClass('js-bound');
+      $('.my-page__link--create-doc').removeClass('js-bound');
     }
   });
 
