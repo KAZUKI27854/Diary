@@ -41,16 +41,15 @@ describe '5.ユーザログイン後のメニュー画面のテスト', type: :f
       it 'プロフィール画像のフォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
       end
-      xit '名前とプロフィール画像の変更が成功する' do
+      it 'ユーザー編集成功のテスト' do
         fill_in 'user[name]', with: 'テストユーザー'
+        attach_file 'user[profile_image]', "#{Rails.root}/app/assets/images/character/brave.png"
         click_button 'へんこう'
         expect(page).to have_content 'データをへんこうしました'
-        #attach_file 'user[profile_image]', "#{Rails.root}/app/assets/images/character/brave.png"
-        #expect{ click_on 'へんこう' }.to change{ user.name }.to('テストユーザー')
-        expect(user.name).to be 'テストユーザー'
+        expect(user.reload.name).to eq 'テストユーザー'
         expect([user.profile_image_id]).to be_present
       end
-      it 'エラーメッセージが正しく表示される' do
+      it 'ユーザー編集失敗のテスト' do
         fill_in 'user[name]', with: ''
         click_button 'へんこう'
         expect(page).to have_selector '.error__message'
