@@ -53,9 +53,16 @@ describe '5.ユーザログイン後のマイページのテスト', type: :feat
       end
     end
     context '退会確認モーダルのテスト' do
-      it '「退会する」をクリックすると退会確認画面へ遷移する' do
+      before do
+        click_on 'へんしゅう'
         click_on '退会する'
+      end
+      it 'ユーザー編集モーダルで「退会する」をクリックすると退会確認画面へ遷移する' do
         expect(page).to have_selector '.withdraw-confirm'
+      end
+      it '「もどる」をクリックするとユーザー編集画面へ切り替わる' do
+        click_on 'もどる'
+        expect(page).to have_selector('#modal-user-edit')
       end
     end
   end

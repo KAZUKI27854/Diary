@@ -78,7 +78,7 @@ describe '2.ユーザログイン前の新規登録画面のテスト', type: :f
     end
     it 'エラーメッセージが表示される' do
       click_button 'とうろく'
-      expect(page).to have_css '.error__message'
+      expect(page).to have_selector '.error__message'
     end
   end
 end
