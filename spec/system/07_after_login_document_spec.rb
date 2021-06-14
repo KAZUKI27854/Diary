@@ -126,4 +126,25 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       expect(document.reload.body).to eq 'テスト'
     end
   end
+
+  context 'ドキュメント削除のテスト' do
+    let!(:goal) { create(:goal, user_id: user.id, level: 10, doc_count:1) }
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10) }
+
+    before do
+      visit my_page_path
+      page.accept_confirm do
+        find('.doc-card__icon--delete').click
+      end
+    end
+
+    it 'ドキュメントが削除され、フラッシュメッセージが表示されている' do
+      expect(page).to have_content 'きろくをさくじょしました'
+      expect(Document.count).to eq 0
+    end
+
+    it 'マイページにリダイレクトされている' do
+      expect(current_path).to eq my_page_path
+    end
+  end
 end

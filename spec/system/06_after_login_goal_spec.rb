@@ -105,7 +105,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         fill_in 'goal[category]', with: 'テスト'
         fill_in 'goal[goal_status]', with: 'テスト成功'
         click_on 'へんこう'
-        
+
         expect(page).to have_content 'もくひょうをへんこうしました'
         expect(goal.reload.category).to eq 'テスト'
         expect(goal.reload.goal_status).to eq 'テスト成功'
@@ -115,7 +115,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         fill_in 'goal[category]', with: ''
         fill_in 'goal[goal_status]', with: ''
         click_on 'へんこう'
-        
+
         expect(page).to have_selector '.error__message'
       end
 
