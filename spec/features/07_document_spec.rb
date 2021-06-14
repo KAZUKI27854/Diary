@@ -153,4 +153,124 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       expect(goal.reload.doc_count).to eq 0
     end
   end
+
+  describe 'ドキュメント検索のテスト' do
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, body: '1つ目のドキュメント') }
+
+    let!(:second_goal) { create(:goal, user_id: user.id) }
+    let!(:second_document) { create(:document, user_id: user.id, goal_id: second_goal.id, body: '2つ目のドキュメント') }
+
+    let!(:third_document) { create(:document, user_id: user.id, goal_id: goal.id, body: '3つ目のドキュメント') }
+
+    before do
+      def expect_all_doc_exist
+        expect(page).to have_content document.body
+        expect(page).to have_content second_document.body
+        expect(page).to have_content third_document.body
+      end
+
+      def expect_only_first_doc_exist
+        expect(page).to have_content document.body
+        expect(page).not_to have_content second_document.body
+        expect(page).not_to have_content third_document.body
+      end
+
+      def select_first_goal_category
+        within '#doc_goal_category' do
+          select goal.category
+        end
+      end
+
+      def fill_in_number_one
+        fill_in 'doc_word', with: '1'
+      end
+
+      def reset_select_box
+        within '#doc_goal_category' do
+          select 'すべてのもくひょう'
+        end
+      end
+
+      def reset_text_field
+        fill_in 'doc_word', with: ''
+      end
+
+      visit current_path
+    end
+
+    context 'セレクトボックス単体のテスト' do
+      before do
+        select_first_goal_category
+      end
+
+      it '検索用のセレクトボックスを選択すると、選んだ目標のドキュメントのみ表示される' do
+        expect(page).to have_content document.body
+        expect(page).to have_content third_document.body
+
+        expect(page).not_to have_content second_document.body
+      end
+
+      it '検索用のセレクトボックスを選択後、「すべてのもくひょう」に戻すと全てのドキュメントが表示される' do
+        reset_select_box
+        expect_all_doc_exist
+      end
+    end
+
+    context 'フォーム単体のテスト' do
+      before do
+        fill_in_number_one
+      end
+
+      it '検索用フォームに文字を入力すると、本文にその文字が含まれるドキュメントのみ表示される' do
+        expect_only_first_doc_exist
+      end
+
+      it '入力フォームを空にすると全てのドキュメントが表示される' do
+        reset_text_field
+        expect_all_doc_exist
+      end
+    end
+
+    context 'セレクトボックスとフォーム併用時のテスト' do
+      #目標1に関する投稿 => ドキュメント1,3
+      #目標2に関する投稿 => ドキュメント2,4
+      let!(:fourth_document) { create(:document, user_id: user.id, goal_id: second_goal.id, body: '1時間運動した') }
+
+      before do
+        select_first_goal_category
+        fill_in_number_one
+      end
+
+      it '同時に検索ができる' do
+        expect_only_first_doc_exist
+      end
+
+      it 'セレクトボックスを「すべてのもくひょう」に戻すと、フォームの文字でのみ検索され、表示される' do
+        reset_select_box
+
+        #1という文字列が含まれたドキュメント1,4だけ表示されているか
+        expect_only_first_doc_exist
+        expect(page).to have_content fourth_document.body
+      end
+
+      it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
+        reset_text_field
+
+        #目標1に関する投稿である、ドキュメント1,3だけ表示されているか
+        expect(page).to have_content document.body
+        expect(page).to have_content third_document.body
+
+        expect(page).not_to have_content second_document.body
+        expect(page).not_to have_content fourth_document.body
+      end
+
+      it 'セレクトボックスを初期値に戻し、入力フォームを空にすると全てのドキュメントが表示される' do
+        reset_select_box
+        reset_text_field
+
+        expect_all_doc_exist
+        expect(page).to have_content fourth_document.body
+      end
+    end
+  end
 end
