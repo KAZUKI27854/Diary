@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '5.ユーザログイン後のユーザーとメニュー関連のテスト', type: :feature, js: true do
+describe '5.ユーザログイン後のユーザーメニューとヘッダー関連のテスト', type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do
