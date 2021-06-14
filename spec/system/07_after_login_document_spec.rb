@@ -146,5 +146,11 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     it 'マイページにリダイレクトされている' do
       expect(current_path).to eq my_page_path
     end
+
+    it '削除したドキュメントに関連する目標データが更新されている' do
+      expect(page).to have_content 'きろくをさくじょしました'
+      expect(goal.reload.level).to eq 0
+      expect(goal.reload.doc_count).to eq 0
+    end
   end
 end
