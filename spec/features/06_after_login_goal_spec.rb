@@ -69,7 +69,6 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
     let!(:goal) { create(:goal, user_id: user.id) }
 
     before do
-      #通常であれば目標作成後にマイページへリダイレクトされる為
       visit my_page_path
       all('.my-page__menu--icon')[1].click
     end
@@ -90,6 +89,25 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
     it '「ぼうけんをきろくする」をクリックすると、ドキュメント作成モーダルが表示される' do
       click_on 'ぼうけんをきろくする'
       expect(page).to have_selector '#modal-new-doc'
+    end
+
+    context '目標が4つ以上ある場合' do
+      before do
+        create_list(:goal, 3, user_id: user.id)
+        visit my_page_path
+        all('.my-page__menu--icon')[1].click
+      end
+
+      it '目標メニューにセレクトボックスが表示されている' do
+        expect(page).to have_selector '.js-menu-goal-select'
+      end
+
+      it 'セレクトボックスの目標をクリックすると、更新順に数えて4番目の目標の編集モーダルが表示される' do
+        within '.js-menu-goal-select' do
+          select goal.category
+        end
+        expect(page).to have_selector '#modal-goal' + goal.id.to_s + '-edit'
+      end
     end
 
     context '目標編集モーダルのテスト' do
