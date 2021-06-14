@@ -88,4 +88,63 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       expect(page).not_to have_selector '.error__message'
     end
   end
+
+  context 'Todoリスト編集と削除のテスト' do
+    let!(:second_goal) { create(:goal, user_id: user.id) }
+    let!(:todo_list) { create(:todo_list, user_id: user.id, goal_id: goal.id) }
+
+    before do
+      visit current_path
+      find('.todo-lists__link--edit').click
+    end
+
+    it '表示されているTodoリストをクリックすると、編集フォームが表示される' do
+      expect(page).to have_selector '.todo-lists__form--edit'
+    end
+
+    it '期限の入力フォームが表示される' do
+      expect(page).to have_field 'todo_list[deadline]'
+    end
+
+    it '目標の入力フォームが表示される' do
+      expect(page).to have_field 'todo_list[goal_id]'
+    end
+
+    it 'やることの入力フォームが表示される' do
+      expect(page).to have_field 'todo_list[body]'
+    end
+
+    it 'Todoリスト編集成功のテスト' do
+      within '#todo_list_goal_id' do
+        select second_goal.category
+      end
+      fill_in 'todo_list[body]', with: 'テストを実行する'
+      find('.todo-lists__link--update').click
+
+      expect(todo_list.reload.goal_id).to eq second_goal.id
+      expect(todo_list.reload.body).to eq 'テストを実行する'
+    end
+
+    it 'Todoリスト編集失敗のテスト' do
+      fill_in 'todo_list[body]', with: ''
+      find('.todo-lists__link--update').click
+
+      expect(page).to have_selector '.error__message'
+    end
+
+    it 'Todoリスト削除のテスト' do
+      page.accept_confirm do
+        find('.todo-lists__link--destroy').click
+      end
+
+      visit current_path
+      expect(TodoList.count).to eq 0
+    end
+
+    it '「戻る」アイコンをクリックすると編集フォームが非表示になり、Todoリストが表示される' do
+      find('.todo-lists__icon--back').click
+      expect(page).to have_content todo_list.body
+      expect(page).not_to have_selector '.todo-lists__form--edit'
+    end
+  end
 end
