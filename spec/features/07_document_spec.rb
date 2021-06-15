@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe '7.ユーザログイン後のドキュメント関連のテスト', type: :feature, js: true do
-  # let!(:stage) { create(:stage) }
-  # let!(:goal) { create(:goal, user_id: user.id, level: 80) }
   let!(:goal) { create(:goal, level: 80) }
   let!(:user) { User.first }
 
