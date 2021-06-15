@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :feature, js: true do
-  let!(:user) { create(:user) }
-  let!(:stage) { create(:stage) }
-  let!(:goal) { create(:goal, user_id: user.id) }
-  let!(:document) { create(:document, user_id: user.id, goal_id: goal.id) }
+  # let!(:user) { create(:user) }
+  # let!(:stage) { create(:stage) }
+  # let!(:goal) { create(:goal, user_id: user.id) }
+  # let!(:document) { create(:document, user_id: user.id, goal_id: goal.id) }
+
+  let!(:goal) { create(:goal) }
+  let!(:user) { User.first }
 
   before do
     login_as(user, :scope => :user)
@@ -12,6 +15,9 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
   end
 
   context 'リンクのテスト' do
+    #ドキュメントが作成されていない状態ではTodoリストアイコンがクリックできない仕様の為
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id) }
+
     before do
       all('.my-page__menu--icon')[3].click
     end
@@ -90,7 +96,7 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
   end
 
   context 'Todoリスト編集と削除のテスト' do
-    let!(:second_goal) { create(:goal, user_id: user.id) }
+    let!(:goal_2) { create(:goal, user_id: user.id) }
     let!(:todo_list) { create(:todo_list, user_id: user.id, goal_id: goal.id) }
 
     before do
@@ -116,13 +122,13 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
 
     it 'Todoリスト編集成功のテスト' do
       within '#todo_list_goal_id' do
-        select second_goal.category
+        select goal_2.category
       end
       fill_in 'todo_list[body]', with: 'テストを実行する'
       find('.todo-lists__link--update').click
 
       visit current_path
-      expect(todo_list.reload.goal_id).to eq second_goal.id
+      expect(todo_list.reload.goal_id).to eq goal_2.id
       expect(todo_list.reload.body).to eq 'テストを実行する'
     end
 
@@ -157,7 +163,7 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
     end
   end
 
-  context 'Todoリスト一覧のテスト' do
+  context 'Todoリスト一覧とチェックのテスト' do
     let!(:list) { create(:todo_list, user_id: user.id, goal_id: goal.id) }
     let!(:list_with_deadline) { create(:todo_list, :with_deadline, user_id: user.id, goal_id: goal.id) }
     let!(:list_finished) { create(:todo_list, :finished, user_id: user.id, goal_id: goal.id) }
@@ -166,13 +172,72 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       visit current_path
     end
 
-    it 'チェックボックスをクリックすると、アイコンにチェックが入りデータが更新される' do
+    it 'Todoリストがpriorityカラムの数値順に並んでいる' do
+      expect(all('.js-todo-lists div')[0]).to have_content list_with_deadline.body
+      expect(all('.js-todo-lists div')[5]).to have_content list.body
+      expect(all('.js-todo-lists div')[10]).to have_content list_finished.body
     end
 
-    it '作成したTodoリストが全て表示されている' do
-      expect(page).to have_content list.body
-      expect(page).to have_content list_with_deadline.body
-      expect(page).to have_content list_finished.body
+    it '終了していないリストのチェックアイコンにチェックが入っていない' do
+      list_1_icon = all('.todo-lists__icon--check')[1]
+      list_2_icon = all('.todo-lists__icon--check')[2]
+
+      expect(list_1_icon['alt']).to eq 'checkbox-icon'
+      expect(list_2_icon['alt']).to eq 'checkbox-icon'
+    end
+
+    it '終了しているリストのチェックアイコンにチェックが入っている' do
+      list_3_icon = all('.todo-lists__icon--check')[3]
+      expect(list_3_icon['alt']).to eq 'check-icon'
+    end
+
+    it '空のチェックボックスをクリックすると、priorityとis_finishedカラムのデータが更新される' do
+      #期限なしのリストにチェックを入れる
+      all('.todo-lists__icon--check')[2].click
+
+      expect(list.reload.priority).to eq 2
+      expect(list.reload.is_finished).to eq true
+    end
+
+    it 'リストへチェックを入れると、表示順が入れ替わっている' do
+      #期限付きのリストにチェックを入れる
+      all('.todo-lists__icon--check')[1].click
+
+      #唯一チェックの入っていないlistのデータが最上部に表示されている
+      sleep 1
+      expect(all('.js-todo-lists div')[0]).to have_content list.body
+    end
+
+    it '期限付きでチェック済みのリストのチェックを外すと、priorityとis_finishedカラムのデータが更新される' do
+      #期限付きのリストにチェックを入れる => 外す
+      all('.todo-lists__icon--check')[1].click
+      sleep 1
+      all('.todo-lists__icon--check')[3].click
+
+      expect(list_with_deadline.reload.priority).to eq 0
+      expect(list_with_deadline.reload.is_finished).to eq false
+    end
+
+    it '期限なしでチェック済みのリストのチェックを外すと、priorityとis_finishedカラムのデータが更新される' do
+      #終了しているリストのチェックを外す
+      all('.todo-lists__icon--check')[3].click
+
+      expect(list_finished.reload.priority).to eq 1
+      expect(list_finished.reload.is_finished).to eq false
+    end
+
+    it '「チェックずみをさくじょ」ボタンをクリックすると、チェック済みリストが全て削除される' do
+      #全てのリストをチェック済みにする
+      all('.todo-lists__icon--check')[2].click
+      sleep 1
+      all('.todo-lists__icon--check')[1].click
+
+      page.accept_confirm do
+        click_on 'チェックずみをさくじょ'
+      end
+
+      expect(page).to have_selector '.todo-lists'
+      expect(TodoList.count).to eq 0
     end
   end
 end
