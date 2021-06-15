@@ -151,34 +151,35 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
   end
 
   describe 'ドキュメント検索のテスト' do
-    let!(:doc_1) { create(:document, :doc_1, user_id: user.id, goal_id: goal.id) }
-
     let!(:goal_2) { create(:goal, user_id: user.id) }
-    let!(:doc_2) { create(:document, :doc_2, user_id: user.id, goal_id: goal_2.id) }
 
-    let!(:doc_3) { create(:document, :doc_3, user_id: user.id, goal_id: goal.id) }
+    #目標1に関するドキュメント
+    let!(:doc) { create(:document, :doc_1, user_id: user.id, goal_id: goal.id) }
+    let!(:doc_2) { create(:document, :doc_2, user_id: user.id, goal_id: goal.id) }
+
+    #目標2に関するドキュメント
+    let!(:doc_3) { create(:document, :doc_3, user_id: user.id, goal_id: goal_2.id) }
+    let!(:doc_4) { create(:document, :doc_4, user_id: user.id, goal_id: goal_2.id) }
 
     before do
       def expect_all_doc_exist
-        expect(page).to have_content doc_1.body
+        expect(page).to have_content doc.body
         expect(page).to have_content doc_2.body
         expect(page).to have_content doc_3.body
+        expect(page).to have_content doc_4.body
       end
 
       def expect_only_first_doc_exist
-        expect(page).to have_content doc_1.body
+        expect(page).to have_content doc.body
         expect(page).not_to have_content doc_2.body
         expect(page).not_to have_content doc_3.body
+        expect(page).not_to have_content doc_4.body
       end
 
       def select_first_goal_category
         within '#doc_goal_category' do
           select goal.category
         end
-      end
-
-      def fill_in_number_one
-        fill_in 'doc_word', with: '1'
       end
 
       def reset_select_box
@@ -200,10 +201,11 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       end
 
       it '検索用のセレクトボックスを選択すると、選んだ目標のドキュメントのみ表示される' do
-        expect(page).to have_content doc_1.body
-        expect(page).to have_content doc_3.body
+        expect(page).to have_content doc.body
+        expect(page).to have_content doc_2.body
 
-        expect(page).not_to have_content doc_2.body
+        expect(page).not_to have_content doc_3.body
+        expect(page).not_to have_content doc_4.body
       end
 
       it '検索用のセレクトボックスを選択後、「すべてのもくひょう」に戻すと全てのドキュメントが表示される' do
@@ -214,7 +216,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
     context 'フォーム単体のテスト' do
       before do
-        fill_in_number_one
+        fill_in 'doc_word', with: '1つ目の'
       end
 
       it '検索用フォームに文字を入力すると、本文にその文字が含まれるドキュメントのみ表示される' do
@@ -228,13 +230,9 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     end
 
     context 'セレクトボックスとフォーム併用時のテスト' do
-      #目標1に関する投稿 => ドキュメント1,3
-      #目標2に関する投稿 => ドキュメント2,4
-      let!(:doc_4) { create(:document, :doc_4, user_id: user.id, goal_id: goal_2.id) }
-
       before do
         select_first_goal_category
-        fill_in_number_one
+        fill_in 'doc_word', with: '1'
       end
 
       it '同時に検索ができる' do
@@ -245,18 +243,21 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         reset_select_box
 
         #1という文字列が含まれたドキュメント1,4だけ表示されているか
-        expect_only_first_doc_exist
+        expect(page).to have_content doc.body
         expect(page).to have_content doc_4.body
+
+        expect(page).not_to have_content doc_2.body
+        expect(page).not_to have_content doc_3.body
       end
 
       it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
         reset_text_field
 
-        #目標1に関する投稿である、ドキュメント1,3だけ表示されているか
-        expect(page).to have_content doc_1.body
-        expect(page).to have_content doc_3.body
+        #目標1に関する投稿である、ドキュメント1,2だけ表示されているか
+        expect(page).to have_content doc.body
+        expect(page).to have_content doc_2.body
 
-        expect(page).not_to have_content doc_2.body
+        expect(page).not_to have_content doc_3.body
         expect(page).not_to have_content doc_4.body
       end
 
@@ -265,7 +266,6 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         reset_text_field
 
         expect_all_doc_exist
-        expect(page).to have_content doc_4.body
       end
     end
   end
