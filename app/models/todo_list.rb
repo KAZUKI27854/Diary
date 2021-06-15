@@ -1,5 +1,4 @@
 class TodoList < ApplicationRecord
-
   scope :classify, -> { order(:priority, :deadline) }
 
   belongs_to :goal

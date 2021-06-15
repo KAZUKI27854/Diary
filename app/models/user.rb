@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook twitter]
 
@@ -8,7 +6,7 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :todo_lists, dependent: :destroy
 
-  validates :name, {presence: true}
+  validates :name, {presence: true, length: {maximum: 60}}
   validates :email, {presence: true, uniqueness: true}
 
   attachment :profile_image
