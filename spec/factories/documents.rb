@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :document do
+    association :goal
+    user { goal.user }
+
     body { Faker::Games::Zelda.game }
     milestone { Faker::Games::Zelda.location }
     add_level { 1 }

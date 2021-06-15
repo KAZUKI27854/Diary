@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :goal do
+    association :stage
     association :user
 
     goal_status { Faker::Games::Pokemon.move }

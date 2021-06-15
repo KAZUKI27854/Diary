@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe '7.ユーザログイン後のドキュメント関連のテスト', type: :feature, js: true do
-  let!(:user) { create(:user) }
   let!(:stage) { create(:stage) }
-  let!(:goal) { create(:goal, user_id: user.id, level: 80) }
+  # let!(:goal) { create(:goal, user_id: user.id, level: 80) }
+  let!(:document) { create(:document) }
+  let!(:user) { User.first }
 
   before do
     login_as(user, :scope => :user)

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe '6.ユーザログイン後の目標関連のテスト', type: :feature, js: true do
-  let!(:stage) { create(:stage) }
   let!(:goal) { create(:goal) }
   let!(:user) { User.first }
 
