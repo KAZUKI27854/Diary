@@ -11,7 +11,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     let(:user) { build(:user) }
 
     context 'nameカラム' do
-      it '空欄の場合保存に失敗し、空白のエラーメッセージが返される' do
+      it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.name = ''
 
         is_expected.to eq false
@@ -32,7 +32,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context 'emailカラム' do
-      it '空白の場合保存に失敗し、空白のエラーメッセージが返される' do
+      it '空白の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.email = ''
 
         is_expected.to eq false
@@ -49,7 +49,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context 'passwordカラム' do
-      it '空白の場合保存に失敗し、空白のエラーメッセージが返される' do
+      it '空白の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.password = ''
 
         is_expected.to eq false
