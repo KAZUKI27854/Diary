@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe '6.ユーザログイン後の目標関連のテスト', type: :feature, js: true do
-  let!(:user) { create(:user) }
+  let!(:stage) { create(:stage) }
+  let!(:goal) { create(:goal) }
+  let!(:user) { User.first }
 
   before do
     login_as(user, :scope => :user)
@@ -9,9 +11,9 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
   end
 
   describe '目標作成前の目標メニューのテスト' do
-    let!(:stage) { create(:stage) }
-
     before do
+      Goal.first.destroy
+      visit current_path
       all('.my-page__menu--icon')[1].click
     end
 
@@ -50,8 +52,9 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         fill_in 'goal[category]', with: Faker::Games::Pokemon.move
         fill_in 'goal[goal_status]', with: Faker::Games::Pokemon.move
         fill_in 'goal[deadline]', with: Faker::Date.in_date_period
-        expect{ click_on 'せってい' }.to change{ Goal.count }.by(1)
+        click_on 'せってい'
         expect(page).to have_content 'もくひょうをついかしました'
+        expect(Goal.count).to be 1
       end
 
       it '目標作成失敗のテスト' do
@@ -65,9 +68,6 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
   end
 
   describe '目標作成後の目標メニューのテスト' do
-    let!(:stage) { create(:stage) }
-    let!(:goal) { create(:goal, user_id: user.id) }
-
     before do
       visit my_page_path
       all('.my-page__menu--icon')[1].click

@@ -121,8 +121,17 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       fill_in 'todo_list[body]', with: 'テストを実行する'
       find('.todo-lists__link--update').click
 
+      visit current_path
       expect(todo_list.reload.goal_id).to eq second_goal.id
       expect(todo_list.reload.body).to eq 'テストを実行する'
+    end
+
+    it 'Todoリストを期限付きに変更すると、priorityカラムが更新される' do
+      fill_in 'todo_list[deadline]', with: Faker::Date.in_date_period
+      find('.todo-lists__link--update').click
+
+      visit current_path
+      expect(todo_list.reload.priority).to eq 0
     end
 
     it 'Todoリスト編集失敗のテスト' do
@@ -145,6 +154,25 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       find('.todo-lists__icon--back').click
       expect(page).to have_content todo_list.body
       expect(page).not_to have_selector '.todo-lists__form--edit'
+    end
+  end
+
+  context 'Todoリスト一覧のテスト' do
+    let!(:list) { create(:todo_list, user_id: user.id, goal_id: goal.id) }
+    let!(:list_with_deadline) { create(:todo_list, :with_deadline, user_id: user.id, goal_id: goal.id) }
+    let!(:list_finished) { create(:todo_list, :finished, user_id: user.id, goal_id: goal.id) }
+
+    before do
+      visit current_path
+    end
+
+    it 'チェックボックスをクリックすると、アイコンにチェックが入りデータが更新される' do
+    end
+
+    it '作成したTodoリストが全て表示されている' do
+      expect(page).to have_content list.body
+      expect(page).to have_content list_with_deadline.body
+      expect(page).to have_content list_finished.body
     end
   end
 end
