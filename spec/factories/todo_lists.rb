@@ -16,5 +16,22 @@ FactoryBot.define do
       priority { 2 }
       is_finished { true }
     end
+
+    #検索テストで使用
+    trait :list_1 do
+      body { '1つ目のTodoリスト' }
+    end
+
+    trait :list_2 do
+      body { '2つ目のTodoリスト' }
+    end
+
+    trait :list_3 do
+      body { '3つ目のTodoリスト' }
+    end
+
+    trait :list_4 do
+      body { '11月10日までに課題提出' }
+    end
   end
 end

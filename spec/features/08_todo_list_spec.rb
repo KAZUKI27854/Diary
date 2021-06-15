@@ -240,4 +240,125 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       expect(TodoList.count).to eq 0
     end
   end
+
+  describe 'Todoリスト検索のテスト' do
+    let!(:goal_2) { create(:goal, user_id: user.id)}
+
+    #目標1に関するTodoリスト
+    let!(:list) { create(:todo_list, :list_1, user_id: user.id, goal_id: goal.id) }
+    let!(:list_2) { create(:todo_list, :list_2, user_id: user.id, goal_id: goal.id) }
+
+    #目標2に関するTodoリスト
+    let!(:list_3) { create(:todo_list, :list_3, user_id: user.id, goal_id: goal_2.id) }
+    let!(:list_4) { create(:todo_list, :list_4, user_id: user.id, goal_id: goal_2.id) }
+
+    before do
+      def expect_all_lists_exist
+        expect(page).to have_content list.body
+        expect(page).to have_content list_2.body
+        expect(page).to have_content list_3.body
+        expect(page).to have_content list_4.body
+      end
+
+      def expect_only_first_list_exist
+        expect(page).to have_content list.body
+        expect(page).not_to have_content list_2.body
+        expect(page).not_to have_content list_3.body
+        expect(page).not_to have_content list_4.body
+      end
+
+      def select_first_goal_category
+        within '#goal_category' do
+          select goal.category
+        end
+      end
+
+      def reset_select_box
+        within '#goal_category' do
+          select 'すべて'
+        end
+      end
+
+      def reset_text_field
+        fill_in 'word', with: ''
+      end
+
+      visit current_path
+    end
+
+    context 'セレクトボックス単体のテスト' do
+      before do
+        select_first_goal_category
+      end
+
+      it '検索用のセレクトボックスを選択すると、選んだ目標のリストのみ表示される' do
+        expect(page).to have_content list.body
+        expect(page).to have_content list_2.body
+
+        expect(page).not_to have_content list_3.body
+        expect(page).not_to have_content list_4.body
+      end
+
+      it '検索用のセレクトボックスを選択後、「すべて」に戻すと全てのリストが表示される' do
+        reset_select_box
+        expect_all_lists_exist
+      end
+    end
+
+    context 'フォーム単体のテスト' do
+      before do
+        fill_in 'word', with: '1つ目の'
+      end
+
+      it '検索用フォームに文字を入力すると、本文にその文字が含まれるリストのみ表示される' do
+        sleep 1
+        expect_only_first_list_exist
+      end
+
+      it '入力フォームを空にすると全てのリストが表示される' do
+        reset_text_field
+        expect_all_lists_exist
+      end
+    end
+
+    context 'セレクトボックスとフォーム併用時のテスト' do
+      before do
+        select_first_goal_category
+        fill_in 'word', with: '1'
+      end
+
+      it '同時に検索ができる' do
+        expect_only_first_list_exist
+      end
+
+      it 'セレクトボックスを「すべてのもくひょう」に戻すと、フォームの文字でのみ検索され、表示される' do
+        reset_select_box
+
+        #1という文字列が含まれたリスト1,4だけ表示されているか
+        expect(page).to have_content list.body
+        expect(page).to have_content list_4.body
+
+        expect(page).not_to have_content list_2.body
+        expect(page).not_to have_content list_3.body
+      end
+
+      it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
+        reset_text_field
+
+        #目標1に関する投稿である、リスト1,2だけ表示されているか
+        expect(page).to have_content list.body
+        expect(page).to have_content list_2.body
+
+        expect(page).not_to have_content list_3.body
+        expect(page).not_to have_content list_4.body
+      end
+
+      it 'セレクトボックスを初期値に戻し、入力フォームを空にすると全てのリストが表示される' do
+        reset_select_box
+        reset_text_field
+
+        expect_all_lists_exist
+      end
+    end
+  end
 end
