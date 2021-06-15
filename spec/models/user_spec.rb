@@ -8,7 +8,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'カラムごとのバリデーションテスト' do
     subject { user.valid? }
 
-    let(:user) { create(:user) }
+    let(:user) { build(:user) }
 
     context 'nameカラム' do
       it '空欄の場合保存に失敗し、空白のエラーメッセージが返される' do
@@ -40,6 +40,8 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
 
       it '一意性がない場合保存に失敗し、既に存在しているというエラーメッセージが返される' do
+        #DBにアクセスする為、createで作成
+        user = create(:user)
         another_user = build(:user, email: user.email)
         another_user.valid?
         expect(another_user.errors[:email]).to include("はすでに存在します")

@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Goalモデルのテスト', type: :model do
+  it '全ての項目を入力すればデータ保存ができる' do
+    expect(build(:goal)).to be_valid
+  end
+
   describe 'バリデーションのテスト' do
     subject { goal.valid? }
 
-    let(:user) { create(:user) }
-    let(:goal) { build(:goal, user_id: user.id) }
+    # let(:user) { create(:user) }
+    # let(:goal) { build(:goal, user_id: user.id) }
+    
+    let(:goal) { create(:goal) }
 
     context 'categoryカラム' do
       it '空欄でないこと' do
