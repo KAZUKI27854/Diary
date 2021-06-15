@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe '7.ユーザログイン後のドキュメント関連のテスト', type: :feature, js: true do
-  let!(:stage) { create(:stage) }
+  # let!(:stage) { create(:stage) }
   # let!(:goal) { create(:goal, user_id: user.id, level: 80) }
-  let!(:document) { create(:document) }
+  let!(:goal) { create(:goal, level: 80) }
   let!(:user) { User.first }
 
   before do
@@ -60,11 +60,10 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
   end
 
   context 'ドキュメント編集成功のテスト' do
-    let!(:goal) { create(:goal, user_id: user.id, level: 10, doc_count:1) }
-    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10) }
+    let!(:goal) { create(:goal, level: 10) }
+    let!(:goal_2) { create(:goal, user_id: user.id, level: 5) }
 
-    let!(:second_goal) { create(:goal, user_id: user.id, level: 5, doc_count:1) }
-    let!(:second_document) { create(:document, user_id: user.id, goal_id: second_goal.id, add_level: 5) }
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10)}
 
     before do
       visit '/documents/1/edit'
@@ -91,7 +90,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
     it 'ドキュメントの目標を変更すると、変更前と後の目標のレベルや投稿数も変更される' do
       within '#document_goal_id' do
-        select second_goal.category
+        select goal_2.category
       end
       click_button 'きろくしなおす'
 
@@ -102,14 +101,13 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       expect(goal.reload.doc_count).to eq 0
 
       #変更後の目標データが変わっているか
-      expect(second_goal.reload.level).to eq 25
-      expect(second_goal.reload.doc_count).to eq 2
+      expect(goal_2.reload.level).to eq 25
+      expect(goal_2.reload.doc_count).to eq 2
     end
   end
 
   context 'ドキュメント編集失敗のテスト' do
-    let!(:goal) { create(:goal, user_id: user.id, level: 10, doc_count:1) }
-    let!(:document) { create(:document, body: 'テスト', user_id: user.id, goal_id: goal.id, add_level: 10) }
+    let!(:document) { create(:document, body: 'テスト', user_id: user.id) }
 
     before do
       visit '/documents/1/edit'
@@ -129,8 +127,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
   end
 
   context 'ドキュメント削除のテスト' do
-    let!(:goal) { create(:goal, user_id: user.id, level: 10, doc_count:1) }
-    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10) }
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 80) }
 
     before do
       visit my_page_path
@@ -156,24 +153,24 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
   end
 
   describe 'ドキュメント検索のテスト' do
-    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, body: '1つ目のドキュメント') }
+    let!(:doc_1) { create(:document, :doc_1, user_id: user.id, goal_id: goal.id) }
 
-    let!(:second_goal) { create(:goal, user_id: user.id) }
-    let!(:second_document) { create(:document, user_id: user.id, goal_id: second_goal.id, body: '2つ目のドキュメント') }
+    let!(:goal_2) { create(:goal, user_id: user.id) }
+    let!(:doc_2) { create(:document, :doc_2, user_id: user.id, goal_id: goal_2.id) }
 
-    let!(:third_document) { create(:document, user_id: user.id, goal_id: goal.id, body: '3つ目のドキュメント') }
+    let!(:doc_3) { create(:document, :doc_3, user_id: user.id, goal_id: goal.id) }
 
     before do
       def expect_all_doc_exist
-        expect(page).to have_content document.body
-        expect(page).to have_content second_document.body
-        expect(page).to have_content third_document.body
+        expect(page).to have_content doc_1.body
+        expect(page).to have_content doc_2.body
+        expect(page).to have_content doc_3.body
       end
 
       def expect_only_first_doc_exist
-        expect(page).to have_content document.body
-        expect(page).not_to have_content second_document.body
-        expect(page).not_to have_content third_document.body
+        expect(page).to have_content doc_1.body
+        expect(page).not_to have_content doc_2.body
+        expect(page).not_to have_content doc_3.body
       end
 
       def select_first_goal_category
@@ -205,10 +202,10 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       end
 
       it '検索用のセレクトボックスを選択すると、選んだ目標のドキュメントのみ表示される' do
-        expect(page).to have_content document.body
-        expect(page).to have_content third_document.body
+        expect(page).to have_content doc_1.body
+        expect(page).to have_content doc_3.body
 
-        expect(page).not_to have_content second_document.body
+        expect(page).not_to have_content doc_2.body
       end
 
       it '検索用のセレクトボックスを選択後、「すべてのもくひょう」に戻すと全てのドキュメントが表示される' do
@@ -235,7 +232,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     context 'セレクトボックスとフォーム併用時のテスト' do
       #目標1に関する投稿 => ドキュメント1,3
       #目標2に関する投稿 => ドキュメント2,4
-      let!(:fourth_document) { create(:document, user_id: user.id, goal_id: second_goal.id, body: '1時間運動した') }
+      let!(:doc_4) { create(:document, :doc_4, user_id: user.id, goal_id: goal_2.id) }
 
       before do
         select_first_goal_category
@@ -251,18 +248,18 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
         #1という文字列が含まれたドキュメント1,4だけ表示されているか
         expect_only_first_doc_exist
-        expect(page).to have_content fourth_document.body
+        expect(page).to have_content doc_4.body
       end
 
       it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
         reset_text_field
 
         #目標1に関する投稿である、ドキュメント1,3だけ表示されているか
-        expect(page).to have_content document.body
-        expect(page).to have_content third_document.body
+        expect(page).to have_content doc_1.body
+        expect(page).to have_content doc_3.body
 
-        expect(page).not_to have_content second_document.body
-        expect(page).not_to have_content fourth_document.body
+        expect(page).not_to have_content doc_2.body
+        expect(page).not_to have_content doc_4.body
       end
 
       it 'セレクトボックスを初期値に戻し、入力フォームを空にすると全てのドキュメントが表示される' do
@@ -270,7 +267,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         reset_text_field
 
         expect_all_doc_exist
-        expect(page).to have_content fourth_document.body
+        expect(page).to have_content doc_4.body
       end
     end
   end
