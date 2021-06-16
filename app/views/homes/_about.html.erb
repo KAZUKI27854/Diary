@@ -44,8 +44,8 @@
       <div class="about__header--area">
         <h1 class="about__header about__header--contents">Contents</h1>
       </div>
-      <div class="about__text--area">
-        <h3 class=" message about__text--contents">
+      <div class="about__text--area about__contents--text">
+        <h3 class="message about__text--contents">
           まほうの日記...「もくひょう」をきろくすることで<br>
           主人公が成長し、モンスターを倒す力が得られる
         </h3>
@@ -55,7 +55,7 @@
             <%= image_tag "screen2.png", class: "about__contents--screen-img", alt: "screen-image" %>
           </div>
           <div class="about__contents--screen-area-small">
-            <p>2. モンスターをたおしてレベルアップ！</p>
+            <p class="about__contents--text-bottom">2. モンスターをたおしてレベルアップ！</p>
             <%= image_tag "screen3.png", class: "about__contents--screen-img", alt: "screen-image" %>
           </div>
         </div>
@@ -77,7 +77,7 @@
 
   <div class="row about__monster">
     <div class="col-12 about__monster--col">
-      <div class="monster__img--left-area">
+      <div class="about__img--left-area">
         <%= image_tag "boss/boss9.png", class: "about__img", alt: "monster-image" %>
         <p class="about__monster--img-text">????</p>
       </div>

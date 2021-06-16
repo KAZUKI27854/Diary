@@ -111,6 +111,12 @@
         background-image: image-url("monster/monster1.png");
       }
     }
+
+    &--start {
+       &::before {
+        background-image: image-url("character/princess.png");
+      }
+    }
   }
 
   &__header {
@@ -314,15 +320,20 @@
       }
 
       &--contents {
-        width: 90%;
-        margin-left: 5%;
-        font-size: 17px;
+        width: 95% !important;
+        margin-left: 5% !important;
+        font-size: 16px !important;
       }
 
       &--monster {
-        width: 90%;
-        margin-left: 5%;
-        font-size: 17px;
+        width: 90% !important;
+        margin-left: 5% !important;
+        font-size: 17px !important;
+      }
+
+      &--start {
+        width: 100% !important;
+        font-size: 16px !important;
       }
     }
 
@@ -346,14 +357,157 @@
     &__start {
       padding: 10px 0 10px 0;
     }
+
+    &__story {
+      &--col {
+        margin-bottom: 5%;
+      }
+    }
+
+    &__contents {
+      &--text {
+        padding-left: 5%;
+      }
+
+      &--screen-area-small {
+        width: 40%;
+      }
+
+      &--header-bottom {
+        font-size: 18px;
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 5%;
+      }
+    }
+
+    &__monster {
+      &--text-area {
+        margin: 25% 0;
+      }
+
+      &--screen-img {
+        width: 35%;
+
+        &:nth-of-type(1) {
+          top: 58%;
+          left: 4%;
+        }
+
+        &:nth-of-type(2) {
+          top: 30%;
+          left: 20%;
+        }
+
+        &:nth-of-type(3) {
+          top: 58%;
+          left: 33%;
+        }
+
+        &:nth-of-type(4) {
+          top: 30%;
+          left: 50%;
+        }
+
+        &:nth-of-type(5) {
+          top: 58%;
+          left: 62%;
+        }
+      }
+    }
+
+    &__start {
+      &--link {
+        font-size: 1.8rem;
+      }
+    }
   }
 }
 
 @media (max-width: 425px) {
   .about {
+    &__text {
+      &--story {
+        font-size: 17px !important;
+      }
+
+      &--contents {
+        padding: 3% 0;
+        font-size: 14px !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+
+      &--monster {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+
+      &--start {
+        font-size: 13px !important;
+        padding: 2%;
+      }
+    }
+
     &__img {
+      &--left-area {
+        display: none;
+      }
+
+      &--right-area {
+        display: none;
+      }
+    }
+
+    &__header {
       &--area {
-        height: 0;
+        display: none;
+      }
+    }
+
+    &__contents {
+      &--text {
+        padding-left: 0;
+      }
+
+      &--screen-area-big {
+        flex-wrap: wrap;
+      }
+
+      &--screen-area-small {
+        width: 80%;
+      }
+
+      &--text-bottom {
+        margin-top: 10%;
+      }
+
+      &--header-bottom {
+        padding: 5% 0;
+        font-size: 18px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 7%;
+      }
+    }
+
+    &__monster {
+      &--text-area {
+        width: 100%;
+        padding-bottom: 10%;
+        padding-top: 3%;
+      }
+    }
+
+    &__start {
+      &--text-area {
+        width: 94%;
+        margin-left: 3%;
+      }
+
+      &--link {
+        font-size: 1.6rem;
+        margin-bottom: 5%;
       }
     }
   }
