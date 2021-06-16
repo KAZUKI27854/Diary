@@ -1,11 +1,53 @@
 require 'rails_helper'
 
-describe '5.ユーザログイン後のユーザーメニューとヘッダー関連のテスト', type: :feature, js: true do
+describe '5.ユーザログイン後のヘッダーとユーザーメニューのテスト', type: :feature, js: true do
   let!(:user) { create(:user) }
 
   before do
     login_as(user, :scope => :user)
     visit  my_page_path
+  end
+
+  context 'ヘッダーの確認' do
+    before do
+      click_on 'MENU'
+    end
+
+    it 'ヘッダーのリンクに「マイページ」がある' do
+      expect(page).to have_link 'マイページ'
+    end
+
+    it '「マイページ」リンクの遷移先がマイページである' do
+      click_on 'マイページ'
+      expect(current_path).to eq my_page_path
+    end
+
+    it 'ヘッダーのリンクに「あそびかた」がある' do
+      expect(page).to have_link 'あそびかた'
+    end
+
+    it '「あそびかた」リンクの遷移先がチュートリアル画面である' do
+      click_on 'あそびかた'
+      expect(current_path).to eq '/tutorial'
+    end
+
+    it 'ヘッダーのリンクに「ログアウト」がある' do
+      expect(page).to have_link 'ログアウト'
+    end
+
+    it 'ログアウトの遷移先がトップ画面である' do
+      click_on 'ログアウト'
+      expect(current_path).to eq root_path
+    end
+
+    it 'ヘッダーのリンクに「プライバシーポリシー」がある' do
+      expect(page).to have_link 'プライバシーポリシー'
+    end
+
+    it 'プライバシーポリシーの遷移先がプライバシーポリシー画面である' do
+      click_on 'プライバシーポリシー'
+      expect(current_path).to eq policy_path
+    end
   end
 
   describe 'メニュー画面の非表示確認テスト' do
