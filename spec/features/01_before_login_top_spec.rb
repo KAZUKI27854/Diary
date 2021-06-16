@@ -5,16 +5,17 @@ describe '1.ユーザログイン前のトップ画面のテスト', type: :feat
     visit root_path
   end
 
-  xcontext 'URLとヘッダーの確認' do
-    it 'URLが正しい' do
-      expect(current_path).to eq '/'
+  context 'ヘッダーの確認', js: true do
+    before do
+      click_on 'MENU'
     end
+
     it 'ヘッダーのリンクに「あそびかた」がある' do
-      expect(page).to have_selector '.head-link-btn', text: 'あそびかた'
+      expect(page).to have_link 'あそびかた'
     end
     it 'あそびかたの遷移先がアバウト画面である' do
-      head_link = find('.head-link-btn', text: 'あそびかた')
-      expect(head_link[:href]).to eq '/about'
+      click_on 'あそびかた'
+      expect(current_path).to eq '/about'
     end
     it 'ヘッダーのリンクに「あたらしくはじめる」がある' do
       expect(page).to have_selector '.head-link-btn', text: 'あたらしくはじめる'

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'homes#top'
-  get 'about' => 'homes#about'
+  get 'tutorial' => 'homes#tutorial'
   get 'policy' => 'homes#policy', as: :policy
 
   get 'users' => 'users#show', as: :my_page
