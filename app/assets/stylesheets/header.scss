@@ -73,6 +73,10 @@
 
 @media (max-width: 425px) {
   .header {
+    &__sub-title {
+      display: none;
+    }
+
     &__menu {
       &--list {
         left: 35%;
