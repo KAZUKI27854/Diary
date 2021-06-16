@@ -20,6 +20,19 @@
 
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
+  $('.js-menu-trigger').on('click', function() {
+    $(this).toggleClass('header__trigger--active');
+    $('.js-menu').fadeToggle();
+    event.preventDefault();
+
+    if($(this).hasClass('header__trigger--active')) {
+      $('.js-menu-trigger').html('CLOSE');
+    } else {
+      $('.js-menu-trigger').html('MENU');
+    }
+    return false;
+  });
+
   /* チュートリアルページのタブボックス */
   $(function() {
     $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
@@ -27,7 +40,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function() {
-    $('.tabBox a').on('click', function(event) {
+    $('.tabBox a').on('click', function() {
       $('#tabBoxes .tabBox').hide();
       $('#js-message .message').hide();
       $($(this).attr("href")).show();
@@ -38,14 +51,14 @@ document.addEventListener("turbolinks:load", function(){
 
   /* モーダルウインドウ */
   $(function(){
-    $(document).on('click','.js-modal-open', function(){
+    $('.js-modal-open').on('click', function(){
       var target = $(this).data('target');
       var modal = document.getElementById(target);
       $(modal).fadeIn();
       return false;
     });
 
-    $(document).on('click', '.js-modal-close', function(){
+    $('.js-modal-close').on('click', function(){
       $('.error__message').replaceWith('<div class="js-message-errors"></div>');
       $('.js-modal').fadeOut();
       return false;

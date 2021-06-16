@@ -26,6 +26,7 @@
   --main-font: #fff;
   --main-back: #000;
   --menu-logo: #00d9ff;
+  --active-menu-back: #000000e0;
   --about-back-yl: #fff700;
   --about-back-bl: #007bff;
   --notice-back: #00ff89;
@@ -57,19 +58,6 @@ body {
   margin-bottom: 50px;
   font-family: 'PixelMplus10-Regular';
   color: var(--main-font);
-}
-
-.header {
-  background-color: var(--main-back);
-
-  &__link {
-    color: var(--main-font);
-  }
-
-  .navbar-toggler {
-    border-color: var(--main-font);
-    background-color: var(--main-font);
-  }
 }
 
 .top {
