@@ -512,3 +512,44 @@
     }
   }
 }
+
+@media (max-width: 425px) {
+  .about {
+    &__text {
+      &--contents {
+        font-size: 15px !important;
+      }
+
+      &--monster {
+        font-size: 13px !important;
+      }
+
+      &--start {
+        font-size: 14px !important;
+      }
+    }
+
+    &__img {
+      &--monster {
+        width: 18%;
+
+        &:nth-of-type(5) {
+          display: none;
+        }
+      }
+    }
+
+    &__contents {
+      &--header-bottom {
+        font-size: 14px;
+      }
+    }
+
+    &__start {
+      &--link {
+        font-size: 1.3rem;
+        margin-bottom: 10%;
+      }
+    }
+  }
+}
