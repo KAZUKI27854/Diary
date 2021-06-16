@@ -141,5 +141,36 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         expect(current_path).to eq new_user_session_path
       end
     end
+
+    context 'ゲストユーザーの退会バリデーションテスト' do
+      before do
+        #通常ユーザーとしてログアウト後、ゲストログイン
+        click_on 'MENU'
+        click_on 'ログアウト'
+        click_on 'MENU'
+        all('.header__link')[4].click
+        
+        #マイページ退会するまで
+        all('.my-page__menu--icon')[0].click
+        click_on 'へんしゅう'
+        click_on '退会する'
+        page.accept_confirm do
+          click_on '退会する'
+        end
+      end
+
+      it 'エラーメッセージが表示される' do
+        expect(page).to have_content 'ゲストはさくじょできません'
+      end
+
+      it 'バリデーションチェック後の遷移先がマイページである' do
+        expect(current_path).to eq my_page_path
+      end
+      
+      it 'ゲストユーザーデータが論理削除されていない' do
+        guest_user = User.find_by(email: 'guest@example.com')
+        expect(guest_user.is_active).to eq true
+      end
+    end
   end
 end

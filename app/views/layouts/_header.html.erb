@@ -29,6 +29,9 @@
           <%= link_to "つづきから", new_user_session_path, class: "header__link" %>
         </li>
         <li>
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "header__link" %>
+        </li>
+        <li>
           <%= link_to "プライバシーポリシー", policy_path, class: "header__link" %>
         </li>
       <% end %>
