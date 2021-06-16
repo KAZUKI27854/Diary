@@ -69,11 +69,13 @@
 
   &__finished {
     text-decoration: line-through 2px solid var(--line-through);
+    word-break : break-all;
   }
 
   &__not-finished {
     text-decoration: underline;
     color: var(--main-font);
+    word-break : break-all;
 
     &:hover {
       &:before {
