@@ -150,6 +150,60 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     end
   end
 
+  describe 'ドキュメント一覧表示のテスト' do
+    before do
+      create_list(:document, 6, user_id: user.id, goal_id: goal.id)
+      visit current_path
+    end
+
+    context '表示件数と順番のテスト' do
+      before do
+        #documentデータが合計7つできるよう追加で作成
+        create(:document, user_id: user.id, goal_id: goal.id)
+        visit current_path
+      end
+
+      it 'ドキュメントの表示件数が6件である' do
+        expect(all('.doc-card').size).to eq(6)
+      end
+
+      it '更新順に表示されている： 最初に作成されたドキュメントのみ表示されていない' do
+        expect(page).not_to have_content Document.first.body
+      end
+
+      it '更新順に表示されている： 最初に作成されたドキュメント以外が表示されている' do
+        documents = Document.where(id: 2..7)
+        documents.each do |document|
+          expect(page).to have_content document.body
+        end
+      end
+    end
+
+    context '画像のテスト' do
+      #6回目の投稿から順に表示されている
+      it '投稿回数が5の倍数の時、ボスモンスターが表示される' do
+        #5回目の投稿
+        card = find_all('.doc-card')[1]
+        expect(card).to have_selector 'div[class=doc-card__monster--boss]'
+      end
+
+      it '投稿回数が5の倍数の時、モンスター2体は表示されない' do
+        card = find_all('.doc-card')[1]
+        expect(card).not_to have_selector 'div[class=doc-card__monster--left], div[class=doc-card__monster--right]'
+      end
+
+      it '投稿回数が5の倍数でない時、モンスターが２体表示される' do
+        card = find_all('.doc-card')[0]
+        expect(card).to have_selector 'div[class=doc-card__monster--left], div[class=doc-card__monster--right]'
+      end
+
+      it '投稿回数が5の倍数でない時、ボスモンスターは表示されない' do
+        card = find_all('.doc-card')[0]
+        expect(card).not_to have_selector 'div[class=doc-card__monster--boss]'
+      end
+    end
+  end
+
   describe 'ドキュメント検索のテスト' do
     let!(:goal_2) { create(:goal, user_id: user.id) }
 
