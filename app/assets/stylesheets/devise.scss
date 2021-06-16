@@ -90,16 +90,19 @@
   }
 }
 
-.error__message {
-  background: var(--error-back);
-  text-align: center;
-  border-radius: 10px;
+.error {
+  &__message {
+    background: var(--error-back);
+    text-align: center;
+    border-radius: 10px;
 
-  &--list {
-    list-style: none;
-    text-decoration: underline;
+    &--list {
+      list-style: none;
+      text-decoration: underline;
+    }
   }
 }
+
 
 @media (max-width: 991px) {
   .sign-up__form,
@@ -152,17 +155,25 @@
     }
   }
 
-  .error__message {
-    h2 {
-      font-size: 25px !important;
+  .error {
+    &__message {
+      h2 {
+        font-size: 25px !important;
+      }
+
+      h3 {
+        font-size: 23px !important;
+      }
     }
   }
 }
 
 @media (max-width: 320px) {
-  .error__message {
-    h2 {
-      font-size: 20px !important;
+  .error {
+    &__message {
+      h2,h3 {
+        font-size: 20px !important;
+      }
     }
   }
 }
