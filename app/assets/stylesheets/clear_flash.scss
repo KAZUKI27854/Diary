@@ -6,6 +6,7 @@
     z-index: 4;
     position: fixed;
     top: 0;
+    text-align: center;
   }
 
   &__text {
@@ -15,6 +16,32 @@
 
     &:before {
       background-image: image-url("icon/books.png");
+    }
+  }
+
+  &__text-bottom {
+    width: 60%;
+    margin-left: 20%;
+  }
+
+  &__link {
+    color: var(--main-font);
+    font-size: 20px;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--main-font);
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: var(--cursor-width);
+        height: var(--cursor-height);
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        background-image: image-url("icon/cursor.png");
+      }
     }
   }
 }
@@ -122,6 +149,16 @@
 }
 
 @media (max-width: 425px) {
+  .clear {
+    &__text {
+      font-size: 16px !important;
+    }
+
+    &__text-bottom {
+      font-size: 16px !important;
+    }
+  }
+
   .fireworks {
     &-center {
       top: 0%;
@@ -134,6 +171,18 @@
     img {
       width: 150px;
       height: 150px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .clear {
+    &__text {
+      font-size: 14px !important;
+    }
+
+    &__text-bottom {
+      font-size: 14px !important;
     }
   }
 }

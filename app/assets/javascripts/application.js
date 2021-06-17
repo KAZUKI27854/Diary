@@ -149,10 +149,31 @@ document.addEventListener("turbolinks:load", function(){
     );
   });
 
+  // $(function(){
+  //   var timeleft = 9;
+  //   var downloadTimer = setInterval(function(){
+
+  //     $(".js-countdown").html(timeleft + "秒後に自動的にマイページへ戻ります");
+  //     timeleft -= 1;
+  //     if(timeleft <= 0){
+  //       clearInterval(downloadTimer);
+  //       // $('.clear__back .js-countdown').fadeOut;
+  //     }
+  //   }, 1000);
+  // });
+
   $(function(){
-    setTimeout("$('.clear__back').fadeOut('slow')", 3500
-    );
+    $('.js-close-flash').on('click', function () {
+      $('.clear__back').fadeOut('slow');
+      event.preventDefault();
+    });
   });
+
+
+  // $(function(){
+  //   setTimeout("$('.clear__back').fadeOut('slow')", 3500
+  //   );
+  // });
 
   $(function(){
     setTimeout("$('.my-page__message').fadeOut('slow')", 3500
