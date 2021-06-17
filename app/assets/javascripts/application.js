@@ -95,7 +95,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    $('.my-page__menu--icon').on('click', function(){
+    $('.js-menu-icon').on('click', function(){
       $(this).next().slideToggle();
       $(this).children('.my-page__menu--text').toggleClass('active');
     });

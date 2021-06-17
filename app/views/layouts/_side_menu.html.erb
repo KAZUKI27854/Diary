@@ -1,4 +1,4 @@
-<p class="my-page__menu--logo upper-contents"> M E N U </p>
+<p class="my-page__menu--logo upper-contents">&nbsp;M&nbsp;E&nbsp;N&nbsp;U&nbsp;</p>
 
 <%= render "menu/user_menu", user: @user, user_level: @user_level, documents: @user_documents %>
 <%= render "menu/goal_menu", goals: @goals %>
@@ -10,6 +10,3 @@
   </a>
   <%= render "documents/new", document: @document, goals: @goals %>
 </div>
-
-<!-- ドキュメント作成時にエラーメッセージを表示すると直後の要素がdisplay:none;になるため、対策として空の要素を記載 -->
-<div></div>
