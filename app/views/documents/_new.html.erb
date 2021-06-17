@@ -10,7 +10,7 @@
             <div class="js-message-errors"></div>
             <%= form_with model: document, remote: true do |f| %>
               <div class="form-group">
-                <label for="inputSkill">レベルアップしたもくひょう</label></br>
+                <label for="inputSkill">レベルアップしたもくひょう</label><br>
                 <%= f.collection_select :goal_id, goals, :id, :category %>
               </div>
               <div class="form-group mt-2">
@@ -29,7 +29,7 @@
               </div>
               <div class="form-group">
                 <label for="inputAddLevel">かくとくレベル</label>
-                <%= f.select :add_level, options_for_select((1..50).to_a), class: "form-control" %>
+                <%= f.select :add_level, options_for_select((1..20).to_a), class: "form-control" %>
               </div>
               <div class="form-btn">
                 <%= f.submit 'きろくする', class: "btn btn-primary btn-sm" %>
