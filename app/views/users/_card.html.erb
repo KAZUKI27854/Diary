@@ -4,11 +4,16 @@
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="card doc-card">
           <div class="doc-card__head">
-            <p class="doc-card__head--text"><%= document.created_at.strftime('%-m月%-d日') %></br><%= document.goal.category %>のきろく</p>
+            <p class="doc-card__head--text">
+              <%= document.created_at.strftime('%-m月%-d日') %><br>
+              <%= document.goal.category %>のきろく
+            </p>
           </div>
           <% if document.document_image_id.present? %>
               <%= attachment_image_tag document, :document_image,
                   class: "doc-card__img--top doc__card--img" %>
+          <!-- 投稿画像が無い場合、同一目標に関して投稿順がn番目とする -->
+          <!-- n <= 100 かつ n/5 != 0 の場合、モンスターn、モンスターn+1 の2体を表示 -->
           <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) + 1 }.jpg",
@@ -23,6 +28,7 @@
                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
+          <!-- n <= 100 かつ n/5 == 0 の場合、ボスモンスターn を表示 -->
           <% elsif within_100_and_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) }.jpg",
@@ -32,6 +38,7 @@
                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
+          <!-- n > 100 の場合、以降のステージと登場キャラクターは固定 -->
           <% else %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage21.jpg", class: "doc-card__stage--img", alt: "stage-image" %>
@@ -43,26 +50,28 @@
           <div class="card-body doc-card__body">
             <div class="row">
               <p class="doc-card__title">
-                <%= document.goal.category %>のダンジョン( <span><%= doc_number(document.id) %></span> F )にいどんだ！
+                <%= document.goal.category %>のダンジョン(&nbsp;<%= doc_number(document.id) %>&nbsp;F&nbsp;)にいどんだ！
               </p>
               <p>
                 <% if document.document_image_id.present? %>
-                  <%= document.body %> </br>
-                <% elsif document.goal.level >= 100 then %>
-                  <%= document.user.name %>はさらに成長した！
+                  <%= document.body %><br>
+                 <!-- 投稿画像が無い場合、投稿順をn番目として画像の場合と同じ基準で投稿内容が変化 -->
                 <% elsif within_100_and_multiples_of_5?(document.id) then %>
-                  このステージのボスがあらわれた！</br>
-                  <%= document.body %> </br>
-                  かいしんのいちげき！ボスをたおした！ </br>
+                  このステージのボスがあらわれた！<br>
+                  <%= document.body %><br>
+                  かいしんのいちげき！ボスをたおした！<br>
+                <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
+                  <%= document.body %><br>
+                  モンスターをたおした！<br>
                 <% else %>
-                  <%= document.body %> </br>
-                  モンスターをたおした！</br>
+                  <%= document.body %><br>
+                  <%= document.user.name %>はさらに成長した！
                 <% end %>
                 <%= document.user.name %>は <%= document.add_level %> レベルアップした！
               </p>
               <p>
-                【つぎのもくひょう】</br>
-                <%= document.milestone %> </br>
+                【つぎのもくひょう】<br>
+                <%= document.milestone %><br>
                 <% unless document.goal.level >= 100 %>
                   もくひょうきげんまで　のこり <%= timelimit(document.goal_id, document) %>  にち
                 <% end %>
