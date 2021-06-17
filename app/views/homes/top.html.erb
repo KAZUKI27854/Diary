@@ -24,7 +24,7 @@
         <ul class="top__link--list">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "ぼうけんのきろく", user_path(current_user.id), class: "top__link" %>
+              <%= link_to "ぼうけんのきろく", my_page_path, class: "top__link" %>
             </li>
             <li class="top__link--bottom">
               <%= link_to "ぼうけんをおわる", destroy_user_session_path, method: :delete, class: "top__link"  %>
