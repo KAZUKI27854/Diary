@@ -73,7 +73,7 @@
                 【つぎのもくひょう】<br>
                 <%= document.milestone %><br>
                 <% unless document.goal.level >= 100 %>
-                  もくひょうきげんまで　のこり <%= timelimit(document.goal_id, document) %>  にち
+                  もくひょうきげんまで&nbsp;のこり&nbsp;<%= timelimit(document.id) %>&nbsp;にち
                 <% end %>
               </p>
               <div class="doc-card__bottom">
