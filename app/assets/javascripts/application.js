@@ -20,6 +20,7 @@
 
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
+  /* ヘッダー */
   $('.js-menu-trigger').on('click', function() {
     $(this).toggleClass('header__trigger--active');
     $('.js-menu').fadeToggle();
@@ -69,7 +70,9 @@ document.addEventListener("turbolinks:load", function(){
   /* ユーザーの目標数、ドキュメント数が０の場合に、次に進む箇所をバウンドアニメーションで明示*/
   $(function(){
     if (gon.goals == 0) {
+      /* バウンドアニメーションの為のクラス付与 */
       $('.my-page__menu--icon--goal').addClass('js-bound');
+      /* 目標設定後に進むべきアイコン表示を薄くする */
       $('.js-save-icon, .js-todo-list-icon').css('opacity', 0.5 );
       /* 目標設定後に進むべきアイコンのhover時のカーソル表示無効化 */
       $('.js-save-link, .js-todo-list-link').css('pointer-events', 'none' );
@@ -88,6 +91,11 @@ document.addEventListener("turbolinks:load", function(){
     } else {
       $('.my-page__link--create-doc').removeClass('js-bound');
     }
+  });
+  
+  $(function(){
+    setTimeout("$('.my-page__message').fadeOut('slow')", 3500
+    );
   });
 
   $(function() {
@@ -140,6 +148,7 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  /* レベルアップ時のフラッシュ演出 */
   $(function(){
       $('.levelup__text').html("<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>");
   });
@@ -149,18 +158,19 @@ document.addEventListener("turbolinks:load", function(){
     );
   });
 
-  // $(function(){
-  //   var timeleft = 9;
-  //   var downloadTimer = setInterval(function(){
+  /* 目標レベル100達成時のフラッシュ演出 */
+  var timeleft = 59;
 
-  //     $(".js-countdown").html(timeleft + "秒後に自動的にマイページへ戻ります");
-  //     timeleft -= 1;
-  //     if(timeleft <= 0){
-  //       clearInterval(downloadTimer);
-  //       // $('.clear__back .js-countdown').fadeOut;
-  //     }
-  //   }, 1000);
-  // });
+  $(function(){
+    var Timer = setInterval(function(){
+
+      $(".js-countdown").html(timeleft + "秒後に自動的にマイページへ戻ります");
+      timeleft -= 1;
+      if(timeleft <= 0){
+        clearInterval(Timer);
+      }
+    }, 1000);
+  });
 
   $(function(){
     $('.js-close-flash').on('click', function () {
@@ -169,14 +179,8 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-
-  // $(function(){
-  //   setTimeout("$('.clear__back').fadeOut('slow')", 3500
-  //   );
-  // });
-
   $(function(){
-    setTimeout("$('.my-page__message').fadeOut('slow')", 3500
+    setTimeout("$('.clear__back').fadeOut('slow')", 59000
     );
   });
 
@@ -306,4 +310,3 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 });
-
