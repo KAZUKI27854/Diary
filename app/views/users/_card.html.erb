@@ -12,34 +12,31 @@
           <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) + 1 }.jpg",
-                   class: "doc-card__stage--img", alt: "stage-image" %>
+                  class: "doc-card__stage--img", alt: "stage-image" %>
 
               <div class="doc-card__monster--left">
                 <%= image_tag "monster/monster#{ doc_number(document.id) }.png",
-                     class: "doc-card__monster--img", alt: "monster-image" %>
+                    class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
               <div class="doc-card__monster--right">
                 <%= image_tag "monster/monster#{ doc_number(document.id) + 1 }.png",
-                     class: "doc-card__monster--img", alt: "monster-image" %>
+                    class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
           <% elsif within_100_and_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) }.jpg",
-                   class: "doc-card__stage--img", alt: "stage-image" %>
+                  class: "doc-card__stage--img", alt: "stage-image" %>
               <div class="doc-card__monster--boss">
                 <%= image_tag "boss/boss#{ doc_number(document.id) / 5 }.png",
-                     class: "doc-card__monster--img", alt: "monster-image" %>
+                    class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
           <% else %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage21.jpg", class: "doc-card__stage--img", alt: "stage-image" %>
-              <div class="doc-card__monster--left">
-                <%= image_tag '', class: "random-monster-img doc-card__monster--img" %>
-              </div>
-              <div class="doc-card__monster--right">
-                <%= image_tag '', class: "random-monster-img doc-card__monster--img" %>
+              <div class="doc-card__monster--boss">
+                <%= image_tag "character/brave.png", class: "doc-card__monster--img", alt: "character-image" %>
               </div>
             </div>
           <% end %>

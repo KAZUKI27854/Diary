@@ -140,14 +140,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  /* 同一目標で投稿回数が101回以上の場合に、モンスター画像をランダムで表示*/
-  $(function(){
-    $('.random-monster-img').each(function(i){
-      var random_number = Math.floor(Math.random() * ((5 + 1) - 1)) + 1;
-      $(this).prop('src','/assets/monster/monster' + random_number + '.png');
-    });
-  });
-
   $(function(){
       $('.levelup__text').html("<span>L</span><span>E</span><span>V</span><span>E</span><span>L</span><span>_</span><span>U</span><span>P</span><span>!</span>");
   });
