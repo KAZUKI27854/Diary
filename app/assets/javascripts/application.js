@@ -34,6 +34,17 @@ document.addEventListener("turbolinks:load", function(){
     return false;
   });
 
+  /* トップ画面 */
+  $(function(){
+    setTimeout("$('.top__title--area').fadeIn('slow')", 2200
+    );
+  });
+
+  $(function(){
+    setTimeout("$('.top__img--cloud-area').fadeOut('slow')", 1600
+    );
+  });
+
   /* チュートリアルページのタブボックス */
   $(function() {
     $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
@@ -92,7 +103,7 @@ document.addEventListener("turbolinks:load", function(){
       $('.my-page__link--create-doc').removeClass('js-bound');
     }
   });
-  
+
   $(function(){
     setTimeout("$('.my-page__message').fadeOut('slow')", 3500
     );

@@ -80,6 +80,7 @@ body {
   &__title {
     &--area {
       margin-bottom: 10%;
+      display: none;
     }
   }
 
@@ -112,6 +113,46 @@ body {
     position: absolute;
     top: 0%;
     left: 0%;
+    display: none;
+
+    &--cloud-area {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+    }
+
+    &--cloud {
+      position: absolute;
+      width: 25%;
+
+      &:nth-of-type(1) {
+        top: 7%;
+        left: 18%;
+        animation: cloud-left 2.5s ease 1s 1;
+        -webkit-animation: cloud-left 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(2) {
+        top: -17%;
+        left: 40%;
+        animation: cloud-right 2.5s ease 1s 1;
+        -webkit-animation: cloud-right 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(3) {
+        top: 35%;
+        left: 27%;
+        animation: cloud-left 2.5s ease 1s 1;
+        -webkit-animation: cloud-left 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(4) {
+        top: 25%;
+        left: 49%;
+        animation: cloud-right 2.5s ease 1s 1;
+        -webkit-animation: cloud-right 2.5s ease 1s 1;
+      }
+    }
 
     &--left-hand,
     &--right-hand{
@@ -170,6 +211,38 @@ body {
         height: 170px;
       }
     }
+  }
+}
+
+@-webkit-keyframes cloud-right {
+  0% {
+  }
+  100% {
+    left: 70%;
+  }
+}
+
+@keyframes cloud-right {
+  0% {
+  }
+  100% {
+    left: 70%;
+  }
+}
+
+@-webkit-keyframes cloud-left {
+  0% {
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes cloud-left {
+  0% {
+  }
+  100% {
+    left: 0%;
   }
 }
 
@@ -332,6 +405,10 @@ body {
         width: 450px;
       }
 
+      &--cloud {
+        width: 30%;
+      }
+
       &--chars{
         &--brave {
           width: 170px;
@@ -391,6 +468,18 @@ body {
 
       &--right-hand {
         right: -23%;
+      }
+
+      &--cloud {
+        width: 45%;
+
+        &:nth-of-type(1) {
+          left: 10%;
+        }
+
+        &:nth-of-type(3) {
+          left: 15%;
+        }
       }
 
       &--chars {
@@ -465,6 +554,12 @@ body {
 
       &--right-hand {
         right: -24%;
+      }
+
+      &--cloud {
+        &:nth-of-type(2) {
+          top: -7%;
+        }
       }
 
       &--chars {
