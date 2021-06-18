@@ -29,11 +29,17 @@
 
     &--list {
       position: absolute;
-      left: 42%;
-      top: 20%;
+      left: 15%;
+      top: 0%;
       list-style: none;
       font-size: 30px;
       text-decoration: underline;
+      width: 70%;
+      padding: 20% 5% 5% 5%;
+      background-image: image-url("back/header-menu.png");
+      background-size: cover;
+      background-position: 45%;
+      text-align: center;
 
       li {
         margin-bottom: 5%;
@@ -65,7 +71,8 @@
   .header {
     &__menu {
       &--list {
-        font-size: 25px;
+        top: 5%;
+        font-size: 20px;
       }
     }
   }
@@ -79,8 +86,11 @@
 
     &__menu {
       &--list {
-        left: 35%;
-        font-size: 22px;
+        padding: 25% 5% 5% 5%;
+        width: 94%;
+        left: 3%;
+        top: 10%;
+        font-size: 16px;
       }
     }
   }
@@ -90,8 +100,7 @@
   .header {
     &__menu {
       &--list {
-        left: 23%;
-        font-size: 22px;
+        font-size: 15px;
       }
     }
   }
