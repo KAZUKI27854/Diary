@@ -56,6 +56,13 @@ RSpec.describe 'Goalモデルのテスト', type: :model do
         is_expected.to eq false
         expect(goal.errors[:deadline]).to include("を入力してください")
       end
+
+      it '今日以前の日付の場合保存に失敗し、日付に関するエラーメッセージが返される' do
+        goal.deadline = Date.today
+
+        is_expected.to eq false
+        expect(goal.errors[:deadline]).to include("は、明日以降の日付を入力して下さい")
+      end
     end
   end
 
