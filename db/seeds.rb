@@ -149,7 +149,7 @@ end
   )
 end
 
-5.times do |i|
+2.times do |i|
   TodoList.create!(
     [
       {
