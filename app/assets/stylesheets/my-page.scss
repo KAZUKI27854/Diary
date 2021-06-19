@@ -19,6 +19,28 @@
   background-size: cover;
   background-image: image-url("back/road.jpg");
 
+  &__notice {
+    &--text {
+      text-align: center;
+      line-height: 5vh;
+    }
+
+    &--near-deadline {
+      background-color: var(--near-deadline-notice-back);
+      height: 5vh;
+    }
+
+    &--today-deadline {
+      background-color: var(--today-deadline-notice-back);
+      height: 5vh;
+    }
+
+    &--over-deadline {
+      background-color: var(--error-back);
+      height: 5vh;
+    }
+  }
+
   &__message {
     text-align: center;
     border-radius: 10px;
