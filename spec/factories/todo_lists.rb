@@ -8,7 +8,7 @@ FactoryBot.define do
 
     #チェックアクションのテストで使用
     trait :with_deadline do
-      deadline { Faker::Date.in_date_period }
+      deadline { Date.today + 1 }
       priority { 0 }
     end
 

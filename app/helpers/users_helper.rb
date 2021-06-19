@@ -4,6 +4,4 @@ module UsersHelper
     goals = current_user.goals
     goals.where("level >= ?", 100).count
   end
-
-  
 end

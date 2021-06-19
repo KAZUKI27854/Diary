@@ -50,7 +50,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
       it '目標作成成功のテスト' do
         fill_in 'goal[category]', with: Faker::Games::Pokemon.move
         fill_in 'goal[goal_status]', with: Faker::Games::Pokemon.move
-        fill_in 'goal[deadline]', with: Faker::Date.in_date_period
+        fill_in 'goal[deadline]', with: Date.today + 1
         click_on 'せってい'
         expect(page).to have_content 'もくひょうをついかしました'
         expect(Goal.count).to be 1

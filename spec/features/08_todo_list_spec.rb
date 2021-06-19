@@ -67,12 +67,14 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
     end
 
     it 'Todoリスト作成成功のテスト' do
-      fill_in 'todo_list[deadline]', with: Faker::Date.in_date_period
+      fill_in 'todo_list[deadline]', with: Date.today + 1
       within '#todo_list_goal_id' do
         select goal.category
       end
       fill_in 'todo_list[body]', with: 'テストを実行する'
-      expect{ click_button 'ついか' }.to change{ TodoList.count }.by(1)
+      click_button 'ついか'
+      sleep 1
+      expect(TodoList.count).to eq 1
     end
 
     it 'Todoリスト作成失敗のテスト' do
@@ -133,7 +135,7 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
     end
 
     it 'Todoリストを期限付きに変更すると、priorityカラムが更新される' do
-      fill_in 'todo_list[deadline]', with: Faker::Date.in_date_period
+      fill_in 'todo_list[deadline]', with: Date.today + 1
       find('.todo-lists__link--update').click
 
       visit current_path

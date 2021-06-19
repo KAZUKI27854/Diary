@@ -65,9 +65,31 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       all('.my-page__menu--icon')[0].click
     end
 
-    it 'ユーザーアイコンをクリックするとユーザーメニューが表示される' do
-      expect(page).to have_selector '.my-page__menu'
-      expect(page).to have_content 'なまえ'
+    context '表示のテスト' do
+      let!(:goal) { create(:goal, user_id: user.id, level: 100) }
+
+      before do
+        create_list(:document, 5, user_id: user.id, goal_id: goal.id)
+        visit current_path
+        all('.my-page__menu--icon')[0].click
+      end
+
+      it 'ユーザーアイコンをクリックするとユーザーメニューが表示される' do
+        expect(page).to have_selector '.my-page__menu'
+      end
+
+      it 'ユーザーメニューに表示されている名前が正しい' do
+        expect(page).to have_content 'なまえ: ' + user.name
+      end
+
+      it 'ぼうけんの回数がドキュメントの数と一致している' do
+        expect(page).to have_content 'ぼうけん: ' + user.documents.count.to_s + ' 回'
+      end
+
+      it 'クリア回数が、レベル100以上の目標の数と一致している' do
+        clear_goals = user.goals.where("level >= ?", 100)
+        expect(page).to have_content 'クリア: ' + clear_goals.count.to_s + ' 回'
+      end
     end
 
     context 'ユーザー編集モーダルのテスト' do
@@ -149,7 +171,7 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         click_on 'ログアウト'
         click_on 'MENU'
         all('.header__link')[4].click
-        
+
         #マイページ退会するまで
         all('.my-page__menu--icon')[0].click
         click_on 'へんしゅう'
@@ -166,7 +188,7 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       it 'バリデーションチェック後の遷移先がマイページである' do
         expect(current_path).to eq my_page_path
       end
-      
+
       it 'ゲストユーザーデータが論理削除されていない' do
         guest_user = User.find_by(email: 'guest@example.com')
         expect(guest_user.is_active).to eq true
