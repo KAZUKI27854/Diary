@@ -36,6 +36,13 @@ RSpec.describe 'TodoListモデルのテスト', type: :model do
         todo_list.deadline = ''
         is_expected.to eq true
       end
+
+      it '昨日以前の日付の場合保存に失敗し、日付に関するエラーメッセージが返される' do
+        todo_list.deadline = Date.today - 1
+
+        is_expected.to eq false
+        expect(todo_list.errors[:deadline]).to include("は、本日以降の日付を入力して下さい")
+      end
     end
   end
 
