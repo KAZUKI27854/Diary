@@ -17,6 +17,7 @@
 
 @charset "UTF-8";
 
+/* アプリケーション共通のSCSS */
 @font-face {
   font-family: 'PixelMplus10-Regular';
   src: asset-url('PixelMplus10-Regular.ttf');
@@ -58,192 +59,6 @@ body {
   margin-bottom: 50px;
   font-family: 'PixelMplus10-Regular';
   color: var(--main-font);
-}
-
-.top {
-  width: 100%;
-  height: 100vh;
-  background-image: image-url("back/top-back.jpg");
-  background-position: 50% 45%;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-
-  &__noscript {
-    background: var(--main-back);
-  }
-
-  &__title {
-    &--area {
-      margin-bottom: 10%;
-      display: none;
-    }
-  }
-
-  &__link {
-    color: var(--main-font);
-
-    &--list {
-      list-style: none;
-      margin-top: 70px;
-      font-size: 20px;
-    }
-
-    &--bottom {
-      margin-top: 10px;
-    }
-  }
-
-  &__text {
-    &--main-title{
-      font-size: 120px;
-    }
-
-    &--sub-title {
-      font-size: 30px;
-    }
-  }
-
-  &__img {
-    width: 100vw;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    display: none;
-
-    &--cloud-area {
-      position: relative;
-      width: 100%;
-      height: 50vh;
-    }
-
-    &--cloud {
-      position: absolute;
-      width: 25%;
-
-      &:nth-of-type(1) {
-        top: 7%;
-        left: 18%;
-        animation: cloud-left 2.5s ease 1s 1;
-        -webkit-animation: cloud-left 2.5s ease 1s 1;
-      }
-
-      &:nth-of-type(2) {
-        top: -17%;
-        left: 40%;
-        animation: cloud-right 2.5s ease 1s 1;
-        -webkit-animation: cloud-right 2.5s ease 1s 1;
-      }
-
-      &:nth-of-type(3) {
-        top: 35%;
-        left: 27%;
-        animation: cloud-left 2.5s ease 1s 1;
-        -webkit-animation: cloud-left 2.5s ease 1s 1;
-      }
-
-      &:nth-of-type(4) {
-        top: 25%;
-        left: 49%;
-        animation: cloud-right 2.5s ease 1s 1;
-        -webkit-animation: cloud-right 2.5s ease 1s 1;
-      }
-    }
-
-    &--left-hand,
-    &--right-hand{
-      width: 700px;
-      position: absolute;
-      top: 0%;
-    }
-
-    &--left-hand {
-      left: -9%;
-      transform: rotateZ(-45deg);
-      -webkit-transform: rotateZ(-45deg);
-      -moz-transform: rotateZ(-45deg);
-      -ms-transform: rotateZ(-45deg);
-    }
-
-    &--right-hand {
-      right: -10%;
-      transform: rotateZ(40deg);
-      -webkit-transform: rotateZ(40deg);
-      -moz-transform: rotateZ(40deg);
-      -ms-transform: rotateZ(40deg);
-    }
-
-    &--chars {
-      width: 100vw;
-      position: absolute;
-      bottom: 0%;
-      left: 0%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-
-      &--brave {
-        width: 200px;
-        height: 200px;
-      }
-
-      &--knight {
-        width: 140px;
-        height: 140px;
-      }
-
-      &--priest {
-        width: 140px;
-        height: 140px;
-      }
-
-      &--princess {
-        width: 140px;
-        height: 170px;
-      }
-
-      &--witch {
-        width: 170px;
-        height: 170px;
-      }
-    }
-  }
-}
-
-@-webkit-keyframes cloud-right {
-  0% {
-  }
-  100% {
-    left: 70%;
-  }
-}
-
-@keyframes cloud-right {
-  0% {
-  }
-  100% {
-    left: 70%;
-  }
-}
-
-@-webkit-keyframes cloud-left {
-  0% {
-  }
-  100% {
-    left: 0%;
-  }
-}
-
-@keyframes cloud-left {
-  0% {
-  }
-  100% {
-    left: 0%;
-  }
 }
 
 .message {
@@ -350,6 +165,246 @@ body {
   background-color: var(--main-back);
 }
 
+/* トップ画面 */
+.top {
+  width: 100%;
+  height: 100vh;
+  background-image: image-url("back/top-back.jpg");
+  background-position: 50% 45%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &__noscript {
+    background: var(--main-back);
+  }
+
+  &__title {
+    &--area {
+      margin-bottom: 10%;
+      display: none;
+    }
+  }
+
+  &__link {
+    color: var(--main-font);
+
+    &--list {
+      list-style: none;
+      margin-top: 70px;
+      font-size: 20px;
+    }
+
+    &--bottom {
+      margin-top: 10px;
+    }
+  }
+
+  &__text {
+    &--main-title{
+      font-size: 120px;
+    }
+
+    &--sub-title {
+      font-size: 30px;
+    }
+  }
+
+  &__img {
+    width: 100vw;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: none;
+
+    &--cloud-area {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+    }
+
+    &--cloud {
+      position: absolute;
+      width: 25%;
+
+      &:nth-of-type(1) {
+        top: 7%;
+        left: 18%;
+        animation: cloud-left 2.5s ease 1s 1;
+        -webkit-animation: cloud-left 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(2) {
+        top: -17%;
+        left: 40%;
+        animation: cloud-right 2.5s ease 1s 1;
+        -webkit-animation: cloud-right 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(3) {
+        top: 35%;
+        left: 27%;
+        animation: cloud-left 2.5s ease 1s 1;
+        -webkit-animation: cloud-left 2.5s ease 1s 1;
+      }
+
+      &:nth-of-type(4) {
+        top: 25%;
+        left: 49%;
+        animation: cloud-right 2.5s ease 1s 1;
+        -webkit-animation: cloud-right 2.5s ease 1s 1;
+      }
+    }
+
+    &--left-hand,
+    &--right-hand{
+      width: 700px;
+      position: absolute;
+      top: 0%;
+    }
+
+    &--left-hand {
+      left: -9%;
+      animation: monster-left-hand 2s ease 1;
+      -webkit-animation: monster-left-hand 2s ease 1;
+      transform: rotateZ(-45deg);
+      -webkit-transform: rotateZ(-45deg);
+    }
+
+    &--right-hand {
+      right: -10%;
+      animation: monster-right-hand 2s ease 1;
+      -webkit-animation: monster-right-hand 2s ease 1;
+      transform: rotateZ(40deg);
+      -webkit-transform: rotateZ(40deg);
+    }
+
+    &--chars {
+      width: 100vw;
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
+      &--brave {
+        width: 200px;
+        height: 200px;
+      }
+
+      &--knight {
+        width: 140px;
+        height: 140px;
+      }
+
+      &--priest {
+        width: 140px;
+        height: 140px;
+      }
+
+      &--princess {
+        width: 140px;
+        height: 170px;
+      }
+
+      &--witch {
+        width: 170px;
+        height: 170px;
+      }
+    }
+  }
+}
+
+/* トップ画面のアニメーション */
+@-webkit-keyframes cloud-right {
+  0% {
+  }
+  100% {
+    left: 70%;
+  }
+}
+
+@keyframes cloud-right {
+  0% {
+  }
+  100% {
+    left: 70%;
+  }
+}
+
+@-webkit-keyframes cloud-left {
+  0% {
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes cloud-left {
+  0% {
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@-webkit-keyframes monster-left-hand {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+		-webkit-transform: scale(0.1);
+	}
+	100% {
+	  opacity: 1;
+	  transform: scale(1) rotateZ(-45deg);
+    -webkit-transform: scale(1) rotateZ(-45deg);
+	}
+}
+
+@keyframes monster-left-hand {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+		-webkit-transform: scale(0.1);
+	}
+	100% {
+	  opacity: 1;
+	  transform: scale(1) rotateZ(-45deg);
+    -webkit-transform: scale(1) rotateZ(-45deg);
+	}
+}
+
+@-webkit-keyframes monster-right-hand {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+		-webkit-transform: scale(0.1);
+	}
+	100% {
+	  opacity: 1;
+	  transform: scale(1) rotateZ(40deg);
+    -webkit-transform: scale(1) rotateZ(40deg);
+	}
+}
+
+@keyframes monster-right-hand {
+	0% {
+		opacity: 0;
+		transform: scale(0.1);
+		-webkit-transform: scale(0.1);
+	}
+	100% {
+	  opacity: 1;
+	  transform: scale(1) rotateZ(40deg);
+    -webkit-transform: scale(1) rotateZ(40deg);
+	}
+}
+
 @media (max-width: 991px) {
   .top {
     &__img {
@@ -377,7 +432,6 @@ body {
     padding: 20px;
     width: 70%;
   }
-
 }
 
 @media (max-width: 768px) {

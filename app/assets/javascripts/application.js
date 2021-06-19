@@ -34,14 +34,19 @@ document.addEventListener("turbolinks:load", function(){
     return false;
   });
 
-  /* トップ画面 */
+  /* トップ画面の画像フェードイン、アウト */
   $(function(){
     setTimeout("$('.top__title--area').fadeIn('slow')", 2200
     );
   });
 
   $(function(){
-    setTimeout("$('.top__img--cloud-area').fadeOut('slow')", 1600
+    setTimeout("$('.top__img').fadeIn('slow')", 2500
+    );
+  });
+
+  $(function(){
+    setTimeout("$('.top__img--cloud-area').fadeOut('slow')", 1500
     );
   });
 
