@@ -37,6 +37,7 @@ module DocumentsHelper
 		goal.update_attributes(level: goal.level, doc_count: goal.doc_count, stage_id: goal.stage_id)
   end
 
+  #同一目標に関して、何番目に投稿されたドキュメントか
   def doc_number(document_id)
     document = Document.find_by(id: document_id)
 	  documents = Document.where(goal_id: document.goal_id)
@@ -52,5 +53,10 @@ module DocumentsHelper
   def within_100_and_multiples_of_5?(document_id)
     number = doc_number(document_id)
     number <= 100 && (number % 5) == 0
+  end
+  
+  def timelimit(document_id)
+    document = Document.find_by(id: document_id)
+    (document.goal.deadline.to_date - document.created_at.to_date).to_i
   end
 end
