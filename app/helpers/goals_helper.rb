@@ -4,17 +4,21 @@ module GoalsHelper
     documents.first.milestone
   end
 
+  def goals_not_cleared
+    current_user.goals.where("level < ?", 100)
+  end
+
   def near_deadline_goal_count
-    tomorrow = Date.tomorrow
-    after_3_days = tomorrow + 2
-    current_user.goals.where(:deadline => tomorrow..after_3_days).count
+    today = Date.today
+    after_3_days = today + 3
+    goals_not_cleared.where(:deadline => today..after_3_days).count
   end
 
   def today_deadline_goal_count
-    current_user.goals.where(deadline: Date.today.all_day).count
+    goals_not_cleared.where(deadline: Date.today.all_day).count
   end
 
   def over_deadline_goal_count
-    current_user.goals.where("deadline < ?", Date.yesterday).count
+    goals_not_cleared.where("deadline < ?", Date.yesterday).count
   end
 end
