@@ -14,7 +14,13 @@
     <% end %>
     <% if over_deadline_goal_count >= 1 %>
       <div class="my-page__notice--over-deadline">
-        <p class="my-page__notice--text">きげんぎれのもくひょうが&nbsp;<%= over_deadline_goal_count %>&nbsp;つあります</p>
+        <p class="my-page__notice--text">きげん切れのもくひょうが&nbsp;<%= over_deadline_goal_count %>&nbsp;つあります</p>
+      </div>
+    <% end %>
+    <% if near_deadline_list_count >= 1 || today_deadline_list_count >= 1 || over_deadline_list_count >= 1 %>
+      <div class="my-page__notice-list--area">
+        <p class="my-page__notice-list--text">きげん切れ、またはきげんが近づいているTodoリストがあります</p>
+        <%= link_to "かくにんする", todo_lists_path, class: "my-page__link--text" %>
       </div>
     <% end %>
   </div>

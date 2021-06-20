@@ -180,8 +180,8 @@ document.addEventListener("turbolinks:load", function(){
   $(function(){
     var Timer = setInterval(function(){
 
-      $(".js-countdown").html(timeleft + "秒後に自動的にマイページへ戻ります");
       timeleft -= 1;
+      $(".js-countdown").html(timeleft + "秒後に自動的にマイページへ戻ります");
       if(timeleft <= 0){
         clearInterval(Timer);
       }
