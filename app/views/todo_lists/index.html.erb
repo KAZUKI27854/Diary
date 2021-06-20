@@ -1,4 +1,21 @@
 <div class="todo-lists">
+  <div class="todo-lists__notice">
+    <% if near_deadline_list_count >= 1 %>
+      <div class="todo-lists__notice--near-deadline">
+        <p class="todo-lists__notice--text">きげんが近いものが&nbsp;<%= near_deadline_list_count %>&nbsp;つあります</p>
+      </div>
+    <% end %>
+    <% if today_deadline_list_count >= 1 %>
+      <div class="todo-lists__notice--today-deadline">
+        <p class="todo-lists__notice--text">きげんが本日のものが&nbsp;<%= today_deadline_list_count %>&nbsp;つあります</p>
+      </div>
+    <% end %>
+    <% if over_deadline_list_count >= 1 %>
+      <div class="todo-lists__notice--over-deadline">
+        <p class="todo-lists__notice--text">きげんぎれのものが&nbsp;<%= over_deadline_list_count %>&nbsp;つあります</p>
+      </div>
+    <% end %>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">

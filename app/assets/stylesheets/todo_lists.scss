@@ -7,6 +7,28 @@
   background-image: image-url("back/bar.jpg");
   text-align: center;
 
+  &__notice {
+    &--text {
+      text-align: center;
+      line-height: 5vh;
+    }
+
+    &--near-deadline {
+      background-color: var(--near-deadline-notice-back);
+      height: 5vh;
+    }
+
+    &--today-deadline {
+      background-color: var(--today-deadline-notice-back);
+      height: 5vh;
+    }
+
+    &--over-deadline {
+      background-color: var(--error-back);
+      height: 5vh;
+    }
+  }
+
   &__icon {
     &--create {
       width: 8%;
