@@ -15,6 +15,9 @@
         <p class="todo-lists__notice--text">きげんぎれのものが&nbsp;<%= over_deadline_list_count %>&nbsp;つあります</p>
       </div>
     <% end %>
+    <% if near_deadline_list_count >= 1 || today_deadline_list_count >= 1 || over_deadline_list_count >= 1 %>
+      <p class="todo-lists__notice--text">※Todoリストを修正後、ページを再読み込みすることで通知が更新されます</p>
+    <% end %>
   </div>
   <div class="container">
     <div class="row">

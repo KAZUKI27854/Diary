@@ -12,7 +12,28 @@
         <p class="todo-lists__finished"><%= todo_list.body %></p>
       <% else %>
         <%= link_to edit_todo_list_path(todo_list.id), class: "todo-lists__link--edit", remote: true do %>
-          <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+          <!-- 未完了かつ期限付きのリストの場合、期限までの期間によって条件分岐-->
+          <% if todo_list.deadline.present? %>
+            <% case (todo_list.deadline.to_date - Date.today) %>
+            <% when 4..nil %>
+              <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+            <!-- 期限が3日以内または期限超過の場合、背景色が変化 -->
+            <% when 1..3 %>
+              <div class="todo-lists__nead-deadline">
+                <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+              </div>
+            <% when 0 %>
+              <div class="todo-lists__today-deadline">
+                <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+              </div>
+            <% else %>
+              <div class="todo-lists__over-deadline">
+                <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="todo-lists__not-finished"><%= todo_list.body %></p>
+          <% end %>
         <% end %>
       <% end %>
     </div>

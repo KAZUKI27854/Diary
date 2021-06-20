@@ -89,6 +89,18 @@
     }
   }
 
+  &__nead-deadline {
+    background-color: var(--near-deadline-notice-back);
+  }
+
+  &__today-deadline {
+    background-color: var(--today-deadline-notice-back);
+  }
+
+  &__over-deadline {
+    background-color: var(--error-back);
+  }
+
   &__finished {
     text-decoration: line-through 2px solid var(--line-through);
     word-break : break-all;
