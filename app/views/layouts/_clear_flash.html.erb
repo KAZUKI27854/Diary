@@ -28,6 +28,8 @@
       あなたは立派なゆうしゃよ！！
     </p>
     <a class="js-close-flash clear__link" href="">マイページへもどる</a>
-    <div class="js-countdown"></div>
+    <div id="js-countdown"></div>
   </div>
+  <!-- フラッシュ表示時のみカウントダウンが動くようview内に記載 -->
+  <%= javascript_include_tag 'countdown' %>
 <% end %>
