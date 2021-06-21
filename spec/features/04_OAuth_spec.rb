@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '4.OAuth認証のテスト（Googleのみ）', type: :feature do
-  #Facebook,Twitterは本番環境でのみ導入しているため割愛
+  # Facebook,Twitterは本番環境でのみ導入しているため割愛
   before do
     visit new_user_registration_path
     OmniAuth.config.test_mode = true
@@ -9,8 +9,8 @@ describe '4.OAuth認証のテスト（Googleのみ）', type: :feature do
       "provider" => "google_oauth2",
       "uid" => "123456",
       "info" => {
-        "email" => "test@example.com"
-      }
+        "email" => "test@example.com",
+      },
     })
     click_on 'GoogleOauth2でログインする'
   end
