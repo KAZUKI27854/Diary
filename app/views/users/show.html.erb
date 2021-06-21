@@ -32,7 +32,7 @@
         <%= render "layouts/side_menu", goals: @goals %>
         <div class="my-page__menu--icon js-todo-list-icon">
           <%= link_to todo_lists_path, class: "js-todo-list-link" do %>
-            <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img", alt: "menu-icon" %></br>
+            <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img", alt: "menu-icon" %><br>
             <p class="my-page__link--text">Todoリスト</p>
           <% end %>
         </div>
@@ -47,12 +47,12 @@
           </div>
         <% elsif @goals.blank? then %>
           <h3 class="master message upper-contents">
-            まずは「もくひょう」をおして</br>
+            まずは「もくひょう」をおして<br>
             せっていしてみるのじゃ！
           </h3>
         <% else %>
           <h3 class="master message upper-contents">
-            つぎは「きろくする」をおして</br>
+            つぎは「きろくする」をおして<br>
             とうこうしてみるのじゃ！
           </h3>
         <% end %>
