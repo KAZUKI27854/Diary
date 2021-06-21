@@ -7,7 +7,7 @@ describe '1.ユーザログイン前のヘッダーとトップ画面のテス�
 
   context 'ヘッダーの確認', js: true do
     before do
-      #トップ画面のリンクと重複する為、別ページで
+      # トップ画面のリンクと重複する為、別ページで
       visit policy_path
       click_on 'MENU'
     end
@@ -50,7 +50,7 @@ describe '1.ユーザログイン前のヘッダーとトップ画面のテス�
   end
 
   context 'トップ画面のリンクの確認' do
-    #ヘッダーとリンク名が重複しているものは、クラスとテキストでリンクを指定
+    # ヘッダーとリンク名が重複しているものは、クラスとテキストでリンクを指定
     it '画面内のリンクに「あたらしくはじめる」がある' do
       expect(page).to have_selector '.top__link', text: 'あたらしくはじめる'
     end
@@ -76,7 +76,7 @@ describe '1.ユーザログイン前のヘッダーとトップ画面のテス�
 
   context 'トップ画面からのゲストログインの確認' do
     before do
-      click_on 'ゲストログイン'
+      find('.top__link--guest').click
     end
 
     it '遷移先がゲストのマイページである' do
@@ -111,7 +111,7 @@ describe '1.ユーザログイン前のヘッダーとトップ画面のテス�
       expect(current_path).to eq new_user_session_path
     end
 
-    it '画面内のリンクに「すでにとうろく済みの方」がある' do
+    it '画面内のリンクに「ゲストユーザーでお試し」がある' do
       expect(page).to have_link 'ゲストユーザーでお試し'
     end
   end
