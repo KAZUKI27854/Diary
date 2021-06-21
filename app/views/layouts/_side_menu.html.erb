@@ -23,18 +23,18 @@
   <% if @goals.exists? %>
     <% @goals.includes(:stage).first(3).each do |goal| %>
       <a class="js-modal-open my-page__menu--text-goal" href="" data-target="modal-goal<%= goal.id %>-edit">
-        <%= goal.category %> </br>
+        <%= goal.category %> <br>
         Lv.<%= goal.level %>
       </a>
       <p>
-        ステージ: <%= goal.doc_count %>F</br>
+        ステージ: <%= goal.doc_count %>F<br>
         <% if goal.doc_count != 0 %>
           <%= goal.stage.name %>
         <% else %>
           きろくなし
         <% end %>
       </p>
-      <p>つぎのもくひょう:</br>
+      <p>つぎのもくひょう:<br>
       <% if goal.documents.exists? %>
         <%= latest_milestone(goal.id) %>
       <% else %>
@@ -48,7 +48,7 @@
     <% end %>
     <!-- 目標が4つ以上の場合にセレクトボックス表示-->
     <%= collection_select(:goal, :category, @goals.drop(3), :id, :category,
-      {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %></br>
+      {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %><br>
   <% else %>
     <p class="my-page__menu--text-goal">みせってい</p>
   <% end %>
@@ -61,7 +61,7 @@
 <!-- ドキュメント投稿アイコン -->
 <div class="my-page__menu--icon js-save-icon">
   <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">
-    <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img my-page__link--create-doc", alt: "menu-icon" %></br>
+    <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img my-page__link--create-doc", alt: "menu-icon" %><br>
     <p class="my-page__link--text">きろくする</p>
   </a>
   <!-- モーダルウインドウ -->
