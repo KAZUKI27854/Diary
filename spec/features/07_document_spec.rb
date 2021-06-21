@@ -61,7 +61,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     let!(:goal) { create(:goal, level: 10) }
     let!(:goal_2) { create(:goal, user_id: user.id, level: 5) }
 
-    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10)}
+    let!(:document) { create(:document, user_id: user.id, goal_id: goal.id, add_level: 10) }
 
     before do
       visit '/documents/1/edit'
@@ -94,11 +94,11 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
       expect(page).to have_content 'きろくをへんこうしました'
 
-      #変更前の目標データが変わっているか
+      # 変更前の目標データが変わっているか
       expect(goal.reload.level).to eq 0
       expect(goal.reload.doc_count).to eq 0
 
-      #変更後の目標データが変わっているか
+      # 変更後の目標データが変わっているか
       expect(goal_2.reload.level).to eq 25
       expect(goal_2.reload.doc_count).to eq 2
     end
@@ -158,7 +158,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
     context '表示件数と順番のテスト' do
       before do
-        #documentデータが合計7つできるよう追加で作成
+        # documentデータが合計7つできるよう追加で作成
         create(:document, user_id: user.id, goal_id: goal.id)
         visit current_path
       end
@@ -167,11 +167,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         expect(all('.doc-card').size).to eq(6)
       end
 
-      it '更新順に表示されている： 最初に作成されたドキュメントのみ表示されていない' do
-        expect(page).not_to have_content Document.first.body
-      end
-
-      it '更新順に表示されている： 最初に作成されたドキュメント以外が表示されている' do
+      it '更新順に表示されている： 最初に作成されたドキュメントを除く6が表示されている' do
         documents = Document.where(id: 2..7)
         documents.each do |document|
           expect(page).to have_content document.body
@@ -180,21 +176,23 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
     end
 
     context '画像のテスト' do
-      #6回目の投稿から順に表示されている
+      # 6回目の投稿から順に表示されている
       it '投稿回数が5の倍数の時、ボスモンスターが表示される' do
-        #5回目の投稿
+        # 5回目の投稿
         card = find_all('.doc-card')[1]
         expect(card).to have_selector 'div[class=doc-card__monster--boss]'
       end
 
       it '投稿回数が5の倍数の時、モンスター2体は表示されない' do
         card = find_all('.doc-card')[1]
-        expect(card).not_to have_selector 'div[class=doc-card__monster--left], div[class=doc-card__monster--right]'
+        expect(card).not_to have_selector 'div[class=doc-card__monster--right]'
+        expect(card).not_to have_selector 'div[class=doc-card__monster--left]'
       end
 
       it '投稿回数が5の倍数でない時、モンスターが２体表示される' do
         card = find_all('.doc-card')[0]
-        expect(card).to have_selector 'div[class=doc-card__monster--left], div[class=doc-card__monster--right]'
+        expect(card).to have_selector 'div[class=doc-card__monster--right]'
+        expect(card).to have_selector 'div[class=doc-card__monster--left]'
       end
 
       it '投稿回数が5の倍数でない時、ボスモンスターは表示されない' do
@@ -207,29 +205,15 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
   describe 'ドキュメント検索のテスト' do
     let!(:goal_2) { create(:goal, user_id: user.id) }
 
-    #目標1に関するドキュメント
+    # 目標1に関するドキュメント
     let!(:doc) { create(:document, :doc_1, user_id: user.id, goal_id: goal.id) }
     let!(:doc_2) { create(:document, :doc_2, user_id: user.id, goal_id: goal.id) }
 
-    #目標2に関するドキュメント
+    # 目標2に関するドキュメント
     let!(:doc_3) { create(:document, :doc_3, user_id: user.id, goal_id: goal_2.id) }
     let!(:doc_4) { create(:document, :doc_4, user_id: user.id, goal_id: goal_2.id) }
 
     before do
-      def expect_all_doc_exist
-        expect(page).to have_content doc.body
-        expect(page).to have_content doc_2.body
-        expect(page).to have_content doc_3.body
-        expect(page).to have_content doc_4.body
-      end
-
-      def expect_only_first_doc_exist
-        expect(page).to have_content doc.body
-        expect(page).not_to have_content doc_2.body
-        expect(page).not_to have_content doc_3.body
-        expect(page).not_to have_content doc_4.body
-      end
-
       def select_first_goal_category
         within '#doc_goal_category' do
           select goal.category
@@ -264,7 +248,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
       it '検索用のセレクトボックスを選択後、「すべてのもくひょう」に戻すと全てのドキュメントが表示される' do
         reset_select_box
-        expect_all_doc_exist
+        expect(page).to have_selector('.doc-card', count: 4)
       end
     end
 
@@ -274,12 +258,14 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       end
 
       it '検索用フォームに文字を入力すると、本文にその文字が含まれるドキュメントのみ表示される' do
-        expect_only_first_doc_exist
+        # 1つ目という文字列が含まれたドキュメント1だけ表示されているか
+        expect(page).to have_content doc.body
+        expect(page).to have_selector('.doc-card', count: 1)
       end
 
       it '入力フォームを空にすると全てのドキュメントが表示される' do
         reset_text_field
-        expect_all_doc_exist
+        expect(page).to have_selector('.doc-card', count: 4)
       end
     end
 
@@ -290,13 +276,15 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       end
 
       it '同時に検索ができる' do
-        expect_only_first_doc_exist
+        # 目標1かつ1という文字列が含まれたドキュメント1だけ表示されているか
+        expect(page).to have_content doc.body
+        expect(page).to have_selector('.doc-card', count: 1)
       end
 
       it 'セレクトボックスを「すべてのもくひょう」に戻すと、フォームの文字でのみ検索され、表示される' do
         reset_select_box
 
-        #1という文字列が含まれたドキュメント1,4だけ表示されているか
+        # 1という文字列が含まれたドキュメント1,4だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_content doc_4.body
 
@@ -307,7 +295,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
       it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
         reset_text_field
 
-        #目標1に関する投稿である、ドキュメント1,2だけ表示されているか
+        # 目標1に関する投稿である、ドキュメント1,2だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_content doc_2.body
 
@@ -319,7 +307,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         reset_select_box
         reset_text_field
 
-        expect_all_doc_exist
+        expect(page).to have_selector('.doc-card', count: 4)
       end
     end
   end
