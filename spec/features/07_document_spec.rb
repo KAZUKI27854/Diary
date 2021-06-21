@@ -167,7 +167,7 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         expect(all('.doc-card').size).to eq(6)
       end
 
-      it '更新順に表示されている： 最初に作成されたドキュメントを除く6が表示されている' do
+      it '更新順に表示されている： 最初に作成されたドキュメントを除く6件が表示されている' do
         documents = Document.where(id: 2..7)
         documents.each do |document|
           expect(page).to have_content document.body
