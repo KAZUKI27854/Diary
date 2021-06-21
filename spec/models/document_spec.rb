@@ -68,7 +68,7 @@ RSpec.describe 'Documentモデルのテスト', type: :model do
         expect(Document.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
-    
+
     context 'goalモデルとの関係' do
       it 'N:1となっている' do
         expect(Document.reflect_on_association(:goal).macro).to eq :belongs_to
