@@ -166,13 +166,13 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
 
     context 'ゲストユーザーの退会バリデーションテスト' do
       before do
-        #通常ユーザーとしてログアウト後、ゲストログイン
+        # 通常ユーザーとしてログアウト後、ゲストログイン
         click_on 'MENU'
         click_on 'ログアウト'
         click_on 'MENU'
         all('.header__link')[4].click
 
-        #マイページ退会するまで
+        # マイページ退会するまで
         all('.my-page__menu--icon')[0].click
         click_on 'へんしゅう'
         click_on '退会する'
