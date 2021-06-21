@@ -1,7 +1,7 @@
 class TodoListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
-  #index,back(indexへ戻る処理)以外はアクション実行後にソートしたいので、アクション内に記述
+  # index,back(indexへ戻る処理)以外はアクション実行後にソートしたいので、アクション内に記述
   before_action :set_user_todo_lists, only: [:index, :back]
 
   def index
@@ -43,7 +43,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.find(params[:id])
 
     deadline = params[:todo_list][:deadline]
-    unless deadline.blank?
+    if deadline.present?
       @todo_list.priority = 0
     end
 
@@ -56,9 +56,9 @@ class TodoListsController < ApplicationController
 
   def check
     @todo_list = TodoList.find(params[:id])
-    if @todo_list.is_finished == false then
+    if @todo_list.is_finished == false
       @todo_list.update_attributes(is_finished: true, priority: 2)
-    elsif @todo_list.is_finished == true && @todo_list.deadline == nil then
+    elsif @todo_list.is_finished == true && @todo_list.deadline.nil?
       @todo_list.update_attributes(is_finished: false, priority: 1)
     else
       @todo_list.update_attributes(is_finished: false, priority: 0)
@@ -79,15 +79,15 @@ class TodoListsController < ApplicationController
 
   private
 
-    def set_current_user
-      @user = current_user
-    end
+  def set_current_user
+    @user = current_user
+  end
 
-    def set_user_todo_lists
-      @todo_lists = @user.todo_lists.classify
-    end
+  def set_user_todo_lists
+    @todo_lists = @user.todo_lists.classify
+  end
 
-    def todo_list_params
-      params.require(:todo_list).permit(:goal_id, :body, :deadline)
-    end
+  def todo_list_params
+    params.require(:todo_list).permit(:goal_id, :body, :deadline)
+  end
 end
