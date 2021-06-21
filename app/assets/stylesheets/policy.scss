@@ -19,3 +19,11 @@
     text-decoration-color: var(--notice-back);
   }
 }
+
+@media (max-width: 425px) {
+  .policy {
+    &__head {
+      font-size: 25px;
+    }
+  }
+}
