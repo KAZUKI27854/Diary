@@ -6,7 +6,7 @@ FactoryBot.define do
     body { Faker::Games::Zelda.game }
     priority { 1 }
 
-    #チェックアクションのテストで使用
+    # チェックアクションのテストで使用
     trait :with_deadline do
       deadline { Date.today + 1 }
       priority { 0 }
@@ -17,7 +17,7 @@ FactoryBot.define do
       is_finished { true }
     end
 
-    #検索テストで使用
+    # 検索テストで使用
     trait :list_1 do
       body { '1つ目のTodoリスト' }
     end

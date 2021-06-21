@@ -7,7 +7,7 @@ FactoryBot.define do
     milestone { Faker::Games::Zelda.location }
     add_level { 1 }
 
-    #検索テストの際に使用
+    # 検索テストの際に使用
     trait :doc_1 do
       body { '1つ目のドキュメント' }
     end
