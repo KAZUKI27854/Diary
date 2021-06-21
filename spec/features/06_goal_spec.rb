@@ -60,7 +60,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         fill_in 'goal[category]', with: ''
         fill_in 'goal[goal_status]', with: ''
         fill_in 'goal[deadline]', with: ''
-        expect{ click_on 'せってい' }.to change{ Goal.count }.by(0)
+        expect { click_on 'せってい' }.to change(Goal, :count).by(0)
         expect(page).to have_selector '.error__message'
       end
     end
