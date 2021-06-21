@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :todo_lists, dependent: :destroy
 
-  validates :name, {presence: true, length: {maximum: 60}}
-  validates :email, {presence: true, uniqueness: true}
+  validates :name, { presence: true, length: { maximum: 60 } }
+  validates :email, { presence: true, uniqueness: true }
 
   attachment :profile_image
 
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: auth.info.email) do |user|
       user.name = auth.info.email
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 end
