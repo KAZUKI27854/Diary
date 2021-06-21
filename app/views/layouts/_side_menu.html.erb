@@ -1,12 +1,69 @@
 <p class="my-page__menu--logo upper-contents">&nbsp;M&nbsp;E&nbsp;N&nbsp;U&nbsp;</p>
-
-<%= render "menu/user_menu", user: @user, user_level: @user_level, documents: @user_documents %>
-<%= render "menu/goal_menu", goals: @goals %>
-
+<!-- ユーザーメニュー -->
+<div class="my-page__menu--icon js-menu-icon">
+  <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "character/brave.png",
+      class: "my-page__menu--icon-img", alt: "menu-icon" %>
+  <p class="my-page__menu--text">しゅじんこう</p>
+</div>
+<div class="my-page__menu">
+  <p>なまえ: <%= @user.name %></p>
+  <p class="user-level">ステータス: Lv.<%= @user_level %></p>
+  <p class="doc-count">ぼうけん: <%= @user_documents.count %> 回</p>
+  <p>クリア: <%= clear_count %> 回</p>
+  <a class="js-modal-open my-page__link--text" href="" data-target="modal-user-edit">へんしゅう</a>
+  <!-- モーダルウインドウ -->
+  <%= render "users/edit", user: @user %>
+</div>
+<!-- 目標メニュー -->
+<div class="my-page__menu--icon js-menu-icon">
+  <%= image_tag "icon/books.png", class: "my-page__menu--icon-img my-page__menu--icon--goal", alt: "menu-icon" %>
+  <p class="my-page__menu--text">もくひょう </p>
+</div>
+<div class="my-page__menu">
+  <% if @goals.exists? %>
+    <% @goals.includes(:stage).first(3).each do |goal| %>
+      <a class="js-modal-open my-page__menu--text-goal" href="" data-target="modal-goal<%= goal.id %>-edit">
+        <%= goal.category %> </br>
+        Lv.<%= goal.level %>
+      </a>
+      <p>
+        ステージ: <%= goal.doc_count %>F</br>
+        <% if goal.doc_count != 0 %>
+          <%= goal.stage.name %>
+        <% else %>
+          きろくなし
+        <% end %>
+      </p>
+      <p>つぎのもくひょう:</br>
+      <% if goal.documents.exists? %>
+        <%= latest_milestone(goal.id) %>
+      <% else %>
+        <a class="js-modal-open my-page__link--text" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
+      <% end %>
+      </p>
+    <% end %>
+    <!-- モーダルウインドウ -->
+    <% @goals.each do |goal| %>
+      <%= render "goals/edit", goal: goal %>
+    <% end %>
+    <!-- 目標が4つ以上の場合にセレクトボックス表示-->
+    <%= collection_select(:goal, :category, @goals.drop(3), :id, :category,
+      {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %></br>
+  <% else %>
+    <p class="my-page__menu--text-goal">みせってい</p>
+  <% end %>
+  <!-- モーダルウインドウ -->
+  <%= render "goals/new", goal: @goal %>
+  <div class="my-page__menu--link--bottom">
+    <a class="js-modal-open  my-page__link--text" href="" data-target="modal-new-goal">せっていする</a>
+  </div>
+</div>
+<!-- ドキュメント投稿アイコン -->
 <div class="my-page__menu--icon js-save-icon">
   <a class="js-modal-open js-save-link" href="" data-target="modal-new-doc">
     <%= image_tag "icon/save-point.png", class: "my-page__menu--icon-img my-page__link--create-doc", alt: "menu-icon" %></br>
     <p class="my-page__link--text">きろくする</p>
   </a>
+  <!-- モーダルウインドウ -->
   <%= render "documents/new", document: @document, goals: @goals %>
 </div>
