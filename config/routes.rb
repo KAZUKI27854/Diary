@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   patch 'users/withdraw' => 'users#withdraw', as: :withdraw_user
   resources :users, only: [:update]
 
-  #エラーメッセージ発生後にリロードするとエラーになるため指定
+  # エラーメッセージ発生後にリロードするとエラーになるため指定
   get 'documents/:id' => 'documents#edit'
   resources :documents, only: [:create, :edit, :update, :destroy]
 
