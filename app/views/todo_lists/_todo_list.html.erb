@@ -9,7 +9,9 @@
     </div>
     <div class="col-7">
       <% if todo_list.is_finished == true %>
-        <p class="todo-lists__finished"><%= todo_list.body %></p>
+        <p>
+          <del class="todo-lists__finished"><%= todo_list.body %></del>
+        </p>
       <% else %>
         <%= link_to edit_todo_list_path(todo_list.id), class: "todo-lists__link--edit", remote: true do %>
           <!-- 未完了かつ期限付きのリストの場合、期限までの期間によって条件分岐-->

@@ -102,8 +102,15 @@
   }
 
   &__finished {
-    text-decoration: line-through 2px solid var(--line-through);
+    background-image: linear-gradient(#fe3464, #fe3464);
+    background-position: 0 50%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+    color: #888;
+    margin: 0 0.4em;
+    text-decoration: none;
     word-break : break-all;
+    margin-bottom: 1rem;
   }
 
   &__not-finished {
@@ -129,6 +136,12 @@
 @media (max-width: 425px) {
   .todo-lists {
     &__icon {
+      &--create {
+        width: 13%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+      }
+
       &--back {
         width: 170%;
       }
