@@ -18,11 +18,17 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+require 'active_support/core_ext/time'
+def jst(time)
+  Time.zone = 'Asia/Tokyo'
+  Time.zone.parse(time).localtime($system_utc_offset)
+end
+
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-every :day, at: '02:00' do
+every 1.day, at: jst('8:00 pm') do
   begin
     runner "Batch::DataReset.data_reset"
     rake "db:seed:guest_user"
