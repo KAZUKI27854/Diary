@@ -179,7 +179,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   $(function(){
-    setTimeout("$('.levelup__back').fadeOut('slow')", 1200
+    setTimeout("$('.levelup__back').fadeOut('slow')", 1500
     );
   });
 
