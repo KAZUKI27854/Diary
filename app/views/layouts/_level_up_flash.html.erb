@@ -6,9 +6,9 @@
       <%= image_tag "character/priest.png", alt: "flash-image" %>
       <%= image_tag "character/princess.png", alt: "flash-image" %>
     </div>
-    <p class="levelup__text"><%= flash[:level_up] %></p>
+    <p class="levelup__text"></p>
     <p class="levelup__text-bottom brave message">
-      <%= @user.name %>のレベルが上がった！
+      <%= flash[:level_up] %>
     </p>
   </div>
 <% end %>

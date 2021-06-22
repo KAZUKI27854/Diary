@@ -13,9 +13,9 @@ class DocumentsController < ApplicationController
       if @document.save
         # はじめて目標レベル100を超えた場合、クリア時のフラッシュ演出実行
         if goal.level < 100 && (goal.level + @document.add_level) >= 100
-          flash[:clear] = "#{goal.category}のレベルが100になった!!"
+          flash[:clear] = "#{goal.category}のレベルが100になった！！"
         else
-          flash[:level_up] = "LEVELUP!"
+          flash[:level_up] = "#{@user.name}のレベルが #{@document.add_level} 上がった！"
         end
         # 関連する目標データのdoc_number,stage_idを更新
         when_doc_create_goal_auto_update(goal.id)
