@@ -164,11 +164,16 @@ body {
 }
 
 .footer {
+  text-align: center;
   position: absolute;
   bottom: 0 !important;
   width: 100%;
   height: 50px;
   background-color: var(--main-back);
+
+  &__text {
+    line-height: 50px;
+  }
 }
 
 /* トップ画面 */
