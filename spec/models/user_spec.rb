@@ -40,7 +40,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
 
       it '一意性がない場合保存に失敗し、既に存在しているというエラーメッセージが返される' do
-        #DBにアクセスする為、createで作成
+        # DBにアクセスする為、createで作成
         user = create(:user)
         another_user = build(:user, email: user.email)
         another_user.valid?
