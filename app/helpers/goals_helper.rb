@@ -9,9 +9,9 @@ module GoalsHelper
   end
 
   def near_deadline_goal_count
-    today = Date.today
-    after_3_days = today + 3
-    goals_not_cleared.where(:deadline => today..after_3_days).count
+    tomorrow = Date.tomorrow
+    after_3_days = tomorrow + 2
+    goals_not_cleared.where(:deadline => tomorrow..after_3_days).count
   end
 
   def today_deadline_goal_count
