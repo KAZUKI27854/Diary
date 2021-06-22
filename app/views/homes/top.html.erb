@@ -38,6 +38,7 @@
             </li>
           <% else %>
             <li>
+              <!-- 一部iphone端末で新規登録画面のみ接続エラーが起きる為、turbolinksを無効化 -->
               <%= link_to "あたらしくはじめる", new_user_registration_path, class: "top__link", data: {"turbolinks"=>false} %>
             </li>
             <li>
