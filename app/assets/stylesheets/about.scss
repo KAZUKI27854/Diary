@@ -557,6 +557,13 @@
 @media all and (-ms-high-contrast: none) {
   /* IE用のCSS */
   .about {
+    &__story::after,
+    &__contents::before,
+    &__monster::before,
+    &__monster::after {
+      display: none;
+    }
+
     &__header {
       display: none;
     }
