@@ -553,3 +553,22 @@
     }
   }
 }
+
+@media all and (-ms-high-contrast: none) {
+  /* IE用のCSS */
+  .about {
+    &__header {
+      display: none;
+    }
+
+    &__img {
+      &--left-area {
+        display: none;
+      }
+
+      &--right-area {
+        display: none;
+      }
+    }
+  }
+}

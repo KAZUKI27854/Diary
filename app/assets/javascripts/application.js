@@ -21,6 +21,11 @@
 
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
+  /*global cssVars*/
+  cssVars({
+    rootElement: document
+  });
+
   /* ヘッダー */
   $('.js-menu-trigger').on('click', function() {
     $(this).toggleClass('header__trigger--active');
