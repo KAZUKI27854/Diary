@@ -564,6 +564,13 @@
       display: none;
     }
 
+    &__story--col,
+    &__contents--col,
+    &__monster--col,
+    &__start--col {
+      justify-content: center;
+    }
+
     &__header {
       display: none;
     }

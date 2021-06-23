@@ -670,13 +670,31 @@ body {
 
 @media all and (-ms-high-contrast: none) {
   /* IE用のCSS */
-  :root {
-    --active-menu-back: #000;
-    --modal-back: #000;
-    --todo-lists-back: #000;
+  .header {
+    &__menu {
+      background-color: #000;
+    }
+  }
+
+  .modal {
+    &__back {
+      background-color: #000;
+    }
+  }
+
+  .todo-lists {
+    &__index {
+      background-color: #000;
+    }
   }
 
   .top {
+    &__img {
+      &--cloud {
+        display: none;
+      }
+    }
+
     &__text {
       &--main-title {
         margin-right: 10%;
@@ -689,7 +707,7 @@ body {
 
     &__link {
       &--list {
-         margin-right: 10%;
+        margin-right: 10%;
       }
     }
   }
