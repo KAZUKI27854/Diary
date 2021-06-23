@@ -28,6 +28,7 @@
             <label for="inputAddLevel">かくとくレベル</label>
             <%= f.select :add_level, options_for_select((1..20).to_a) %>
           </div>
+          <!-- 目標や獲得レベル変更時に、変更前のデータが必要となるため隠しフォームを設置 -->
           <div class="form-btn">
             <%= f.hidden_field :origin_goal_id, :value => @document.goal.id %>
             <%= f.hidden_field :origin_add_level, :value => @document.add_level %>
