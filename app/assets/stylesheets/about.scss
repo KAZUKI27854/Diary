@@ -572,7 +572,9 @@
     }
 
     &__header {
-      display: none;
+      &--area {
+        display: none;
+      }
     }
 
     &__img {
