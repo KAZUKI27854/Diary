@@ -71,7 +71,9 @@
               </p>
               <p>
                 【つぎのもくひょう】<br>
-                <%= document.milestone %><br>
+                <%= document.milestone %>
+              </p>
+              <p>
                 <% unless document.goal.level >= 100 %>
                   もくひょうきげんまで&nbsp;のこり&nbsp;<%= timelimit(document.id) %>&nbsp;にち
                 <% end %>
