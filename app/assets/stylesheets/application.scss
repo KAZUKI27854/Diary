@@ -687,9 +687,11 @@ body {
       background-color: #000;
     }
   }
-  
+
   .doc-card {
-    &
+    &__stage--img {
+      height: 300px;
+    }
   }
 
   .top {
