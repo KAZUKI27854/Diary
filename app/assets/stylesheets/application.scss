@@ -675,4 +675,22 @@ body {
     --modal-back: #000;
     --todo-lists-back: #000;
   }
+
+  .top {
+    &__text {
+      &--main-title {
+        margin-right: 10%;
+      }
+
+      &--sub-title {
+        margin-right: 10%;
+      }
+    }
+
+    &__link {
+      &--list {
+         margin-right: 10%;
+      }
+    }
+  }
 }
