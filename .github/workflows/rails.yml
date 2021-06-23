@@ -2,10 +2,10 @@ name: Rails CI/CD
 
 on:
   push:
-    branches: [main]
-    # インスタンス停止時
-    # branches-ignore:
-    #   - '**'
+    branches-ignore:
+      - '**'
+    # インスタンス起動時
+    # branches: [main]
 
 jobs:
   build:

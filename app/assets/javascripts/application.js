@@ -22,8 +22,15 @@
 /*global $*/
 document.addEventListener("turbolinks:load", function(){
   /*global cssVars*/
+  /* IEでカスタムプロパティを使用する為 */
   cssVars({
     rootElement: document
+  });
+
+  /*global objectFitImages*/
+  /* IEでobject-fitプロパティを使用する為 */
+  $(function () {
+    objectFitImages();
   });
 
   /* ヘッダー */
