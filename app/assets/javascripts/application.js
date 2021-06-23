@@ -53,14 +53,14 @@ document.addEventListener("turbolinks:load", function(){
 
   /* チュートリアルページのタブボックス */
   $(function() {
-    $('#tabBoxes .tabBox[id != "tabBox1"]').hide();
-    $('#js-message .message[id != "message1"]').hide();
+    $('#js-tabBoxes .tutorial__tabBox[id != "tabBox1"]').hide();
+    $('#js-header .tutorial__header[id != "header1"]').hide();
   });
 
   $(function() {
-    $('.tabBox a').on('click', function() {
-      $('#tabBoxes .tabBox').hide();
-      $('#js-message .message').hide();
+    $('.tutorial__tabBox a').on('click', function() {
+      $('#js-tabBoxes .tutorial__tabBox').hide();
+      $('#js-header .tutorial__header').hide();
       $($(this).attr("href")).show();
       $($(this).attr("class")).show();
       event.preventDefault();

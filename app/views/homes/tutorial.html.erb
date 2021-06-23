@@ -1,46 +1,61 @@
 <div class="tutorial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-2 col-md-2 col-sm-1"></div>
-      <div class="col-lg-8 col-md-8 col-sm-10">
 
-        <div id="js-message">
-        <h3 id="message1" class="princess message">1: もくひょうせってい</h3>
-        <h3 id="message2" class="princess message">その2: やったことをきろくする</h3>
-        <h3 id="message3" class="princess message">その3: </h3>
-        <h3 id="message4" class="princess message">その4</h3>
-        </div>
+      <div class="col-lg-2 col-md-1 col-sm-0"></div>
 
-        <div id="tabBoxes">
-          <div id="tabBox1" class="tabBox">
-            <div class="tabcontents">
-              <p>1/4</p>
-            </div>
-            <a href="#tabBox2" id="#message2">>></a>
+      <div class="col-lg-8 col-md-10 col-sm-12">
+
+        <div class="tutorial__area">
+
+          <div id="js-header">
+            <h1 id="header1" class="princess tutorial__header">1:&nbsp;もくひょうせってい</h1>
+            <h1 id="header2" class="princess tutorial__header">2:&nbsp;きろくする</h1>
+            <h1 id="header3" class="princess tutorial__header">3:&nbsp;ステージとモンスター</h1>
+            <h1 id="header4" class="princess tutorial__header">4:&nbsp;Todoリスト作成</h1>
           </div>
-          <div id="tabBox2" class="tabBox">
-            <div class="tabcontents">
-              <p>2/4</p>
+
+          <div id="js-tabBoxes" class="tutorial__tabBoxes">
+            <div id="tabBox1" class="tutorial__tabBox">
+              <div class="tutorial__tabcontents">
+                <h2 class="tutorial__tabcontents--header">
+                  せってい画面の表示方法<br>
+                  マイページ&nbsp;>>&nbsp;
+                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-goal">をクリック</span><br class="br-sp">
+                  &nbsp;>>&nbsp;せっていする
+                </h2>
+                <div class="aaa">
+                  <%= image_tag "test.png", class: "test" %>
+                </div>
+              </div>
+              <a href="#tabBox2" class="#header2">>></a>
             </div>
-            <a href="#tabBox1" class="#message1"><<</a>
-            <a href="#tabBox3" class="#message3">>></a>
-          </div>
-          <div id="tabBox3" class="tabBox">
-            <div class="tabcontents">
-              <p>3/4</p>
+            <div id="tabBox2" class="tutorial__tabBox">
+              <div class="tutorial__tabcontents">
+                <p>2/4</p>
+              </div>
+              <a href="#tabBox1" class="#header1"><<</a>
+              <a href="#tabBox3" class="#header3">>></a>
             </div>
-            <a href="#tabBox2" class="#message2"><<</a>
-            <a href="#tabBox4" class="#message4">>></a>
-          </div>
-          <div id="tabBox4" class="tabBox">
-            <div class="tabcontents">
-              <p>4/4</p>
+            <div id="tabBox3" class="tutorial__tabBox">
+              <div class="tutorial__tabcontents">
+                <p>3/4</p>
+              </div>
+              <a href="#tabBox2" class="#header2"><<</a>
+              <a href="#tabBox4" class="#header4">>></a>
             </div>
-            <a href="#tabBox3" class="#message3"><<</a>
+            <div id="tabBox4" class="tutorial__tabBox">
+              <div class="tutorial__tabcontents">
+                <p>4/4</p>
+              </div>
+              <a href="#tabBox3" class="#header3"><<</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-1"></div>
-      </div>
-      </div>
+
+      <div class="col-lg-2 col-md-1 col-sm-0"></div>
+
+    </div>
+  </div>
 </div>
