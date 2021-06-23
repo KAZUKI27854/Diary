@@ -126,6 +126,7 @@ document.addEventListener("turbolinks:load", function(){
     }
   });
 
+  /* マイページ */
   $(function(){
     setTimeout("$('.my-page__message').fadeOut('slow')", 3500
     );
@@ -142,6 +143,7 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
+  /* ユーザー編集<=>退会確認画面切り替え */
   $(function(){
     $('.js-withdraw-confirm').hide();
   });
