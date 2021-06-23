@@ -667,3 +667,12 @@ body {
     }
   }
 }
+
+@media all and (-ms-high-contrast: none) {
+  /* IE用のCSS */
+  :root {
+    --active-menu-back: #000;
+    --modal-back: #000;
+    --todo-lists-back: #000;
+  }
+}
