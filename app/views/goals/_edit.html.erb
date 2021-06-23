@@ -1,34 +1,41 @@
 <div id="modal-goal<%= goal.id %>-edit" class="modal js-modal">
+
   <div class="modal__back js-modal-close"></div>
+
   <div class="modal__content">
     <div class="goal-edit">
       <div class="container">
         <div class="row">
           <div class="col-lg-2 col-md-1 col-sm-0"></div>
+
           <div class="col-lg-8 col-md-10 col-sm-12">
+
             <h3 class="witch message upper-contents">もくひょうのへんこうかしら？</h3>
             <div class="js-message-errors"></div>
+
             <div class="form-group">
-                <% if goal.present? %>
-                  <%= form_with model: goal do |f| %>
-              	    <label for="inputCategory">レベルアップしたいこと</label>
-              	    <!-- goals/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
-                    <%= f.text_field :category, class: "form-control", id: "edit-goal#{goal.id}-category",
-                        placeholder: "レベルアップしたいこと" %>
-                    <label for="inputGoalStatus">さいしゅうもくひょう</label>
-                    <%= f.text_field :goal_status, class: "form-control", id: "edit-goal#{goal.id}-goal_status",
-                        placeholder: "Lv.100のじょうたい" %>
-                    <label for="inputDeadline">きげん</label>
-                    <%= f.date_field :deadline, class: "form-control", id: "edit-goal#{goal.id}-deadline" %>
-                    <%= f.submit 'へんこう', class: "btn btn-primary btn-sm mt-3 ml-5" %>
-                    <%= link_to "さくじょ", goal_path(goal.id), method: :delete, class: "btn btn-danger btn-sm mt-3 ml-5",
-                      "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？" %>
-                  <% end %>
-                <% else %>
-                  <p>もくひょうがせっていされていません。</p>
+              <% if goal.present? %>
+                <%= form_with model: goal do |f| %>
+            	    <label for="inputCategory">レベルアップしたいこと</label>
+            	    <!-- goals/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
+                  <%= f.text_field :category, class: "form-control", id: "edit-goal#{goal.id}-category",
+                      placeholder: "レベルアップしたいこと" %>
+                  <label for="inputGoalStatus">さいしゅうもくひょう</label>
+                  <%= f.text_field :goal_status, class: "form-control", id: "edit-goal#{goal.id}-goal_status",
+                      placeholder: "Lv.100のじょうたい" %>
+                  <label for="inputDeadline">きげん</label>
+                  <%= f.date_field :deadline, class: "form-control", id: "edit-goal#{goal.id}-deadline" %>
+                  <%= f.submit 'へんこう', class: "btn btn-primary btn-sm mt-3 ml-5" %>
+                  <%= link_to "さくじょ", goal_path(goal.id), method: :delete, class: "btn btn-danger btn-sm mt-3 ml-5",
+                    "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？" %>
                 <% end %>
+              <% else %>
+                <p>もくひょうがせっていされていません。</p>
+              <% end %>
             </div>
+
           </div>
+
           <div class="col-lg-2 col-md-1 col-sm-0"></div>
         </div>
       </div>
