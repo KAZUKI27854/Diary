@@ -586,5 +586,18 @@
         display: none;
       }
     }
+
+    &__text {
+      &--contents {
+        width: 60% !important;
+        margin-left: 20% !important;
+      }
+    }
+
+    &__contents {
+      &--screen-area-big {
+        justify-content: center;
+      }
+    }
   }
 }
