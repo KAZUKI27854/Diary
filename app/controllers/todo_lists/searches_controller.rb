@@ -4,16 +4,22 @@ class TodoLists::SearchesController < ApplicationController
 
   def index
     if params[:category].blank? && params[:word].blank?
+      
       todo_lists = @user.todo_lists
+      
     elsif params[:category].present? && params[:word].present?
 
       lists_result_by_cat = @user.goals.find_by(category: params[:category]).todo_lists
       todo_lists = lists_result_by_cat.where('body LIKE(?)', "%#{params[:word]}%")
 
     elsif params[:category].present? && params[:word].blank?
+      
       todo_lists = @user.goals.find_by(category: params[:category]).todo_lists
+      
     else
+      
       todo_lists = @user.todo_lists.where('body LIKE(?)', "%#{params[:word]}%")
+      
     end
 
     sort_lists = todo_lists.classify
