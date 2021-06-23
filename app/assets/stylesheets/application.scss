@@ -687,21 +687,25 @@ body {
       background-color: #000;
     }
   }
+  
+  .doc-card {
+    &
+  }
 
   .top {
     &__text {
       &--main-title {
-        margin-right: 10%;
+        margin-right: 30%;
       }
 
       &--sub-title {
-        margin-right: 10%;
+        margin-right: 30%;
       }
     }
 
     &__link {
       &--list {
-        margin-right: 10%;
+        margin-right: 30%;
       }
     }
   }
