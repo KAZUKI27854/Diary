@@ -4,16 +4,17 @@ module TodoListsHelper
   end
 
   def near_deadline_list_count
-    tomorrow = Date.tomorrow
-    after_3_days = tomorrow + 2
-    lists_with_deadline.where(:deadline => tomorrow..after_3_days).count
+    today = Date.current
+    after_3_days = today + 3
+    lists_with_deadline.where(:deadline => today..after_3_days).count
   end
 
   def today_deadline_list_count
-    lists_with_deadline.where(deadline: Date.today.all_day).count
+    lists_with_deadline.where(deadline: Date.current.all_day).count
   end
 
   def over_deadline_list_count
-    lists_with_deadline.where("deadline < ?", Date.yesterday).count
+    yesterday = Date.current - 1
+    lists_with_deadline.where("deadline < ?", yesterday).count
   end
 end

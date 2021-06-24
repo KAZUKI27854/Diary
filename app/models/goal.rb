@@ -11,7 +11,7 @@ class Goal < ApplicationRecord
 
   def day_after_tomorrow
     unless deadline.nil?
-      errors.add(:deadline, 'は、明日以降の日付を入力して下さい') if deadline.to_date <= Date.today
+      errors.add(:deadline, 'は、明日以降の日付を入力して下さい') if deadline.to_date <= Date.current
     end
   end
 end

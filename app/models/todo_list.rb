@@ -10,7 +10,7 @@ class TodoList < ApplicationRecord
   # 過去の日付登録を防ぐバリデーション（期限超過の場合、期限変更かチェックを入れることだけできる）
   def day_after_today
     if !deadline.nil? && is_finished == false
-      errors.add(:deadline, 'は、本日以降の日付を入力して下さい') if deadline.to_date < Date.today
+      errors.add(:deadline, 'は、本日以降の日付を入力して下さい') if deadline.to_date < Date.current
     end
   end
 end
