@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-2 col-md-1 col-sm-0"></div>
-      <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="col-lg-8 col-md-10 col-sm-12 tutorial__col">
         <div class="tutorial__area">
           <div id="js-header">
             <h1 id="header1" class="knight tutorial__header">&nbsp;1:&nbsp;もくひょうせってい</h1>
             <h1 id="header2" class="master tutorial__header">&nbsp;2:&nbsp;きろくする</h1>
             <h1 id="header3" class="brave tutorial__header">&nbsp;3:&nbsp;ステージとモンスター</h1>
-            <h1 id="header4" class="princess tutorial__header">&nbsp;4:&nbsp;Todoリストをつくる</h1>
+            <h1 id="header4" class="priest tutorial__header">&nbsp;4:&nbsp;Todoリストをつくる</h1>
           </div>
           <div id="js-tabBoxes" class="tutorial__tabBoxes">
             <div id="tabBox1" class="tutorial__tabBox">
@@ -20,7 +20,10 @@
                   &nbsp;>>&nbsp;せっていする
                 </h2>
                 <%= image_tag "screen/newgoal-screen.png", class: "tutorial__img--goal" %>
-                <p class="tutorial__tabcontents--text">まずは、達成したいもくひょうを入力しましょう！</p>
+                <p class="tutorial__tabcontents--text tutorial__text--goal">
+                  まずは、もくひょうを<br class="br-sp">
+                  入力しましょう！
+                </p>
               </div>
               <a href="#tabBox2" class="#header2">>>&nbsp;すすむ</a>
             </div>
@@ -40,12 +43,13 @@
             <div id="tabBox3" class="tutorial__tabBox">
               <div class="tutorial__tabcontents">
                 <h2 class="tutorial__tabcontents--header">
-                  きろくした内容はマイページに表示されます
+                  きろくはマイページに表示されます
                 </h2>
                 <%= image_tag "screen/doc-screen.png", class: "tutorial__img--doc" %>
                 <p class="tutorial__tabcontents--text">
-                  きろくするたびに表示されるモンスターやステージが変化します！<br>
-                  もくひょうレベル100達成をめざして、きろくをつづけましょう！
+                  きろくするたび、表示される<br class="br-sp">
+                  モンスターやステージが変化します！<br>
+                  <span>もくひょうレベル100達成をめざして、きろくをつづけましょう！</span>
                 </p>
               </div>
               <a href="#tabBox2" class="#header2">もどる&nbsp;<<&nbsp;&nbsp;</a>
@@ -56,13 +60,19 @@
                 <h2 class="tutorial__tabcontents--header">
                   Todoリスト作成画面の表示方法<br>
                   マイページ&nbsp;>>&nbsp;
-                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-todo-lists">をクリック</span>&nbsp;>>&nbsp;
-                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-list-form">をクリック</span>
+                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-todo-lists">をクリック</span><br class="br-sp">
+                  &nbsp;>>&nbsp;<span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-list-form">をクリック</span>
                 </h2>
                 <%= image_tag "screen/list-form-close.png", class: "tutorial__img--list-form-close" %>
-                <p class="tutorial__tabcontents--text">※フォーム表示中はアイコンが羽ペンに切り替わります</p>
+                <p class="tutorial__tabcontents--text tutorial__text--list-middle">
+                  ※フォーム表示中はアイコンが<br class="br-sp">
+                  羽ペンに切り替わります
+                </p>
                 <%= image_tag "screen/list-form-open.png", class: "tutorial__img--list-form-open" %>
-                <p class="tutorial__tabcontents--text tutorial__list-text--bottom">Todoリストを作成して、やることを整理するのがおすすめです！</p>
+                <p class="tutorial__tabcontents--text tutorial__text--list-bottom">
+                  Todoリストを作成して、<br class="br-sp">
+                  やることを整理しましょう！
+                </p>
               </div>
               <a href="#tabBox3" class="#header3">もどる&nbsp;<<</a>
             </div>

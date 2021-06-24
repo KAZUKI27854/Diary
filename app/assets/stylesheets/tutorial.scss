@@ -43,7 +43,6 @@
 
     a {
       text-align: center;
-      color: blue;
     }
   }
 
@@ -124,8 +123,8 @@
     }
   }
 
-  &__list-text {
-    &--bottom {
+  &__text {
+    &--list-bottom {
       margin-top: 5%;
     }
   }
@@ -135,5 +134,132 @@
   /* スマートフォンでのみ改行 */
   .br-sp {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .tutorial {
+    &__img {
+      &--goal {
+        object-fit: unset;
+        height: 410px;
+      }
+
+      &--newdoc {
+        width: 60%;
+      }
+
+      &--doc {
+        width: 55%;
+      }
+
+      &--list-form-close {
+        margin-top: 5%;
+      }
+
+      &--list-form-open {
+        margin-top: 3%;
+      }
+    }
+
+    &__text {
+      &--goal {
+        margin-top: 5%;
+      }
+
+      &--list-middle {
+        margin-top: 7%;
+      }
+
+      &--list-bottom {
+        margin-top: 8%;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .tutorial {
+    &__tabBoxes {
+      height: 570px;
+      padding-top: 20px;
+      padding-left: 2%;
+    }
+
+    &__tabcontents {
+      height: 522px;
+      width: 98%;
+
+      &--text {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    &__img {
+      &--goal {
+        height: 280px;
+        margin-top: 5%;
+      }
+
+      &--newdoc {
+        height: 390px;
+        width: 75%;
+      }
+
+      &--doc {
+        height: 410px;
+        width: 70%;
+      }
+
+      &--list-form-close {
+        margin-top: 1%;
+      }
+
+      &--list-form-open {
+        margin-top: 0%;
+      }
+    }
+
+    &__text {
+      &--goal {
+        margin-top: 10%;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .tutorial {
+    &__col {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    &__tabBoxes {
+      height: 520px;
+      padding-top: 10px;
+    }
+
+    &__tabcontents {
+      height: 480px;
+    }
+
+    &__img {
+      &--goal {
+        height: 260px;
+      }
+
+      &--doc {
+        height: 380px;
+        width: 75%;
+      }
+
+      &--newdoc {
+        height: 350px;
+        width: 80%;
+      }
+    }
   }
 }
