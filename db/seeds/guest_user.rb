@@ -74,7 +74,6 @@ end
         goal_id: second_goal.id,
         body: programing[i] + 'の課題を提出する',
         deadline: Date.new(2021, 9, 1),
-        is_finished: false,
         priority: 0,
       },
     ]
@@ -87,8 +86,7 @@ end
       {
         user_id: guest_user.id,
         goal_id: goal.id,
-        body: exercise[rand(5)] + 'を週1回以上する',
-        is_finished: false,
+        body: exercise[i] + 'を週1回以上する',
         priority: 1,
       },
     ]
@@ -102,7 +100,6 @@ TodoList.create!(
       goal_id: second_goal.id,
       body: 'プログラミングの本を2冊読む',
       deadline: Date.tomorrow,
-      is_finished: true,
       priority: 2,
     },
     {
