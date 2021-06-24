@@ -121,7 +121,6 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         click_on 'へんこう'
         expect(page).to have_selector '.error__message'
       end
-
       it '目標削除のテスト' do
         page.accept_confirm do
           click_on 'さくじょ'

@@ -292,7 +292,6 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
         expect(page).not_to have_content list_2.body
         expect(page).not_to have_content list_3.body
       end
-
       it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
         reset_text_field
         # 目標1に関する投稿である、リスト1,2だけ表示されているか
