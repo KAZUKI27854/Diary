@@ -129,5 +129,59 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         expect(Goal.count).to eq 0
       end
     end
+
+    context '目標期限通知のテスト' do
+      let!(:goal_2) { create(:goal, user_id: user.id, deadline: Date.current + 4) }
+
+      it '目標期限が3日後の場合、目標期限が近いという内容の通知が表示される' do
+        goal.update(deadline: Date.current + 3)
+        visit current_path
+        expect(page).to have_content 'きげんが近いもくひょうが 1 つあります'
+      end
+      it '目標期限が2日後の場合、目標期限が近いという内容の通知が表示される' do
+        goal.update(deadline: Date.current + 2)
+        visit current_path
+        expect(page).to have_content 'きげんが近いもくひょうが 1 つあります'
+      end
+      it '目標期限が翌日の場合、目標期限が近いという内容の通知が表示される' do
+        goal.update(deadline: Date.current + 1)
+        visit current_path
+        expect(page).to have_content 'きげんが近いもくひょうが 1 つあります'
+      end
+      it '目標期限が当日を除く3日以内のものが複数ある場合、通知に反映される' do
+        goal.update(deadline: Date.current + 3)
+        goal_2.update(deadline: Date.current + 2)
+        visit current_path
+        expect(page).to have_content 'きげんが近いもくひょうが 2 つあります'
+      end
+      it '目標期限が当日の場合、目標期限が本日という内容の通知が表示される' do
+        goal.deadline = Date.current
+        goal.save(validate: false)
+        visit current_path
+        expect(page).to have_content 'きげんが本日のもくひょうが 1 つあります'
+      end
+      it '目標期限が当日のものが複数ある場合、通知に反映される' do
+        goal.deadline = Date.current
+        goal.save(validate: false)
+        goal_2.deadline = Date.current
+        goal_2.save(validate: false)
+        visit current_path
+        expect(page).to have_content 'きげんが本日のもくひょうが 2 つあります'
+      end
+      it '目標期限が昨日以前の場合、目標期限超過という内容の通知が表示される' do
+        goal.deadline = Date.current - 1
+        goal.save(validate: false)
+        visit current_path
+        expect(page).to have_content 'きげん切れのもくひょうが 1 つあります'
+      end
+      it '目標期限が昨日以前のものが複数ある場合、通知に反映される' do
+        goal.deadline = Date.current - 1
+        goal.save(validate: false)
+        goal_2.deadline = Date.current - 1
+        goal_2.save(validate: false)
+        visit current_path
+        expect(page).to have_content 'きげん切れのもくひょうが 2 つあります'
+      end
+    end
   end
 end
