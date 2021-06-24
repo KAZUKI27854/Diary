@@ -1,11 +1,10 @@
 .tutorial {
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
+  height: 120vh;
   background-position: 50% 50%;
   background-size: cover;
   background-image: image-url("back/tutorial-back.jpg");
-  padding-top: 5%;
+  padding-top: 3%;
   padding-bottom: 5%;
   text-align: center;
 
@@ -34,8 +33,8 @@
 
   &__tabBoxes {
     background-color: var(--main-font);
-    height: 90%;
-    padding-top: 5%;
+    height: 630px;
+    padding-top: 30px;
     padding-left: 5%;
   }
 
@@ -49,13 +48,17 @@
   }
 
   &__tabcontents {
-    background-color: var(--main-back);
-    height: 95%;
+    background-color: #007bff;
+    height: 570px;
     width: 95%;
 
     &--header {
       font-size: 18px;
       padding-top: 3%;
+    }
+
+    &--text {
+      margin-top: 2%;
     }
 
     &--icon {
@@ -70,19 +73,62 @@
       }
     }
 
-    &--icon-goal:before {
-      background-image: image-url("icon/books.png");
+    &--icon-goal {
+      &:before {
+        background-image: image-url("icon/books.png");
+      }
+    }
+
+    &--icon-doc {
+      &:before {
+        background-image: image-url("icon/save-point.png");
+      }
+    }
+
+    &--icon-todo-lists {
+      &:before {
+        background-image: image-url("icon/bar-icon.png");
+      }
+    }
+
+    &--icon-list-form {
+      &:before {
+        background-image: image-url("icon/create-icon.png");
+      }
     }
   }
-}
 
-.test {
-  object-fit: cover;
-  width: 100%;
-  height: 300px;
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // background-image: image-url("test.png");
+  &__img {
+    &--goal {
+      object-fit: cover;
+      width: 100%;
+      height: 440px;
+    }
+
+    &--newdoc {
+      width: 50%;
+      height: 440px;
+    }
+
+    &--doc {
+      width: 45%;
+      height: 440px;
+    }
+
+    &--list-form-close {
+      width: 100%;
+    }
+
+    &--list-form-open {
+      width: 100%;
+    }
+  }
+
+  &__list-text {
+    &--bottom {
+      margin-top: 5%;
+    }
+  }
 }
 
 @media screen and (min-width: 768px){

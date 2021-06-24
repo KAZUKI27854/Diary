@@ -1,20 +1,15 @@
 <div class="tutorial">
   <div class="container">
     <div class="row">
-
       <div class="col-lg-2 col-md-1 col-sm-0"></div>
-
       <div class="col-lg-8 col-md-10 col-sm-12">
-
         <div class="tutorial__area">
-
           <div id="js-header">
-            <h1 id="header1" class="princess tutorial__header">1:&nbsp;もくひょうせってい</h1>
-            <h1 id="header2" class="princess tutorial__header">2:&nbsp;きろくする</h1>
-            <h1 id="header3" class="princess tutorial__header">3:&nbsp;ステージとモンスター</h1>
-            <h1 id="header4" class="princess tutorial__header">4:&nbsp;Todoリスト作成</h1>
+            <h1 id="header1" class="knight tutorial__header">&nbsp;1:&nbsp;もくひょうせってい</h1>
+            <h1 id="header2" class="master tutorial__header">&nbsp;2:&nbsp;きろくする</h1>
+            <h1 id="header3" class="brave tutorial__header">&nbsp;3:&nbsp;ステージとモンスター</h1>
+            <h1 id="header4" class="princess tutorial__header">&nbsp;4:&nbsp;Todoリストをつくる</h1>
           </div>
-
           <div id="js-tabBoxes" class="tutorial__tabBoxes">
             <div id="tabBox1" class="tutorial__tabBox">
               <div class="tutorial__tabcontents">
@@ -24,38 +19,57 @@
                   <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-goal">をクリック</span><br class="br-sp">
                   &nbsp;>>&nbsp;せっていする
                 </h2>
-                <div class="aaa">
-                  <%= image_tag "test.png", class: "test" %>
-                </div>
+                <%= image_tag "screen/newgoal-screen.png", class: "tutorial__img--goal" %>
+                <p class="tutorial__tabcontents--text">まずは、達成したいもくひょうを入力しましょう！</p>
               </div>
-              <a href="#tabBox2" class="#header2">>></a>
+              <a href="#tabBox2" class="#header2">>>&nbsp;すすむ</a>
             </div>
             <div id="tabBox2" class="tutorial__tabBox">
               <div class="tutorial__tabcontents">
-                <p>2/4</p>
+                <h2 class="tutorial__tabcontents--header">
+                  きろく画面の表示方法<br>
+                  マイページ&nbsp;>>&nbsp;
+                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-doc">をクリック</span>
+                </h2>
+                <%= image_tag "screen/newdoc-screen.png", class: "tutorial__img--newdoc" %>
+                <p class="tutorial__tabcontents--text">次に、その日したことをきろくしましょう！</p>
               </div>
-              <a href="#tabBox1" class="#header1"><<</a>
-              <a href="#tabBox3" class="#header3">>></a>
+              <a href="#tabBox1" class="#header1">もどる&nbsp;<<&nbsp;&nbsp;</a>
+              <a href="#tabBox3" class="#header3">&nbsp;&nbsp;>>&nbsp;すすむ</a>
             </div>
             <div id="tabBox3" class="tutorial__tabBox">
               <div class="tutorial__tabcontents">
-                <p>3/4</p>
+                <h2 class="tutorial__tabcontents--header">
+                  きろくした内容はマイページに表示されます
+                </h2>
+                <%= image_tag "screen/doc-screen.png", class: "tutorial__img--doc" %>
+                <p class="tutorial__tabcontents--text">
+                  きろくするたびに表示されるモンスターやステージが変化します！<br>
+                  もくひょうレベル100達成をめざして、きろくをつづけましょう！
+                </p>
               </div>
-              <a href="#tabBox2" class="#header2"><<</a>
-              <a href="#tabBox4" class="#header4">>></a>
+              <a href="#tabBox2" class="#header2">もどる&nbsp;<<&nbsp;&nbsp;</a>
+              <a href="#tabBox4" class="#header4">&nbsp;&nbsp;>>&nbsp;すすむ</a>
             </div>
             <div id="tabBox4" class="tutorial__tabBox">
               <div class="tutorial__tabcontents">
-                <p>4/4</p>
+                <h2 class="tutorial__tabcontents--header">
+                  Todoリスト作成画面の表示方法<br>
+                  マイページ&nbsp;>>&nbsp;
+                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-todo-lists">をクリック</span>&nbsp;>>&nbsp;
+                  <span class="tutorial__tabcontents--icon tutorial__tabcontents--icon-list-form">をクリック</span>
+                </h2>
+                <%= image_tag "screen/list-form-close.png", class: "tutorial__img--list-form-close" %>
+                <p class="tutorial__tabcontents--text">※フォーム表示中はアイコンが羽ペンに切り替わります</p>
+                <%= image_tag "screen/list-form-open.png", class: "tutorial__img--list-form-open" %>
+                <p class="tutorial__tabcontents--text tutorial__list-text--bottom">Todoリストを作成して、やることを整理するのがおすすめです！</p>
               </div>
-              <a href="#tabBox3" class="#header3"><<</a>
+              <a href="#tabBox3" class="#header3">もどる&nbsp;<<</a>
             </div>
           </div>
         </div>
       </div>
-
       <div class="col-lg-2 col-md-1 col-sm-0"></div>
-
     </div>
   </div>
 </div>
