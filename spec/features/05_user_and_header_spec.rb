@@ -16,34 +16,27 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
     it 'ヘッダーのリンクに「マイページ」がある' do
       expect(page).to have_link 'マイページ'
     end
-
     it '「マイページ」リンクの遷移先がマイページである' do
       click_on 'マイページ'
       expect(current_path).to eq my_page_path
     end
-
     it 'ヘッダーのリンクに「あそびかた」がある' do
       expect(page).to have_link 'あそびかた'
     end
-
     it '「あそびかた」リンクの遷移先がチュートリアル画面である' do
       click_on 'あそびかた'
       expect(current_path).to eq '/tutorial'
     end
-
     it 'ヘッダーのリンクに「ログアウト」がある' do
       expect(page).to have_link 'ログアウト'
     end
-
     it 'ログアウトの遷移先がトップ画面である' do
       click_on 'ログアウト'
       expect(current_path).to eq root_path
     end
-
     it 'ヘッダーのリンクに「プライバシーポリシー」がある' do
       expect(page).to have_link 'プライバシーポリシー'
     end
-
     it 'プライバシーポリシーの遷移先がプライバシーポリシー画面である' do
       click_on 'プライバシーポリシー'
       expect(current_path).to eq policy_path
@@ -54,7 +47,6 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
     it '全てのモーダルウインドウが非表示になっている' do
       expect(page).not_to have_selector '.modal'
     end
-
     it 'ユーザーと目標のメニューが非表示になっている' do
       expect(page).not_to have_selector '.my-page__menu'
     end
@@ -77,15 +69,12 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       it 'ユーザーアイコンをクリックするとユーザーメニューが表示される' do
         expect(page).to have_selector '.my-page__menu'
       end
-
       it 'ユーザーメニューに表示されている名前が正しい' do
         expect(page).to have_content 'なまえ: ' + user.name
       end
-
       it 'ぼうけんの回数がドキュメントの数と一致している' do
         expect(page).to have_content 'ぼうけん: ' + user.documents.count.to_s + ' 回'
       end
-
       it 'クリア回数が、レベル100以上の目標の数と一致している' do
         clear_goals = user.goals.where("level >= ?", 100)
         expect(page).to have_content 'クリア: ' + clear_goals.count.to_s + ' 回'
@@ -100,15 +89,12 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       it '「へんしゅう」をクリックするとユーザー編集のモーダルが表示される' do
         expect(page).to have_selector '#modal-user-edit'
       end
-
       it '名前のフォームが表示される' do
         expect(page).to have_field 'user[name]'
       end
-
       it 'プロフィール画像のフォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
       end
-
       it 'ユーザー編集成功のテスト' do
         fill_in 'user[name]', with: 'テストユーザー'
         attach_file 'user[profile_image]', "#{Rails.root}/app/assets/images/character/brave.png"
@@ -117,7 +103,6 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         expect(user.reload.name).to eq 'テストユーザー'
         expect([user.profile_image_id]).to be_present
       end
-
       it 'ユーザー編集失敗のテスト' do
         fill_in 'user[name]', with: ''
         click_button 'へんこう'
@@ -134,13 +119,11 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       it 'ユーザー編集モーダルで「退会する」をクリックすると退会確認画面へ遷移する' do
         expect(page).to have_selector '.withdraw-confirm'
       end
-
       it '「もどる」をクリックするとユーザー編集画面へ切り替わる' do
         click_on 'もどる'
         expect(page).to have_selector '#modal-user-edit'
         expect(page).not_to have_selector '.withdraw-confirm'
       end
-
       it '退会確認画面で「退会する」をクリックするとユーザーが論理削除される' do
         page.accept_confirm do
           click_on '退会する'
@@ -149,7 +132,6 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         expect(current_path).to eq root_path
         expect(user.reload.is_active).to eq false
       end
-
       it '退会済みユーザーの情報でログインするとエラーメッセージが表示され、ログインできない' do
         page.accept_confirm do
           click_on '退会する'
@@ -172,7 +154,7 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         click_on 'MENU'
         all('.header__link')[4].click
 
-        # マイページ退会するまで
+        # 退会するまでの流れ
         all('.my-page__menu--icon')[0].click
         click_on 'へんしゅう'
         click_on '退会する'
@@ -184,11 +166,9 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
       it 'エラーメッセージが表示される' do
         expect(page).to have_content 'ゲストはさくじょできません'
       end
-
       it 'バリデーションチェック後の遷移先がマイページである' do
         expect(current_path).to eq my_page_path
       end
-
       it 'ゲストユーザーデータが論理削除されていない' do
         guest_user = User.find_by(email: 'guest@example.com')
         expect(guest_user.is_active).to eq true
