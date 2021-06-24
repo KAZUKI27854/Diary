@@ -13,18 +13,14 @@ RSpec.describe 'TodoListモデルのテスト', type: :model do
     context 'bodyカラム' do
       it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         todo_list.body = ''
-
         is_expected.to eq false
         expect(todo_list.errors[:body]).to include("を入力してください")
       end
-
       it '100文字以内であること: 101文字は保存に失敗し、文字数超過のエラーメッセージが返される' do
         todo_list.body = Faker::Lorem.characters(number: 101)
-
         is_expected.to eq false
         expect(todo_list.errors[:body]).to include("は100文字以内で入力してください")
       end
-
       it '100文字以内であること: 100文字は保存に成功する' do
         todo_list.body = Faker::Lorem.characters(number: 100)
         is_expected.to eq true
@@ -36,10 +32,8 @@ RSpec.describe 'TodoListモデルのテスト', type: :model do
         todo_list.deadline = ''
         is_expected.to eq true
       end
-
       it '昨日以前の日付の場合保存に失敗し、日付に関するエラーメッセージが返される' do
         todo_list.deadline = Date.today - 1
-
         is_expected.to eq false
         expect(todo_list.errors[:deadline]).to include("は、本日以降の日付を入力して下さい")
       end

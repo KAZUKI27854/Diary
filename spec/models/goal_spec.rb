@@ -13,14 +13,11 @@ RSpec.describe 'Goalモデルのテスト', type: :model do
     context 'categoryカラム' do
       it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         goal.category = ''
-
         is_expected.to eq false
         expect(goal.errors[:category]).to include("を入力してください")
       end
-
       it '20文字以内であること: 21文字は保存に失敗し、文字数超過のエラーメッセージが返される' do
         goal.category = Faker::Lorem.characters(number: 21)
-
         is_expected.to eq false
         expect(goal.errors[:category]).to include("は20文字以内で入力してください")
       end
@@ -33,13 +30,11 @@ RSpec.describe 'Goalモデルのテスト', type: :model do
     context 'goal_statusカラム' do
       it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         goal.goal_status = ''
-
         is_expected.to eq false
         expect(goal.errors[:goal_status]).to include("を入力してください")
       end
       it '100文字以内であること: 101文字は保存に失敗し、文字数超過のエラーメッセージが返される' do
         goal.goal_status = Faker::Lorem.characters(number: 101)
-
         is_expected.to eq false
         expect(goal.errors[:goal_status]).to include("は100文字以内で入力してください")
       end
@@ -52,14 +47,11 @@ RSpec.describe 'Goalモデルのテスト', type: :model do
     context 'deadlineカラム' do
       it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         goal.deadline = ''
-
         is_expected.to eq false
         expect(goal.errors[:deadline]).to include("を入力してください")
       end
-
       it '今日以前の日付の場合保存に失敗し、日付に関するエラーメッセージが返される' do
         goal.deadline = Date.today
-
         is_expected.to eq false
         expect(goal.errors[:deadline]).to include("は、明日以降の日付を入力して下さい")
       end

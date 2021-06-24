@@ -13,18 +13,14 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'nameカラム' do
       it '空欄の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.name = ''
-
         is_expected.to eq false
         expect(user.errors[:name]).to include("を入力してください")
       end
-
       it '60文字以内であること: 61文字は保存に失敗し、文字数超過のエラーメッセージが返される' do
         user.name = Faker::Lorem.characters(number: 61)
-
         is_expected.to eq false
         expect(user.errors[:name]).to include("は60文字以内で入力してください")
       end
-
       it '60文字以内であること: 60文字は保存に成功する' do
         user.name = Faker::Lorem.characters(number: 60)
         is_expected.to eq true
@@ -34,11 +30,9 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'emailカラム' do
       it '空白の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.email = ''
-
         is_expected.to eq false
         expect(user.errors[:email]).to include("を入力してください")
       end
-
       it '一意性がない場合保存に失敗し、既に存在しているというエラーメッセージが返される' do
         # DBにアクセスする為、createで作成
         user = create(:user)
@@ -51,38 +45,29 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     context 'passwordカラム' do
       it '空白の場合保存に失敗し、空白に関するエラーメッセージが返される' do
         user.password = ''
-
         is_expected.to eq false
         expect(user.errors[:password]).to include("を入力してください")
       end
-
       it '6文字以上であること: 5文字は保存に失敗し、文字数不足のエラーメッセージが返される' do
         user.password = Faker::Lorem.characters(number: 5)
-
         is_expected.to eq false
         expect(user.errors[:password]).to include("は6文字以上で入力してください")
       end
-
       it '6文字以上であること: 6文字であっても確認用パスワードが空白の場合、保存に失敗し不一致のエラーメッセージが返される' do
         user.password = Faker::Lorem.characters(number: 6)
         user.password_confirmation = ''
-
         is_expected.to eq false
         expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
       end
-
       it '6文字以上であること: 6文字であっても確認用パスワードが異なる場合、保存に失敗し不一致のエラーメッセージが返される' do
         user.password = Faker::Lorem.characters(number: 6)
         user.password_confirmation = Faker::Lorem.characters(number: 6)
-
         is_expected.to eq false
         expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
       end
-
       it '6文字以上であること: 6文字かつ確認用パスワードも一致する場合、保存に成功する' do
         user.password = Faker::Lorem.characters(number: 6)
         user.password_confirmation = user.password
-
         is_expected.to eq true
       end
     end
