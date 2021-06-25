@@ -8,7 +8,6 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.user_id = @user.id
     goal = Goal.find(@document.goal_id)
-
     respond_to do |format|
       if @document.save
         # はじめて目標レベル100を超えた場合、クリア時のフラッシュ演出実行
@@ -17,10 +16,8 @@ class DocumentsController < ApplicationController
         else
           flash[:level_up] = "#{@user.name}のレベルが #{@document.add_level} 上がった！"
         end
-
         # 関連する目標データのdoc_number,stage_idを更新
         when_doc_create_goal_auto_update(goal.id)
-
         format.html { redirect_to my_page_path }
       else
         format.js { render "document_errors" }
@@ -36,24 +33,20 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     goal = @document.goal
     update_goal = Goal.find(params[:document][:goal_id])
-
     if @document.update(document_params)
       # ドキュメント更新時に目標が変わっているかで条件分岐
       case update_goal.id
-
       # 目標が変わっていない場合、獲得レベルの差分だけ目標レベルに加える
       when goal.id
         origin_add_level = params[:document][:origin_add_level].to_i
         update_add_level = params[:document][:add_level].to_i
         goal.level += (update_add_level - origin_add_level)
         goal.update(level: goal.level)
-
       # 目標が変わっている場合、変更前の目標と変更後の目標のデータを更新
       else
         when_doc_create_goal_auto_update(update_goal.id)
         when_doc_change_goal_origin_goal_auto_update
       end
-
       flash[:notice] = "きろくをへんこうしました"
       redirect_to my_page_path
     else
@@ -63,10 +56,8 @@ class DocumentsController < ApplicationController
 
   def destroy
     document = Document.find(params[:id])
-
     # 関連する目標のデータを更新
     when_doc_destroy_goal_auto_update(document.id)
-
     document.destroy
     flash[:notice] = "きろくをさくじょしました"
     redirect_to my_page_path
