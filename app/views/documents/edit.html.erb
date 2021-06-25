@@ -4,9 +4,7 @@
       <div class="col-lg-3 col-md-2 col-sm-0"></div>
       <div class="col-lg-6 col-md-8 col-sm-12 user-edit-form">
         <h3 class="master message upper-contents">かきなおすならここじゃ</h3>
-        <div>
-          <%= render 'layouts/validation_errors',obj: @document %>
-        </div>
+        <%= render 'layouts/validation_errors',obj: @document %>
         <%= form_with model: @document, local: true do |f| %>
           <div class="form-group">
             <label for="inputSkill">レベルアップしたもくひょう</label><br>
