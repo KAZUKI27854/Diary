@@ -3,13 +3,12 @@ class TodoLists::SearchesController < ApplicationController
   before_action :set_current_user
 
   def index
-    if params[:category].blank? && params[:word].blank?
+    if params[:goal_id].blank? && params[:word].blank?
       todo_lists = @user.todo_lists
-    elsif params[:category].present? && params[:word].present?
-      lists_search_result_by_cat = @user.goals.find_by(category: params[:category]).todo_lists
-      todo_lists = lists_search_result_by_cat.where('body LIKE(?)', "%#{params[:word]}%")
-    elsif params[:category].present? && params[:word].blank?
-      todo_lists = @user.goals.find_by(category: params[:category]).todo_lists
+    elsif params[:goal_id].present? && params[:word].present?
+      todo_lists = Goal.find(params[:goal_id]).todo_lists.where('body LIKE(?)', "%#{params[:word]}%")
+    elsif params[:goal_id].present? && params[:word].blank?
+      todo_lists = Goal.find(params[:goal_id]).todo_lists
     else
       todo_lists = @user.todo_lists.where('body LIKE(?)', "%#{params[:word]}%")
     end
