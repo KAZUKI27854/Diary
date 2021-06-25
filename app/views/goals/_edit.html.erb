@@ -11,8 +11,8 @@
             <div class="form-group">
               <% if goal.present? %>
                 <%= form_with model: goal do |f| %>
-            	    <label for="inputCategory">レベルアップしたいこと</label>
-            	    <!-- goals/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
+                  <label for="inputCategory">レベルアップしたいこと</label>
+                  <!-- goals/newの部分テンプレート内のフォームのidと重複しないよう、idを指定 -->
                   <%= f.text_field :category, class: "form-control", id: "edit-goal#{goal.id}-category",
                       placeholder: "レベルアップしたいこと" %>
                   <label for="inputGoalStatus">さいしゅうもくひょう</label>
@@ -22,7 +22,7 @@
                   <%= f.date_field :deadline, class: "form-control", id: "edit-goal#{goal.id}-deadline" %>
                   <%= f.submit 'へんこう', class: "btn btn-primary btn-sm mt-3 ml-5" %>
                   <%= link_to "さくじょ", goal_path(goal.id), method: :delete, class: "btn btn-danger btn-sm mt-3 ml-5",
-                    "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？" %>
+                      "data-confirm" => "関連する投稿も削除されます。本当によろしいですか？" %>
                 <% end %>
               <% else %>
                 <p>もくひょうがせっていされていません</p>
