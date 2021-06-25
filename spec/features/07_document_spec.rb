@@ -190,70 +190,60 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
 
     before do
       def select_first_goal_category
-        within '#doc_goal_category' do
+        within '#goal_id' do
           select goal.category
         end
-      end
-
-      def reset_select_box
-        within '#doc_goal_category' do
-          select 'すべてのもくひょう'
-        end
-      end
-
-      def reset_text_field
-        fill_in 'doc_word', with: ''
       end
 
       visit current_path
     end
 
     context 'セレクトボックス単体のテスト' do
-      before do
-        select_first_goal_category
+      it 'セレクトボックスを「すべてのもくひょう」にして検索すると全てのドキュメントが表示される' do
+        click_on 'けんさく'
+        expect(page).to have_selector('.doc-card', count: 4)
       end
-
-      it '検索用のセレクトボックスを選択すると、選んだ目標のドキュメントのみ表示される' do
+      it 'セレクトボックスを選択後に検索すると、選んだ目標のドキュメントのみ表示される' do
+        select_first_goal_category
+        click_on 'けんさく'
         expect(page).to have_content doc.body
         expect(page).to have_content doc_2.body
         expect(page).not_to have_content doc_3.body
         expect(page).not_to have_content doc_4.body
       end
-      it '検索用のセレクトボックスを選択後、「すべてのもくひょう」に戻すと全てのドキュメントが表示される' do
-        reset_select_box
-        expect(page).to have_selector('.doc-card', count: 4)
-      end
     end
 
     context 'フォーム単体のテスト' do
-      before do
-        fill_in 'doc_word', with: '1つ目の'
+      it '入力フォームが空の状態で検索すると全てのドキュメントが表示される' do
+        click_on 'けんさく'
+        expect(page).to have_selector('.doc-card', count: 4)
       end
-
       it '検索用フォームに文字を入力すると、本文にその文字が含まれるドキュメントのみ表示される' do
+        fill_in 'word', with: '1つ目の'
+        click_on 'けんさく'
         # 1つ目という文字列が含まれたドキュメント1だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_selector('.doc-card', count: 1)
-      end
-      it '入力フォームを空にすると全てのドキュメントが表示される' do
-        reset_text_field
-        expect(page).to have_selector('.doc-card', count: 4)
       end
     end
 
     context 'セレクトボックスとフォーム併用時のテスト' do
       before do
         select_first_goal_category
-        fill_in 'doc_word', with: '1'
+        fill_in 'word', with: '1'
       end
 
       it '同時に検索ができる' do
+        click_on 'けんさく'
         # 目標1かつ1という文字列が含まれたドキュメント1だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_selector('.doc-card', count: 1)
       end
       it 'セレクトボックスを「すべてのもくひょう」に戻すと、フォームの文字でのみ検索され、表示される' do
-        reset_select_box
+        within '#goal_id' do
+          select 'すべてのもくひょう'
+        end
+        click_on 'けんさく'
         # 1という文字列が含まれたドキュメント1,4だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_content doc_4.body
@@ -261,17 +251,13 @@ describe '7.ユーザログイン後のドキュメント関連のテスト', ty
         expect(page).not_to have_content doc_3.body
       end
       it '入力フォームを空にすると、セレクトボックスの目標でのみ検索され、表示される' do
-        reset_text_field
+        fill_in 'word', with: ''
+        click_on 'けんさく'
         # 目標1に関する投稿である、ドキュメント1,2だけ表示されているか
         expect(page).to have_content doc.body
         expect(page).to have_content doc_2.body
         expect(page).not_to have_content doc_3.body
         expect(page).not_to have_content doc_4.body
-      end
-      it 'セレクトボックスを初期値に戻し、入力フォームを空にすると全てのドキュメントが表示される' do
-        reset_select_box
-        reset_text_field
-        expect(page).to have_selector('.doc-card', count: 4)
       end
     end
   end
