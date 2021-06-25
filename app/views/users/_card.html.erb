@@ -10,15 +10,14 @@
             </p>
           </div>
           <% if document.document_image_id.present? %>
-              <%= attachment_image_tag document, :document_image,
-                  class: "doc-card__img--top doc__card--img" %>
-          <!-- 投稿画像が無い場合、同一目標に関して投稿順がn番目とする -->
+            <%= attachment_image_tag document, :document_image,
+                class: "doc-card__img--top doc__card--img" %>
+          <!-- 同一目標に関して投稿順がn番目とし、5回投稿するごとにステージが変化 -->
           <!-- n <= 100 かつ n/5 != 0 の場合、モンスターn、モンスターn+1 の2体を表示 -->
           <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) + 1 }.jpg",
                   class: "doc-card__stage--img", alt: "stage-image" %>
-
               <div class="doc-card__monster--left">
                 <%= image_tag "monster/monster#{ doc_number(document.id) }.png",
                     class: "doc-card__monster--img", alt: "monster-image" %>
@@ -55,7 +54,7 @@
               <p>
                 <% if document.document_image_id.present? %>
                   <%= document.body %><br>
-                 <!-- 投稿画像が無い場合、投稿順をn番目として画像の場合と同じ基準で投稿内容が変化 -->
+                <!-- 投稿順をn番目とし、画像の場合と同じ基準で投稿内容が変化 -->
                 <% elsif within_100_and_multiples_of_5?(document.id) then %>
                   このステージのボスがあらわれた！<br>
                   <%= document.body %><br>
