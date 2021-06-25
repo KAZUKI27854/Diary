@@ -34,12 +34,13 @@
           きろくなし
         <% end %>
       </p>
-      <p>つぎのもくひょう:<br>
-      <% if goal.documents.exists? %>
-        <%= latest_milestone(goal.id) %>
-      <% else %>
-        <a class="js-modal-open my-page__link--text" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
-      <% end %>
+      <p>
+        つぎのもくひょう:<br>
+        <% if goal.documents.exists? %>
+          <%= latest_milestone(goal.id) %>
+        <% else %>
+          <a class="js-modal-open my-page__link--text" href="" data-target="modal-new-doc">ぼうけんをきろくする</a>
+        <% end %>
       </p>
     <% end %>
     <!-- モーダルウインドウ -->
@@ -48,7 +49,7 @@
     <% end %>
     <!-- 目標が4つ以上の場合にセレクトボックス表示-->
     <%= collection_select(:goal, :category, @goals.drop(3), :id, :category,
-      {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %><br>
+        {prompt: "その他のもくひょう"}, {class: "js-menu-goal-select"}) %><br>
   <% else %>
     <p class="my-page__menu--text-goal">みせってい</p>
   <% end %>
