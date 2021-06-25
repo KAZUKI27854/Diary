@@ -48,41 +48,41 @@
 
 /* 花火が開いて消えるアニメーション（目標LV.100達成時） */
 @-webkit-keyframes fireworks {
-	0% {
-		opacity: 0;
-		transform: scale(0.1);
-	}
-	20% {
-		opacity: 1;
-		transform: scale(1);
-	}
-	60% {
-		opacity: 0.9;
-		transform: scale(1.1);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(1.2) translateY(30px);
-	}
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translateY(30px);
+  }
 }
 
 @keyframes fireworks {
-	0% {
-		opacity: 0;
-		transform: scale(0.1);
-	}
-	20% {
-		opacity: 1;
-		transform: scale(1);
-	}
-	60% {
-		opacity: 0.9;
-		transform: scale(1.1);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(1.2) translateY(30px);
-	}
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translateY(30px);
+  }
 }
 
 .fireworks {
