@@ -11,7 +11,7 @@
       <div class="form-inline todo-lists__form--area">
         <%= f.submit '＋', class: "todo-lists__link--update btn btn-primary btn-sm" %>
         <%= link_to "−", todo_list_path(todo_list.id), class: "todo-lists__link--destroy btn btn-danger btn-sm",
-          method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true %>
+            method: :delete, "data-confirm" => "削除してよろしいですか？", remote: true %>
         <%= link_to back_todo_lists_path, class: "todo-lists__link--index", remote: true do %>
           <%= image_tag "icon/back-icon.png", class: "todo-lists__icon--back", alt: "back-icon" %>
         <% end %>
