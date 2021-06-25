@@ -1,0 +1,27 @@
+<div class="my-page">
+  <%= render "layouts/deadline_alert.html" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+        <%= render "layouts/side_menu", goals: @goals %>
+        <div class="my-page__menu--icon js-todo-list-icon">
+          <%= link_to todo_lists_path, class: "js-todo-list-link" do %>
+            <%= image_tag "icon/bar-icon.png", class: "my-page__menu--icon-img", alt: "menu-icon" %><br>
+            <p class="my-page__link--text">Todoリスト</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12 col-sm-12">
+        <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
+        <div class="doc-card__search">
+          <%= form_with url: documents_searches_path, method: :get, local: true do |f| %>
+            <%= f.collection_select :goal_id, @goals, :id, :category, { prompt: "すべてのもくひょう" } %>
+            <%= f.text_field :word, placeholder: 'キーワードを入力' %>
+            <%= f.submit "けんさく", class: "btn btn-sm btn-success" %>
+          <% end %>
+        </div>
+        <%= render "documents/card", documents: @documents %>
+      </div>
+    </div>
+  </div>
+</div>

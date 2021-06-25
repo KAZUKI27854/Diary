@@ -3,18 +3,23 @@ class Documents::SearchesController < ApplicationController
   before_action :set_current_user
 
   def index
-    if params[:category].blank? && params[:word].blank?
+    @document = Document.new
+    @user_documents = @user.documents
+    @user_level = @user_documents.sum(:add_level)
+
+    @goal = Goal.new
+    @goals = @user.goals.order("updated_at DESC")
+
+    if params[:goal_id].blank? && params[:word].blank?
       documents = @user.documents
-    elsif params[:category].present? && params[:word].present?
-      doc_search_result_by_cat = @user.goals.find_by(category: params[:category]).documents
-      documents = doc_search_result_by_cat.where('body LIKE(?)', "%#{params[:word]}%")
-    elsif params[:category].present? && params[:word].blank?
-      documents = @user.goals.find_by(category: params[:category]).documents
+    elsif params[:goal_id].present? && params[:word].present?
+      documents = Goal.find(params[:goal_id]).documents.search(params[:word])
+    elsif params[:goal_id].present? && params[:word].blank?
+      documents = Goal.find(params[:goal_id]).documents
     else
-      documents = @user.documents.where('body LIKE(?)', "%#{params[:word]}%")
+      documents = @user.documents.search(params[:word])
     end
-    sort_documents = documents.includes(:goal).page(params[:page]).per(20).reverse_order
-    render partial: "users/card", locals: { documents: sort_documents }
+    @documents = documents.includes(:goal).page(params[:page]).per(6).reverse_order
   end
 
   private

@@ -1,29 +1,7 @@
 <div class="my-page">
   <%= render "layouts/level_up_flash" %>
   <%= render "layouts/clear_flash" %>
-  <div class="my-page__notice">
-    <% if near_deadline_goal_count >= 1 %>
-      <div class="my-page__notice--near-deadline">
-        <p class="my-page__notice--text">きげんが近いもくひょうが&nbsp;<%= near_deadline_goal_count %>&nbsp;つあります</p>
-      </div>
-    <% end %>
-    <% if today_deadline_goal_count >= 1 %>
-      <div class="my-page__notice--today-deadline">
-        <p class="my-page__notice--text">きげんが本日のもくひょうが&nbsp;<%= today_deadline_goal_count %>&nbsp;つあります</p>
-      </div>
-    <% end %>
-    <% if over_deadline_goal_count >= 1 %>
-      <div class="my-page__notice--over-deadline">
-        <p class="my-page__notice--text">きげん切れのもくひょうが&nbsp;<%= over_deadline_goal_count %>&nbsp;つあります</p>
-      </div>
-    <% end %>
-    <% if near_deadline_list_count >= 1 || today_deadline_list_count >= 1 || over_deadline_list_count >= 1 %>
-      <div class="my-page__notice-list--area">
-        <p class="my-page__notice-list--text">きげん切れ、またはきげんが近づいているTodoリストがあります</p>
-        <%= link_to "かくにんする", todo_lists_path, class: "my-page__link--text" %>
-      </div>
-    <% end %>
-  </div>
+  <%= render "layouts/deadline_alert.html" %>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-0 col-sm-0">
@@ -41,9 +19,11 @@
         <% if current_user.documents.exists? then %>
           <h3 class="master message upper-contents">これまでのきろくじゃ</h3>
           <div class="doc-card__search">
-            <%= collection_select(:doc_goal, :category, @goals, :category, :category, {prompt: "すべてのもくひょう"}, {class: "js-doc-search-select"}) %>
-            <%= text_field_tag :doc_word,'', class: 'js-doc-search-field', placeholder: 'キーワードけんさく' %>
-            <p>※けんさく結果は最大20件表示されます</p>
+            <%= form_with url: documents_searches_path, method: :get, local: true do |f| %>
+              <%= f.collection_select :goal_id, @goals, :id, :category, { prompt: "すべてのもくひょう" } %>
+              <%= f.text_field :word, placeholder: 'キーワードを入力' %>
+              <%= f.submit "けんさく", class: "btn btn-sm btn-success" %>
+            <% end %>
           </div>
         <% elsif @goals.blank? then %>
           <h3 class="master message upper-contents">
@@ -56,9 +36,7 @@
             とうこうしてみるのじゃ！
           </h3>
         <% end %>
-        <div class="js-card">
-          <%= render "users/card", documents: @documents %>
-        </div>
+        <%= render "documents/card", documents: @documents %>
       </div>
     </div>
   </div>

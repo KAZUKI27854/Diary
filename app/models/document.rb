@@ -7,4 +7,8 @@ class Document < ApplicationRecord
   validates :add_level, presence: true
 
   attachment :document_image
+
+  def self.search(keyword)
+    where('body LIKE(?)', "%#{keyword}%")
+  end
 end

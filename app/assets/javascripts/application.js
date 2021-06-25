@@ -204,65 +204,6 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  /* ドキュメントのインクリメンタルサーチ */
-  /* global location */
-  $(function() {
-    $('.js-doc-search-field').on('keyup', function () {
-      var word = $.trim($(this).val());
-      var category = $('.js-doc-search-select').val();
-
-      $.ajax({
-        type: 'GET',
-        url: '/documents/searches',
-        data:  { word: word, category: category },
-        dataType: 'html'
-      })
-
-      /* searches/indexからパーシャルを受け取り、部分更新 */
-      .done(function (data) {
-          $('.js-card').html(data);
-          if(word != '' || category != ''){
-            /* ページネーション: 検索時 => 効かなくなる為非表示 */
-            $('.pagination').hide();
-          } else {
-            /* ページネーション: valueが無い場合 => ページをリロードしページネーションを有効化 */
-            location.reload(true);
-          }
-        })
-
-      .fail(function() {
-        alert("検索に失敗しました。ページを再読み込みして下さい。");
-      });
-    });
-  });
-
-  $(function () {
-    $('.js-doc-search-select').on('change', function () {
-      var category = $(this).val();
-      var word = $.trim($('.js-doc-search-field').val());
-
-      $.ajax({
-        type: 'GET',
-        url: '/documents/searches',
-        data:  { category: category, word: word },
-        dataType: 'html'
-      })
-
-      .done(function (data) {
-        $('.js-card').html(data);
-        if(word != '' || category != ''){
-          $('.pagination').hide();
-        } else {
-          location.reload(true);
-        }
-      })
-
-      .fail(function() {
-        alert("絞り込みに失敗しました。ページを再読み込みして下さい。");
-      });
-    });
-  });
-
   $(function() {
     $('.js-todo-lists-area, .js-write-todo-lists-icon, .js-todo-lists-form').hide();
   });
