@@ -100,7 +100,7 @@ TodoList.create!(
       goal_id: second_goal.id,
       body: 'プログラミングの本を2冊読む',
       deadline: Date.tomorrow,
-      priority: 2,
+      priority: 0,
     },
     {
       user_id: guest_user.id,
