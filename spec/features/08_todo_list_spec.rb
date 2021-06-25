@@ -307,4 +307,56 @@ describe '8.ユーザログイン後のTodoリスト関連のテスト', type: :
       end
     end
   end
+
+  context '期限通知のテスト' do
+    let!(:list) { create(:todo_list, :with_deadline, user_id: user.id, goal_id: goal.id) }
+    let!(:list_2) { create(:todo_list, :with_deadline, user_id: user.id, goal_id: goal.id, deadline: Date.current + 4) }
+
+    it '期限が3日後の場合、期限が近いという内容の通知が表示される' do
+      list.update(deadline: Date.current + 3)
+      visit current_path
+      expect(page).to have_content 'きげんが近いものが 1 つあります'
+    end
+    it '期限が2日後の場合、期限が近いという内容の通知が表示される' do
+      list.update(deadline: Date.current + 2)
+      visit current_path
+      expect(page).to have_content 'きげんが近いものが 1 つあります'
+    end
+    it '期限が翌日の場合、期限が近いという内容の通知が表示される' do
+      list.update(deadline: Date.current + 1)
+      visit current_path
+      expect(page).to have_content 'きげんが近いものが 1 つあります'
+    end
+    it '期限が当日を除く3日以内のものが複数ある場合、通知に反映される' do
+      list.update(deadline: Date.current + 3)
+      list_2.update(deadline: Date.current + 2)
+      visit current_path
+      expect(page).to have_content 'きげんが近いものが 2 つあります'
+    end
+    it '期限が当日の場合、期限が本日という内容の通知が表示される' do
+      list.update(deadline: Date.current)
+      visit current_path
+      expect(page).to have_content 'きげんが本日のものが 1 つあります'
+    end
+    it '期限が当日のものが複数ある場合、通知に反映される' do
+      list.update(deadline: Date.current)
+      list_2.update(deadline: Date.current)
+      visit current_path
+      expect(page).to have_content 'きげんが本日のものが 2 つあります'
+    end
+    it '期限が昨日以前の場合、期限超過という内容の通知が表示される' do
+      list.deadline = Date.current - 1
+      list.save(validate: false)
+      visit current_path
+      expect(page).to have_content 'きげん切れのものが 1 つあります'
+    end
+    it '期限が昨日以前のものが複数ある場合、通知に反映される' do
+      list.deadline = Date.current - 1
+      list.save(validate: false)
+      list_2.deadline = Date.current - 1
+      list_2.save(validate: false)
+      visit current_path
+      expect(page).to have_content 'きげん切れのものが 2 つあります'
+    end
+  end
 end
