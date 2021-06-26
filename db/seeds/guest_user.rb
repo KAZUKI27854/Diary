@@ -15,7 +15,7 @@ guest_user.goals.create!(
     {
       goal_status: '自力でアプリ開発とデプロイをする',
       category: 'プログラミング',
-      deadline: Date.tomorrow,
+      deadline: Date.current + 2,
       user_id: guest_user.id,
       level: 90,
       doc_count: 10,
@@ -99,7 +99,7 @@ TodoList.create!(
       user_id: guest_user.id,
       goal_id: second_goal.id,
       body: 'プログラミングの本を2冊読む',
-      deadline: Date.tomorrow,
+      deadline: Date.current + 2,
       priority: 0,
     },
     {
