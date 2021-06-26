@@ -29,10 +29,10 @@ second_goal = guest_user.goals.second
 
 exercise = ['スクワット', 'うでたて伏せ', '太もものストレッチ', 'せなかのストレッチ', '走りこみ']
 count = ['10', '20', '30', '40', '50']
-exercise_date = Date.new(2021, 3, 1)
+exercise_date = Date.current - 7
 programing = ['HTML', 'CSS', 'Ruby', 'Python', 'Javascript']
 time = [*(1..10)]
-programing_date = Date.new(2021, 4, 1)
+programing_date = Date.current - 12
 
 5.times do |i|
   Document.create!(
