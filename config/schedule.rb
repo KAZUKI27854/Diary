@@ -25,8 +25,7 @@ def jst(time)
 end
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = Rails.env.to_sym
-set :environment, rails_env
+set :environment, :production
 set :output, 'log/cron.log'
 every :day, at: jst('02:15 am') do
   begin
