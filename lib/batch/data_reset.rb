@@ -2,10 +2,10 @@ class Batch::DataReset
   def self.data_reset
     guest_user = User.find_by(email: 'guest@example.com')
     guest_user.destroy
-    
+
     User.create!(name: 'ゆうしゃ', password: SecureRandom.urlsafe_base64, email: 'guest@example.com')
     guest_user = User.find_by(email: 'guest@example.com')
-    
+
     guest_user.goals.create!(
       [
         {
@@ -28,17 +28,17 @@ class Batch::DataReset
         },
       ]
     )
-    
+
     goal = guest_user.goals.first
     second_goal = guest_user.goals.second
-    
+
     exercise = ['スクワット', 'うでたて伏せ', '太もものストレッチ', 'せなかのストレッチ', '走りこみ']
     count = ['10', '20', '30', '40', '50']
     exercise_date = Date.current - 7
     programing = ['HTML', 'CSS', 'Ruby', 'Python', 'Javascript']
     time = [*(1..10)]
     programing_date = Date.current - 12
-    
+
     5.times do |i|
       Document.create!(
         [
@@ -54,7 +54,7 @@ class Batch::DataReset
         ]
       )
     end
-    
+
     10.times do |i|
       Document.create!(
         [
@@ -70,7 +70,7 @@ class Batch::DataReset
         ]
       )
     end
-    
+
     3.times do |i|
       TodoList.create!(
         [
@@ -84,7 +84,7 @@ class Batch::DataReset
         ]
       )
     end
-    
+
     2.times do |i|
       TodoList.create!(
         [
@@ -97,7 +97,7 @@ class Batch::DataReset
         ]
       )
     end
-    
+
     TodoList.create!(
       [
         {
