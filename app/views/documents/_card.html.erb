@@ -51,7 +51,7 @@
               <p class="doc-card__title">
                 <%= document.goal.category %>のダンジョン(&nbsp;<%= doc_number(document.id) %>&nbsp;F&nbsp;)にいどんだ！
               </p>
-              <p>
+              <p class="doc-card__body--text">
                 <% if document.document_image_id.present? %>
                   <%= document.body %><br>
                 <!-- 投稿順をn番目とし、画像の場合と同じ基準で投稿内容が変化 -->
@@ -68,7 +68,7 @@
                 <% end %>
                 <%= document.user.name %>は <%= document.add_level %> レベルアップした！
               </p>
-              <p>
+              <p class="doc-card__body--text">
                 【つぎのもくひょう】<br>
                 <%= document.milestone %>
               </p>
