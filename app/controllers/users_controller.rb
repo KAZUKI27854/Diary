@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        # S3への画像反映のタイムラグを考慮して3秒待機
+        sleep(3)
         flash[:notice] = "データをへんこうしました"
         format.html { redirect_to my_page_path }
       else
