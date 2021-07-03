@@ -47,6 +47,10 @@ class DocumentsController < ApplicationController
         when_doc_create_goal_auto_update(update_goal.id)
         when_doc_change_goal_origin_goal_auto_update
       end
+      if params[:document][:document_image].present?
+        # S3への画像反映のタイムラグを考慮して3秒待機
+        sleep(3)
+      end
       flash[:notice] = "きろくをへんこうしました"
       redirect_to my_page_path
     else

@@ -81,6 +81,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'bullet'
+gem 'refile-s3', github: 'refile/refile-s3', ref: '768d60d4e5e5e6a00a874767018ff8e31b1da3cd'
 
 group :production do
   gem 'mysql2'
