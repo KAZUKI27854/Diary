@@ -13,6 +13,7 @@ class TodoListsController < ApplicationController
 
     @goal = Goal.new
     @goals = @user.goals.order("updated_at DESC")
+    gon.goals = @goals.count
   end
 
   def back
