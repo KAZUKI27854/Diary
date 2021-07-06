@@ -10,8 +10,7 @@
             </p>
           </div>
           <% if document.document_image_id.present? %>
-            <%= attachment_image_tag document, :document_image,
-                class: "doc-card__img--top doc__card--img" %>
+            <%= attachment_image_tag document, :document_image, class: "doc-card__img" %>
           <!-- 同一目標に関して投稿順がn番目とし、5回投稿するごとにステージが変化 -->
           <!-- n <= 100 かつ n/5 != 0 の場合、モンスターn、モンスターn+1 の2体を表示 -->
           <% elsif within_100_and_not_multiples_of_5?(document.id) then %>
