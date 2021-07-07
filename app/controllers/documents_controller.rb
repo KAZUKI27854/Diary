@@ -1,8 +1,10 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
+  before_action :ensure_goal_deadline
 
   include DocumentsHelper
+  include GoalsHelper
 
   def create
     @document = Document.new(document_params)
@@ -83,6 +85,13 @@ class DocumentsController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def ensure_goal_deadline
+    if over_deadline_goal_count >= 1
+      flash[:alert] = 'きげん切れの目標を修正してください'
+      redirect_to my_page_path
+    end
   end
 
   def document_params
