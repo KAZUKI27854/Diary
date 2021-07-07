@@ -7,7 +7,7 @@ class Goal < ApplicationRecord
   validates :category, { presence: true, length: { maximum: 20 } }
   validates :goal_status, { presence: true, length: { maximum: 100 } }
   validates :deadline, presence: true
-  #validate :day_after_tomorrow
+  validate :day_after_tomorrow
 
   def day_after_tomorrow
     unless deadline.nil?
