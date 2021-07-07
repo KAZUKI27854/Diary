@@ -66,11 +66,17 @@ class DocumentsController < ApplicationController
 
   def destroy
     document = Document.find(params[:id])
-    # 関連する目標のデータを更新
-    when_doc_destroy_goal_auto_update(document.id)
-    document.destroy
-    flash[:notice] = "きろくをさくじょしました"
-    redirect_to my_page_path
+    Document.transaction do
+      # 関連する目標のデータを更新
+      when_doc_destroy_goal_auto_update(document.id)
+      document.destroy
+      flash[:notice] = "きろくをさくじょしました"
+      redirect_to my_page_path
+      rescue => e
+        logger.error e.backtrace.join("\n")
+        flash[:alert] = "エラーが発生しました。管理者へお問い合わせください。"
+        redirect_to my_page_path
+    end
   end
 
   private
