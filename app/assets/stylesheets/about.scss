@@ -603,41 +603,46 @@
 }
 
 /* safari用のCSS */
-_::-webkit-full-page-media, _:future, :root .about__stroy--col, .about__contents--col, .about__monster--col, .about__start--col {
-  justify-content: space-around;
+_:lang(x)+_:-webkit-full-screen-document, .about {
+  &__stroy--col,
+  &__contents--col,
+  &__monster--col,
+  &__start--col {
+    justify-content: space-around;
+  }
 
-  // &__text {
-  //   &--area {
-  //     &:nth-of-type(1) {
-  //       margin-right: 10%;
-  //     }
-  //   }
+  &__text {
+    &--area {
+      &:nth-of-type(1) {
+        margin-right: 10%;
+      }
+    }
 
-  //   &--monster {
-  //     width: 100%;
-  //     margin-left: 0;
-  //   }
-  // }
+    &--monster {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
 
-  // &__start {
-  //   &--text-area {
-  //     margin-left: 10%;
-  //   }
-  // }
+  &__start {
+    &--text-area {
+      margin-left: 10%;
+    }
+  }
 
-  // &__contents {
-  //   &--text {
-  //     margin-left: 10%;
-  //   }
-  // }
+  &__contents {
+    &--text {
+      margin-left: 10%;
+    }
+  }
 
-  // &__monster {
-  //   &--text-area {
-  //     width: 50%;
-  //   }
+  &__monster {
+    &--text-area {
+      width: 50%;
+    }
 
-  //   &--screen-img {
-  //     width: 35%;
-  //   }
-  // }
+    &--screen-img {
+      width: 35%;
+    }
+  }
 }
