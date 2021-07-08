@@ -1,1 +1,2 @@
-$('.js-message-errors').replaceWith("<%= j(render 'layouts/validation_errors',obj: @goal) %>");
+$('.error__message').remove();
+$('.js-message-errors').append("<%= j(render 'layouts/validation_errors',obj: @goal) %>");

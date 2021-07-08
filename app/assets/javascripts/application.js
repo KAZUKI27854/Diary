@@ -89,7 +89,7 @@ document.addEventListener("turbolinks:load", function(){
     });
 
     $('.js-modal-close').on('click', function(){
-      $('.error__message').replaceWith('<div class="js-message-errors"></div>');
+      $('.error__message').remove();
       $('.js-modal').fadeOut();
       return false;
     });
