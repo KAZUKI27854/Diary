@@ -293,6 +293,95 @@
   }
 }
 
+@media all and (-ms-high-contrast: none) {
+  /* IE用のCSS */
+  .about {
+    &__story::after,
+    &__contents::before,
+    &__monster::before,
+    &__monster::after {
+      display: none;
+    }
+
+    &__story--col,
+    &__contents--col,
+    &__monster--col,
+    &__start--col {
+      justify-content: center;
+    }
+
+    &__header {
+      &--area {
+        display: none;
+      }
+    }
+
+    &__img {
+      &--left-area {
+        display: none;
+      }
+
+      &--right-area {
+        display: none;
+      }
+    }
+
+    &__text {
+      &--contents {
+        width: 60% !important;
+        margin-left: 20% !important;
+      }
+    }
+
+    &__contents {
+      &--screen-area-big {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+/* safari用のCSS */
+_:lang(x)+_:-webkit-full-screen-document, .about__story--col {
+  justify-content: space-around;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__text--area {
+  margin-right: 10%;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__contents--text {
+  margin-right: 0;
+  margin-left: 10%;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__start--text-area {
+  margin-right: 0;
+  margin-left: 10%;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__start--text-area {
+  margin-right: 0;
+  margin-left: 10%;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__monster--col {
+  justify-content: space-around;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__text--monster {
+  width: 100%;
+  margin-left: 0;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__monster--text-area {
+  width: 40%;
+}
+
+_:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
+  width: 35%;
+}
+
 @media (max-width: 768px) {
   .about {
     &__img {
@@ -550,99 +639,6 @@
         font-size: 1.3rem;
         margin-bottom: 10%;
       }
-    }
-  }
-}
-
-@media all and (-ms-high-contrast: none) {
-  /* IE用のCSS */
-  .about {
-    &__story::after,
-    &__contents::before,
-    &__monster::before,
-    &__monster::after {
-      display: none;
-    }
-
-    &__story--col,
-    &__contents--col,
-    &__monster--col,
-    &__start--col {
-      justify-content: center;
-    }
-
-    &__header {
-      &--area {
-        display: none;
-      }
-    }
-
-    &__img {
-      &--left-area {
-        display: none;
-      }
-
-      &--right-area {
-        display: none;
-      }
-    }
-
-    &__text {
-      &--contents {
-        width: 60% !important;
-        margin-left: 20% !important;
-      }
-    }
-
-    &__contents {
-      &--screen-area-big {
-        justify-content: center;
-      }
-    }
-  }
-}
-
-/* safari用のCSS */
-_:lang(x)+_:-webkit-full-screen-document, .about {
-  &__stroy--col,
-  &__contents--col,
-  &__monster--col,
-  &__start--col {
-    justify-content: space-around;
-  }
-
-  &__text {
-    &--area {
-      &:nth-of-type(1) {
-        margin-right: 10%;
-      }
-    }
-
-    &--monster {
-      width: 100%;
-      margin-left: 0;
-    }
-  }
-
-  &__start {
-    &--text-area {
-      margin-left: 10%;
-    }
-  }
-
-  &__contents {
-    &--text {
-      margin-left: 10%;
-    }
-  }
-
-  &__monster {
-    &--text-area {
-      width: 50%;
-    }
-
-    &--screen-img {
-      width: 35%;
     }
   }
 }
