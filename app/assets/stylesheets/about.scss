@@ -517,9 +517,7 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
   .about {
     &__text {
       &--area {
-        &:nth-of-type(1) {
-          margin-right: 0 !important;
-        }
+        margin-right: 0;
       }
 
       &--story {
@@ -531,10 +529,6 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
         font-size: 14px !important;
         width: 100% !important;
         margin-left: 0 !important;
-
-        &--text {
-          margin-left: 0 !important;
-        }
       }
 
       &--monster {
@@ -567,6 +561,7 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
     &__contents {
       &--text {
         padding-left: 0;
+        margin-left: 0;
       }
 
       &--screen-area-big {
