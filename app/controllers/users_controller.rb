@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_normal_user, only: :withdraw
 
   def show
-    @document = aaDocument.new
+    @document = Document.new
     @documents = @user.documents.includes(:goal).page(params[:page]).per(6).reverse_order
 
     @user_documents = @user.documents
