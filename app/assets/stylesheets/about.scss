@@ -516,6 +516,12 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
 @media (max-width: 425px) {
   .about {
     &__text {
+      &--area {
+        &:nth-of-type(1) {
+          margin-right: 0;
+        }
+      }
+
       &--story {
         font-size: 17px !important;
       }
@@ -525,6 +531,10 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
         font-size: 14px !important;
         width: 100% !important;
         margin-left: 0 !important;
+
+        &--text {
+          margin-left: 0;
+        }
       }
 
       &--monster {
