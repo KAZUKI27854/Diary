@@ -518,7 +518,7 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
     &__text {
       &--area {
         &:nth-of-type(1) {
-          margin-right: 0;
+          margin-right: 0 !important;
         }
       }
 
@@ -533,7 +533,7 @@ _:lang(x)+_:-webkit-full-screen-document, .about__monster--screen-img {
         margin-left: 0 !important;
 
         &--text {
-          margin-left: 0;
+          margin-left: 0 !important;
         }
       }
 
