@@ -172,7 +172,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         goal.deadline = Date.current - 1
         goal.save(validate: false)
         visit current_path
-        expect(page).to have_content 'きげん切れのもくひょうが 1 つあります'
+        expect(page).to have_content 'きげん切れのもくひょうが 1 つあるため、きげんを修正してください'
       end
       it '目標期限が昨日以前のものが複数ある場合、通知に反映される' do
         goal.deadline = Date.current - 1
@@ -180,7 +180,7 @@ describe '6.ユーザログイン後の目標関連のテスト', type: :feature
         goal_2.deadline = Date.current - 1
         goal_2.save(validate: false)
         visit current_path
-        expect(page).to have_content 'きげん切れのもくひょうが 2 つあります'
+        expect(page).to have_content 'きげん切れのもくひょうが 2 つあるため、きげんを修正してください'
       end
     end
   end
