@@ -99,6 +99,8 @@ describe '5.ユーザログイン後のヘッダーとユーザーメニュー�
         fill_in 'user[name]', with: 'テストユーザー'
         attach_file 'user[profile_image]', "#{Rails.root}/app/assets/images/character/brave.png"
         click_button 'へんこう'
+        # S3への反映時間を考慮
+        sleep(3)
         expect(page).to have_content 'データをへんこうしました'
         expect(user.reload.name).to eq 'テストユーザー'
         expect([user.profile_image_id]).to be_present
