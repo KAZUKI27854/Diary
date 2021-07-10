@@ -77,6 +77,7 @@ Javascriptを用いた機能を複数実装しているため、js:trueオプシ
 
 ## 設計書
 
+### アプリケーション設計
 [ER 図](https://drive.google.com/file/d/1BKTg2k6PQeldhfoDnKyMcuHOQnp0O5tL/view?usp=sharing)
 <br>
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1yiQLRAzExqjTAvmJPudOBvqLG6T1lIXLw1otn_n_r4Y/edit?usp=sharing)
@@ -87,6 +88,11 @@ Javascriptを用いた機能を複数実装しているため、js:trueオプシ
 <br>
 [画面遷移図](https://drive.google.com/file/d/1Ylr3uINj8zeC9yrcbIqHa-QDC93B5bcN/view?usp=sharing)
 
+### AWSインフラ設計
+[ネットワーク構成図](https://drive.google.com/file/d/15j9zsoOgIRl6TAyq4XD8fCS0S8_zXuIZ/view?usp=sharing)
+<br>
+[インフラ設計書](https://docs.google.com/spreadsheets/d/10Cwlml411NKFhjUz_hrzwpuLpKQG7uzjNpH1jTxI7ls/edit?usp=sharing)
+
 ## チャレンジ要素一覧
 
 <https://docs.google.com/spreadsheets/d/1kZZIOO8pp7VQwR8ZbULpgdDx9cwXG6FIDJBMuwwEuzA/edit?usp=sharing>
@@ -94,7 +100,7 @@ Javascriptを用いた機能を複数実装しているため、js:trueオプシ
 ## 開発環境
 
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
