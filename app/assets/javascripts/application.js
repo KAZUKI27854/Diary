@@ -19,15 +19,15 @@
 //= stub countdown
 //= require_tree .
 
-/*global $*/
+/* global $ */
 document.addEventListener("turbolinks:load", function(){
-  /*global cssVars*/
+  /* global cssVars */
   /* IEでカスタムプロパティを使用する為 */
   cssVars({
     rootElement: document
   });
 
-  /*global objectFitImages*/
+  /* global objectFitImages */
   /* IEでobject-fitプロパティを使用する為 */
   $(function () {
     objectFitImages();
@@ -96,7 +96,7 @@ document.addEventListener("turbolinks:load", function(){
   });
 
   /* global gon */
-  /* ユーザーの目標数、ドキュメント数が０の場合に、次に進む箇所をバウンドアニメーションで明示*/
+  /* ユーザーの目標数、ドキュメント数が０の場合に、次に進む箇所をバウンドアニメーションで明示 */
   $(function(){
     if(typeof gon == 'undefined'){
       return;
@@ -162,7 +162,7 @@ document.addEventListener("turbolinks:load", function(){
     });
   });
 
-  /* 目標数が4つ以上の場合、更新順で4番目以降の目標はセレクトボックスに表示*/
+  /* 目標数が4つ以上の場合、更新順で4番目以降の目標はセレクトボックスに表示 */
   $(function(){
     if(typeof gon == 'undefined'){
       return;

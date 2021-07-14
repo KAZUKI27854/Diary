@@ -2,7 +2,7 @@
 /* 目標レベル100達成時のフラッシュ演出 */
 var timeleft = 59;
 
-/* global $*/
+/* global $ */
 $(function(){
   var Timer = setInterval(function(){
 
