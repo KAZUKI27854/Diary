@@ -9,6 +9,7 @@ class Documents::SearchesController < ApplicationController
 
     @goal = Goal.new
     @goals = @user.goals.order("updated_at DESC")
+    gon.goals = @goals.count
 
     if params[:goal_id].blank? && params[:word].blank?
       documents = @user.documents
