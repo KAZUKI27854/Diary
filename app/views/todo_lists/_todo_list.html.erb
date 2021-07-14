@@ -14,7 +14,7 @@
         </p>
       <% else %>
         <%= link_to edit_todo_list_path(todo_list.id), class: "todo-lists__link--edit", remote: true do %>
-          <!-- 未完了かつ期限付きのリストの場合、期限までの期間によって条件分岐-->
+          <!-- 未完了かつ期限付きのリストの場合、期限までの期間によって条件分岐 -->
           <% if todo_list.deadline.present? %>
             <% case (todo_list.deadline.to_date - Date.current) %>
             <% when 4..nil %>
