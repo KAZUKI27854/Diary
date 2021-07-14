@@ -18,7 +18,7 @@ class DocumentsController < ApplicationController
         else
           flash[:level_up] = "#{@user.name}のレベルが #{@document.add_level} 上がった！"
         end
-        # 関連する目標データのを更新
+        # 関連する目標のデータを更新
         when_doc_create_goal_auto_update(goal.id)
         format.html { redirect_to my_page_path }
       else
