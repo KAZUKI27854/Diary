@@ -26,7 +26,7 @@
                     class: "doc-card__monster--img", alt: "monster-image" %>
               </div>
             </div>
-          <!-- n <= 100 かつ n/5 == 0 の場合、ボスモンスターn を表示 -->
+          <!-- n <= 100 かつ n/5 == 0 の場合、ボスモンスター(n/5) を表示 -->
           <% elsif within_100_and_multiples_of_5?(document.id) then %>
             <div class="doc-card__stage">
               <%= image_tag "stage/stage#{ (doc_number(document.id) / 5) }.jpg",
