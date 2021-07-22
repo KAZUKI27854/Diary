@@ -1,6 +1,6 @@
 module DocumentsHelper
   # ドキュメント作成時に、関連する目標データを更新
-  def when_doc_create_goal_auto_update(goal_id)
+  def update_goal_when_create_document(goal_id)
     goal = Goal.find(goal_id)
     goal.level += params[:document][:add_level].to_i
     goal.doc_count += 1
@@ -9,7 +9,7 @@ module DocumentsHelper
   end
 
   # ドキュメント更新時に目標を変更する場合、変更前の目標データを元に戻す
-  def when_doc_change_goal_origin_goal_auto_update
+  def rollback_goal_when_change_document
     origin_goal_id = params[:document][:origin_goal_id].to_i
     goal = Goal.find(origin_goal_id)
     goal.level -= params[:document][:origin_add_level].to_i
@@ -23,7 +23,7 @@ module DocumentsHelper
   end
 
   # ドキュメント削除時に、関連する目標データを更新
-  def when_doc_destroy_goal_auto_update(document_id)
+  def update_goal_when_destroy_document(document_id)
     document = Document.find(document_id)
     goal = document.goal
     goal.level -= document.add_level

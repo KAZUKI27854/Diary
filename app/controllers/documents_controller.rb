@@ -19,7 +19,7 @@ class DocumentsController < ApplicationController
           flash[:level_up] = "#{@user.name}のレベルが #{@document.add_level} 上がった！"
         end
         # 関連する目標のデータを更新
-        when_doc_create_goal_auto_update(goal.id)
+        update_goal_when_create_document(goal.id)
         format.html { redirect_to my_page_path }
       else
         format.js { render "document_errors" }
@@ -47,8 +47,8 @@ class DocumentsController < ApplicationController
           goal.update(level: goal.level)
         # 目標が変わっている場合、変更前の目標と変更後の目標のデータを更新
         else
-          when_doc_create_goal_auto_update(update_goal.id)
-          when_doc_change_goal_origin_goal_auto_update
+          update_goal_when_create_document(update_goal.id)
+          rollback_goal_when_change_document
         end
         if params[:document][:document_image].present?
           # S3への画像反映のタイムラグを考慮して3秒待機
@@ -70,7 +70,7 @@ class DocumentsController < ApplicationController
     document = Document.find(params[:id])
     Document.transaction do
       # 関連する目標のデータを更新
-      when_doc_destroy_goal_auto_update(document.id)
+      update_goal_when_destroy_document(document.id)
       document.destroy
       flash[:notice] = "きろくをさくじょしました"
       redirect_to my_page_path
