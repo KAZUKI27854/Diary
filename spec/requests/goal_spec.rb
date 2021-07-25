@@ -4,14 +4,14 @@ RSpec.describe 'Goalsコントローラーのアクセス制御テスト', type:
   describe 'createアクション' do
     before do
       goal_params = attributes_for(:goal)
-      post "/goals", :params => { :goal => goal_params }
+      post goals_path, :params => { :goal => goal_params }
     end
     
     it '未ログインの場合302エラーが発生する' do
       expect(response).to have_http_status "302"
     end
     it '未ログインの場合ログイン画面にリダイレクトされる' do
-      expect(response).to redirect_to "/users/sign_in"
+      expect(response).to redirect_to new_user_session_path
     end
   end
     
@@ -21,14 +21,14 @@ RSpec.describe 'Goalsコントローラーのアクセス制御テスト', type:
     context '未ログインの場合' do
       before do
         goal_params = attributes_for(:goal, goal_status: "新規目標")
-        patch "/goals/1", :params => { :goal => goal_params }
+        patch goal_path(goal.id), :params => { :goal => goal_params }
       end
       
       it '302エラーが発生する' do
         expect(response).to have_http_status "302"
       end
       it 'ログイン画面にリダイレクトされる' do
-        expect(response).to redirect_to "/users/sign_in"
+        expect(response).to redirect_to new_user_session_path
       end
     end
     
@@ -39,7 +39,7 @@ RSpec.describe 'Goalsコントローラーのアクセス制御テスト', type:
       before do
         login_as(user, :scope => :user)
         goal_params = attributes_for(:goal, goal_status: "新規目標")
-        patch "/goals/2", :params => { :goal => goal_params }
+        patch goal_path(another_user_goal.id), :params => { :goal => goal_params }
       end
       
       it '302エラーが発生する' do
@@ -63,7 +63,7 @@ RSpec.describe 'Goalsコントローラーのアクセス制御テスト', type:
         expect(response).to have_http_status "302"
       end
       it 'ログイン画面にリダイレクトされる' do
-        expect(response).to redirect_to "/users/sign_in"
+        expect(response).to redirect_to new_user_session_path
       end
     end
     
@@ -78,8 +78,8 @@ RSpec.describe 'Goalsコントローラーのアクセス制御テスト', type:
       it '302エラーが発生する' do
         expect(response).to have_http_status "302"
       end
-      it 'マイページにリダイレクトされる' do
-        expect(response).to redirect_to "/users/sign_in"
+      it 'ログイン画面にリダイレクトされる' do
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
