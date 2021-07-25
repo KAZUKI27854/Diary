@@ -33,7 +33,7 @@ RSpec.describe 'Documentsコントローラーのアクセス制御テスト', t
       end
     end
     
-    context 'ログイン済みで他のユーザーの編集画面に遷移しようとした場合' do
+    context 'ログイン済みで他のユーザーのドキュメント編集画面に遷移しようとした場合' do
       let!(:another_user_goal) { create(:goal) }
       let!(:another_user_document) { create(:document, goal_id: another_user_goal.id) }
 
@@ -66,7 +66,7 @@ RSpec.describe 'Documentsコントローラーのアクセス制御テスト', t
       end
     end
     
-    context 'ログイン済みで他のユーザーの編集画面に遷移しようとした場合' do
+    context 'ログイン済みで他のユーザーのドキュメントを更新しようとした場合' do
       let!(:another_user_goal) { create(:goal) }
       let!(:another_user_document) { create(:document, goal_id: another_user_goal.id) }
 
@@ -99,7 +99,7 @@ RSpec.describe 'Documentsコントローラーのアクセス制御テスト', t
       end
     end
     
-    context 'ログイン済みで他のユーザーの目標を削除しようとした場合' do
+    context 'ログイン済みで他のユーザーのドキュメントを削除しようとした場合' do
       let!(:another_user_goal) { create(:goal) }
       let!(:another_user_document) { create(:document, goal_id: another_user_goal.id) }
 
