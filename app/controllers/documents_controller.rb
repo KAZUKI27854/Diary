@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
   before_action :ensure_goal_deadline
 
   include DocumentsHelper
@@ -85,6 +86,13 @@ class DocumentsController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+  
+  def ensure_current_user
+    unless Document.find(params[:id]).user == current_user
+      flash[:alert] = '他のユーザーのデータへはアクセスできません'
+      redirect_to my_page_path
+    end
   end
 
   def ensure_goal_deadline
