@@ -51,4 +51,40 @@ RSpec.describe 'Documentsコントローラーのアクセス制御テスト', t
       end
     end
   end
+  
+  describe 'updateアクション' do
+    let!(:document) { create(:document, goal_id: goal.id) }
+
+    context '未ログインの場合' do
+      before do
+        document_params = attributes_for(:document, goal: goal, body: "test")
+        patch document_path(document.id), :params => { :document => document_params }
+      end
+
+      it '未ログインの場合302エラーが発生する' do
+        expect(response).to have_http_status "302"
+      end
+      it '未ログインの場合ログイン画面にリダイレクトされる' do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+    
+    context 'ログイン済みで他のユーザーの編集画面に遷移しようとした場合' do
+      let!(:another_user_goal) { create(:goal) }
+      let!(:another_user_document) { create(:document, goal_id: another_user_goal.id) }
+
+      before do
+        login_as(user, :scope => :user)
+        document_params = attributes_for(:document, goal: goal, body: "test")
+        patch document_path(another_user_document.id), :params => { :document => document_params }
+      end
+      
+      it '302エラーが発生する' do
+        expect(response).to have_http_status "302"
+      end
+      it 'マイページにリダイレクトされる' do
+        expect(response).to redirect_to my_page_path
+      end
+    end
+  end
 end
